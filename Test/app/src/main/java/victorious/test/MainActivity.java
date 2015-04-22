@@ -17,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
 
   
 =======
-    // Githubtest_4
+    // Githubtest_1337
 >>>>>>> origin/master
 
     @Override
