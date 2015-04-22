@@ -17,7 +17,11 @@ public class MainActivity extends ActionBarActivity {
 
   
 =======
-    // Githubtest_1337 surrenamnam
+<<<<<<< Updated upstream
+    // Githubtest_l33tchange
+=======
+
+>>>>>>> Stashed changes
 >>>>>>> origin/master
 
     @Override
