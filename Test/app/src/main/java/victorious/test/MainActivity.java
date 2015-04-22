@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
 <<<<<<< Updated upstream
     // Githubtest_l33tchange
 =======
-
+        //Ludde_checkin_if_it_works
 >>>>>>> Stashed changes
 >>>>>>> origin/master
 
