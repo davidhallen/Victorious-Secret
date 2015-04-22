@@ -13,8 +13,12 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+<<<<<<< HEAD
 
   
+=======
+    // Githubtest_4
+>>>>>>> origin/master
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
