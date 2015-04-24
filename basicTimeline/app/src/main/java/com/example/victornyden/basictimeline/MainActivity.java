@@ -18,7 +18,7 @@ public class MainActivity extends ActionBarActivity {
     private Integer firstYear = null;
     private Integer secondYear = null;
     private int thisYear;
-    private Button yearButtonButton;
+    private Button yearButton;
     private Button placeCardButton;
     private Integer [] years;
     private ArrayList <Integer> playedYears = new ArrayList <> ();
@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         years = new Integer [] {3,10,11,23,45};
-        playedYears = new Integer [] {0,100};
+        playedYears.add(0); playedYears.add(100);
 
     }
 
@@ -154,7 +154,16 @@ public class MainActivity extends ActionBarActivity {
 
     public void placeCard() {
 
-        
+        int earlyYear = Math.min(firstYear,secondYear);
+        int lateYear = Math.max (firstYear, secondYear);
+
+        if (earlyYear <= thisYear && thisYear <= lateYear){
+
+            //placeNewCard på gridden
+            // change question to next question
+            // enable nextQuestion button
+
+        }
 
 
         /*
