@@ -26,6 +26,7 @@
             android:layout_height="400px"
             android:text="1903"/>
         <Button
+            android:id="@+id/button"
             android:background="@color/purple"
             android:layout_width="250px"
             android:layout_height="400px"
@@ -59,6 +60,12 @@
         <Button
             android:layout_width="500px"
             android:layout_height="200px" />
-        
+
+        <TextView
+            android:id="@+id/question"
+            android:text="När grundades fotbollsklubben IF Göteborg"
+            android:layout_width="500px"
+            android:layout_height="200px" />
+
         </LinearLayout>
 </LinearLayout>
