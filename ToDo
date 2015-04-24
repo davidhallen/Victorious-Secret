@@ -3,3 +3,8 @@ Skapa grundläggande applikation: Skrollbar, och ett fält under
 Formulera spellogik
 
 Kommentera
+
+
+Lägg in detta för fullscreen activity i AndroidManifest.xml:
+
+android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
