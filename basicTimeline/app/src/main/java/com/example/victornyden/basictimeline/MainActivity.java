@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class MainActivity extends ActionBarActivity {
 
     private Integer firstYear = null;
@@ -17,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
     private Button yearButtonButton;
     private Button placeCardButton;
     private Integer [] years;
-    private Integer [] playedYears;
+    private ArrayList <Integer> playedYears = new ArrayList <> ();
 
 
     /*private TextView questionView;
@@ -87,7 +91,21 @@ public class MainActivity extends ActionBarActivity {
 
         if (firstYear != null && secondYear != null){
 
+               Collections.sort(playedYears);
+               int i = playedYears.indexOf(firstYear);
+               int j = playedYears.indexOf(secondYear);
 
+               if (Math.abs(i-j)>1){
+
+                   // felmedelande
+
+
+               }
+                else {
+                   activatePlaceCardButton();
+
+
+                }
 
         }
 
@@ -135,6 +153,9 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void placeCard() {
+
+        
+
 
         /*
         sätt max av firstYear och secondYear till lateYear
