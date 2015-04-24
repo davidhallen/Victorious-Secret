@@ -11,47 +11,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/BigBang"
             android:background="@color/purple"
             android:layout_width="250px"
             android:layout_height="400px"
-            android:text="1901"/>
+            android:text="Big Bang"/>
         <Button
+            android:id="@+id/Ragnarok"
             android:background="@color/purple"
             android:layout_width="250px"
             android:layout_height="400px"
-            android:text="Walla"/>
-        <Button
-            android:background="@color/purple"
-            android:layout_width="250px"
-            android:layout_height="400px"
-            android:text="1903"/>
-        <Button
-            android:id="@+id/button"
-            android:background="@color/purple"
-            android:layout_width="250px"
-            android:layout_height="400px"
-            android:text="1904"/>
-        <Button
-            android:background="@color/purple"
-            android:layout_width="250px"
-            android:layout_height="400px"
-            android:text="1901"/>
-        <Button
-            android:background="@color/purple"
-            android:layout_width="250px"
-            android:layout_height="400px"
-            android:text="1902"/>
-        <Button
-            android:background="@color/purple"
-            android:layout_width="250px"
-            android:layout_height="400px"
-            android:text="1903"/>
-        <Button
-            android:id="@+id/button1904"
-            android:background="@color/purple"
-            android:layout_width="250px"
-            android:layout_height="400px"
-            android:text="1904"/>
+            android:text="Ragnarök"/>
+
         </LinearLayout>
     </HorizontalScrollView>
     <LinearLayout
