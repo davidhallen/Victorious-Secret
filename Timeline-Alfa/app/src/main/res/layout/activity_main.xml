@@ -6,31 +6,40 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id ="@+id/timelineLayout">
+
         <Button
             android:id="@+id/BigBang"
             android:background="@color/purple"
-            android:layout_width="250px"
-            android:layout_height="400px"
-            android:text="Big Bang"/>
+            android:layout_width="300px"
+            android:layout_height="500px"
+            android:text="Big Bang"
+            android:layout_marginRight="20dp"
+
+                                        />
         <Button
             android:id="@+id/Ragnarok"
             android:background="@color/purple"
-            android:layout_width="250px"
-            android:layout_height="400px"
-            android:text="Ragnarök"/>
+            android:layout_width="300px"
+            android:layout_height="500px"
+            android:text="Ragnarök"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/BigBang"/>
 
-        </LinearLayout>
+        </RelativeLayout>
     </HorizontalScrollView>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <Button
             android:layout_width="500px"
-            android:layout_height="200px" />
+            android:layout_height="200px"
+            android:text="New Button"
+            android:onClick="newButton"/>
 
         <TextView
             android:id="@+id/question"
