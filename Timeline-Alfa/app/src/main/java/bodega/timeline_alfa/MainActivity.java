@@ -20,7 +20,8 @@ public class MainActivity extends ActionBarActivity {
 
     private LinearLayout layout;
     private int y = 0;
-
+    private TextView question;
+    private int lol = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +32,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        final TextView question = (TextView) findViewById(R.id.question);
+
         final Button BigBang = (Button) findViewById(R.id.BigBang);
         final Button Ragnarok = (Button) findViewById(R.id.Ragnarok);
         layout = (LinearLayout) findViewById(R.id.timelineLayout);
-
+        question = (TextView) findViewById(R.id.question);
 
         BigBang.setOnClickListener(new View.OnClickListener() {
             yearButton y1 = new yearButton(1);
@@ -103,6 +104,14 @@ public class MainActivity extends ActionBarActivity {
         bigbang.setText("BigBang");
         bigbang.setBackgroundColor(Color.BLUE);
         bigbang.setLayoutParams(layoutParams);
+        bigbang.setTag("bigbang");
+        bigbang.setClickable(true);
+        bigbang.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+
+                clickedYear();
+            }
+        });
 
         layout.addView(bigbang);
 
@@ -112,16 +121,36 @@ public class MainActivity extends ActionBarActivity {
             year.setText(s);
             year.setBackgroundColor(Color.BLUE);
             year.setLayoutParams(layoutParams);
+            bigbang.setClickable(true);
+            year.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    clickedYear();
+                }
+            });
             layout.addView(year);
+
         }
 
         Button ragnarok = new Button (this);
         ragnarok.setText("ragnarok");
         ragnarok.setBackgroundColor(Color.BLUE);
         ragnarok.setLayoutParams(layoutParams);
+        bigbang.setClickable(true);
+        ragnarok.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                clickedYear();
+
+            }
+        });
         layout.addView(ragnarok);
 
 
+    }
+
+
+    public void clickedYear(){
+        question.setText("Du har klickat på en knapp" + lol);
+        lol++;
     }
 }
 
