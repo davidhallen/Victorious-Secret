@@ -44,19 +44,24 @@ public class MainActivity extends ActionBarActivity {
         question = (TextView) findViewById(R.id.question);
 
         BigBang.setOnClickListener(new View.OnClickListener() {
+ //Updated //upstream
             //yearButton y1 = new yearButton(1);
-            int clickedButton= 10;
+
+
+            //yearButton y1 = new yearButton(1);
+            boolean clickedButton = true;
+ //Stashed changes
             @Override
             public void onClick(View view){
 
-                if(clickedButton%2 != 0) {
+                if(clickedButton) {
                     BigBang.setBackgroundColor(Color.rgb(0, 155, 0));
-                    clickedButton++;
+                    clickedButton=false;
                 }
 
                 else{
                     BigBang.setBackgroundColor(Color.rgb(155, 0, 0));
-                    clickedButton++;
+                    clickedButton=true;
                 }
 
                 
@@ -70,18 +75,18 @@ public class MainActivity extends ActionBarActivity {
 
         Ragnarok.setOnClickListener(new View.OnClickListener() {
             //yearButton y1 = new yearButton(1);
-            int clickedButton= 10;
+            boolean clickedButton = true;
             @Override
             public void onClick(View view){
 
-                if(clickedButton%2 != 0) {
+                if(clickedButton) {
                     Ragnarok.setBackgroundColor(Color.rgb(0, 155, 0));
-                    clickedButton++;
+                    clickedButton = false;
                 }
 
                 else{
                     Ragnarok.setBackgroundColor(Color.rgb(155, 0, 0));
-                    clickedButton++;
+                    clickedButton = true;
                 }
             }
 
