@@ -18,7 +18,9 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-    private RelativeLayout layout;
+    private LinearLayout layout;
+    private int y = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
         final TextView question = (TextView) findViewById(R.id.question);
         final Button BigBang = (Button) findViewById(R.id.BigBang);
         final Button Ragnarok = (Button) findViewById(R.id.Ragnarok);
-        layout = (RelativeLayout) findViewById(R.id.timelineLayout);
+        layout = (LinearLayout) findViewById(R.id.timelineLayout);
 
 
         BigBang.setOnClickListener(new View.OnClickListener() {
@@ -79,21 +81,45 @@ public class MainActivity extends ActionBarActivity {
 
         });
 
+        init();
+
     }
 
+    public void init(){
+
+
+
+    }
 
     public void newButton(View view){
-        Button year = new Button (this);
-        year.setText("1967");
-        year.setBackgroundColor(Color.BLUE);
-        RelativeLayout.LayoutParams layoutParams =
-                new RelativeLayout.LayoutParams(300,500);
-        layoutParams.addRule(RelativeLayout.RIGHT_OF, R.id.BigBang);
-
-        year.setLayoutParams(layoutParams);
-        layout.addView(year);
+        layout.removeAllViews();
+        y++;
+        LinearLayout.LayoutParams layoutParams =
+                new LinearLayout.LayoutParams(300,500);
+        layoutParams.setMargins(40,0,0,0);
 
 
+        Button bigbang = new Button (this);
+        bigbang.setText("BigBang");
+        bigbang.setBackgroundColor(Color.BLUE);
+        bigbang.setLayoutParams(layoutParams);
+
+        layout.addView(bigbang);
+
+        for (int x = 0; x < y; x++) {
+            Button year = new Button(this);
+            String s = Integer.toString(x);
+            year.setText(s);
+            year.setBackgroundColor(Color.BLUE);
+            year.setLayoutParams(layoutParams);
+            layout.addView(year);
+        }
+
+        Button ragnarok = new Button (this);
+        ragnarok.setText("ragnarok");
+        ragnarok.setBackgroundColor(Color.BLUE);
+        ragnarok.setLayoutParams(layoutParams);
+        layout.addView(ragnarok);
 
 
     }

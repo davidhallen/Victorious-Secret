@@ -6,7 +6,7 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -28,9 +28,9 @@
             android:layout_height="500px"
             android:text="Ragnarök"
             android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/BigBang"/>
+            />
 
-        </RelativeLayout>
+        </LinearLayout>
     </HorizontalScrollView>
     <LinearLayout
         android:layout_width="wrap_content"
