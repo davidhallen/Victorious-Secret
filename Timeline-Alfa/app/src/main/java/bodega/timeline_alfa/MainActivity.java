@@ -25,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView question;
     private int lol = 0;
     private ArrayList <yearButton> yearlist = new ArrayList <yearButton> ();
+    private ArrayList <yearButton> playedYears = new ArrayList <yearButton> ();
     private yearButton currentQuestion;
 
     @Override
@@ -106,6 +107,7 @@ public class MainActivity extends ActionBarActivity {
       if (!yearlist.isEmpty()){
           currentQuestion = yearlist.get(0);
           yearlist.remove(0);
+          playedYears.add(currentQuestion);
           question.setText(currentQuestion.getQuestion());
       }
 
@@ -138,22 +140,27 @@ public class MainActivity extends ActionBarActivity {
 
         layout.addView(bigbang);
 
-        for (int x = 0; x < y; x++) {
-            Button year = new Button(this);
-            String s = Integer.toString(x);
-            year.setText(s);
-            year.setBackgroundColor(Color.BLUE);
-            year.setLayoutParams(layoutParams);
-            bigbang.setClickable(true);
-            year.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    clickedYear();
-                }
-            });
-            layout.addView(year);
+        Collections.sort(playedYears);
 
+        if (!playedYears.isEmpty()) {
+            for (int x = 0; x < playedYears.size(); x++) {
+                Button year = new Button(this);
+                //String s = Integer.toString(x);
+                int s = playedYears.get(x).getYear();
+                year.setText(""+s);
+                //year.setText(s);
+                year.setBackgroundColor(Color.BLUE);
+                year.setLayoutParams(layoutParams);
+                bigbang.setClickable(true);
+                year.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        clickedYear();
+                    }
+                });
+                layout.addView(year);
+
+            }
         }
-
         Button ragnarok = new Button (this);
         ragnarok.setText("ragnarok");
         ragnarok.setBackgroundColor(Color.BLUE);
