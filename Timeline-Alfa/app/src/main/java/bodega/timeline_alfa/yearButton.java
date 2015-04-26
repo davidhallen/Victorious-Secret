@@ -34,4 +34,8 @@ public class yearButton implements Comparable <yearButton> {
         else return -1;
 
     }
+
+    @Override public int hashCode () {
+      return year + question.hashCode();
+    }
 }

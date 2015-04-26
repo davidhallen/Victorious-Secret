@@ -21,9 +21,7 @@ import java.util.Collections;
 public class MainActivity extends ActionBarActivity {
 
     private LinearLayout layout;
-    private int y = 0;
     private TextView question;
-    private int lol = 0;
     private ArrayList <yearButton> yearlist = new ArrayList <yearButton> ();
     private ArrayList <yearButton> playedYears = new ArrayList <yearButton> ();
     private yearButton currentQuestion;
@@ -119,7 +117,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void newButton(View view){
         layout.removeAllViews();
-        y++;
+
         LinearLayout.LayoutParams layoutParams =
                 new LinearLayout.LayoutParams(300,500);
         layoutParams.setMargins(40,0,0,0);
@@ -134,7 +132,7 @@ public class MainActivity extends ActionBarActivity {
         bigbang.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
 
-                clickedYear();
+                clickedYear(view);
             }
         });
 
@@ -145,20 +143,18 @@ public class MainActivity extends ActionBarActivity {
         if (!playedYears.isEmpty()) {
             for (int x = 0; x < playedYears.size(); x++) {
                 Button year = new Button(this);
-                //String s = Integer.toString(x);
                 int s = playedYears.get(x).getYear();
                 year.setText(""+s);
-                //year.setText(s);
                 year.setBackgroundColor(Color.BLUE);
                 year.setLayoutParams(layoutParams);
                 bigbang.setClickable(true);
                 year.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        clickedYear();
+                        clickedYear(view);
                     }
                 });
                 layout.addView(year);
-
+                year.setId(playedYears.get(x).hashCode());
             }
         }
         Button ragnarok = new Button (this);
@@ -168,7 +164,7 @@ public class MainActivity extends ActionBarActivity {
         bigbang.setClickable(true);
         ragnarok.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                clickedYear();
+                clickedYear(view);
 
             }
         });
@@ -179,9 +175,16 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    public void clickedYear(){
-        question.setText("Du har klickat på en knapp" + lol);
-        lol++;
+    public void clickedYear(View view) {
+        view.getId();
+        for (yearButton y : playedYears){
+            if(y.hashCode () ==  view.getId()){
+                question.setText("" + y.getYear());
+                break;
+            }
+        }
+        view.setBackgroundColor(Color.RED);
+
     }
 }
 
