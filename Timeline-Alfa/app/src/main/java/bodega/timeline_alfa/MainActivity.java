@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -22,6 +24,8 @@ public class MainActivity extends ActionBarActivity {
     private int y = 0;
     private TextView question;
     private int lol = 0;
+    private ArrayList <yearButton> yearlist = new ArrayList <yearButton> ();
+    private yearButton currentQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
         question = (TextView) findViewById(R.id.question);
 
         BigBang.setOnClickListener(new View.OnClickListener() {
-            yearButton y1 = new yearButton(1);
+            //yearButton y1 = new yearButton(1);
             int clickedButton= 10;
             @Override
             public void onClick(View view){
@@ -64,7 +68,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         Ragnarok.setOnClickListener(new View.OnClickListener() {
-            yearButton y1 = new yearButton(1);
+            //yearButton y1 = new yearButton(1);
             int clickedButton= 10;
             @Override
             public void onClick(View view){
@@ -88,9 +92,28 @@ public class MainActivity extends ActionBarActivity {
 
     public void init(){
 
-
-
+       yearButton y1 = new yearButton (1912, "När var OS i Stockholm?");
+       yearButton y2 = new yearButton (1986, "När dog Palme?");
+       yearButton y3 = new yearButton (1492, "När upptäckte Columbus Amerika?");
+       yearButton y4 = new yearButton (0, "När föddes Jesus?");
+       yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);
+       Collections.shuffle(yearlist);
+       newQuestion();
     }
+
+
+    public void newQuestion() {
+      if (!yearlist.isEmpty()){
+          currentQuestion = yearlist.get(0);
+          yearlist.remove(0);
+          question.setText(currentQuestion.getQuestion());
+      }
+
+      else {
+          question.setText("Slut på frågor mannen");
+      }
+
+    };
 
     public void newButton(View view){
         layout.removeAllViews();
@@ -144,6 +167,7 @@ public class MainActivity extends ActionBarActivity {
         });
         layout.addView(ragnarok);
 
+        newQuestion();
 
     }
 

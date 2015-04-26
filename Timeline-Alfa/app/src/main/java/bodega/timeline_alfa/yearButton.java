@@ -5,10 +5,11 @@ package bodega.timeline_alfa;
  */
 public class yearButton {
     int year;
+    String question;
 
-    public yearButton(int year){
+    public yearButton(int year, String question ){
         this.year= year;
-
+        this.question = question;
     }
 
     public void  addYear(){
@@ -16,6 +17,10 @@ public class yearButton {
     }
     public int getYear() {
         return year;
+
+    }
+    public String getQuestion() {
+        return question;
 
     }
 }
