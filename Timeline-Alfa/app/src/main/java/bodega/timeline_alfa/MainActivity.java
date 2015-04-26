@@ -22,9 +22,11 @@ public class MainActivity extends ActionBarActivity {
 
     private LinearLayout layout;
     private TextView question;
-    private ArrayList <yearButton> yearlist = new ArrayList <yearButton> ();
-    private ArrayList <yearButton> playedYears = new ArrayList <yearButton> ();
+    private ArrayList <yearButton> yearlist = new ArrayList <yearButton> (); //for yearButtons not yet played
+    private ArrayList <yearButton> playedYears = new ArrayList <yearButton> (); //for played yearButtons
     private yearButton currentQuestion;
+    private yearButton firstSelectedYear;
+    private yearButton secondSelectedYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +119,9 @@ public class MainActivity extends ActionBarActivity {
 
     public void newButton(View view){
         layout.removeAllViews();
+        firstSelectedYear = null;
+        secondSelectedYear = null;
+
 
         LinearLayout.LayoutParams layoutParams =
                 new LinearLayout.LayoutParams(300,500);
@@ -176,14 +181,44 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void clickedYear(View view) {
-        view.getId();
-        for (yearButton y : playedYears){
-            if(y.hashCode () ==  view.getId()){
+
+        yearButton tempYear = null;
+        for (yearButton y : playedYears) {
+            if (y.hashCode() == view.getId()) {
+                tempYear = y;
                 question.setText("" + y.getYear());
                 break;
             }
         }
-        view.setBackgroundColor(Color.RED);
+
+        if (tempYear == firstSelectedYear){
+            firstSelectedYear = null;
+            view.setBackgroundColor(Color.BLUE);
+
+            if (secondSelectedYear != null){
+                firstSelectedYear = new yearButton (secondSelectedYear.getYear(), secondSelectedYear.getQuestion());
+                secondSelectedYear = null;
+            }
+        }
+
+        else if (tempYear == secondSelectedYear) {
+            secondSelectedYear = null;
+            view.setBackgroundColor(Color.BLUE);
+        }
+
+        else if (secondSelectedYear != null) {
+            //doNothing
+        }
+
+        else if (firstSelectedYear == null){
+            view.setBackgroundColor(Color.RED);
+            firstSelectedYear = tempYear;
+        }
+
+        else {
+            view.setBackgroundColor(Color.RED);
+            secondSelectedYear = tempYear;
+        }
 
     }
 }
