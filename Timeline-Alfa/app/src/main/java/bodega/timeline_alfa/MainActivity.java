@@ -75,7 +75,6 @@ public class MainActivity extends ActionBarActivity {
     };
 
     public void newButton (View view){
-
         printButtons();
     }
 
@@ -154,10 +153,29 @@ public class MainActivity extends ActionBarActivity {
         }
 
         else {
-            view.setBackgroundColor(Color.RED);
-            secondSelectedYear = tempYear;
+            if (isBeside(tempYear)){
+                view.setBackgroundColor(Color.RED);
+                secondSelectedYear = tempYear;
+            }
+
+
         }
 
     }
+
+    public boolean isBeside(yearButton year){
+
+        int i = playedYears.indexOf(year);
+        int j = playedYears.indexOf(firstSelectedYear);
+
+        if (Math.abs(i-j) > 1){
+            return false;
+        }
+
+        else return true;
+
+    }
+
+
 }
 
