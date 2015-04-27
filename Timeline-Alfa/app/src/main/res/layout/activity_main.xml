@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="600px">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,9 +26,8 @@
                 android:textSize="24sp"
                 android:layout_alignParentLeft="true"
                 android:gravity="center"
-                android:paddingLeft="10dp"/>
+                android:paddingLeft="30px"/>
             <Button
-<<<<<<< HEAD
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="Placera årtal"
@@ -37,17 +36,4 @@
                 android:id="@+id/answerButton"
                 />
     </RelativeLayout>
-=======
-            android:layout_width="500px"
-            android:layout_height="200px"
-            android:text="New Button"
-            android:onClick="newButton"/>
-
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
->>>>>>> Alpha_version_Menu
 </LinearLayout>

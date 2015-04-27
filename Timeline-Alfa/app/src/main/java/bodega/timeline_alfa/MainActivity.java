@@ -138,10 +138,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/Alpha_version2
     public void clickedYear (View view){
 
         yearButton tempYear = null;
