@@ -28,6 +28,7 @@ public class MainActivity extends ActionBarActivity {
     private yearButton currentQuestion;
     private yearButton firstSelectedYear;
     private yearButton secondSelectedYear;
+    private boolean gameOver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void init(){
+       gameOver = false;
        layout = (LinearLayout) findViewById(R.id.timelineLayout);
        question = (TextView) findViewById(R.id.question);
        answerButton = (Button) findViewById(R.id.answerButton);
@@ -49,7 +51,12 @@ public class MainActivity extends ActionBarActivity {
        yearButton y2 = new yearButton (1986, "Palme går på bio");
        yearButton y3 = new yearButton (1492, "Columbus upptäcker Amerika?");
        yearButton y4 = new yearButton (0, "Jesus krist föds");
-       yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);
+       yearButton y5 = new yearButton (1955, "Whisky börjar tillverkas i Sverige");
+       yearButton y6 = new yearButton (1496, "Leonardo da Vinci misslyckas med ett flygmaskinstest");
+       yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
+       yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
+        yearlist.add(y7);
+       playedYears.clear();
        playedYears.add(bigbang); playedYears.add(ragnarok);
        Collections.shuffle(yearlist);
        printButtons();
@@ -67,24 +74,33 @@ public class MainActivity extends ActionBarActivity {
 
       else {
           question.setText("Slut på frågor mannen, Game Over");
+          answerButton.setText("Nytt spel");
+          gameOver = true;
+          answerButton.setEnabled(true);
       }
 
     };
 
-    public void newButton (View view){
 
-        int i = Math.max(firstSelectedYear.getYear(), secondSelectedYear.getYear());
-        int j = Math.min(firstSelectedYear.getYear(), secondSelectedYear.getYear());
+    public void newButton (View view) {
 
-        if (currentQuestion.getYear() <= i && currentQuestion.getYear()>= j){
-            printButtons();
+        if (gameOver == false) {
+            int i = Math.max(firstSelectedYear.getYear(), secondSelectedYear.getYear());
+            int j = Math.min(firstSelectedYear.getYear(), secondSelectedYear.getYear());
+
+            if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
+                printButtons();
+            } else {
+                question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
+            }
         }
 
         else {
-            question.setText("Fel, försök igen!" + question.getText());
+            answerButton.setText("Placera årtal");
+            init();
+
         }
     }
-
     public void printButtons(){
         answerButton.setEnabled(false);
         layout.removeAllViews();
