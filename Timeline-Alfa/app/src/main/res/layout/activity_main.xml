@@ -25,13 +25,15 @@
                 android:layout_height="fill_parent"
                 android:textSize="24sp"
                 android:layout_alignParentLeft="true"
-                android:gravity="center" />
+                android:gravity="center"
+                android:paddingLeft="30px"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:text="New Button"
+                android:text="Placera årtal"
                 android:onClick="newButton"
                 android:layout_alignParentRight="true"
+                android:id="@+id/answerButton"
                 />
     </RelativeLayout>
 </LinearLayout>
