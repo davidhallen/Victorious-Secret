@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
     public void init(){
        layout = (LinearLayout) findViewById(R.id.timelineLayout);
        question = (TextView) findViewById(R.id.question);
-       answerButton = (Button) findViewById(R.id.anwerButton);
+       //answerButton = (Button) findViewById(R.id.anwerButton);
        yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
        yearButton ragnarok = new yearButton (2212, "Ragnarok!");
        yearButton y1 = new yearButton (1912, "När var OS i Stockholm?");
@@ -86,13 +86,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void printButtons(){
-        answerButton.setEnabled(false);
+        //answerButton.setEnabled(false);
         layout.removeAllViews();
         firstSelectedYear = null;
         secondSelectedYear = null;
 
         LinearLayout.LayoutParams layoutParams =
-                new LinearLayout.LayoutParams(300,500);
+                new LinearLayout.LayoutParams(400,LinearLayout.LayoutParams.MATCH_PARENT);
         layoutParams.setMargins(40,0,0,0);
 
         Collections.sort(playedYears);
@@ -140,7 +140,7 @@ public class MainActivity extends ActionBarActivity {
             else if (isBeside(tempYear,secondSelectedYear)) {
                 view.setBackgroundColor(Color.RED);
                 firstSelectedYear = tempYear;
-                answerButton.setEnabled(true);
+                //answerButton.setEnabled(true);
             }
 
 
@@ -154,7 +154,7 @@ public class MainActivity extends ActionBarActivity {
             else if (isBeside(tempYear,firstSelectedYear)) {
                 view.setBackgroundColor(Color.RED);
                 secondSelectedYear = tempYear;
-                answerButton.setEnabled(true);
+                //answerButton.setEnabled(true);
             }
 
 
@@ -163,14 +163,14 @@ public class MainActivity extends ActionBarActivity {
         else if (tempYear == firstSelectedYear){
             view.setBackgroundColor(Color.BLUE);
             firstSelectedYear = null;
-            answerButton.setEnabled(false);
+            //answerButton.setEnabled(false);
 
         }
 
         else if (tempYear == secondSelectedYear){
             view.setBackgroundColor(Color.BLUE);
             secondSelectedYear = null;
-            answerButton.setEnabled(false);
+            //answerButton.setEnabled(false);
 
         }
 
