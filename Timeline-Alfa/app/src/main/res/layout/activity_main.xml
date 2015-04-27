@@ -17,24 +17,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
         >
             <TextView
                 android:id="@+id/question"
-                android:text="När grundades fotbollsklubben IFK Göteborg"
+                android:text="Fotbollsklubben IFK Göteborg grundades."
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:textSize="24sp"
                 android:layout_alignParentLeft="true"
-                />
+                android:gravity="center"
+                android:paddingLeft="30px"/>
             <Button
 <<<<<<< HEAD
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Button"
+                android:layout_height="fill_parent"
+                android:text="Placera årtal"
                 android:onClick="newButton"
                 android:layout_alignParentRight="true"
-                android:gravity="center"/>
+                android:id="@+id/answerButton"
+                />
     </RelativeLayout>
 =======
             android:layout_width="500px"
