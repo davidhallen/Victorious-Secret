@@ -1,5 +1,6 @@
 package bodega.timeline_alfa;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,11 +13,16 @@ import android.widget.TextView;
 
 public class MenuActivity extends ActionBarActivity {
 
+    private dbManager yeardb;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        yeardb = new dbManager(this);
 
         Button button= (Button) findViewById(R.id.BigBang);
 
@@ -48,5 +54,13 @@ public class MenuActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void addQuestion(String question, int year){
+        ContentValues values = new ContentValues();
+
+        values.put(dbManager.COL_QUESTION, question);
+        values.put(dbManager.COL_YEAR, year);
+
     }
 }
