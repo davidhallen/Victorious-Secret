@@ -42,13 +42,13 @@ public class MainActivity extends ActionBarActivity {
     public void init(){
        layout = (LinearLayout) findViewById(R.id.timelineLayout);
        question = (TextView) findViewById(R.id.question);
-       //answerButton = (Button) findViewById(R.id.anwerButton);
+       answerButton = (Button) findViewById(R.id.answerButton);
        yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
        yearButton ragnarok = new yearButton (2212, "Ragnarok!");
-       yearButton y1 = new yearButton (1912, "När var OS i Stockholm?");
-       yearButton y2 = new yearButton (1986, "När dog Palme?");
-       yearButton y3 = new yearButton (1492, "När upptäckte Columbus Amerika?");
-       yearButton y4 = new yearButton (0, "När föddes Jesus?");
+       yearButton y1 = new yearButton (1912, "OS i Stockholm");
+       yearButton y2 = new yearButton (1986, "Palme går på bio");
+       yearButton y3 = new yearButton (1492, "Columbus upptäcker Amerika?");
+       yearButton y4 = new yearButton (0, "Jesus krist föds");
        yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);
        playedYears.add(bigbang); playedYears.add(ragnarok);
        Collections.shuffle(yearlist);
@@ -66,7 +66,7 @@ public class MainActivity extends ActionBarActivity {
       }
 
       else {
-          question.setText("Slut på frågor mannen");
+          question.setText("Slut på frågor mannen, Game Over");
       }
 
     };
@@ -81,12 +81,12 @@ public class MainActivity extends ActionBarActivity {
         }
 
         else {
-            question.setText("Wrong answer, yo");
+            question.setText("Fel, försök igen!" + question.getText());
         }
     }
 
     public void printButtons(){
-        //answerButton.setEnabled(false);
+        answerButton.setEnabled(false);
         layout.removeAllViews();
         firstSelectedYear = null;
         secondSelectedYear = null;
@@ -140,7 +140,7 @@ public class MainActivity extends ActionBarActivity {
             else if (isBeside(tempYear,secondSelectedYear)) {
                 view.setBackgroundColor(Color.RED);
                 firstSelectedYear = tempYear;
-                //answerButton.setEnabled(true);
+                answerButton.setEnabled(true);
             }
 
 
@@ -154,7 +154,7 @@ public class MainActivity extends ActionBarActivity {
             else if (isBeside(tempYear,firstSelectedYear)) {
                 view.setBackgroundColor(Color.RED);
                 secondSelectedYear = tempYear;
-                //answerButton.setEnabled(true);
+                answerButton.setEnabled(true);
             }
 
 
@@ -163,14 +163,14 @@ public class MainActivity extends ActionBarActivity {
         else if (tempYear == firstSelectedYear){
             view.setBackgroundColor(Color.BLUE);
             firstSelectedYear = null;
-            //answerButton.setEnabled(false);
+            answerButton.setEnabled(false);
 
         }
 
         else if (tempYear == secondSelectedYear){
             view.setBackgroundColor(Color.BLUE);
             secondSelectedYear = null;
-            //answerButton.setEnabled(false);
+            answerButton.setEnabled(false);
 
         }
 
