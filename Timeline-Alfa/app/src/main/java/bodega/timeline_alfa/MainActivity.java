@@ -121,10 +121,21 @@ public class MainActivity extends ActionBarActivity {
                 year.setText(""+s+ "             " + q);
                 year.setBackgroundColor(Color.BLUE);
                 year.setLayoutParams(layoutParams);
+                if (x == 0){
+                    year.setBackgroundResource(R.drawable.bigbangpicture);
+                    year.setText("Big Bang");
+                    year.setTextSize(20);
+                }
+
+                else if (x == playedYears.size()-1){
+                    year.setBackgroundResource(R.drawable.ragnarok);
+                    year.setText("");
+                }
 
                 year.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         clickedYear(view);
+
                     }
                 });
                 layout.addView(year);
