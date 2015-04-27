@@ -22,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
 
     private LinearLayout layout;
     private TextView question;
+    private Button answerButton;
     private ArrayList <yearButton> yearlist = new ArrayList <yearButton> (); //for yearButtons not yet played
     private ArrayList <yearButton> playedYears = new ArrayList <yearButton> (); //for played yearButtons
     private yearButton currentQuestion;
@@ -41,6 +42,7 @@ public class MainActivity extends ActionBarActivity {
     public void init(){
        layout = (LinearLayout) findViewById(R.id.timelineLayout);
        question = (TextView) findViewById(R.id.question);
+       answerButton = (Button) findViewById(R.id.anwerButton);
        yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
        yearButton ragnarok = new yearButton (2212, "Ragnarok!");
        yearButton y1 = new yearButton (1912, "När var OS i Stockholm?");
@@ -81,13 +83,10 @@ public class MainActivity extends ActionBarActivity {
         else {
             question.setText("Wrong answer, yo");
         }
-
     }
 
-
-
-
     public void printButtons(){
+        answerButton.setEnabled(false);
         layout.removeAllViews();
         firstSelectedYear = null;
         secondSelectedYear = null;
@@ -123,66 +122,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    /*public void clickedYear(View view) {
-
-        yearButton tempYear = null;
-        for (yearButton y : playedYears) {
-            if (y.hashCode() == view.getId()) {
-                tempYear = y;
-                //question.setText("" + y.getYear());
-                break;
-            }
-        }
-
-        if (tempYear == firstSelectedYear){
-            firstSelectedYear = null;
-            view.setBackgroundColor(Color.BLUE);
-
-            if (secondSelectedYear != null){
-                firstSelectedYear = new yearButton (secondSelectedYear.getYear(), secondSelectedYear.getQuestion());
-                secondSelectedYear = null;
-            }
-        }
-
-        else if (tempYear == secondSelectedYear) {
-            secondSelectedYear = null;
-            view.setBackgroundColor(Color.BLUE);
-        }
-
-        else if (secondSelectedYear != null) {
-            //doNothing
-            //view.setBackgroundColor(Color.YELLOW);
-
-        }
-
-        else if (firstSelectedYear == null){
-            view.setBackgroundColor(Color.RED);
-            firstSelectedYear = tempYear;
-
-        }
-
-        else {
-            if (isBeside(tempYear)){
-                view.setBackgroundColor(Color.RED);
-                secondSelectedYear = tempYear;
-            }
-
-
-        }
-
-<<<<<<< Updated upstream
-        System.out.println(firstSelectedYear + "  " + secondSelectedYear);
-    }
-
- } */
-
     public void clickedYear (View view){
 
         yearButton tempYear = null;
         for (yearButton y : playedYears) {
             if (y.hashCode() == view.getId()) {
                 tempYear = y;
-                //question.setText("" + y.getYear());
                 break;
             }
         }
@@ -195,6 +140,7 @@ public class MainActivity extends ActionBarActivity {
             else if (isBeside(tempYear,secondSelectedYear)) {
                 view.setBackgroundColor(Color.RED);
                 firstSelectedYear = tempYear;
+                answerButton.setEnabled(true);
             }
 
 
@@ -208,6 +154,7 @@ public class MainActivity extends ActionBarActivity {
             else if (isBeside(tempYear,firstSelectedYear)) {
                 view.setBackgroundColor(Color.RED);
                 secondSelectedYear = tempYear;
+                answerButton.setEnabled(true);
             }
 
 
@@ -216,12 +163,14 @@ public class MainActivity extends ActionBarActivity {
         else if (tempYear == firstSelectedYear){
             view.setBackgroundColor(Color.BLUE);
             firstSelectedYear = null;
+            answerButton.setEnabled(false);
 
         }
 
         else if (tempYear == secondSelectedYear){
             view.setBackgroundColor(Color.BLUE);
             secondSelectedYear = null;
+            answerButton.setEnabled(false);
 
         }
 
