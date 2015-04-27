@@ -170,6 +170,7 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
+<<<<<<< Updated upstream
         System.out.println(firstSelectedYear + "  " + secondSelectedYear);
     }
 
@@ -187,13 +188,28 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if (firstSelectedYear == null && tempYear != secondSelectedYear){
-            view.setBackgroundColor(Color.RED);
-            firstSelectedYear = tempYear;
-        }
+            if (secondSelectedYear==null) {
+                view.setBackgroundColor(Color.RED);
+                firstSelectedYear = tempYear;
+            }
+            else if (isBeside(tempYear,secondSelectedYear)) {
+                view.setBackgroundColor(Color.RED);
+                firstSelectedYear = tempYear;
+            }
+
+
+            }
 
        else if(secondSelectedYear == null && tempYear!= firstSelectedYear) {
-            view.setBackgroundColor(Color.RED);
-            secondSelectedYear = tempYear;
+            if (firstSelectedYear==null) {
+                view.setBackgroundColor(Color.RED);
+                secondSelectedYear = tempYear;
+            }
+            else if (isBeside(tempYear,firstSelectedYear)) {
+                view.setBackgroundColor(Color.RED);
+                secondSelectedYear = tempYear;
+            }
+
 
         }
 
@@ -213,14 +229,16 @@ public class MainActivity extends ActionBarActivity {
 
             //do nothing
         }
-        System.out.println(firstSelectedYear + "  " + secondSelectedYear);
+
     }
 
 
-    public boolean isBeside(yearButton year){
 
-        int i = playedYears.indexOf(year);
-        int j = playedYears.indexOf(firstSelectedYear);
+
+    public boolean isBeside(yearButton year1,yearButton year2){
+
+        int i = playedYears.indexOf(year1);
+        int j = playedYears.indexOf(year2);
 
         if (Math.abs(i-j) > 1){
             return false;
