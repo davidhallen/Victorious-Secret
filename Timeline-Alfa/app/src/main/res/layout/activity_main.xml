@@ -4,60 +4,35 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id ="@+id/timelineLayout">
-
-        <Button
-            android:id="@+id/BigBang"
-            android:background="@color/purple"
-            android:layout_width="300px"
-            android:layout_height="500px"
-            android:text="Big Bang"
-            android:layout_marginRight="20dp"
-
-                                        />
-        <Button
-            android:id="@+id/Ragnarok"
-            android:background="@color/purple"
-            android:layout_width="300px"
-            android:layout_height="500px"
-            android:text="Ragnarök"
-            android:layout_marginLeft="20dp"
-            />
+        android:layout_width="match_parent"
+        android:layout_height="600px">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id ="@+id/timelineLayout">
 
         </LinearLayout>
     </HorizontalScrollView>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        >
             <TextView
-            android:id="@+id/question"
-            android:text="När grundades fotbollsklubben IFK Göteborg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right">
+                android:id="@+id/question"
+                android:text="När grundades fotbollsklubben IFK Göteborg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_alignParentLeft="true"
+                />
             <Button
-            android:layout_width="500px"
-            android:layout_height="200px"
-            android:text="New Button"
-            android:onClick="newButton"/>
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:onClick="newButton"
+                android:layout_alignParentRight="true"
+                android:gravity="center"/>
+    </RelativeLayout>
 </LinearLayout>
