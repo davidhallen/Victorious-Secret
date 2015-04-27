@@ -28,6 +28,7 @@
                 android:layout_alignParentLeft="true"
                 />
             <Button
+<<<<<<< HEAD
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Button"
@@ -35,4 +36,17 @@
                 android:layout_alignParentRight="true"
                 android:gravity="center"/>
     </RelativeLayout>
+=======
+            android:layout_width="500px"
+            android:layout_height="200px"
+            android:text="New Button"
+            android:onClick="newButton"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+>>>>>>> Alpha_version_Menu
 </LinearLayout>

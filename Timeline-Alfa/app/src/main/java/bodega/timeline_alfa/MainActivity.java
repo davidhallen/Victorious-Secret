@@ -123,58 +123,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    /*public void clickedYear(View view) {
-
-        yearButton tempYear = null;
-        for (yearButton y : playedYears) {
-            if (y.hashCode() == view.getId()) {
-                tempYear = y;
-                //question.setText("" + y.getYear());
-                break;
-            }
-        }
-
-        if (tempYear == firstSelectedYear){
-            firstSelectedYear = null;
-            view.setBackgroundColor(Color.BLUE);
-
-            if (secondSelectedYear != null){
-                firstSelectedYear = new yearButton (secondSelectedYear.getYear(), secondSelectedYear.getQuestion());
-                secondSelectedYear = null;
-            }
-        }
-
-        else if (tempYear == secondSelectedYear) {
-            secondSelectedYear = null;
-            view.setBackgroundColor(Color.BLUE);
-        }
-
-        else if (secondSelectedYear != null) {
-            //doNothing
-            //view.setBackgroundColor(Color.YELLOW);
-
-        }
-
-        else if (firstSelectedYear == null){
-            view.setBackgroundColor(Color.RED);
-            firstSelectedYear = tempYear;
-
-        }
-
-        else {
-            if (isBeside(tempYear)){
-                view.setBackgroundColor(Color.RED);
-                secondSelectedYear = tempYear;
-            }
-
-
-        }
-
-<<<<<<< Updated upstream
-        System.out.println(firstSelectedYear + "  " + secondSelectedYear);
-    }
-
- } */
 
     public void clickedYear (View view){
 
