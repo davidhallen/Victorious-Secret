@@ -36,10 +36,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         init();
-
-
-
-
     }
 
     public void init(){
@@ -74,7 +70,18 @@ public class MainActivity extends ActionBarActivity {
     };
 
     public void newButton (View view){
-        printButtons();
+
+        int i = Math.max(firstSelectedYear.getYear(), secondSelectedYear.getYear());
+        int j = Math.min(firstSelectedYear.getYear(), secondSelectedYear.getYear());
+
+        if (currentQuestion.getYear() <= i && currentQuestion.getYear()>= j){
+            printButtons();
+        }
+
+        else {
+            question.setText("Wrong answer, yo");
+        }
+
     }
 
 
