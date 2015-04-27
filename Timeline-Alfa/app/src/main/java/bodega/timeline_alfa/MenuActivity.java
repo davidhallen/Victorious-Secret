@@ -17,11 +17,6 @@ public class MenuActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        final TextView BigBangView = (TextView) findViewById(R.id.BigBang);
-
-
-
-
 
         Button button= (Button) findViewById(R.id.BigBang);
 
