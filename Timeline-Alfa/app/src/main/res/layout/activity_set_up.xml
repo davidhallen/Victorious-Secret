@@ -3,15 +3,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:hint="@string/Timeline"/>
-       </LinearLayout>
+
+            android:hint="@string/SetUpPlayTitle" />
+    </LinearLayout>
 
 
     <HorizontalScrollView
@@ -24,20 +25,20 @@
             android:id ="@+id/timelineLayout">
 
             <Button
-                android:id="@+id/QuickPlay"
+                android:id="@+id/PlaySetUpButton"
                 android:background="@color/purple"
                 android:layout_width="300px"
                 android:layout_height="500px"
-                android:text="Quick Play!"
+                android:hint="@string/PlaySetUp"
                 android:layout_marginRight="20dp"
 
                 />
             <Button
-                android:id="@+id/SetUpPlay"
+                android:id="@+id/SetUpSomethingButton"
                 android:background="@color/purple"
                 android:layout_width="300px"
                 android:layout_height="500px"
-                android:text="Set Up Play"
+                android:hint="@string/SetUpSomething"
                 android:layout_marginLeft="20dp"
                 />
 

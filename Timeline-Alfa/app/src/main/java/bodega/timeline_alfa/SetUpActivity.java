@@ -7,37 +7,34 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 
-public class MenuActivity extends ActionBarActivity {
+public class SetUpActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        Button quickPlayButton = (Button) findViewById(R.id.QuickPlay);
-        quickPlayButton.setOnClickListener(new View.OnClickListener() {
+        Button playSetUpButton = (Button) findViewById(R.id.PlaySetUpButton);
+        playSetUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this,MainActivity.class));
+                startActivity(new Intent(SetUpActivity.this,MainActivity.class));
             }
         });
 
-        Button setUpPlayButton = (Button) findViewById(R.id.SetUpPlay);
-        setUpPlayButton.setOnClickListener(new View.OnClickListener() {
+        Button setUpSomethingButton = (Button) findViewById(R.id.SetUpSomethingButton);
+        setUpSomethingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this,SetUpActivity.class));
+                startActivity(new Intent(SetUpActivity.this, MainActivity.class));
             }
         });
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_set_up, menu);
         return true;
     }
 
