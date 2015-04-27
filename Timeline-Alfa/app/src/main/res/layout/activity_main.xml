@@ -17,6 +17,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
         >
             <TextView
 <<<<<<< HEAD
@@ -44,21 +45,19 @@
     </LinearLayout>
 =======
                 android:id="@+id/question"
-                android:text="Fotbollsklubben IFK Göteborg grundades."
+                android:text="När grundades fotbollsklubben IFK Göteborg"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:layout_alignParentLeft="true"
-                android:gravity="center"
-
                 />
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:text="New Button"
                 android:onClick="newButton"
                 android:layout_alignParentRight="true"
-                />
+                android:gravity="center"/>
     </RelativeLayout>
 >>>>>>> origin/Alpha_version2
 </LinearLayout>
