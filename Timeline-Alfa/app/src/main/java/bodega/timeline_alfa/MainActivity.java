@@ -123,13 +123,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    public void clickedYear(View view) {
+    /*public void clickedYear(View view) {
 
         yearButton tempYear = null;
         for (yearButton y : playedYears) {
             if (y.hashCode() == view.getId()) {
                 tempYear = y;
-                question.setText("" + y.getYear());
+                //question.setText("" + y.getYear());
                 break;
             }
         }
@@ -151,11 +151,14 @@ public class MainActivity extends ActionBarActivity {
 
         else if (secondSelectedYear != null) {
             //doNothing
+            //view.setBackgroundColor(Color.YELLOW);
+
         }
 
         else if (firstSelectedYear == null){
             view.setBackgroundColor(Color.RED);
             firstSelectedYear = tempYear;
+
         }
 
         else {
@@ -167,7 +170,52 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
+        System.out.println(firstSelectedYear + "  " + secondSelectedYear);
     }
+
+ } */
+
+    public void clickedYear (View view){
+
+        yearButton tempYear = null;
+        for (yearButton y : playedYears) {
+            if (y.hashCode() == view.getId()) {
+                tempYear = y;
+                //question.setText("" + y.getYear());
+                break;
+            }
+        }
+
+        if (firstSelectedYear == null && tempYear != secondSelectedYear){
+            view.setBackgroundColor(Color.RED);
+            firstSelectedYear = tempYear;
+        }
+
+       else if(secondSelectedYear == null && tempYear!= firstSelectedYear) {
+            view.setBackgroundColor(Color.RED);
+            secondSelectedYear = tempYear;
+
+        }
+
+        else if (tempYear == firstSelectedYear){
+            view.setBackgroundColor(Color.BLUE);
+            firstSelectedYear = null;
+
+        }
+
+        else if (tempYear == secondSelectedYear){
+            view.setBackgroundColor(Color.BLUE);
+            secondSelectedYear = null;
+
+        }
+
+       else {
+
+            //do nothing
+        }
+        System.out.println(firstSelectedYear + "  " + secondSelectedYear);
+    }
+
 
     public boolean isBeside(yearButton year){
 
@@ -184,4 +232,5 @@ public class MainActivity extends ActionBarActivity {
 
 
 }
+
 

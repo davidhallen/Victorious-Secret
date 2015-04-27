@@ -12,9 +12,7 @@ public class yearButton implements Comparable <yearButton> {
         this.question = question;
     }
 
-    public void  addYear(){
-        this.year= year+1;
-    }
+
     public int getYear() {
         return year;
 
