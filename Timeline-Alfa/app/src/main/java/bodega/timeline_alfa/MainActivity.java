@@ -36,75 +36,27 @@ public class MainActivity extends ActionBarActivity {
         //WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-
-        final Button BigBang = (Button) findViewById(R.id.BigBang);
-        final Button Ragnarok = (Button) findViewById(R.id.Ragnarok);
-        layout = (LinearLayout) findViewById(R.id.timelineLayout);
-        question = (TextView) findViewById(R.id.question);
-
-        BigBang.setOnClickListener(new View.OnClickListener() {
- //Updated //upstream
-            //yearButton y1 = new yearButton(1);
-
-
-            //yearButton y1 = new yearButton(1);
-            boolean clickedButton = true;
- //Stashed changes
-            @Override
-            public void onClick(View view){
-
-                if(clickedButton) {
-                    BigBang.setBackgroundColor(Color.rgb(0, 155, 0));
-                    clickedButton=false;
-                }
-
-                else{
-                    BigBang.setBackgroundColor(Color.rgb(155, 0, 0));
-                    clickedButton=true;
-                }
-
-                
-                 }
-        });
-
-
-
-
-
-
-        Ragnarok.setOnClickListener(new View.OnClickListener() {
-            //yearButton y1 = new yearButton(1);
-            boolean clickedButton = true;
-            @Override
-            public void onClick(View view){
-
-                if(clickedButton) {
-                    Ragnarok.setBackgroundColor(Color.rgb(0, 155, 0));
-                    clickedButton = false;
-                }
-
-                else{
-                    Ragnarok.setBackgroundColor(Color.rgb(155, 0, 0));
-                    clickedButton = true;
-                }
-            }
-
-        });
-
         init();
+
+
+
 
     }
 
     public void init(){
-
+       layout = (LinearLayout) findViewById(R.id.timelineLayout);
+       question = (TextView) findViewById(R.id.question);
+       yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
+       yearButton ragnarok = new yearButton (2212, "Ragnarok!");
        yearButton y1 = new yearButton (1912, "När var OS i Stockholm?");
        yearButton y2 = new yearButton (1986, "När dog Palme?");
        yearButton y3 = new yearButton (1492, "När upptäckte Columbus Amerika?");
        yearButton y4 = new yearButton (0, "När föddes Jesus?");
        yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);
+       playedYears.add(bigbang); playedYears.add(ragnarok);
        Collections.shuffle(yearlist);
-       newQuestion();
+       printButtons();
+
     }
 
 
@@ -122,31 +74,22 @@ public class MainActivity extends ActionBarActivity {
 
     };
 
-    public void newButton(View view){
+    public void newButton (View view){
+
+        printButtons();
+    }
+
+
+
+
+    public void printButtons(){
         layout.removeAllViews();
         firstSelectedYear = null;
         secondSelectedYear = null;
 
-
         LinearLayout.LayoutParams layoutParams =
                 new LinearLayout.LayoutParams(300,500);
         layoutParams.setMargins(40,0,0,0);
-
-
-        Button bigbang = new Button (this);
-        bigbang.setText("BigBang");
-        bigbang.setBackgroundColor(Color.BLUE);
-        bigbang.setLayoutParams(layoutParams);
-        bigbang.setTag("bigbang");
-        bigbang.setClickable(true);
-        bigbang.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-
-                clickedYear(view);
-            }
-        });
-
-        layout.addView(bigbang);
 
         Collections.sort(playedYears);
 
@@ -154,10 +97,11 @@ public class MainActivity extends ActionBarActivity {
             for (int x = 0; x < playedYears.size(); x++) {
                 Button year = new Button(this);
                 int s = playedYears.get(x).getYear();
-                year.setText(""+s);
+                String q = playedYears.get(x).getQuestion();
+                year.setText(""+s+ "             " + q);
                 year.setBackgroundColor(Color.BLUE);
                 year.setLayoutParams(layoutParams);
-                bigbang.setClickable(true);
+
                 year.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         clickedYear(view);
@@ -167,18 +111,7 @@ public class MainActivity extends ActionBarActivity {
                 year.setId(playedYears.get(x).hashCode());
             }
         }
-        Button ragnarok = new Button (this);
-        ragnarok.setText("ragnarok");
-        ragnarok.setBackgroundColor(Color.BLUE);
-        ragnarok.setLayoutParams(layoutParams);
-        bigbang.setClickable(true);
-        ragnarok.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                clickedYear(view);
 
-            }
-        });
-        layout.addView(ragnarok);
 
         newQuestion();
 
