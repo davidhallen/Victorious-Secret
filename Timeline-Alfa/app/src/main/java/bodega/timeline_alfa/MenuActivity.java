@@ -1,9 +1,13 @@
 package bodega.timeline_alfa;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MenuActivity extends ActionBarActivity {
@@ -12,7 +16,31 @@ public class MenuActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        final TextView BigBangView = (TextView) findViewById(R.id.BigBang);
+
+
+
+
+
+        Button button= (Button) findViewById(R.id.BigBang);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MenuActivity.this,MainActivity.class));
+            }
+        });
     }
+
+
+
+
+
+
+
+
+
+
 
 
     @Override
