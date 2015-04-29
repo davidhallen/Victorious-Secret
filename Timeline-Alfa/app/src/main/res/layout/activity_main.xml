@@ -1,39 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="Player 1:"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="200dp">
+
         <LinearLayout
+            android:id="@+id/timelineLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:id ="@+id/timelineLayout">
-
+            android:orientation="horizontal">
         </LinearLayout>
     </HorizontalScrollView>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
             <TextView
                 android:id="@+id/question"
+                android:layout_width="470dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
                 android:text="Fotbollsklubben IFK Göteborg grundades."
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
                 android:textSize="24sp"
-                android:layout_alignParentLeft="true"
-                android:gravity="center"
-                android:paddingLeft="30px"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="Placera årtal"
-                android:onClick="newButton"
-                android:layout_alignParentRight="true"
-                android:id="@+id/answerButton"
-                />
+                android:gravity="center"/>
+        <Button
+            android:id="@+id/answerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:onClick="newButton"
+            android:text="Placera årtal" />
     </RelativeLayout>
 </LinearLayout>
