@@ -55,7 +55,7 @@ public class MainActivity extends ActionBarActivity {
        yearButton y6 = new yearButton (1496, "Leonardo da Vinci misslyckas med ett flygmaskinstest");
        yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
        yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
-        yearlist.add(y7);
+       yearlist.add(y7);
        playedYears.clear();
        playedYears.add(bigbang); playedYears.add(ragnarok);
        Collections.shuffle(yearlist);
@@ -129,7 +129,7 @@ public class MainActivity extends ActionBarActivity {
 
                 else if (x == playedYears.size()-1){
                     year.setBackgroundResource(R.drawable.ragnarok);
-                    year.setText("");
+                    year.setText("Ragnarok!!!");
                 }
 
                 year.setOnClickListener(new View.OnClickListener() {
