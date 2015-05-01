@@ -1,25 +1,21 @@
 package bodega.timeline_alfa;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
-
-public class TestIt extends ActionBarActivity {
-
+/**
+ * Created by ludvigsylven on 15-05-01.
+ */
+public class ShowTest extends ActionBarActivity {
+    private TextView scoreTest;
+    private PlayersMenu pm = new PlayersMenu();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +23,10 @@ public class TestIt extends ActionBarActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_showtest);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        scoreTest = (TextView) findViewById(R.id.ScoreTest);
+        scoreTest.setText(String.valueOf(pm.getNrOfPlayers()));
 
     }
-
-
-
-
 }
-
-

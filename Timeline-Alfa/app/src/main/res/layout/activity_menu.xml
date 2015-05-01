@@ -27,16 +27,16 @@
             android:gravity="center"
             >
             <Button
-                android:id="@+id/Button"
+                android:id="@+id/Test"
                 android:background="@drawable/mybutton2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:textAllCaps="false"
                 android:textSize="@dimen/abc_text_size_display_1_material"
-                android:text="Button1"
+                android:text="High Score"
 
 
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="15dp"
                 />
 
@@ -53,16 +53,16 @@
                 android:layout_marginLeft="15dp"
                 />
             <Button
-                android:id="@+id/Test"
+                android:id="@+id/SetUp"
                 android:background="@drawable/mybutton2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:textAllCaps="false"
                 android:textSize="@dimen/abc_text_size_display_1_material"
-                android:text="Button2"
+                android:text="Setup"
 
                 android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 />
 
         </LinearLayout>

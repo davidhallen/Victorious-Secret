@@ -27,6 +27,7 @@ public class MenuActivity extends ActionBarActivity {
 
         Button button1= (Button) findViewById(R.id.QuickPlay);
         Button button2= (Button) findViewById(R.id.Test);
+        Button button3= (Button) findViewById(R.id.SetUp);
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -36,6 +37,11 @@ public class MenuActivity extends ActionBarActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(MenuActivity.this,TestIt.class));
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MenuActivity.this,Setup.class));
             }
         });
     }
