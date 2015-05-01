@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.util.ArrayList;
@@ -69,16 +70,69 @@ public class MainActivity extends ActionBarActivity {
         yearlist.add(y7);
 
 
-       dbHelper = new TimelineDbHelper(context);
-       dbHelper.onCreate(db);
-       db = dbHelper.getReadableDatabase();
+        dbHelper = new TimelineDbHelper(context);
+        db = dbHelper.getWritableDatabase();
+
+        XmlResourceParser parser = getResources().getXml(R.xml.questions);
+
+        String questionz = "lol";
+        Integer yearl = 99;
+        String category = "lol";
+        Log.w("content", "contenefst");
+        int eventType = -1;
+        String currentLevel = "";
+        try {
+            while (eventType != XmlResourceParser.END_DOCUMENT){
+
+                if (eventType == XmlResourceParser.START_DOCUMENT){
+                    Log.w("LOL", "Start");
+
+                }
+
+                else if (eventType == XmlResourceParser.START_TAG){
+                    Log.w("LOL", "Start"+parser.getName());
+                    if(parser.getName().equalsIgnoreCase("category")){
+                       currentLevel = "category";
+                    }
+                    else if(parser.getName().equalsIgnoreCase("question")){
+                        currentLevel = "question";
+                    }
+                }
+
+                else if (eventType == XmlResourceParser.END_TAG){
+                    Log.w("LOL", "End"+parser.getName());
+                    if(parser.getName().equalsIgnoreCase("content")) {
+                            dbHelper.addQuestion(category, questionz, yearl, db);
+                            Log.w("LOL", "Added"+ questionz);
+                    }
+                }
+
+                else if (eventType == XmlResourceParser.TEXT){
+                    if (currentLevel.equalsIgnoreCase("category")){
+                       category = parser.getText();
+                    }
+                    if (currentLevel.equalsIgnoreCase("question")){
+                        questionz = parser.getText();
+                    }
+                }
+                eventType = parser.next();
+            }
+
+        } catch (XmlPullParserException e) {
+            Log.w("Error1", "Error1");
+            // e.printStackTrace();
+        }
+        catch (java.io.IOException e){
+            Log.w("Error2", "Error2");
+            //  e.printStackTrace();
+        }
+
+        db = dbHelper.getReadableDatabase();
 
         cursor = dbHelper.getQuestion(db);
 
         if (cursor.moveToFirst()){
-
             do {
-
                 String question; Integer year;
 
                 question = cursor.getString(1);
@@ -87,25 +141,24 @@ public class MainActivity extends ActionBarActivity {
                 yearlist.add(yearB);
 
             } while (cursor.moveToNext());
-
-
-
         }
 
-    /*
-        int eventType = -1;
-        while(eventType != XmlResourceParser.END_DOCUMENT)
-        {
-            XmlResourceParser parser = context.getResources().getXml(R.xml.questions);
-            String name = parser.getText();
 
 
-            try {
-                if (parser.getEventType() == XmlResourceParser.START_TAG) {
-                    String s = parser.getName();
 
-                    if (s.equals("content")) {
-                        parser.next();   /// moving to the next node
+
+
+                 /*   parser.next();
+                //if (parser.getEventType() == XmlResourceParser.START_TAG) {
+                    //String s = parser.getName();
+                    parser.next();
+                    parser.nextTag();
+                    String category = parser.getName();
+                    Log.w("" + category, "Error1");
+
+                 /*   if (s.equals("content")) {
+                        parser.next();
+                        Log.w("LOLIPUP", "Error1");/// moving to the next node
                         if(parser.getName() != null && parser.getName().equalsIgnoreCase("category")){
                             String category = parser.getText();  ///to get value getText() method should be used
                             parser.next();   ///jumping on to the next node
@@ -113,19 +166,13 @@ public class MainActivity extends ActionBarActivity {
                             parser.next();
                             String lol  = parser.getText();
                             Integer year = Integer.parseInt(lol);
+                            Log.w("LOLILUL", "Error1");
                             dbHelper.addQuestion(category, question, year, db);
                         }
                     }
-                }
-            } catch (XmlPullParserException e) {
-                Log.w("Error1", "Error1");
-               // e.printStackTrace();
-            }
-            catch (java.io.IOException e){
-                Log.w("Error2", "Error2");
-              //  e.printStackTrace();
-            }
-        }*/
+                }*/
+
+
 
 
 
