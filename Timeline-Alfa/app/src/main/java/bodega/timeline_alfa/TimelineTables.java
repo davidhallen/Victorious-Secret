@@ -22,5 +22,5 @@ public class TimelineTables {
         public static final String COL_SCORE = "playerScore";
 
     }
-    
+
 }
