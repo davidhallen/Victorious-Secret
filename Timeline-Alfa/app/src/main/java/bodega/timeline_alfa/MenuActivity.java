@@ -25,7 +25,7 @@ public class MenuActivity extends ActionBarActivity {
 
 
 
-        Button button1= (Button) findViewById(R.id.Play);
+        Button button1= (Button) findViewById(R.id.QuickPlay);
         Button button2= (Button) findViewById(R.id.Test);
 
         button1.setOnClickListener(new View.OnClickListener() {
