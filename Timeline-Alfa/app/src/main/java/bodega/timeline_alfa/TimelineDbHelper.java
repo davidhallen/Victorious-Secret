@@ -2,10 +2,13 @@ package bodega.timeline_alfa;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * Created by theYellowBird and victornyden on 2015-05-01.
@@ -19,11 +22,13 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
              TimelineTables.Questions.COL_YEAR+" INTEGER);";
     private static final String CREATE_QUERY2 = "CREATE TABLE " + TimelineTables.HighScore.TABLE_NAME+" ("+
              TimelineTables.HighScore.COL_SCORE+" INTEGER," + TimelineTables.HighScore.TABLE_NAME+" TEXT);";
+    Context context;
+
 
     public TimelineDbHelper (Context context){
         super (context,DATABASE_NAME, null, DATABASE_VERSION);
         Log.e("DATABASE OPERATIONS", "DATABASE CREATED / OPENED");
-
+        this.context = context;
 
     }
 
@@ -37,9 +42,8 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     db.execSQL(CREATE_QUERY2);
         Log.e("DATABASE OPERATIONS", "HighScore table created...");
 
-
-    addQuestion("History", "Andra världskriget börjar", 1939 , db);
-    addQuestion("History", "Andra världskriget avslutas", 1945 , db);
+    addQuestion("History", "Andra världskriget är igång", 1942 , db);
+   // addQuestion("History", "Andra världskriget avslutas", 1945 , db);
 
     }
 

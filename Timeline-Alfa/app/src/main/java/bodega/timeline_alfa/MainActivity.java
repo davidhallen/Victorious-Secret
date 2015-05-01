@@ -2,11 +2,13 @@ package bodega.timeline_alfa;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,13 +68,16 @@ public class MainActivity extends ActionBarActivity {
        yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
         yearlist.add(y7);
 
+
        dbHelper = new TimelineDbHelper(context);
+       dbHelper.onCreate(db);
        db = dbHelper.getReadableDatabase();
-       cursor = dbHelper.getQuestion(db);
 
-       if (cursor.moveToFirst()){
+        cursor = dbHelper.getQuestion(db);
 
-           do {
+        if (cursor.moveToFirst()){
+
+            do {
 
                 String question; Integer year;
 
@@ -79,11 +86,51 @@ public class MainActivity extends ActionBarActivity {
                 yearButton yearB = new yearButton(year, question);
                 yearlist.add(yearB);
 
-           } while (cursor.moveToNext());
+            } while (cursor.moveToNext());
 
 
 
-       }
+        }
+
+    /*
+        int eventType = -1;
+        while(eventType != XmlResourceParser.END_DOCUMENT)
+        {
+            XmlResourceParser parser = context.getResources().getXml(R.xml.questions);
+            String name = parser.getText();
+
+
+            try {
+                if (parser.getEventType() == XmlResourceParser.START_TAG) {
+                    String s = parser.getName();
+
+                    if (s.equals("content")) {
+                        parser.next();   /// moving to the next node
+                        if(parser.getName() != null && parser.getName().equalsIgnoreCase("category")){
+                            String category = parser.getText();  ///to get value getText() method should be used
+                            parser.next();   ///jumping on to the next node
+                            String question = parser.getText();  ////similar to above
+                            parser.next();
+                            String lol  = parser.getText();
+                            Integer year = Integer.parseInt(lol);
+                            dbHelper.addQuestion(category, question, year, db);
+                        }
+                    }
+                }
+            } catch (XmlPullParserException e) {
+                Log.w("Error1", "Error1");
+               // e.printStackTrace();
+            }
+            catch (java.io.IOException e){
+                Log.w("Error2", "Error2");
+              //  e.printStackTrace();
+            }
+        }*/
+
+
+
+
+
 
        playedYears.clear();
        playedYears.add(bigbang); playedYears.add(ragnarok);
