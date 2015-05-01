@@ -33,7 +33,7 @@
                 android:layout_height="100dp"
                 android:textAllCaps="false"
                 android:textSize="@dimen/abc_text_size_display_1_material"
-                android:text="High Score"
+                android:text="Score"
 
 
                 android:layout_marginRight="20dp"
@@ -46,8 +46,8 @@
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:textAllCaps="false"
-                android:textSize="@dimen/abc_text_size_display_1_material"
-                android:text="Quick Play"
+                android:textSize="@dimen/abc_text_size_display_2_material"
+                android:text="Play"
 
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"

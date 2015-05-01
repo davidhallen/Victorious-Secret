@@ -18,6 +18,9 @@ import android.widget.TextView;
 public class PlayersMenu extends ActionBarActivity {
 
     private int nrOfPlayers;
+    private Button button6;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,44 +36,50 @@ public class PlayersMenu extends ActionBarActivity {
         Button button3 = (Button) findViewById(R.id.ThreePlayers);
         Button button4 = (Button) findViewById(R.id.FourPlayers);
         Button button5 = (Button) findViewById(R.id.FivePlayers);
+        Button button7 = (Button) findViewById(R.id.BackFromPlayer);
 
+        button6 = (Button) findViewById(R.id.currentNumberPlayers);
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setNrOfPlayers(1);
-                startActivity(new Intent(PlayersMenu.this, Setup.class));
+
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setNrOfPlayers(2);
-                startActivity(new Intent(PlayersMenu.this,Setup.class));
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setNrOfPlayers(3);
-                startActivity(new Intent(PlayersMenu.this,Setup.class));
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setNrOfPlayers(4);
-                startActivity(new Intent(PlayersMenu.this,Setup.class));
-
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setNrOfPlayers(5);
+            }
+        });
+        button7.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 startActivity(new Intent(PlayersMenu.this,Setup.class));
             }
         });
+
+
+
 
     }
 
     public void setNrOfPlayers(int number) {
         nrOfPlayers = number;
+        button6.setText(String.valueOf("Player(s):\n" + getNrOfPlayers()));
     }
 
     public int getNrOfPlayers() {
