@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * Created by theYellowBird on 2015-05-01.
+ * Created by theYellowBird and victornyden on 2015-05-01.
  */
 public class TimelineDbHelper extends SQLiteOpenHelper {
 
@@ -37,6 +37,16 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     db.execSQL(CREATE_QUERY2);
         Log.e("DATABASE OPERATIONS", "HighScore table created...");
 
+    addQuestion("History", "Andra världskriget börjar", 1939 , db);
+    addQuestion("History", "Andra världskriget avslutas", 1945 , db);
+
+
+    try {
+
+
+        
+    }
+
     }
 
     public void addQuestion (String category, String question, Integer year, SQLiteDatabase db){
@@ -63,6 +73,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
             TimelineTables.Questions.COL_YEAR};
         cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null,null,null,null);
         return cursor;
+
     }
 
 

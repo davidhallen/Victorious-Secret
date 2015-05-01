@@ -1,6 +1,9 @@
 package bodega.timeline_alfa;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -29,6 +32,10 @@ public class MainActivity extends ActionBarActivity {
     private yearButton firstSelectedYear;
     private yearButton secondSelectedYear;
     private boolean gameOver;
+    Context context = this;
+    TimelineDbHelper dbHelper;
+    SQLiteDatabase db;
+    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +63,28 @@ public class MainActivity extends ActionBarActivity {
        yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
        yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
         yearlist.add(y7);
+
+       dbHelper = new TimelineDbHelper(context);
+       db = dbHelper.getReadableDatabase();
+       cursor = dbHelper.getQuestion(db);
+
+       if (cursor.moveToFirst()){
+
+           do {
+
+                String question; Integer year;
+
+                question = cursor.getString(1);
+                year = cursor.getInt(2);
+                yearButton yearB = new yearButton(year, question);
+                yearlist.add(yearB);
+
+           } while (cursor.moveToNext());
+
+
+
+       }
+
        playedYears.clear();
        playedYears.add(bigbang); playedYears.add(ragnarok);
        Collections.shuffle(yearlist);

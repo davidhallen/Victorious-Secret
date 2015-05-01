@@ -1,7 +1,7 @@
 package bodega.timeline_alfa;
 
 /**
- * Created by theYellowBird on 2015-05-01.
+ * Created by theYellowBird and victornyden on 2015-05-01.
  */
 public class TimelineTables {
 
