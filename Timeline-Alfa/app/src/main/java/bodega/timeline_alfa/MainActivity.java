@@ -29,56 +29,59 @@ public class MainActivity extends ActionBarActivity {
     private yearButton firstSelectedYear;
     private yearButton secondSelectedYear;
     private boolean gameOver;
+    private Player player1;
+    private TextView player1_score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         init();
     }
 
     public void init(){
-       gameOver = false;
-       layout = (LinearLayout) findViewById(R.id.timelineLayout);
-       question = (TextView) findViewById(R.id.question);
-       answerButton = (Button) findViewById(R.id.answerButton);
-       yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
-       yearButton ragnarok = new yearButton (2212, "Ragnarok!");
-       yearButton y1 = new yearButton (1912, "OS i Stockholm");
-       yearButton y2 = new yearButton (1986, "Palme går på bio");
-       yearButton y3 = new yearButton (1492, "Columbus upptäcker Amerika?");
-       yearButton y4 = new yearButton (0, "Jesus krist föds");
-       yearButton y5 = new yearButton (1955, "Whisky börjar tillverkas i Sverige");
-       yearButton y6 = new yearButton (1496, "Leonardo da Vinci misslyckas med ett flygmaskinstest");
-       yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
-       yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
-       yearlist.add(y7);
-       playedYears.clear();
-       playedYears.add(bigbang); playedYears.add(ragnarok);
-       Collections.shuffle(yearlist);
-       printButtons();
+        gameOver = false;
+        layout = (LinearLayout) findViewById(R.id.timelineLayout);
+        question = (TextView) findViewById(R.id.question);
+        answerButton = (Button) findViewById(R.id.answerButton);
+        yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
+        yearButton ragnarok = new yearButton (2212, "Ragnarok!");
+        yearButton y1 = new yearButton (1912, "OS i Stockholm");
+        yearButton y2 = new yearButton (1986, "Palme går på bio");
+        yearButton y3 = new yearButton (1492, "Columbus upptäcker Amerika?");
+        yearButton y4 = new yearButton (0, "Jesus krist föds");
+        yearButton y5 = new yearButton (1955, "Whisky börjar tillverkas i Sverige");
+        yearButton y6 = new yearButton (1496, "Leonardo da Vinci misslyckas med ett flygmaskinstest");
+        yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
+        yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
+        yearlist.add(y7);
+        playedYears.clear();
+        playedYears.add(bigbang); playedYears.add(ragnarok);
+        Collections.shuffle(yearlist);
+        printButtons();
+        player1 = new Player();
+        player1_score = (TextView) findViewById(R.id.player1_score);
 
     }
 
 
     public void newQuestion() {
-      if (!yearlist.isEmpty()){
-          currentQuestion = yearlist.get(0);
-          yearlist.remove(0);
-          playedYears.add(currentQuestion);
-          question.setText(currentQuestion.getQuestion());
-      }
+        if (!yearlist.isEmpty()){
+            currentQuestion = yearlist.get(0);
+            yearlist.remove(0);
+            playedYears.add(currentQuestion);
+            question.setText(currentQuestion.getQuestion());
+        }
 
-      else {
-          question.setText("Slut på frågor mannen, Game Over");
-          answerButton.setText("Nytt spel");
-          gameOver = true;
-          answerButton.setEnabled(true);
-      }
+        else {
+            question.setText("Slut på frågor mannen, Game Over");
+            answerButton.setText("Nytt spel");
+            gameOver = true;
+            answerButton.setEnabled(true);
+        }
 
     };
 
@@ -91,6 +94,8 @@ public class MainActivity extends ActionBarActivity {
 
             if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
                 printButtons();
+                player1.setScore(1);
+                player1_score.setText(String.valueOf(player1.getScore()));
             } else {
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
             }
@@ -173,9 +178,9 @@ public class MainActivity extends ActionBarActivity {
             }
 
 
-            }
+        }
 
-       else if(secondSelectedYear == null && tempYear!= firstSelectedYear) {
+        else if(secondSelectedYear == null && tempYear!= firstSelectedYear) {
             if (firstSelectedYear==null) {
                 view.setBackgroundColor(Color.RED);
                 secondSelectedYear = tempYear;
@@ -203,7 +208,7 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
-       else {
+        else {
 
             //do nothing
         }
