@@ -29,6 +29,8 @@ public class MainActivity extends ActionBarActivity {
     private yearButton firstSelectedYear;
     private yearButton secondSelectedYear;
     private boolean gameOver;
+    private Player player1;
+    private TextView player1_score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,8 @@ public class MainActivity extends ActionBarActivity {
        playedYears.add(bigbang); playedYears.add(ragnarok);
        Collections.shuffle(yearlist);
        printButtons();
+       player1 = new Player();
+       player1_score = (TextView) findViewById(R.id.player1_score);
 
     }
 
@@ -90,6 +94,8 @@ public class MainActivity extends ActionBarActivity {
 
             if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
                 printButtons();
+                player1.setScore(1);
+                player1_score.setText(String.valueOf(player1.getScore()));
             } else {
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
             }
