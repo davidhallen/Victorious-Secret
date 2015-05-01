@@ -1,66 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
    <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-
+            android:layout_marginTop="30dp"
             android:hint="@string/Timeline" />
        </LinearLayout>
 
 
     <HorizontalScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:layout_height="260dp"
             android:orientation="horizontal"
-            android:id ="@+id/timelineLayout">
+            android:id ="@+id/timelineLayout"
+            >
 
             <Button
-                android:id="@+id/BigBang"
-                android:background="@color/purple"
-                android:layout_width="300px"
-                android:layout_height="500px"
+                android:id="@+id/Play"
+                android:background="@drawable/mybutton2"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:textAllCaps="false"
+                android:textSize="@dimen/abc_text_size_display_1_material"
                 android:text="Play!"
-                android:layout_marginRight="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="90dp"
+                android:layout_marginLeft="50dp"
 
                 />
             <Button
-                android:id="@+id/Ragnarok"
-                android:background="@color/purple"
-                android:layout_width="300px"
-                android:layout_height="500px"
-                android:text="Ragnarök"
-                android:layout_marginLeft="20dp"
-                />
+                android:id="@+id/Test"
+                android:background="@drawable/mybutton2"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:textAllCaps="false"
+                android:textSize="@dimen/abc_text_size_display_1_material"
+                android:text="Test-side"
+
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="60dp"/>
 
         </LinearLayout>
     </HorizontalScrollView>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
             <TextView
                 android:id="@+id/question"
                 android:text="Authors: VictoriousSecret"
+
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:gravity="center" />
         </LinearLayout>
-
-
-
-
-
     </LinearLayout>
 </LinearLayout>
