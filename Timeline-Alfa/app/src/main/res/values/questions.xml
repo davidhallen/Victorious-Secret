@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<content>
+    <category>
+        History
+    </category>
+    <question>
+        Second World War began
+    </question>
+    <year>
+        1939
+    </year>
+</content>
+
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Second World War ends
+        </question>
+        <year>
+            1945
+        </year>
+    </content>
+
+
+
+
+</resources>
