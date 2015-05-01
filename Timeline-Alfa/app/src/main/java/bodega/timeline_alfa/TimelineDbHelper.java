@@ -37,15 +37,9 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     db.execSQL(CREATE_QUERY2);
         Log.e("DATABASE OPERATIONS", "HighScore table created...");
 
+
     addQuestion("History", "Andra världskriget börjar", 1939 , db);
     addQuestion("History", "Andra världskriget avslutas", 1945 , db);
-
-
-    try {
-
-
-        
-    }
 
     }
 
