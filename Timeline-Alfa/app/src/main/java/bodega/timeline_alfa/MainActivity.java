@@ -144,41 +144,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
 
-
-
-
-
-                 /*   parser.next();
-                //if (parser.getEventType() == XmlResourceParser.START_TAG) {
-                    //String s = parser.getName();
-                    parser.next();
-                    parser.nextTag();
-                    String category = parser.getName();
-                    Log.w("" + category, "Error1");
-
-                 /*   if (s.equals("content")) {
-                        parser.next();
-                        Log.w("LOLIPUP", "Error1");/// moving to the next node
-                        if(parser.getName() != null && parser.getName().equalsIgnoreCase("category")){
-                            String category = parser.getText();  ///to get value getText() method should be used
-                            parser.next();   ///jumping on to the next node
-                            String question = parser.getText();  ////similar to above
-                            parser.next();
-                            String lol  = parser.getText();
-                            Integer year = Integer.parseInt(lol);
-                            Log.w("LOLILUL", "Error1");
-                            dbHelper.addQuestion(category, question, year, db);
-                        }
-                    }
-                }*/
-
-
-
-
-
-
-
-
        playedYears.clear();
        playedYears.add(bigbang); playedYears.add(ragnarok);
        Collections.shuffle(yearlist);
