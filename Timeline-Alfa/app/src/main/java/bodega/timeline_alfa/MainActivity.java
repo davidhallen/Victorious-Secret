@@ -71,62 +71,6 @@ public class MainActivity extends ActionBarActivity {
 
 
         dbHelper = new TimelineDbHelper(context);
-        db = dbHelper.getWritableDatabase();
-
-        XmlResourceParser parser = getResources().getXml(R.xml.questions);
-
-        String questionz = "lol";
-        Integer yearl = 99;
-        String category = "lol";
-        Log.w("content", "contenefst");
-        int eventType = -1;
-        String currentLevel = "";
-        try {
-            while (eventType != XmlResourceParser.END_DOCUMENT){
-
-                if (eventType == XmlResourceParser.START_DOCUMENT){
-                    Log.w("LOL", "Start");
-
-                }
-
-                else if (eventType == XmlResourceParser.START_TAG){
-                    Log.w("LOL", "Start"+parser.getName());
-                    if(parser.getName().equalsIgnoreCase("category")){
-                       currentLevel = "category";
-                    }
-                    else if(parser.getName().equalsIgnoreCase("question")){
-                        currentLevel = "question";
-                    }
-                }
-
-                else if (eventType == XmlResourceParser.END_TAG){
-                    Log.w("LOL", "End"+parser.getName());
-                    if(parser.getName().equalsIgnoreCase("content")) {
-                            dbHelper.addQuestion(category, questionz, yearl, db);
-                            Log.w("LOL", "Added"+ questionz);
-                    }
-                }
-
-                else if (eventType == XmlResourceParser.TEXT){
-                    if (currentLevel.equalsIgnoreCase("category")){
-                       category = parser.getText();
-                    }
-                    if (currentLevel.equalsIgnoreCase("question")){
-                        questionz = parser.getText();
-                    }
-                }
-                eventType = parser.next();
-            }
-
-        } catch (XmlPullParserException e) {
-            Log.w("Error1", "Error1");
-            // e.printStackTrace();
-        }
-        catch (java.io.IOException e){
-            Log.w("Error2", "Error2");
-            //  e.printStackTrace();
-        }
-
         db = dbHelper.getReadableDatabase();
 
         cursor = dbHelper.getQuestion(db);

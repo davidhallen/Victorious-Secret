@@ -42,8 +42,59 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     db.execSQL(CREATE_QUERY2);
         Log.e("DATABASE OPERATIONS", "HighScore table created...");
 
-    addQuestion("History", "Andra världskriget är igång", 1942 , db);
-   // addQuestion("History", "Andra världskriget avslutas", 1945 , db);
+        XmlResourceParser parser = context.getResources().getXml(R.xml.questions);
+
+        String newQuestion = "";
+        Integer newYear = -1;
+        String newCategory = "";
+        int eventType = -1;
+        String currentLevel = "";
+        try {
+            while (eventType != XmlResourceParser.END_DOCUMENT){
+
+                if (eventType == XmlResourceParser.START_TAG){
+
+                    if(parser.getName().equalsIgnoreCase("category")){
+                        currentLevel = "category";
+                    }
+                    else if(parser.getName().equalsIgnoreCase("question")){
+                        currentLevel = "question";
+                    }
+                    else if(parser.getName().equalsIgnoreCase("year")){
+                        currentLevel = "year";
+                    }
+                }
+
+                else if (eventType == XmlResourceParser.END_TAG){
+                    if(parser.getName().equalsIgnoreCase("content")) {
+                        addQuestion(newCategory, newQuestion, newYear, db);
+                    }
+                }
+
+                else if (eventType == XmlResourceParser.TEXT){
+                    if (currentLevel.equalsIgnoreCase("category")){
+                        newCategory = parser.getText();
+                    }
+                    if (currentLevel.equalsIgnoreCase("question")){
+                        newQuestion = parser.getText();
+                    }
+                    if (currentLevel.equalsIgnoreCase("year")){
+                        String interYear = parser.getText();
+                        newYear = Integer.parseInt(interYear);
+                    }
+                }
+                eventType = parser.next();
+            }
+
+        } catch (XmlPullParserException e) {
+            Log.w("Error1", "Error1");
+            // e.printStackTrace();
+        }
+        catch (java.io.IOException e){
+            Log.w("Error2", "Error2");
+            //  e.printStackTrace();
+        }
+
 
     }
 
