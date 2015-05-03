@@ -34,6 +34,12 @@ public class Setup extends ActionBarActivity {
                 startActivity(new Intent(Setup.this,PlayersMenu.class));
             }
         });
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Setup.this,Category.class));
+            }
+        });
+
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(Setup.this,MenuActivity.class));

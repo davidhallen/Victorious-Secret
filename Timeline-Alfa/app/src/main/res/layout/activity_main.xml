@@ -51,9 +51,10 @@
             android:gravity="center"/>
         <Button
             android:id="@+id/answerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_alignParentRight="true"
+            android:background="@drawable/mybutton2"
             android:onClick="newButton"
             android:text="Placera årtal" />
     </RelativeLayout>

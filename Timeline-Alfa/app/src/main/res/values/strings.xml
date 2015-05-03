@@ -11,4 +11,14 @@
     <color name="green">#87A96B</color>
     <string name="title_activity_menu">TimeLine</string>
     <string name="testKnapp">Snyggt</string>
+    <style>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    <string name="title_activity_category">Category</string>
+
+    <string name="hello_world">Hello world!</string>
+
+
+
 </resources>
