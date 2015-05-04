@@ -21,7 +21,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
              TimelineTables.Questions.COL_CATEGORY+" TEXT,"+ TimelineTables.Questions.COL_QUESTION+" TEXT,"+
              TimelineTables.Questions.COL_YEAR+" INTEGER);";
     private static final String CREATE_QUERY2 = "CREATE TABLE " + TimelineTables.HighScore.TABLE_NAME+" ("+
-             TimelineTables.HighScore.COL_SCORE+" INTEGER," + TimelineTables.HighScore.TABLE_NAME+" TEXT);";
+             TimelineTables.HighScore.COL_SCORE+" INTEGER," + TimelineTables.HighScore.COL_NAME+" TEXT);";
     Context context;
 
 
@@ -96,10 +96,10 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         }
 
         addHighScore(10,"LOL",db);
-        addHighScore(11,"FFS",db);
+        addHighScore(23,"FFS",db);
         addHighScore(12,"WTF",db);
-        addHighScore(13, "BAD", db);
-        addHighScore(14, "ABC", db);
+        addHighScore(12, "BAD", db);
+        addHighScore(17, "ABC", db);
 
     }
 
@@ -116,7 +116,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TimelineTables.HighScore.COL_SCORE, highScore);
         contentValues.put(TimelineTables.HighScore.COL_NAME, player);
-        db.insert(TimelineTables.Questions.TABLE_NAME, null, contentValues);
+        db.insert(TimelineTables.HighScore.TABLE_NAME, null, contentValues);
             Log.e("DATABASE OPERATIONS", "One high score row inserted");
     }
 
@@ -135,7 +135,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         Cursor cursor;
         String[] projections = {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_NAME};
 
-        cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, "COL_SCORE");
+        cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, TimelineTables.HighScore.COL_SCORE +" DESC");
         return cursor;
     }
 
