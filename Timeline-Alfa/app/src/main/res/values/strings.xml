@@ -5,6 +5,8 @@
     <string name="Timeline">Timeline!!!!!</string>
     <color name="purple">#DA81F5</color>
     <string name="title_activity_menu">MenuActivity</string>
+    <string name="app_name4">Timeline-Alfa2</string>
+    <string name="app_name5">Timeline-Alfa3</string>
 
     <string name="hello_world">Hello world!</string>
 </resources>

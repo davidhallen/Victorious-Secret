@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/CategoryLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/Category1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:text="Money Money"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+        <ImageButton
+            android:id="@+id/Category1check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+        <Button
+            android:id="@+id/Category2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+
+            android:text="Literature"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+        <ImageButton
+            android:id="@+id/Category2check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+        <Button
+            android:id="@+id/Category3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:text="Category 3"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+        <ImageButton
+            android:id="@+id/Category3check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+
+        <Button
+            android:id="@+id/Category4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:text="Category 4"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+        <ImageButton
+            android:id="@+id/Category4check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/CategoryLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/Category5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:text="Category 5"
+            android:textSize="@dimen/abc_text_size_button_material"/>
+
+        <ImageButton
+            android:id="@+id/Category5check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+        <Button
+            android:id="@+id/Category6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:text="Category 6"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+        <ImageButton
+            android:id="@+id/Category6check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+        <Button
+            android:id="@+id/Category7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:text="Category 7"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+        <ImageButton
+            android:id="@+id/Category7check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+
+
+        <Button
+            android:id="@+id/Category8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:text="Category 8"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+        <ImageButton
+            android:id="@+id/Category8check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

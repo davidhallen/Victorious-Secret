@@ -7,17 +7,24 @@ package bodega.timeline_alfa;
 public class Player {
 
     private String name;
+    private int playerId;
     private int score;
 
-    Player () {
+    public Player (int playerId) {
+        this.playerId = playerId;
+        name = "Player";
         score = 0;
     }
 
     public void setScore(int points) {
-        score = score + 1;
+        score = score + points;
     }
 
     public int getScore() {
         return score;
+    }
+
+    public String getName() {
+        return name + " " + playerId;
     }
 }
