@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
     private int activePlayer;
     private int score;
 
-    private TextView aP;
+    private TextView aPtV;
 
     Context context = this;
     TimelineDbHelper dbHelper;
@@ -95,8 +95,10 @@ public class MainActivity extends ActionBarActivity {
         nrOfPlayers = pm.getNrOfPlayers();
         activePlayer = 1;
 
-        aP = (TextView) findViewById(R.id.ActivePlayer);
-        aP.setText(String.valueOf(activePlayer));
+
+
+        aPtV = (TextView) findViewById(R.id.ActivePlayer);
+        aPtV.setText(String.valueOf(activePlayer));
 
 
         dbHelper = new TimelineDbHelper(context);
@@ -125,8 +127,6 @@ public class MainActivity extends ActionBarActivity {
         playedYears.add(bigbang); playedYears.add(ragnarok);
         Collections.shuffle(yearlist);
         printButtons();
-
-
     }
 
 
@@ -144,7 +144,6 @@ public class MainActivity extends ActionBarActivity {
             gameOver = true;
             dbHelper.addHighScore(player1.getScore(), "AAA",db);
             answerButton.setEnabled(true);
-
         }
 
     };
@@ -179,10 +178,7 @@ public class MainActivity extends ActionBarActivity {
                     player5.setScore(1);
                     p5_score.setText(String.valueOf(player5.getScore()));
                 }
-
                 nextTurn();
-
-
 
             } else {
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
@@ -334,7 +330,7 @@ public class MainActivity extends ActionBarActivity {
         else {
             activePlayer = 1;
         }
-        aP.setText(String.valueOf(activePlayer));
+        aPtV.setText(String.valueOf(activePlayer));
 
     }
 
