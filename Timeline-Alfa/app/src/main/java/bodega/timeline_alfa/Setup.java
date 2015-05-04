@@ -39,6 +39,11 @@ public class Setup extends ActionBarActivity {
                 startActivity(new Intent(Setup.this,Category.class));
             }
         });
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Setup.this,TimeSpan.class));
+            }
+        });
 
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
