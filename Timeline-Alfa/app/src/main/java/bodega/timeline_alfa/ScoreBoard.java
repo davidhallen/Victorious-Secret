@@ -50,7 +50,8 @@ public class ScoreBoard extends ActionBarActivity {
                 playerName = cursor.getString(1);
 
                 Button scoreButton = new Button(this);
-                String buttonText = Integer.toString(points) + "  :  " + playerName;
+                String buttonText = Integer.toString(points) + "  poäng" + "\n" + "\n" + playerName;
+                scoreButton.setTextSize(15);
                 scoreButton.setBackgroundResource(R.drawable.mybutton2);
                 scoreButton.setText(buttonText);
                 scoreButton.setLayoutParams(layoutParams);
