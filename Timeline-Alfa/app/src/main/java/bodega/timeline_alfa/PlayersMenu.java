@@ -17,7 +17,7 @@ import android.widget.TextView;
  */
 public class PlayersMenu extends ActionBarActivity {
 
-    private static int nrOfPlayers;
+    private static int nrOfPlayers = 1;
     private Button button6;
 
 

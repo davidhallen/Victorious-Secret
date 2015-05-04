@@ -52,6 +52,12 @@ public class MainActivity extends ActionBarActivity {
     private int nrOfPlayers;
     private int activePlayer;
     private int score;
+    private TextView p1_text;
+    private TextView p2_text;
+    private TextView p3_text;
+    private TextView p4_text;
+    private TextView p5_text;
+
 
     private TextView aPtV;
 
@@ -96,6 +102,48 @@ public class MainActivity extends ActionBarActivity {
         activePlayer = 1;
 
 
+        p1_text = (TextView) findViewById(R.id.player1_text);
+        p2_text = (TextView) findViewById(R.id.player2_text);
+        p3_text = (TextView) findViewById(R.id.player3_text);
+        p4_text = (TextView) findViewById(R.id.player4_text);
+        p5_text = (TextView) findViewById(R.id.player5_text);
+
+        if(nrOfPlayers == 1){
+            p1_text.setText("Player 1");
+            p2_score.setText("");
+            p3_score.setText("");
+            p4_score.setText("");
+            p5_score.setText("");
+
+        }
+        if(nrOfPlayers == 2){
+            p1_text.setText("Player 1");
+            p2_text.setText("Player 2");
+            p3_score.setText("");
+            p4_score.setText("");
+            p5_score.setText("");
+        }
+        if(nrOfPlayers == 3){
+            p1_text.setText("Player 1");
+            p2_text.setText("Player 2");
+            p3_text.setText("Player 3");
+            p4_score.setText("");
+            p5_score.setText("");
+        }
+        if(nrOfPlayers == 4){
+            p1_text.setText("Player 1");
+            p2_text.setText("Player 2");
+            p3_text.setText("Player 3");
+            p4_text.setText("Player 4");
+            p5_score.setText("");
+        }
+        if(nrOfPlayers == 5){
+            p1_text.setText("Player 1");
+            p2_text.setText("Player 2");
+            p3_text.setText("Player 3");
+            p4_text.setText("Player 4");
+            p5_text.setText("Player 5");
+        }
 
         aPtV = (TextView) findViewById(R.id.ActivePlayer);
         aPtV.setText(String.valueOf(activePlayer));
