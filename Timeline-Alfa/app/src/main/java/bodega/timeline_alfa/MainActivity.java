@@ -37,17 +37,26 @@ public class MainActivity extends ActionBarActivity {
     private yearButton firstSelectedYear;
     private yearButton secondSelectedYear;
     private boolean gameOver;
-    private int score;
 
+    private Player player1 = new Player(1);
+    private TextView p1_score;
+    private Player player2 = new Player(2);
+    private TextView p2_score;
+    private Player player3 = new Player(3);
+    private TextView p3_score;
+    private Player player4 = new Player(4);
+    private TextView p4_score;
+    private Player player5 = new Player(5);
+    private TextView p5_score;
+    private PlayersMenu pm;
+    private int nrOfPlayers;
+    private int activePlayer;
+    private int score;
 
     Context context = this;
     TimelineDbHelper dbHelper;
     SQLiteDatabase db;
     Cursor cursor;
-
-    private Player player1;
-    private TextView player1_score;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +84,13 @@ public class MainActivity extends ActionBarActivity {
         yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
         yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
         yearlist.add(y7);
+        p1_score = (TextView) findViewById(R.id.player1_score);
+        p2_score = (TextView) findViewById(R.id.player2_score);
+        p3_score = (TextView) findViewById(R.id.player3_score);
+        p4_score = (TextView) findViewById(R.id.player4_score);
+        p5_score = (TextView) findViewById(R.id.player5_score);
+        pm = new PlayersMenu();
+        activePlayer = 1;
 
 
 
@@ -104,8 +120,7 @@ public class MainActivity extends ActionBarActivity {
         playedYears.add(bigbang); playedYears.add(ragnarok);
         Collections.shuffle(yearlist);
         printButtons();
-        player1 = new Player();
-        player1_score = (TextView) findViewById(R.id.player1_score);
+
 
     }
 
@@ -138,9 +153,30 @@ public class MainActivity extends ActionBarActivity {
 
             if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
                 printButtons();
-                player1.setScore(1);
 
-                player1_score.setText(String.valueOf(player1.getScore()));
+                if (activePlayer == 1) {
+                    player1.setScore(1);
+                    p1_score.setText(String.valueOf(player1.getScore()));
+                }
+                else if (activePlayer == 2) {
+                    player2.setScore(1);
+                    p2_score.setText(String.valueOf(player2.getScore()));
+                }
+                else if (activePlayer == 3) {
+                    player3.setScore(1);
+                    p3_score.setText(String.valueOf(player3.getScore()));
+                }
+                else if (activePlayer == 4) {
+                    player4.setScore(1);
+                    p4_score.setText(String.valueOf(player4.getScore()));
+                }
+                else if (activePlayer == 5) {
+                    player5.setScore(1);
+                    p5_score.setText(String.valueOf(player5.getScore()));
+                }
+
+                nextTurn();
+
             } else {
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
             }
@@ -275,6 +311,20 @@ public class MainActivity extends ActionBarActivity {
 
         else return true;
 
+    }
+    /*public void addNrOfPlayers(int nrOfPlayers) {
+        for (int i=1; i<=nrOfPlayers; i++) {
+            playerList.add(new Player(i));
+        }
+    }*/
+
+    private void nextTurn() {
+        if (activePlayer < nrOfPlayers) {
+            activePlayer++;
+        }
+        else {
+            activePlayer = 1;
+        }
     }
 
 

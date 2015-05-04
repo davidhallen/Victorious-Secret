@@ -37,6 +37,7 @@ public class PlayersMenu extends ActionBarActivity {
         Button button4 = (Button) findViewById(R.id.FourPlayers);
         Button button5 = (Button) findViewById(R.id.FivePlayers);
         Button button7 = (Button) findViewById(R.id.BackFromPlayer);
+        Button button8 = (Button) findViewById(R.id.ChooseCategory);
 
         button6 = (Button) findViewById(R.id.currentNumberPlayers);
 
@@ -71,9 +72,11 @@ public class PlayersMenu extends ActionBarActivity {
                 startActivity(new Intent(PlayersMenu.this,Setup.class));
             }
         });
-
-
-
+        button8.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(PlayersMenu.this,Category.class));
+            }
+        });
 
     }
 
