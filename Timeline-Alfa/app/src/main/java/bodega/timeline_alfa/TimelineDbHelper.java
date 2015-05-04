@@ -95,6 +95,11 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
             //  e.printStackTrace();
         }
 
+        addHighScore(10,"LOL",db);
+        addHighScore(11,"FFS",db);
+        addHighScore(12,"WTF",db);
+        addHighScore(13, "BAD", db);
+        addHighScore(14, "ABC", db);
 
     }
 
@@ -123,6 +128,15 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null,null,null,null);
         return cursor;
 
+    }
+
+    public Cursor getHighScore (SQLiteDatabase db){
+
+        Cursor cursor;
+        String[] projections = {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_NAME};
+
+        cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, "COL_SCORE");
+        return cursor;
     }
 
 

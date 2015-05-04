@@ -37,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
     private yearButton firstSelectedYear;
     private yearButton secondSelectedYear;
     private boolean gameOver;
+
     private Player player1 = new Player(1);
     private TextView p1_score;
     private Player player2 = new Player(2);
@@ -50,9 +51,8 @@ public class MainActivity extends ActionBarActivity {
     private PlayersMenu pm;
     private int nrOfPlayers;
     private int activePlayer;
+    private int score;
 
-
-   
     Context context = this;
     TimelineDbHelper dbHelper;
     SQLiteDatabase db;
@@ -137,7 +137,9 @@ public class MainActivity extends ActionBarActivity {
             question.setText("Slut på frågor mannen, Game Over");
             answerButton.setText("Nytt spel");
             gameOver = true;
+            dbHelper.addHighScore(player1.getScore(), "AAA",db);
             answerButton.setEnabled(true);
+
         }
 
     };
@@ -151,6 +153,7 @@ public class MainActivity extends ActionBarActivity {
 
             if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
                 printButtons();
+
                 if (activePlayer == 1) {
                     player1.setScore(1);
                     p1_score.setText(String.valueOf(player1.getScore()));
@@ -173,6 +176,7 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 nextTurn();
+
             } else {
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
             }
@@ -180,6 +184,7 @@ public class MainActivity extends ActionBarActivity {
 
         else {
             answerButton.setText("Placera årtal");
+
             init();
 
         }

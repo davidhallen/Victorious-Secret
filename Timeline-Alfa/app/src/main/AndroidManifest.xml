@@ -13,7 +13,8 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".TestIt"
+
+            android:name="scoreBoard"
             android:label="@string/app_name2"
             android:screenOrientation="landscape" >
         </activity>
