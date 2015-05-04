@@ -125,6 +125,15 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     }
 
+    public Cursor getHighScore (SQLiteDatabase db){
+
+        Cursor cursor;
+        String[] projections = {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_NAME};
+
+        cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, null);
+        return cursor;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
