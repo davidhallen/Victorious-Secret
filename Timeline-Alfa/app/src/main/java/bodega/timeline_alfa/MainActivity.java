@@ -37,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
     private yearButton firstSelectedYear;
     private yearButton secondSelectedYear;
     private boolean gameOver;
+    private int score;
 
 
     Context context = this;
@@ -121,6 +122,7 @@ public class MainActivity extends ActionBarActivity {
             question.setText("Slut på frågor mannen, Game Over");
             answerButton.setText("Nytt spel");
             gameOver = true;
+            dbHelper.addHighScore(player1.getScore(), "AAA",db);
             answerButton.setEnabled(true);
 
         }
@@ -137,6 +139,7 @@ public class MainActivity extends ActionBarActivity {
             if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
                 printButtons();
                 player1.setScore(1);
+
                 player1_score.setText(String.valueOf(player1.getScore()));
             } else {
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
@@ -145,6 +148,7 @@ public class MainActivity extends ActionBarActivity {
 
         else {
             answerButton.setText("Placera årtal");
+
             init();
 
         }

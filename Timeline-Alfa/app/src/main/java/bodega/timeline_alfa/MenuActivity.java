@@ -35,7 +35,10 @@ public class MenuActivity extends ActionBarActivity {
         });
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this,ScoreBoard.class));
+
+              
+                startActivity(new Intent(MenuActivity.this,scoreBoard.class));
+
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
