@@ -130,7 +130,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         Cursor cursor;
         String[] projections = {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_NAME};
 
-        cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, null);
+        cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, "COL_SCORE");
         return cursor;
     }
 
