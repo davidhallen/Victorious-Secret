@@ -38,6 +38,10 @@ public class ScoreBoard extends ActionBarActivity {
         db = dbHelper.getReadableDatabase();
         cursor = dbHelper.getHighScore(db);
 
+        LinearLayout.LayoutParams layoutParams =
+                new LinearLayout.LayoutParams(250, LinearLayout.LayoutParams.MATCH_PARENT);
+        layoutParams.setMargins(40,0,0,0);
+
         if (cursor.moveToFirst()){
             do {
                 Integer points; String playerName;
@@ -46,8 +50,11 @@ public class ScoreBoard extends ActionBarActivity {
                 playerName = cursor.getString(1);
 
                 Button scoreButton = new Button(this);
-                String buttonText = Integer.toString(points) + playerName;
+                String buttonText = Integer.toString(points) + "  :  " + playerName;
+                scoreButton.setBackgroundResource(R.drawable.mybutton2);
                 scoreButton.setText(buttonText);
+                scoreButton.setLayoutParams(layoutParams);
+                scoreLayout.addView(scoreButton);
                 
             } while (cursor.moveToNext());
         }
