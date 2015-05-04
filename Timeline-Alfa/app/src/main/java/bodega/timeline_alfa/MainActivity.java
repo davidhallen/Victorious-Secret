@@ -53,6 +53,8 @@ public class MainActivity extends ActionBarActivity {
     private int activePlayer;
     private int score;
 
+    private TextView aP;
+
     Context context = this;
     TimelineDbHelper dbHelper;
     SQLiteDatabase db;
@@ -90,8 +92,11 @@ public class MainActivity extends ActionBarActivity {
         p4_score = (TextView) findViewById(R.id.player4_score);
         p5_score = (TextView) findViewById(R.id.player5_score);
         pm = new PlayersMenu();
+        nrOfPlayers = pm.getNrOfPlayers();
         activePlayer = 1;
 
+        aP = (TextView) findViewById(R.id.ActivePlayer);
+        aP.setText(String.valueOf(activePlayer));
 
 
         dbHelper = new TimelineDbHelper(context);
@@ -176,6 +181,8 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 nextTurn();
+
+
 
             } else {
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
@@ -319,12 +326,16 @@ public class MainActivity extends ActionBarActivity {
     }*/
 
     private void nextTurn() {
+
+
         if (activePlayer < nrOfPlayers) {
             activePlayer++;
         }
         else {
             activePlayer = 1;
         }
+        aP.setText(String.valueOf(activePlayer));
+
     }
 
 

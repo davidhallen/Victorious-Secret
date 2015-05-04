@@ -17,7 +17,7 @@ import android.widget.TextView;
  */
 public class PlayersMenu extends ActionBarActivity {
 
-    private int nrOfPlayers;
+    private static int nrOfPlayers;
     private Button button6;
 
 
@@ -40,6 +40,7 @@ public class PlayersMenu extends ActionBarActivity {
         Button button8 = (Button) findViewById(R.id.ChooseCategory);
 
         button6 = (Button) findViewById(R.id.currentNumberPlayers);
+        button6.setText(String.valueOf("Player(s):\n" + getNrOfPlayers()));
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
