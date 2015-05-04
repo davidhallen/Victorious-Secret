@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.app.Activity;
 
 /**
  * Created by ludvigsylven on 15-05-01.
@@ -44,6 +45,8 @@ public class PlayersMenu extends ActionBarActivity {
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                /*Intent intent = new Intent(GetExtras
+                Intent.putextra*/
                 setNrOfPlayers(1);
 
             }

@@ -33,6 +33,11 @@ public class Category extends ActionBarActivity {
     private Button button7;
     private Button button8;
 
+    private Button playButton;
+    private Button backToSetUpButton;
+    private Button timeSpanButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,11 @@ public class Category extends ActionBarActivity {
         button6 = (Button) findViewById(R.id.Category6);
         button7 = (Button) findViewById(R.id.Category7);
         button8 = (Button) findViewById(R.id.Category8);
+
+        playButton = (Button) findViewById(R.id.PlayCategory);
+        backToSetUpButton = (Button) findViewById(R.id.BackFromCategory);
+        timeSpanButton = (Button) findViewById(R.id.ChooseTimeSpan);
+
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -143,8 +153,22 @@ public class Category extends ActionBarActivity {
                     category8=true;
             }
         });
+        playButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Category.this,MainActivity.class));
+            }
+        });
+        backToSetUpButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Category.this,Setup.class));
 
-
+            }
+        });
+        timeSpanButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Category.this,TimeSpan.class));
+            }
+        });
 
 
     }

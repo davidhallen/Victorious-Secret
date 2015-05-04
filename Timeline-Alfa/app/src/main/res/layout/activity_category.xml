@@ -74,6 +74,7 @@
 
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/CategoryLayout2"
         android:layout_width="wrap_content"
@@ -139,6 +140,53 @@
             android:layout_height="30dp"
             android:background="@drawable/checkmark"
             />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CategoryLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/PlayCategory"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/mybutton2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Play!"
+            android:textAllCaps="false"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/BackFromCategory"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/mybutton2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textAllCaps="false"
+            android:text="Back to Setup"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/ChooseTimeSpan"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/mybutton2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textAllCaps="false"
+            android:text="Time Span"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"/>
 
 
     </LinearLayout>

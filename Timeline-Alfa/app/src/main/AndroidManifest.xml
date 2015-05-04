@@ -13,8 +13,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-
-            android:name="ScoreBoard"
+            android:name=".ScoreBoard"
             android:label="@string/app_name2"
             android:screenOrientation="landscape" >
         </activity>
@@ -45,6 +44,10 @@
         <activity
             android:name=".Category"
             android:label="@string/title_activity_category" >
+        </activity>
+        <activity
+            android:name=".TimeSpan"
+            android:label="@string/title_activity_time_span" >
         </activity>
     </application>
 

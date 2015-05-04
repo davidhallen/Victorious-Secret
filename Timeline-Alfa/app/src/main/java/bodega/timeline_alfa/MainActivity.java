@@ -37,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
     private yearButton firstSelectedYear;
     private yearButton secondSelectedYear;
     private boolean gameOver;
+    private int numOfPlayers;
 
     private Player player1 = new Player(1);
     private TextView p1_score;
