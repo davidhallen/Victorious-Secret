@@ -139,6 +139,20 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public void deleteHighScore (SQLiteDatabase db){
+        db.execSQL("delete from "+ TimelineTables.HighScore.TABLE_NAME+" where "+TimelineTables.HighScore.COL_SCORE+" = min("+TimelineTables.HighScore.COL_SCORE+")");
+
+    }
+
+    public int getLowestScore(SQLiteDatabase db){
+
+        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "min(" + TimelineTables.HighScore.COL_SCORE + ")" }, null, null,
+                null, null, null);
+        c.moveToFirst();
+        int lowestScore = c.getInt(0);
+
+        return lowestScore;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

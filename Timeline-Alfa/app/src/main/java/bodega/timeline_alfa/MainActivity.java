@@ -187,11 +187,21 @@ public class MainActivity extends ActionBarActivity {
         }
 
         else {
-            question.setText("Slut på frågor mannen, Game Over");
-            answerButton.setText("Nytt spel");
-            gameOver = true;
-            dbHelper.addHighScore(player1.getScore(), "AAA",db);
-            answerButton.setEnabled(true);
+                question.setText("Slut på frågor mannen, Game Over");
+                answerButton.setText("Nytt spel");
+                gameOver = true;
+                answerButton.setEnabled(true);
+
+            //add highScore if it's a new highscore
+                if( dbHelper.getLowestScore(db)< player1.getScore()) {
+                    dbHelper.deleteHighScore(db);
+                    dbHelper.addHighScore(player1.getScore(), "AAA", db);
+                }
+                else{
+                    //do nothing
+                }
+
+
         }
 
     };
