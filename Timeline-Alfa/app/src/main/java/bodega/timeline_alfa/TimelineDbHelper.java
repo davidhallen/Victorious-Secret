@@ -95,6 +95,11 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
             //  e.printStackTrace();
         }
 
+        addHighScore(10,"LOL",db);
+        addHighScore(11,"FFS",db);
+        addHighScore(12,"WTF",db);
+        addHighScore(13, "BAD", db);
+        addHighScore(14, "ABC", db);
 
     }
 

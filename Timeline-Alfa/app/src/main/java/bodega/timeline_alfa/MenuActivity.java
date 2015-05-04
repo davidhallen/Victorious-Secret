@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
 
 public class MenuActivity extends ActionBarActivity {
@@ -36,7 +35,7 @@ public class MenuActivity extends ActionBarActivity {
         });
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this,TestIt.class));
+                startActivity(new Intent(MenuActivity.this,ScoreBoard.class));
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {

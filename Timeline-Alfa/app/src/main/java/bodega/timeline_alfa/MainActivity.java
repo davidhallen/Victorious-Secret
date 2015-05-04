@@ -38,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     private yearButton secondSelectedYear;
     private boolean gameOver;
 
+
     Context context = this;
     TimelineDbHelper dbHelper;
     SQLiteDatabase db;
@@ -121,6 +122,7 @@ public class MainActivity extends ActionBarActivity {
             answerButton.setText("Nytt spel");
             gameOver = true;
             answerButton.setEnabled(true);
+
         }
 
     };
