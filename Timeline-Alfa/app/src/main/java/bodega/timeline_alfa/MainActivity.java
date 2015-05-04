@@ -196,6 +196,7 @@ public class MainActivity extends ActionBarActivity {
                 if( dbHelper.getLowestScore(db)< player1.getScore()) {
                     dbHelper.deleteHighScore(db);
                     dbHelper.addHighScore(player1.getScore(), "AAA", db);
+
                 }
                 else{
                     //do nothing

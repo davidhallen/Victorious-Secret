@@ -88,18 +88,18 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
         } catch (XmlPullParserException e) {
             Log.w("Error1", "Error1");
-            // e.printStackTrace();
+             e.printStackTrace();
         }
         catch (java.io.IOException e){
             Log.w("Error2", "Error2");
-            //  e.printStackTrace();
+              e.printStackTrace();
         }
 
-        addHighScore(10,"LOL",db);
-        addHighScore(23,"FFS",db);
-        addHighScore(12,"WTF",db);
-        addHighScore(12, "BAD", db);
-        addHighScore(17, "ABC", db);
+        addHighScore(0,"XXX",db);
+        addHighScore(0,"XXX",db);
+        addHighScore(0,"XXX",db);
+        addHighScore(3, "BAD", db);
+        addHighScore(4, "LOL", db);
 
     }
 
@@ -131,31 +131,25 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getHighScore (SQLiteDatabase db){
-
         Cursor cursor;
         String[] projections = {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_NAME};
-
         cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, TimelineTables.HighScore.COL_SCORE +" DESC");
         return cursor;
     }
 
     public void deleteHighScore (SQLiteDatabase db){
-        db.execSQL("delete from "+ TimelineTables.HighScore.TABLE_NAME+" where "+TimelineTables.HighScore.COL_SCORE+" = min("+TimelineTables.HighScore.COL_SCORE+")");
-
+        db.execSQL("delete from "+ TimelineTables.HighScore.TABLE_NAME+" where "+TimelineTables.HighScore.COL_SCORE+"='"+getLowestScore(db)+"'");
     }
 
     public int getLowestScore(SQLiteDatabase db){
-
         Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "min(" + TimelineTables.HighScore.COL_SCORE + ")" }, null, null,
                 null, null, null);
         c.moveToFirst();
         int lowestScore = c.getInt(0);
-
         return lowestScore;
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 }
