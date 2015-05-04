@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+            android:id="@+id/testLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/mybutton2"
+                android:text="@string/testKnapp"
+                android:textSize="@dimen/abc_text_size_button_material"
+                android:gravity="center"/>
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/mybutton2"
+
+                android:text="@string/testKnapp"
+                android:textSize="@dimen/abc_text_size_button_material"
+                android:gravity="center"/>
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/mybutton2"
+                android:text="@string/testKnapp"
+                android:textSize="@dimen/abc_text_size_button_material"
+                android:gravity="center"/>
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/mybutton2"
+                android:text="@string/testKnapp"
+                android:textSize="@dimen/abc_text_size_button_material"
+                android:gravity="center"/>
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/mybutton2"
+                android:text="@string/testKnapp"
+                android:textSize="@dimen/abc_text_size_button_material"
+                android:gravity="center"/>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</LinearLayout>
