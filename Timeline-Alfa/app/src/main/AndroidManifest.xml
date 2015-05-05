@@ -43,11 +43,13 @@
         </activity>
         <activity
             android:name=".Category"
-            android:label="@string/title_activity_category" >
+            android:label="@string/title_activity_category"
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".TimeSpan"
-            android:label="@string/title_activity_time_span" >
+            android:label="@string/title_activity_time_span"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 
