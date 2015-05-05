@@ -39,26 +39,31 @@ public class MainActivity extends ActionBarActivity {
     private boolean gameOver;
     private int numOfPlayers;
 
+    private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
     private Player player1 = new Player(1);
-    private TextView p1_score;
     private Player player2 = new Player(2);
-    private TextView p2_score;
     private Player player3 = new Player(3);
-    private TextView p3_score;
     private Player player4 = new Player(4);
-    private TextView p4_score;
     private Player player5 = new Player(5);
+
+    private ArrayList<TextView> textViewArrayListScore = new ArrayList<TextView>();
+    private TextView p1_score;
+    private TextView p2_score;
+    private TextView p3_score;
+    private TextView p4_score;
     private TextView p5_score;
-    private PlayersMenu pm;
-    private int nrOfPlayers;
-    private int activePlayer;
-    private int score;
+
+    private ArrayList<TextView> textViewArrayListPlayers = new ArrayList<TextView>();
     private TextView p1_text;
     private TextView p2_text;
     private TextView p3_text;
     private TextView p4_text;
     private TextView p5_text;
 
+    private PlayersMenu pm;
+    private int nrOfPlayers;
+    private int activePlayer;
+    private int score;
 
     private TextView aPtV;
 
@@ -93,15 +98,16 @@ public class MainActivity extends ActionBarActivity {
         yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
         yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
         yearlist.add(y7);
-        p1_score = (TextView) findViewById(R.id.player1_score);
-        p2_score = (TextView) findViewById(R.id.player2_score);
-        p3_score = (TextView) findViewById(R.id.player3_score);
-        p4_score = (TextView) findViewById(R.id.player4_score);
-        p5_score = (TextView) findViewById(R.id.player5_score);
+
         pm = new PlayersMenu();
         nrOfPlayers = pm.getNrOfPlayers();
         activePlayer = 1;
 
+        listOfPlayers.add(player1);
+        listOfPlayers.add(player2);
+        listOfPlayers.add(player3);
+        listOfPlayers.add(player4);
+        listOfPlayers.add(player5);
 
         p1_text = (TextView) findViewById(R.id.player1_text);
         p2_text = (TextView) findViewById(R.id.player2_text);
@@ -109,46 +115,56 @@ public class MainActivity extends ActionBarActivity {
         p4_text = (TextView) findViewById(R.id.player4_text);
         p5_text = (TextView) findViewById(R.id.player5_text);
 
+        textViewArrayListPlayers.add(p1_text);
+        textViewArrayListPlayers.add(p2_text);
+        textViewArrayListPlayers.add(p3_text);
+        textViewArrayListPlayers.add(p4_text);
+        textViewArrayListPlayers.add(p5_text);
+
+        p1_score = (TextView) findViewById(R.id.player1_score);
+        p2_score = (TextView) findViewById(R.id.player2_score);
+        p3_score = (TextView) findViewById(R.id.player3_score);
+        p4_score = (TextView) findViewById(R.id.player4_score);
+        p5_score = (TextView) findViewById(R.id.player5_score);
+
+        textViewArrayListScore.add(p1_score);
+        textViewArrayListScore.add(p2_score);
+        textViewArrayListScore.add(p3_score);
+        textViewArrayListScore.add(p4_score);
+        textViewArrayListScore.add(p5_score);
+
+
+        for(int i = 0; i < nrOfPlayers; i++){
+            TextView tempPlayer = textViewArrayListPlayers.get(i);
+            tempPlayer.setText("Player " + (i+1) + ":");
+        }
+
         if(nrOfPlayers == 1){
-            p1_text.setText("Player 1");
             p2_score.setText("");
             p3_score.setText("");
             p4_score.setText("");
             p5_score.setText("");
-
         }
         if(nrOfPlayers == 2){
-            p1_text.setText("Player 1");
-            p2_text.setText("Player 2");
             p3_score.setText("");
             p4_score.setText("");
             p5_score.setText("");
         }
         if(nrOfPlayers == 3){
-            p1_text.setText("Player 1");
-            p2_text.setText("Player 2");
-            p3_text.setText("Player 3");
             p4_score.setText("");
             p5_score.setText("");
         }
         if(nrOfPlayers == 4){
-            p1_text.setText("Player 1");
-            p2_text.setText("Player 2");
-            p3_text.setText("Player 3");
-            p4_text.setText("Player 4");
             p5_score.setText("");
         }
-        if(nrOfPlayers == 5){
-            p1_text.setText("Player 1");
-            p2_text.setText("Player 2");
-            p3_text.setText("Player 3");
-            p4_text.setText("Player 4");
-            p5_text.setText("Player 5");
-        }
 
-        aPtV = (TextView) findViewById(R.id.ActivePlayer);
-        aPtV.setText(String.valueOf(activePlayer));
 
+        textViewArrayListPlayers.get(activePlayer-1).setText("PLAYER " + activePlayer + ":");
+        textViewArrayListPlayers.get(activePlayer-1).setTextColor(-16711936);
+
+
+        //aPtV = (TextView) findViewById(R.id.ActivePlayer);
+        //aPtV.setText(String.valueOf(activePlayer));
 
         dbHelper = new TimelineDbHelper(context);
         db = dbHelper.getReadableDatabase();
@@ -180,6 +196,8 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void newQuestion() {
+
+
         if (!yearlist.isEmpty()){
             currentQuestion = yearlist.get(0);
             yearlist.remove(0);
@@ -218,7 +236,18 @@ public class MainActivity extends ActionBarActivity {
             if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
                 printButtons();
 
-                if (activePlayer == 1) {
+                //First way of setting score
+
+                listOfPlayers.get(activePlayer-1).setScore(1);
+                textViewArrayListScore.get(activePlayer-1).setTextColor(-1);
+
+                textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore()));
+
+
+                //Second way of setting score
+
+
+                /*if (activePlayer == 1) {
                     player1.setScore(1);
                     p1_score.setText(String.valueOf(player1.getScore()));
                 }
@@ -237,11 +266,16 @@ public class MainActivity extends ActionBarActivity {
                 else if (activePlayer == 5) {
                     player5.setScore(1);
                     p5_score.setText(String.valueOf(player5.getScore()));
-                }
+                }*/
                 nextTurn();
 
             } else {
+
+                textViewArrayListScore.get(activePlayer-1).setTextColor(-65536);
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
+
+
+                //nextTurn();
             }
         }
 
@@ -383,6 +417,9 @@ public class MainActivity extends ActionBarActivity {
 
     private void nextTurn() {
 
+        textViewArrayListPlayers.get(activePlayer-1).setText("Player " + (activePlayer) + ":");
+        textViewArrayListPlayers.get(activePlayer-1).setTextColor(-1);
+
 
         if (activePlayer < nrOfPlayers) {
             activePlayer++;
@@ -390,7 +427,9 @@ public class MainActivity extends ActionBarActivity {
         else {
             activePlayer = 1;
         }
-        aPtV.setText(String.valueOf(activePlayer));
+        //aPtV.setText(String.valueOf(activePlayer));
+        textViewArrayListPlayers.get(activePlayer-1).setText("PLAYER " + (activePlayer) + ":");
+        textViewArrayListPlayers.get(activePlayer-1).setTextColor(-16711936);
 
     }
 
