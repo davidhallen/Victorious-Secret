@@ -122,15 +122,14 @@
             android:id="@+id/question"
             android:layout_width="470dp"
             android:layout_height="match_parent"
-            android:paddingLeft="10dp"
             android:text="TEXT FIELD FOR QUESTION"
             android:textSize="24sp"
             android:gravity="center"/>
 
         <Button
             android:id="@+id/answerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/mybutton2"
             android:onClick="newButton"

@@ -96,6 +96,7 @@ public class MainActivity extends ActionBarActivity {
         yearButton y5 = new yearButton (1955, "Whisky börjar tillverkas i Sverige");
         yearButton y6 = new yearButton (1496, "Leonardo da Vinci misslyckas med ett flygmaskinstest");
         yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
+
         yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
         yearlist.add(y7);
 
@@ -366,6 +367,7 @@ public class MainActivity extends ActionBarActivity {
             }
             else if (isBeside(tempYear,firstSelectedYear)) {
                 view.setBackgroundColor(Color.RED);
+
                 secondSelectedYear = tempYear;
                 answerButton.setEnabled(true);
             }

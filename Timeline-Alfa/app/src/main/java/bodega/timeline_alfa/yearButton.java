@@ -1,5 +1,8 @@
 package bodega.timeline_alfa;
 
+import android.content.Context;
+import android.widget.Button;
+
 /**
  * Created by victornyden on 15-04-24.
  */
@@ -7,10 +10,13 @@ public class yearButton implements Comparable <yearButton> {
     int year;
     String question;
 
+
     public yearButton(int year, String question ){
         this.year= year;
         this.question = question;
     }
+
+
 
 
     public int getYear() {
