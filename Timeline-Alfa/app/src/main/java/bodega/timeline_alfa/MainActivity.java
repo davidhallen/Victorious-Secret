@@ -96,8 +96,8 @@ public class MainActivity extends ActionBarActivity {
         answerButton = (Button) findViewById(R.id.answerButton);
         yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
         yearButton ragnarok = new yearButton (2212, "Ragnarok!");
-        yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
-        yearlist.add(y7);
+        /*yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
+        yearlist.add(y7);*/
 
         pm = new PlayersMenu();
         nrOfPlayers = pm.getNrOfPlayers();
@@ -173,7 +173,7 @@ public class MainActivity extends ActionBarActivity {
         dbHelper = new TimelineDbHelper(context);
         db = dbHelper.getReadableDatabase();
 
-        cursor = dbHelper.getQuestion(db);
+        cursor = dbHelper.getQuestion(db, "allCategories");
 
         if (cursor.moveToFirst()){
             do {

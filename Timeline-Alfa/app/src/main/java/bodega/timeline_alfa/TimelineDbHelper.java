@@ -123,13 +123,23 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
             Log.e("DATABASE OPERATIONS", "One high score row inserted");
     }
 
-    public Cursor getQuestion (SQLiteDatabase db) {
+    public Cursor getQuestion (SQLiteDatabase db, String category) {
 
-        Cursor cursor;
-        String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
-            TimelineTables.Questions.COL_YEAR};
-        cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null,null,null,null);
-        return cursor;
+        if (category == "AllCategories") {
+
+            Cursor cursor;
+            String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
+                    TimelineTables.Questions.COL_YEAR};
+            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null, null, null);
+            return cursor;
+        }
+        else{
+            Cursor cursor;
+            String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
+                    TimelineTables.Questions.COL_YEAR};
+            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null, null, null);
+            return cursor;
+        }
 
     }
 
@@ -142,8 +152,8 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     public void deleteHighScore (SQLiteDatabase db){
         Integer minScore = getLowestScore(db);
-        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_INTKEY },
-                TimelineTables.HighScore.COL_SCORE + "=?", new String [] {String.valueOf(minScore)},null, null, TimelineTables.HighScore.COL_INTKEY +" DESC");
+        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_INTKEY},
+                TimelineTables.HighScore.COL_SCORE + "=?", new String[]{String.valueOf(minScore)}, null, null, TimelineTables.HighScore.COL_INTKEY + " DESC");
         c.moveToFirst();
         Integer deleteKey = c.getInt(1);
         db.execSQL("delete from "+ TimelineTables.HighScore.TABLE_NAME+" where "+TimelineTables.HighScore.COL_INTKEY+"='"+deleteKey+"'");
