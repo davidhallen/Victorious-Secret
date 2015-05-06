@@ -66,6 +66,8 @@ public class MainActivity extends ActionBarActivity {
     private TextView p5_text;
 
     private PlayersMenu pm;
+    private Category cat;
+    private String selectedCategory;
     private int nrOfPlayers;
     private int activePlayer;
     private int score;
@@ -94,19 +96,16 @@ public class MainActivity extends ActionBarActivity {
         answerButton = (Button) findViewById(R.id.answerButton);
         yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
         yearButton ragnarok = new yearButton (2212, "Ragnarok!");
-        yearButton y1 = new yearButton (1912, "OS i Stockholm");
-        yearButton y2 = new yearButton (1986, "Palme går på bio");
-        yearButton y3 = new yearButton (1492, "Columbus upptäcker Amerika?");
-        yearButton y4 = new yearButton (0, "Jesus krist föds");
-        yearButton y5 = new yearButton (1955, "Whisky börjar tillverkas i Sverige");
-        yearButton y6 = new yearButton (1496, "Leonardo da Vinci misslyckas med ett flygmaskinstest");
-        yearButton y7 = new yearButton (1959, "Varumärket Frisbee godkänns");
         yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
         yearlist.add(y7);
 
         pm = new PlayersMenu();
         nrOfPlayers = pm.getNrOfPlayers();
         activePlayer = 1;
+
+        Category cat = new Category();
+        selectedCategory = cat.getSelectedCategory();
+
 
         listOfPlayers.add(player1);
         listOfPlayers.add(player2);
@@ -197,6 +196,14 @@ public class MainActivity extends ActionBarActivity {
         playedYears.add(bigbang); playedYears.add(ragnarok);
         Collections.shuffle(yearlist);
         printButtons();
+
+        if(selectedCategory.equals("noSelectedCategory")){
+
+        }
+        else{
+
+        }
+
     }
 
 

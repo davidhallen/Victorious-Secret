@@ -38,7 +38,7 @@
             History
         </category>
         <question>
-            Luther spikar upp sina tester på kyrkdörren i Wittenberg
+            Luther spikar upp sina teser på kyrkdörren i Wittenberg
         </question>
         <year>1517</year>
 
@@ -88,10 +88,100 @@
 
     </content>
 
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            OS i Stockholm
+        </question>
+        <year>1912</year>
 
+    </content>
 
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Palme går på bio
+        </question>
+        <year>1986</year>
 
+    </content>
 
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Columbus upptäcker Amerika
+        </question>
+        <year>1492</year>
+
+    </content>
+
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Jesus kristus föds
+        </question>
+        <year>0</year>
+
+    </content>
+
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Whisky börjar tillverkas i Sverige
+        </question>
+        <year>1955</year>
+
+    </content>
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Leonardo da Vinci misslyckas med ett flygmaskinstest
+        </question>
+        <year>1496</year>
+
+    </content>
+
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Varumärket Frisbee godkänns
+        </question>
+        <year>1959</year>
+    </content>
+
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Dutch colonist Peter Minuit buys Manhattan Island from local Indians
+        </question>
+        <year>1626</year>
+    </content>
+    
+    <content>
+        <category>
+            History
+        </category>
+        <question>
+            Dutch colonist Peter Minuit buys Manhattan Island from local Indians
+        </question>
+        <year>1626</year>
+    </content>
 
 
 </resources>
