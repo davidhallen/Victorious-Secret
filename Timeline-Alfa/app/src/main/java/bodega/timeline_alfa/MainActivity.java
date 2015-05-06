@@ -173,7 +173,7 @@ public class MainActivity extends ActionBarActivity {
         dbHelper = new TimelineDbHelper(context);
         db = dbHelper.getReadableDatabase();
 
-        cursor = dbHelper.getQuestion(db, "allCategories");
+        cursor = dbHelper.getQuestion(db, "History");
 
         if (cursor.moveToFirst()){
             do {

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <content>
-    <category>
-        History
-    </category>
+    <category>History</category>
     <question>
         Kubakrisen äger rum
     </question>
@@ -12,9 +10,9 @@
 </content>
 
     <content>
-    <category>
-        History
-    </category>
+
+
+
     <question>
         Stalin dör
     </question>
@@ -23,9 +21,7 @@
 </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Amerikanska revolutionen inleds
         </question>
@@ -34,9 +30,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Luther spikar upp sina teser på kyrkdörren i Wittenberg
         </question>
@@ -45,9 +39,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Första världskriget inleds
         </question>
@@ -56,9 +48,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Slaget vid Narva utkämpas
         </question>
@@ -67,9 +57,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Villhelm Erövraren leder sina trupper till vinst i slaget vid Hastings
         </question>
@@ -78,9 +66,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Den serie engelska inbördeskrig som går under namnet Rosornas krig inleds
         </question>
@@ -89,9 +75,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             OS i Stockholm
         </question>
@@ -100,9 +84,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Palme går på bio
         </question>
@@ -111,9 +93,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Columbus upptäcker Amerika
         </question>
@@ -122,9 +102,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Jesus kristus föds
         </question>
@@ -133,9 +111,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Whisky börjar tillverkas i Sverige
         </question>
@@ -143,9 +119,7 @@
 
     </content>
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Leonardo da Vinci misslyckas med ett flygmaskinstest
         </question>
@@ -154,9 +128,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Varumärket Frisbee godkänns
         </question>
@@ -164,9 +136,7 @@
     </content>
 
     <content>
-        <category>
-            History
-        </category>
+        <category>History</category>
         <question>
             Dutch colonist Peter Minuit buys Manhattan Island from local Indians
         </question>

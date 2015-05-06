@@ -88,11 +88,11 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
             }
 
         } catch (XmlPullParserException e) {
-            Log.w("Error1", "Error1");
+            Log.w("Error", "XMLpullError");
              e.printStackTrace();
         }
         catch (java.io.IOException e){
-            Log.w("Error2", "Error2");
+            Log.w("Error", "IOExp");
               e.printStackTrace();
         }
 
@@ -124,23 +124,19 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getQuestion (SQLiteDatabase db, String category) {
+        Cursor cursor;
+        String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
+                TimelineTables.Questions.COL_YEAR};
 
         if (category == "AllCategories") {
-
-            Cursor cursor;
-            String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
-                    TimelineTables.Questions.COL_YEAR};
             cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null, null, null);
             return cursor;
         }
         else{
-            Cursor cursor;
-            String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
-                    TimelineTables.Questions.COL_YEAR};
-            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null, null, null);
+            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_CATEGORY + "=?",
+                    new String [] {category},null, null, null);
             return cursor;
         }
-
     }
 
     public Cursor getHighScore (SQLiteDatabase db){
