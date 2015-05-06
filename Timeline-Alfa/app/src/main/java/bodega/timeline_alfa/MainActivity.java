@@ -1,6 +1,8 @@
 package bodega.timeline_alfa;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
@@ -8,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +18,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,6 +42,7 @@ public class MainActivity extends ActionBarActivity {
     private yearButton secondSelectedYear;
     private boolean gameOver;
     private int numOfPlayers;
+    private String m_Text="";
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
     private Player player1 = new Player(1);
@@ -198,32 +203,67 @@ public class MainActivity extends ActionBarActivity {
     public void newQuestion() {
 
 
-        if (!yearlist.isEmpty()){
+        if (!yearlist.isEmpty()) {
             currentQuestion = yearlist.get(0);
             yearlist.remove(0);
             playedYears.add(currentQuestion);
             question.setText(currentQuestion.getQuestion());
-        }
+        } else {
+            question.setText("Slut på frågor mannen, Game Over");
+            answerButton.setText("Nytt spel");
+            gameOver = true;
+            answerButton.setEnabled(true);
 
-        else {
+            //add highScore if it's a new highscore
+            if (dbHelper.getLowestScore(db) < player1.getScore()) {
+                dbHelper.deleteHighScore(db);
                 question.setText("Slut på frågor mannen, Game Over");
                 answerButton.setText("Nytt spel");
                 gameOver = true;
                 answerButton.setEnabled(true);
 
-            //add highScore if it's a new highscore
-                if( dbHelper.getLowestScore(db)< player1.getScore()) {
+                //add highScore if it's a new highscore
+                if (dbHelper.getLowestScore(db) < player1.getScore()) {
                     dbHelper.deleteHighScore(db);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("YOU'RE THE BOSS.    NEW HIGHSCORE!!!");
+
+                    // Set up the input
+                    final EditText input = new EditText(this);
+                    // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                    builder.setView(input);
+
+                    // Set up the buttons
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            m_Text = input.getText().toString();
+
+                            dbHelper.addHighScore(player1.getScore(), m_Text, db);
+                        }
+                    });
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.show();
+
+
                     dbHelper.addHighScore(player1.getScore(), "AAA", db);
 
-                }
-                else{
+                } else {
                     //do nothing
                 }
 
 
-        }
+            }
 
+        }
     };
 
 
