@@ -15,13 +15,15 @@ import org.xmlpull.v1.XmlPullParserException;
  */
 public class TimelineDbHelper extends SQLiteOpenHelper {
 
+    private Integer intKey = 0;
     private static final String DATABASE_NAME = "QUESTIONS.DB";
     private static final int DATABASE_VERSION = 1;
     private static final String CREATE_QUERY = "CREATE TABLE " + TimelineTables.Questions.TABLE_NAME+" ("+
              TimelineTables.Questions.COL_CATEGORY+" TEXT,"+ TimelineTables.Questions.COL_QUESTION+" TEXT,"+
              TimelineTables.Questions.COL_YEAR+" INTEGER);";
     private static final String CREATE_QUERY2 = "CREATE TABLE " + TimelineTables.HighScore.TABLE_NAME+" ("+
-             TimelineTables.HighScore.COL_SCORE+" INTEGER," + TimelineTables.HighScore.COL_NAME+" TEXT);";
+             TimelineTables.HighScore.COL_INTKEY+" INTEGER,"+ TimelineTables.HighScore.COL_SCORE +" INTEGER,"
+             + TimelineTables.HighScore.COL_NAME+" TEXT);";
     Context context;
 
 
@@ -29,7 +31,6 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         super (context,DATABASE_NAME, null, DATABASE_VERSION);
         Log.e("DATABASE OPERATIONS", "DATABASE CREATED / OPENED");
         this.context = context;
-
     }
 
 
@@ -95,11 +96,11 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
               e.printStackTrace();
         }
 
-        addHighScore(0,"XXX",db);
-        addHighScore(0,"XXX",db);
-        addHighScore(0,"XXX",db);
-        addHighScore(3, "BAD", db);
-        addHighScore(4, "LOL", db);
+        addHighScore(0,"1",db);
+        addHighScore(0,"2",db);
+        addHighScore(0,"3",db);
+        addHighScore(0, "4", db);
+        addHighScore(0, "5", db);
 
     }
 
@@ -114,9 +115,11 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     public void addHighScore (Integer highScore, String player, SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
+        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intKey);
         contentValues.put(TimelineTables.HighScore.COL_SCORE, highScore);
         contentValues.put(TimelineTables.HighScore.COL_NAME, player);
         db.insert(TimelineTables.HighScore.TABLE_NAME, null, contentValues);
+        intKey ++;
             Log.e("DATABASE OPERATIONS", "One high score row inserted");
     }
 
@@ -138,7 +141,12 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     }
 
     public void deleteHighScore (SQLiteDatabase db){
-        db.execSQL("delete from "+ TimelineTables.HighScore.TABLE_NAME+" where "+TimelineTables.HighScore.COL_SCORE+"='"+getLowestScore(db)+"'");
+        Integer minScore = getLowestScore(db);
+        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_INTKEY },
+                TimelineTables.HighScore.COL_SCORE + "=?", new String [] {String.valueOf(minScore)},null, null, TimelineTables.HighScore.COL_INTKEY +" DESC");
+        c.moveToFirst();
+        Integer deleteKey = c.getInt(1);
+        db.execSQL("delete from "+ TimelineTables.HighScore.TABLE_NAME+" where "+TimelineTables.HighScore.COL_INTKEY+"='"+deleteKey+"'");
     }
 
     public int getLowestScore(SQLiteDatabase db){
