@@ -15,14 +15,7 @@ import android.widget.Button;
 
 public class Category extends ActionBarActivity {
 
-    boolean category1;
-    boolean category2;
-    boolean category3;
-    boolean category4;
-    boolean category5;
-    boolean category6;
-    boolean category7;
-    boolean category8;
+    private static String selectedCategory = "noSelectedCategory";
 
     private Button button1;
     private Button button2;
@@ -66,92 +59,92 @@ public class Category extends ActionBarActivity {
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (category1=true){
-                    category1=false;
-                    String pathname="/Timeline-Alfa/app/src/main/res/drawable/delete.ico";
-                    findViewById(R.id.Category1check).setBackground(Drawable.createFromPath(pathname));
-
+                String buttonText = (String) ((Button) findViewById(R.id.Category1)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("noSelectedCategory");
                 }
                 else
-                    category1=true;
+                    setSelectedCategory(buttonText);
 
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (category2=true){
-                    category2=false;
-
+                String buttonText = (String) ((Button) findViewById(R.id.Category2)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("noSelectedCategory");
                 }
                 else
-                    category2=true;
+                    setSelectedCategory(buttonText);
 
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (category3=true){
-                    category3=false;
-
+                String buttonText = (String) ((Button) findViewById(R.id.Category3)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("noSelectedCategory");
                 }
                 else
-                    category3=true;
+                    setSelectedCategory(buttonText);
 
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (category4=true){
-                    category4=false;
-
+                String buttonText = (String) ((Button) findViewById(R.id.Category4)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("noSelectedCategory");
                 }
                 else
-                    category4=true;
+                    setSelectedCategory(buttonText);
 
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (category5=true){
-                    category5=false;
-
+                String buttonText = (String) ((Button) findViewById(R.id.Category5)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("noSelectedCategory");
                 }
                 else
-                    category5=true;
-
+                    setSelectedCategory(buttonText);
 
             }
         });
         button6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (category6=true){
-                    category6=false;
-
+                String buttonText = (String) ((Button) findViewById(R.id.Category6)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("noSelectedCategory");
                 }
                 else
-                    category6=true;
+                    setSelectedCategory(buttonText);
 
             }
         });
         button7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (category7=true){
-                    category7=false;
-
+                String buttonText = (String) ((Button) findViewById(R.id.Category7)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("noSelectedCategory");
                 }
                 else
-                    category7=true;
+                    setSelectedCategory(buttonText);
+
             }
         });
         button8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (category8=true){
-                    category8=false;
-
+                String buttonText = (String) ((Button) findViewById(R.id.Category8)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("noSelectedCategory");
                 }
                 else
-                    category8=true;
+                    setSelectedCategory(buttonText);
+
             }
+
         });
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -171,6 +164,13 @@ public class Category extends ActionBarActivity {
         });
 
 
+    }
+    public void setSelectedCategory(String category) {
+        selectedCategory = category;
+    }
+
+    public String getSelectedCategory() {
+        return selectedCategory;
     }
 
 }
