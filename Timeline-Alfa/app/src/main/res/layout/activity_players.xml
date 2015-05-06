@@ -5,19 +5,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center">
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NUMBER OF PLAYERS"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"/>
     <LinearLayout
         android:id="@+id/playerLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp"
-        android:gravity="center">
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        >
         <Button
             android:id="@+id/OnePlayer"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginBottom="10dp"
+
 
 
             android:text="1"
@@ -76,20 +83,6 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
-            android:id="@+id/currentNumberPlayers"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/mybutton2"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
-            android:textAllCaps="false"
-
-
-
-            android:textSize="@dimen/abc_text_size_display_1_material"
-            android:gravity="center"/>
 
         <Button
             android:id="@+id/BackFromPlayer"
@@ -101,7 +94,8 @@
             android:textAllCaps="false"
             android:text="Back to Setup"
             android:textSize="@dimen/abc_text_size_display_1_material"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginRight="15dp"/>
 
         <Button
             android:id="@+id/ChooseCategory"
