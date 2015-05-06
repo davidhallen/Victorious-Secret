@@ -227,7 +227,7 @@ public class MainActivity extends ActionBarActivity {
                     dbHelper.deleteHighScore(db);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setTitle("YOU'RE THE BOSS.    NEW HIGHSCORE!!!");
+                    builder.setTitle("YOU'RE THE BOSS.\nNEW HIGHSCORE!!!");
 
                     // Set up the input
                     final EditText input = new EditText(this);
