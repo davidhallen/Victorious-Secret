@@ -3,7 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
     <RelativeLayout
         android:id="@+id/player_score_bar"
         android:layout_width="fill_parent"
@@ -22,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="0"
+            android:text="0 p"
             android:textSize="18sp"/>
         <TextView
             android:id="@+id/player2_text"
@@ -38,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="0"
+            android:text="0 p"
             android:textSize="18sp"/>
         <TextView
             android:id="@+id/player3_text"
@@ -54,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="0"
+            android:text="0 p"
             android:textSize="18sp"/>
         <TextView
             android:id="@+id/player4_text"
@@ -70,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="0"
+            android:text="0 p"
             android:textSize="18sp"/>
         <TextView
             android:id="@+id/player5_text"
@@ -86,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="0"
+            android:text="0 p"
             android:textSize="18sp"/>
         <TextView
             android:id="@+id/ActivePlayer"
@@ -102,7 +103,8 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:paddingTop="20dp">
 
         <LinearLayout
             android:id="@+id/timelineLayout"
@@ -115,8 +117,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:paddingTop="15dp">
 
         <TextView
             android:id="@+id/question"
@@ -129,10 +131,11 @@
 
         <Button
             android:id="@+id/answerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/mybutton2"
+            android:background="@drawable/placecard_button"
             android:onClick="newButton"
             android:text="Placera årtal" />
     </RelativeLayout>
