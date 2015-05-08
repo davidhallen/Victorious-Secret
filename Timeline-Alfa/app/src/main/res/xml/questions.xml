@@ -38,7 +38,7 @@
 
     </content>
 
-    <content>
+    <!-- <content>
         <category>History</category>
         <question>
             Första världskriget inleds
@@ -142,5 +142,7 @@
         </question>
         <year>1626</year>
     </content>
+
+    -->
 
 </resources>

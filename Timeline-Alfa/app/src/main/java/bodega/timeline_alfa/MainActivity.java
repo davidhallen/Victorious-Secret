@@ -230,6 +230,10 @@ public class MainActivity extends ActionBarActivity {
                 answerButton.setEnabled(true);
 
                 //add highScore if it's a new highscore
+                if(player1.getScore() >0 && dbHelper.getNumberOfHighScores(db) < 5){
+                    
+                }
+
                 if (dbHelper.getLowestScore(db) < player1.getScore()) {
                     dbHelper.deleteHighScore(db);
 
@@ -261,7 +265,7 @@ public class MainActivity extends ActionBarActivity {
                     builder.show();
 
 
-                    dbHelper.addHighScore(player1.getScore(), "AAA", db);
+                    //dbHelper.addHighScore(player1.getScore(), "AAA", db);
 
                 } else {
                     //do nothing
@@ -360,7 +364,7 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 else if (x == playedYears.size()-1){
-                    year.setBackgroundResource(R.drawable.ragnarok);
+                    year.setBackgroundResource(R.drawable.ragnarokpicture);
                     year.setText("Ragnarok!!!");
                 }
 

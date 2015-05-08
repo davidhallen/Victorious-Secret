@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -95,13 +96,6 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
             Log.w("Error", "IOExp");
               e.printStackTrace();
         }
-
-        addHighScore(0,"1",db);
-        addHighScore(0,"2",db);
-        addHighScore(0,"3",db);
-        addHighScore(0, "4", db);
-        addHighScore(0, "5", db);
-
     }
 
     public void addQuestion (String category, String question, Integer year, SQLiteDatabase db){
@@ -115,7 +109,8 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     public void addHighScore (Integer highScore, String player, SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intKey);
+        int intK = getHighestHighScoreKeyInTable(db);
+        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intK);
         contentValues.put(TimelineTables.HighScore.COL_SCORE, highScore);
         contentValues.put(TimelineTables.HighScore.COL_NAME, player);
         db.insert(TimelineTables.HighScore.TABLE_NAME, null, contentValues);
@@ -148,20 +143,59 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     public void deleteHighScore (SQLiteDatabase db){
         Integer minScore = getLowestScore(db);
-        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_INTKEY},
-                TimelineTables.HighScore.COL_SCORE + "=?", new String[]{String.valueOf(minScore)}, null, null, TimelineTables.HighScore.COL_INTKEY + " DESC");
-        c.moveToFirst();
-        Integer deleteKey = c.getInt(1);
-        db.execSQL("delete from "+ TimelineTables.HighScore.TABLE_NAME+" where "+TimelineTables.HighScore.COL_INTKEY+"='"+deleteKey+"'");
+        if (minScore != 0) {
+            Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_INTKEY},
+                    TimelineTables.HighScore.COL_SCORE + "=?", new String[]{String.valueOf(minScore)}, null, null, TimelineTables.HighScore.COL_INTKEY + " DESC");
+            c.moveToFirst();
+            Integer deleteKey = c.getInt(1);
+            db.execSQL("delete from " + TimelineTables.HighScore.TABLE_NAME + " where " + TimelineTables.HighScore.COL_INTKEY + "='" + deleteKey + "'");
+        }
     }
 
     public int getLowestScore(SQLiteDatabase db){
         Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "min(" + TimelineTables.HighScore.COL_SCORE + ")" }, null, null,
                 null, null, null);
-        c.moveToFirst();
-        int lowestScore = c.getInt(0);
-        return lowestScore;
+        if(!c.moveToFirst()){
+            return 0;
+        }
+        else {
+            c.moveToFirst();
+            int lowestScore = c.getInt(0);
+            return lowestScore;
+        }
     }
+
+    public int getHighestHighScoreKeyInTable (SQLiteDatabase db){
+        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "max(" + TimelineTables.HighScore.COL_INTKEY + ")" }, null, null,
+                null, null, null);
+        if (!c.moveToFirst()){
+            return 0;
+        }
+        else {
+            return c.getInt(0);
+        }
+    }
+
+    public int getNumberOfHighScores (SQLiteDatabase db) {
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, TimelineTables.HighScore.TABLE_NAME);
+        return numRows;
+    }
+/*
+        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] {TimelineTables.HighScore.COL_SCORE}, null, null,
+                null, null, null);
+        if (!c.moveToFirst()){
+            return 0;
+        }
+        else {
+            int i = 0;
+            do {
+                i++;
+
+            }
+            while (c.moveToNext());
+            return i;
+        }
+    }*/
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
