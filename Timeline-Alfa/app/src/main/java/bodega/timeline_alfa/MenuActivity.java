@@ -43,7 +43,7 @@ public class MenuActivity extends ActionBarActivity {
         });
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this,Setup.class));
+                startActivity(new Intent(MenuActivity.this,PlayersMenu.class));
             }
         });
     }

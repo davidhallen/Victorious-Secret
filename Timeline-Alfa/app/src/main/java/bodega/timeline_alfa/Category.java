@@ -169,7 +169,7 @@ public class Category extends ActionBarActivity {
         selectedCategory = category;
     }
 
-    public String getSelectedCategory() {
+    public static String getSelectedCategory() {
         return selectedCategory;
     }
 

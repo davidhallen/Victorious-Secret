@@ -30,6 +30,7 @@ import android.widget.TextView;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -54,6 +55,8 @@ public class MainActivity extends ActionBarActivity {
     private Drawable d_markedBigbang;
     private Drawable d_ragnarok;
     private Drawable d_markedRagnarok;
+    private String selectedCategory;
+
 
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
@@ -79,7 +82,6 @@ public class MainActivity extends ActionBarActivity {
 
     private PlayersMenu pm;
     private Category cat;
-    private String selectedCategory;
     private int nrOfPlayers;
     private int activePlayer;
     private int score;
@@ -123,9 +125,8 @@ public class MainActivity extends ActionBarActivity {
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
         activePlayer = 1;
 
-        Category cat = new Category();
-        selectedCategory = cat.getSelectedCategory();
 
+        selectedCategory = Category.getSelectedCategory();
 
         listOfPlayers.add(player1);
         listOfPlayers.add(player2);
@@ -384,6 +385,8 @@ public class MainActivity extends ActionBarActivity {
                     year.setBackground(d_ragnarok);
                     year.setText("Domedagen!");
                     year.setTextSize(17);
+                    year.setBackgroundResource(R.drawable.ragnarrok);
+                    year.setText("Ragnarok!!!");
                 }
 
                 year.setOnClickListener(new View.OnClickListener() {
