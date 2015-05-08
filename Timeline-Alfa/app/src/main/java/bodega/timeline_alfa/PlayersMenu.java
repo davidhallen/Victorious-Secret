@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.app.Activity;
 
@@ -25,7 +26,6 @@ import java.util.ArrayList;
 public class PlayersMenu extends ActionBarActivity {
 
     private static int nrOfPlayers = 1;
-    private Button button6;
     //private ArrayList<Button> menuButtons;
     private Button button1;
     private Button button2;
@@ -36,9 +36,8 @@ public class PlayersMenu extends ActionBarActivity {
     private Button button8;
     private Button lastClickedPlayerButton;
 
-    private Resources res1;
+    private Resources res;
     private Drawable s1;
-    private Resources res2;
     private Drawable s2;
 
 
@@ -50,10 +49,9 @@ public class PlayersMenu extends ActionBarActivity {
 
         setContentView(R.layout.activity_players);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        res1 = getResources();
-        s1 = res1. getDrawable(R.drawable.playerbutton);
-        res2 = getResources();
-        s2 = res2. getDrawable(R.drawable.marked_playerbutton);
+        res = getResources();
+        s1 = res. getDrawable(R.drawable.playerbutton);
+        s2 = res. getDrawable(R.drawable.marked_playerbutton);
         button1 = (Button) findViewById(R.id.OnePlayer);
         button2 = (Button) findViewById(R.id.TwoPlayers);
         button3 = (Button) findViewById(R.id.ThreePlayers);
@@ -61,8 +59,23 @@ public class PlayersMenu extends ActionBarActivity {
         button5 = (Button) findViewById(R.id.FivePlayers);
         button7 = (Button) findViewById(R.id.BackFromPlayer);
         button8 = (Button) findViewById(R.id.ChooseCategory);
-        lastClickedPlayerButton = button1;
-        button1.setBackground(s2);
+        /*if (lastClickedPlayerButton == null)
+            lastClickedPlayerButton = button1;
+        lastClickedPlayerButton.setBackground(s2);*/
+
+        switch (nrOfPlayers) {
+            case 1: lastClickedPlayerButton = button1;
+                    break;
+            case 2: lastClickedPlayerButton = button2;
+                    break;
+            case 3: lastClickedPlayerButton = button3;
+                    break;
+            case 4: lastClickedPlayerButton = button4;
+                    break;
+            case 5: lastClickedPlayerButton = button5;
+                    break;
+        }
+        lastClickedPlayerButton.setBackground(s2);
 
         //menuButtons.add(button1);
         //menuButtons.add(button2);
@@ -142,7 +155,7 @@ public class PlayersMenu extends ActionBarActivity {
 
     }
 
-    public int getNrOfPlayers() {
+    public static int getNrOfPlayers() {
         return nrOfPlayers;
     }
 

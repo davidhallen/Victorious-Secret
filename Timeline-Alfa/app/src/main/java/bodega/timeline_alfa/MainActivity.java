@@ -4,13 +4,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.InputType;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +47,14 @@ public class MainActivity extends ActionBarActivity {
     private boolean gameOver;
     private int numOfPlayers;
     private String m_Text="";
+    private Resources resCards;
+    private Drawable d_card;
+    private Drawable d_markedCard;
+    private Drawable d_bigBang;
+    private Drawable d_markedBigbang;
+    private Drawable d_ragnarok;
+    private Drawable d_markedRagnarok;
+
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
     private Player player1 = new Player(1);
@@ -99,8 +111,16 @@ public class MainActivity extends ActionBarActivity {
         /*yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
         yearlist.add(y7);*/
 
-        pm = new PlayersMenu();
-        nrOfPlayers = pm.getNrOfPlayers();
+        resCards = getResources();
+        d_card = resCards.getDrawable(R.drawable.card);
+        d_markedCard = resCards.getDrawable(R.drawable.marked_card);
+        d_bigBang = resCards.getDrawable(R.drawable.bigbang);
+        d_markedBigbang = resCards.getDrawable(R.drawable.marked_bigbang);
+        d_ragnarok = resCards.getDrawable(R.drawable.ragnarrok);
+        d_markedRagnarok = resCards.getDrawable(R.drawable.marked_ragnarok);
+
+        //pm = new PlayersMenu();
+        nrOfPlayers = PlayersMenu.getNrOfPlayers();
         activePlayer = 1;
 
         Category cat = new Category();
@@ -288,7 +308,7 @@ public class MainActivity extends ActionBarActivity {
                 listOfPlayers.get(activePlayer-1).setScore(1);
                 textViewArrayListScore.get(activePlayer-1).setTextColor(-1);
 
-                textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore()));
+                textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore())+ " p");
 
 
                 //Second way of setting score
@@ -320,7 +340,8 @@ public class MainActivity extends ActionBarActivity {
 
                 textViewArrayListScore.get(activePlayer-1).setTextColor(-65536);
                 question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
-
+                listOfPlayers.get(activePlayer-1).setScore(-1);
+                textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore()) + " p");
 
                 //nextTurn();
             }
@@ -350,18 +371,19 @@ public class MainActivity extends ActionBarActivity {
                 Button year = new Button(this);
                 int s = playedYears.get(x).getYear();
                 String q = playedYears.get(x).getQuestion();
-                year.setText(""+s+ "             " + q);
-                year.setBackgroundColor(Color.BLUE);
+                year.setText(s + "\n" + q);
+                year.setBackground(d_card);
                 year.setLayoutParams(layoutParams);
                 if (x == 0){
-                    year.setBackgroundResource(R.drawable.bigbangpicture);
-                    year.setText("Big Bang");
-                    year.setTextSize(20);
+                    year.setBackground(d_bigBang);
+                    year.setText("Big Bang!");
+                    year.setTextSize(17);
                 }
 
                 else if (x == playedYears.size()-1){
-                    year.setBackgroundResource(R.drawable.ragnarok);
-                    year.setText("Ragnarok!!!");
+                    year.setBackground(d_ragnarok);
+                    year.setText("Domedagen!");
+                    year.setTextSize(17);
                 }
 
                 year.setOnClickListener(new View.OnClickListener() {
@@ -394,11 +416,11 @@ public class MainActivity extends ActionBarActivity {
 
         if (firstSelectedYear == null && tempYear != secondSelectedYear){
             if (secondSelectedYear==null) {
-                view.setBackgroundColor(Color.RED);
+                view.setBackground(d_markedCard);
                 firstSelectedYear = tempYear;
             }
             else if (isBeside(tempYear,secondSelectedYear)) {
-                view.setBackgroundColor(Color.RED);
+                view.setBackground(d_markedCard);
                 firstSelectedYear = tempYear;
                 answerButton.setEnabled(true);
             }
@@ -408,11 +430,11 @@ public class MainActivity extends ActionBarActivity {
 
         else if(secondSelectedYear == null && tempYear!= firstSelectedYear) {
             if (firstSelectedYear==null) {
-                view.setBackgroundColor(Color.RED);
+                view.setBackground(d_markedCard);
                 secondSelectedYear = tempYear;
             }
             else if (isBeside(tempYear,firstSelectedYear)) {
-                view.setBackgroundColor(Color.RED);
+                view.setBackground(d_markedCard);
                 secondSelectedYear = tempYear;
                 answerButton.setEnabled(true);
             }
@@ -421,14 +443,14 @@ public class MainActivity extends ActionBarActivity {
         }
 
         else if (tempYear == firstSelectedYear){
-            view.setBackgroundColor(Color.BLUE);
+            view.setBackground(d_card);
             firstSelectedYear = null;
             answerButton.setEnabled(false);
 
         }
 
         else if (tempYear == secondSelectedYear){
-            view.setBackgroundColor(Color.BLUE);
+            view.setBackground(d_card);
             secondSelectedYear = null;
             answerButton.setEnabled(false);
 
