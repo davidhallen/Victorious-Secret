@@ -110,9 +110,6 @@ public class MainActivity extends ActionBarActivity {
         answerButton = (Button) findViewById(R.id.answerButton);
         yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
         yearButton ragnarok = new yearButton (2212, "Ragnarok!");
-        /*yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
-        yearlist.add(y7);*/
-
         resCards = getResources();
         d_card = resCards.getDrawable(R.drawable.card);
         d_markedCard = resCards.getDrawable(R.drawable.marked_card);
@@ -124,7 +121,6 @@ public class MainActivity extends ActionBarActivity {
         //pm = new PlayersMenu();
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
         activePlayer = 1;
-
 
         selectedCategory = Category.getSelectedCategory();
 
@@ -229,8 +225,6 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void newQuestion() {
-
-
         if (!yearlist.isEmpty()) {
             currentQuestion = yearlist.get(0);
             yearlist.remove(0);
@@ -241,62 +235,48 @@ public class MainActivity extends ActionBarActivity {
             answerButton.setText("Nytt spel");
             gameOver = true;
             answerButton.setEnabled(true);
-
+            String lol = Integer.toString(player1.getScore());
+            Log.e("LOL", lol);
             //add highScore if it's a new highscore
-            if (dbHelper.getLowestScore(db) < player1.getScore()) {
+            if (player1.getScore() > 0) {
+                addHighScore();
+            } /*else if (player1.getScore() > dbHelper.getLowestScore(db)) {
                 dbHelper.deleteHighScore(db);
-                question.setText("Slut på frågor mannen, Game Over");
-                answerButton.setText("Nytt spel");
-                gameOver = true;
-                answerButton.setEnabled(true);
-
-                //add highScore if it's a new highscore
-                if(player1.getScore() >0 && dbHelper.getNumberOfHighScores(db) < 5){
-                    
-                }
-
-                if (dbHelper.getLowestScore(db) < player1.getScore()) {
-                    dbHelper.deleteHighScore(db);
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setTitle("YOU'RE THE BOSS.\nNEW HIGHSCORE!!!");
-
-                    // Set up the input
-                    final EditText input = new EditText(this);
-                    // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
-                    builder.setView(input);
-
-                    // Set up the buttons
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            m_Text = input.getText().toString();
-
-                            dbHelper.addHighScore(player1.getScore(), m_Text, db);
-                        }
-                    });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-
-                    builder.show();
-
-
-                    //dbHelper.addHighScore(player1.getScore(), "AAA", db);
-
-                } else {
-                    //do nothing
-                }
-
-
-            }
-
+                addHighScore();
+                if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5)
+            }*/
         }
-    };
+    }
+
+    public void addHighScore() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("YOU'RE THE BOSS.\nNEW HIGHSCORE!!!");
+        // Set up the input
+        final EditText input = new EditText(this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                m_Text = input.getText().toString();
+
+                dbHelper.addHighScore(player1.getScore(), m_Text, db);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+    }
 
 
     public void newButton (View view) {

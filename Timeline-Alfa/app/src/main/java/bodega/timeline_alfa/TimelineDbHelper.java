@@ -110,11 +110,10 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     public void addHighScore (Integer highScore, String player, SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
         int intK = getHighestHighScoreKeyInTable(db);
-        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intK);
+        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intK +1);
         contentValues.put(TimelineTables.HighScore.COL_SCORE, highScore);
         contentValues.put(TimelineTables.HighScore.COL_NAME, player);
         db.insert(TimelineTables.HighScore.TABLE_NAME, null, contentValues);
-        intKey ++;
             Log.e("DATABASE OPERATIONS", "One high score row inserted");
     }
 
