@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
     private Drawable d_ragnarok;
     private Drawable d_markedRagnarok;
     private String selectedCategory;
-    private int numberOfQuestions = 5;
+    private int numberOfQuestions;
 
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
@@ -130,7 +130,7 @@ public class MainActivity extends ActionBarActivity {
             numberOfQuestions = 3*nrOfPlayers;
         }
 
-        selectedCategory = Category.getSelectedCategory();
+        selectedCategory = Category.getSelectedCategory().toUpperCase();
 
         listOfPlayers.add(player1);
         listOfPlayers.add(player2);
@@ -198,7 +198,7 @@ public class MainActivity extends ActionBarActivity {
         dbHelper = new TimelineDbHelper(context);
         db = dbHelper.getReadableDatabase();
 
-        cursor = dbHelper.getQuestion(db, "History",numberOfQuestions);
+        cursor = dbHelper.getQuestion(db, selectedCategory,numberOfQuestions);
 
         if (cursor.moveToFirst()){
             do {
@@ -231,7 +231,7 @@ public class MainActivity extends ActionBarActivity {
             answerButton.setEnabled(true);
 
             //only add highScore if single-player game and all categories
-            if(nrOfPlayers == 1 && selectedCategory == "noSelectedCategory"){
+            if(nrOfPlayers == 1 && selectedCategory == "NOSELECTEDCATEGORY"){
                 //add highScore if it's a new highscore
                 if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5) {
                     addHighScore();

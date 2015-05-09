@@ -75,13 +75,13 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
                 else if (eventType == XmlResourceParser.TEXT){
                     if (currentLevel.equalsIgnoreCase("category")){
-                        newCategory = parser.getText();
+                        newCategory = parser.getText().toUpperCase().trim();
                     }
                     if (currentLevel.equalsIgnoreCase("question")){
                         newQuestion = parser.getText();
                     }
                     if (currentLevel.equalsIgnoreCase("year")){
-                        String interYear = parser.getText();
+                        String interYear = parser.getText().trim();
                         newYear = Integer.parseInt(interYear);
                     }
                 }
@@ -123,7 +123,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
                 TimelineTables.Questions.COL_YEAR};
 
-        if (category == "noSelectedCategory") {
+        if (category == "NOSELECTEDCATEGORY") {
             cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null,null, "RANDOM()", numQuest);
             return cursor;
         }
