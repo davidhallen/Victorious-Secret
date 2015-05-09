@@ -117,18 +117,19 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
             Log.e("DATABASE OPERATIONS", "One high score row inserted");
     }
 
-    public Cursor getQuestion (SQLiteDatabase db, String category) {
+    public Cursor getQuestion (SQLiteDatabase db, String category, int numberOfQuestions) {
+        String numQuest = Integer.toString(numberOfQuestions);
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
                 TimelineTables.Questions.COL_YEAR};
 
-        if (category == "AllCategories") {
-            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null, null, null);
+        if (category == "noSelectedCategory") {
+            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null,null, "RANDOM()", numQuest);
             return cursor;
         }
         else{
             cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_CATEGORY + "=?",
-                    new String [] {category},null, null, null);
+                    new String [] {category},null, null, "RANDOM()", numQuest);
             return cursor;
         }
     }
@@ -179,22 +180,6 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         int numRows = (int) DatabaseUtils.queryNumEntries(db, TimelineTables.HighScore.TABLE_NAME);
         return numRows;
     }
-/*
-        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] {TimelineTables.HighScore.COL_SCORE}, null, null,
-                null, null, null);
-        if (!c.moveToFirst()){
-            return 0;
-        }
-        else {
-            int i = 0;
-            do {
-                i++;
-
-            }
-            while (c.moveToNext());
-            return i;
-        }
-    }*/
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

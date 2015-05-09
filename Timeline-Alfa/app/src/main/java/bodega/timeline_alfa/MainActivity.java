@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
     private Drawable d_ragnarok;
     private Drawable d_markedRagnarok;
     private String selectedCategory;
-
+    private int numberOfQuestions = 5;
 
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
@@ -100,6 +100,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         init();
     }
 
@@ -121,6 +122,13 @@ public class MainActivity extends ActionBarActivity {
         //pm = new PlayersMenu();
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
         activePlayer = 1;
+
+        if(nrOfPlayers == 1){
+            numberOfQuestions = 5;
+        }
+        else {
+            numberOfQuestions = 3*nrOfPlayers;
+        }
 
         selectedCategory = Category.getSelectedCategory();
 
@@ -190,12 +198,11 @@ public class MainActivity extends ActionBarActivity {
         dbHelper = new TimelineDbHelper(context);
         db = dbHelper.getReadableDatabase();
 
-        cursor = dbHelper.getQuestion(db, "History");
+        cursor = dbHelper.getQuestion(db, "History",numberOfQuestions);
 
         if (cursor.moveToFirst()){
             do {
                 String question; Integer year;
-
                 question = cursor.getString(1);
                 year = cursor.getInt(2);
                 yearButton yearB = new yearButton(year, question);
@@ -204,23 +211,10 @@ public class MainActivity extends ActionBarActivity {
             } while (cursor.moveToNext());
         }
 
-
        playedYears.clear();
        playedYears.add(bigbang); playedYears.add(ragnarok);
-       Collections.shuffle(yearlist);
+       //Collections.shuffle(yearlist);
        printButtons();
-        playedYears.clear();
-        playedYears.add(bigbang); playedYears.add(ragnarok);
-        Collections.shuffle(yearlist);
-        printButtons();
-
-        if(selectedCategory.equals("noSelectedCategory")){
-
-        }
-        else{
-
-        }
-
     }
 
 
@@ -235,16 +229,18 @@ public class MainActivity extends ActionBarActivity {
             answerButton.setText("Nytt spel");
             gameOver = true;
             answerButton.setEnabled(true);
-            String lol = Integer.toString(player1.getScore());
-            Log.e("LOL", lol);
-            //add highScore if it's a new highscore
-            if (player1.getScore() > 0) {
-                addHighScore();
-            } /*else if (player1.getScore() > dbHelper.getLowestScore(db)) {
-                dbHelper.deleteHighScore(db);
-                addHighScore();
-                if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5)
-            }*/
+
+            //only add highScore if single-player game and all categories
+            if(nrOfPlayers == 1 && selectedCategory == "noSelectedCategory"){
+                //add highScore if it's a new highscore
+                if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5) {
+                    addHighScore();
+                }
+                else if (player1.getScore() > dbHelper.getLowestScore(db)) {
+                    dbHelper.deleteHighScore(db);
+                    addHighScore();
+                }
+            }
         }
     }
 
@@ -254,7 +250,7 @@ public class MainActivity extends ActionBarActivity {
         builder.setTitle("YOU'RE THE BOSS.\nNEW HIGHSCORE!!!");
         // Set up the input
         final EditText input = new EditText(this);
-        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        // Specify the type of input expected
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
         builder.setView(input);
 
@@ -286,15 +282,14 @@ public class MainActivity extends ActionBarActivity {
             int j = Math.min(firstSelectedYear.getYear(), secondSelectedYear.getYear());
 
             if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
-                printButtons();
+
 
                 //First way of setting score
 
                 listOfPlayers.get(activePlayer-1).setScore(1);
                 textViewArrayListScore.get(activePlayer-1).setTextColor(-1);
-
                 textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore())+ " p");
-
+                printButtons();
 
                 //Second way of setting score
 
