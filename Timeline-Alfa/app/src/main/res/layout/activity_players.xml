@@ -85,27 +85,27 @@
 
 
         <Button
-            android:id="@+id/PlayPlayers"
+            android:id="@+id/PlayersBack"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/mybutton2"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:textAllCaps="false"
-            android:text="Play!"
+            android:text="Back"
             android:textSize="@dimen/abc_text_size_display_1_material"
             android:gravity="center"
             android:layout_marginRight="15dp"/>
 
         <Button
-            android:id="@+id/ChooseCategory"
+            android:id="@+id/PlayersNext"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/mybutton2"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:textAllCaps="false"
-            android:text="Category"
+            android:text="Next"
             android:textSize="@dimen/abc_text_size_display_1_material"
             android:gravity="center"/>
 

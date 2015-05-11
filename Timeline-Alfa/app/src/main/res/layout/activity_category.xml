@@ -111,7 +111,20 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/PlayCategory"
+            android:id="@+id/CategoryBack"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/mybutton2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textAllCaps="false"
+            android:text="Back"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"/>
+
+
+        <Button
+            android:id="@+id/CategoryPlay"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/mybutton2"
@@ -123,29 +136,6 @@
             android:textSize="@dimen/abc_text_size_display_1_material"
             android:gravity="center"/>
 
-        <Button
-            android:id="@+id/BackFromCategory"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/mybutton2"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:textAllCaps="false"
-            android:text="Setup"
-            android:textSize="@dimen/abc_text_size_display_1_material"
-            android:gravity="center"/>
-
-        <Button
-            android:id="@+id/ChooseTimeSpan"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/mybutton2"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:textAllCaps="false"
-            android:text="Time Span"
-            android:textSize="@dimen/abc_text_size_display_1_material"
-            android:gravity="center"/>
 
 
     </LinearLayout>

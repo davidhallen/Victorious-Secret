@@ -15,7 +15,7 @@ import android.widget.Button;
 
 public class Category extends ActionBarActivity {
 
-    private static String selectedCategory = "noSelectedCategory";
+    private static String selectedCategory = "NOSELECTEDCATEGORY";
 
     private Button button1;
     private Button button2;
@@ -27,8 +27,7 @@ public class Category extends ActionBarActivity {
     private Button button8;
 
     private Button playButton;
-    private Button backToSetUpButton;
-    private Button timeSpanButton;
+    private Button backButton;
 
 
 
@@ -52,16 +51,15 @@ public class Category extends ActionBarActivity {
         button7 = (Button) findViewById(R.id.Category7);
         button8 = (Button) findViewById(R.id.Category8);
 
-        playButton = (Button) findViewById(R.id.PlayCategory);
-        backToSetUpButton = (Button) findViewById(R.id.BackFromCategory);
-        timeSpanButton = (Button) findViewById(R.id.ChooseTimeSpan);
+        playButton = (Button) findViewById(R.id.CategoryPlay);
+        backButton = (Button) findViewById(R.id.CategoryBack);
 
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category1)).getText();
                 if (getSelectedCategory().equals(buttonText)){
-                    setSelectedCategory("noSelectedCategory");
+                    setSelectedCategory("NOSELECTEDCATEGORY");
                 }
                 else
                     setSelectedCategory(buttonText);
@@ -72,7 +70,7 @@ public class Category extends ActionBarActivity {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category2)).getText();
                 if (getSelectedCategory().equals(buttonText)){
-                    setSelectedCategory("noSelectedCategory");
+                    setSelectedCategory("NOSELECTEDCATEGORY");
                 }
                 else
                     setSelectedCategory(buttonText);
@@ -83,7 +81,7 @@ public class Category extends ActionBarActivity {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category3)).getText();
                 if (getSelectedCategory().equals(buttonText)){
-                    setSelectedCategory("noSelectedCategory");
+                    setSelectedCategory("NOSELECTEDCATEGORY");
                 }
                 else
                     setSelectedCategory(buttonText);
@@ -94,7 +92,7 @@ public class Category extends ActionBarActivity {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category4)).getText();
                 if (getSelectedCategory().equals(buttonText)){
-                    setSelectedCategory("noSelectedCategory");
+                    setSelectedCategory("NOSELECTEDCATEGORY");
                 }
                 else
                     setSelectedCategory(buttonText);
@@ -105,7 +103,7 @@ public class Category extends ActionBarActivity {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category5)).getText();
                 if (getSelectedCategory().equals(buttonText)){
-                    setSelectedCategory("noSelectedCategory");
+                    setSelectedCategory("NOSELECTEDCATEGORY");
                 }
                 else
                     setSelectedCategory(buttonText);
@@ -116,7 +114,7 @@ public class Category extends ActionBarActivity {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category6)).getText();
                 if (getSelectedCategory().equals(buttonText)){
-                    setSelectedCategory("noSelectedCategory");
+                    setSelectedCategory("NOSELECTEDCATEGORY");
                 }
                 else
                     setSelectedCategory(buttonText);
@@ -127,7 +125,7 @@ public class Category extends ActionBarActivity {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category7)).getText();
                 if (getSelectedCategory().equals(buttonText)){
-                    setSelectedCategory("noSelectedCategory");
+                    setSelectedCategory("NOSELECTEDCATEGORY");
                 }
                 else
                     setSelectedCategory(buttonText);
@@ -138,7 +136,7 @@ public class Category extends ActionBarActivity {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category8)).getText();
                 if (getSelectedCategory().equals(buttonText)){
-                    setSelectedCategory("noSelectedCategory");
+                    setSelectedCategory("NOSELECTEDCATEGORY");
                 }
                 else
                     setSelectedCategory(buttonText);
@@ -151,17 +149,13 @@ public class Category extends ActionBarActivity {
                 startActivity(new Intent(Category.this,MainActivity.class));
             }
         });
-        backToSetUpButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Category.this,Setup.class));
+                startActivity(new Intent(Category.this,PlayersMenu.class));
 
             }
         });
-        timeSpanButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(Category.this,TimeSpan.class));
-            }
-        });
+
 
 
     }
