@@ -17,60 +17,52 @@
             android:id="@+id/Category1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/money_bag"
-            android:text="Money Money"
+            android:background="@drawable/geopolitik"
+            android:text="Geopolitik"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
-        <ImageButton
-            android:id="@+id/Category1check"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checkmark"
-            />
+
         <Button
             android:id="@+id/Category2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/book_stack"
+            android:background="@drawable/litteratur"
 
-            android:text="Literature"
+            android:text="Litteratur"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
-        <ImageButton
-            android:id="@+id/Category2check"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checkmark"
-            />
-        <Button
+
+            <Button
             android:id="@+id/Category3"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="@drawable/arkitektur"
 
-            android:text="Category 3"
+            android:text="Arkitektur"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
-        <ImageButton
-            android:id="@+id/Category3check"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checkmark"
-            />
+
 
         <Button
             android:id="@+id/Category4"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="@drawable/krig"
 
-            android:text="Category 4"
+            android:text="Krig"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
-        <ImageButton
-            android:id="@+id/Category4check"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checkmark"
-            />
+
+        <Button
+            android:id="@+id/Category5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/uppfinningar"
+
+            android:text="Uppfinningar"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+
 
 
     </LinearLayout>
@@ -83,63 +75,61 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/Category5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-
-            android:text="Category 5"
-            android:textSize="@dimen/abc_text_size_button_material"/>
-
-        <ImageButton
-            android:id="@+id/Category5check"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checkmark"
-            />
-        <Button
             android:id="@+id/Category6"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="@drawable/kungar"
 
-            android:text="Category 6"
-            android:textSize="@dimen/abc_text_size_button_material"
-            android:gravity="center"/>
-        <ImageButton
-            android:id="@+id/Category6check"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checkmark"
-            />
+            android:text="Kungar"
+            android:textSize="@dimen/abc_text_size_button_material"/>
+
         <Button
             android:id="@+id/Category7"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="@drawable/musik"
 
-            android:text="Category 7"
+
+            android:text="Musik"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
-        <ImageButton
-            android:id="@+id/Category7check"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checkmark"
-            />
 
 
         <Button
             android:id="@+id/Category8"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="@drawable/antiken"
 
-            android:text="Category 8"
+            android:text="Antiken"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
-        <ImageButton
-            android:id="@+id/Category8check"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checkmark"
-            />
+
+
+
+
+        <Button
+            android:id="@+id/Category9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/upplysninsgstiden"
+
+
+            android:text="Upplysningen"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Category10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/industriella_revolutionen"
+
+
+            android:text="Industriella revolutionen"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"/>
+
 
 
     </LinearLayout>
@@ -152,7 +142,20 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/PlayCategory"
+            android:id="@+id/CategoryBack"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/mybutton2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textAllCaps="false"
+            android:text="Back"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"/>
+
+
+        <Button
+            android:id="@+id/CategoryPlay"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/mybutton2"
@@ -164,29 +167,6 @@
             android:textSize="@dimen/abc_text_size_display_1_material"
             android:gravity="center"/>
 
-        <Button
-            android:id="@+id/BackFromCategory"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/mybutton2"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:textAllCaps="false"
-            android:text="Setup"
-            android:textSize="@dimen/abc_text_size_display_1_material"
-            android:gravity="center"/>
-
-        <Button
-            android:id="@+id/ChooseTimeSpan"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/mybutton2"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:textAllCaps="false"
-            android:text="Time Span"
-            android:textSize="@dimen/abc_text_size_display_1_material"
-            android:gravity="center"/>
 
 
     </LinearLayout>

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -74,13 +75,13 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
                 else if (eventType == XmlResourceParser.TEXT){
                     if (currentLevel.equalsIgnoreCase("category")){
-                        newCategory = parser.getText();
+                        newCategory = parser.getText().toUpperCase().trim();
                     }
                     if (currentLevel.equalsIgnoreCase("question")){
                         newQuestion = parser.getText();
                     }
                     if (currentLevel.equalsIgnoreCase("year")){
-                        String interYear = parser.getText();
+                        String interYear = parser.getText().trim();
                         newYear = Integer.parseInt(interYear);
                     }
                 }
@@ -95,13 +96,6 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
             Log.w("Error", "IOExp");
               e.printStackTrace();
         }
-
-        addHighScore(0,"1",db);
-        addHighScore(0,"2",db);
-        addHighScore(0,"3",db);
-        addHighScore(0, "4", db);
-        addHighScore(0, "5", db);
-
     }
 
     public void addQuestion (String category, String question, Integer year, SQLiteDatabase db){
@@ -115,26 +109,27 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     public void addHighScore (Integer highScore, String player, SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intKey);
+        int intK = getHighestHighScoreKeyInTable(db);
+        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intK +1);
         contentValues.put(TimelineTables.HighScore.COL_SCORE, highScore);
         contentValues.put(TimelineTables.HighScore.COL_NAME, player);
         db.insert(TimelineTables.HighScore.TABLE_NAME, null, contentValues);
-        intKey ++;
             Log.e("DATABASE OPERATIONS", "One high score row inserted");
     }
 
-    public Cursor getQuestion (SQLiteDatabase db, String category) {
+    public Cursor getQuestion (SQLiteDatabase db, String category, int numberOfQuestions) {
+        String numQuest = Integer.toString(numberOfQuestions);
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
                 TimelineTables.Questions.COL_YEAR};
 
-        if (category == "AllCategories") {
-            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null, null, null);
+        if (category == "NOSELECTEDCATEGORY") {
+            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null,null, "RANDOM()", numQuest);
             return cursor;
         }
         else{
             cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_CATEGORY + "=?",
-                    new String [] {category},null, null, null);
+                    new String [] {category},null, null, "RANDOM()", numQuest);
             return cursor;
         }
     }
@@ -148,19 +143,42 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     public void deleteHighScore (SQLiteDatabase db){
         Integer minScore = getLowestScore(db);
-        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_INTKEY},
-                TimelineTables.HighScore.COL_SCORE + "=?", new String[]{String.valueOf(minScore)}, null, null, TimelineTables.HighScore.COL_INTKEY + " DESC");
-        c.moveToFirst();
-        Integer deleteKey = c.getInt(1);
-        db.execSQL("delete from "+ TimelineTables.HighScore.TABLE_NAME+" where "+TimelineTables.HighScore.COL_INTKEY+"='"+deleteKey+"'");
+        if (minScore != 0) {
+            Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_INTKEY},
+                    TimelineTables.HighScore.COL_SCORE + "=?", new String[]{String.valueOf(minScore)}, null, null, TimelineTables.HighScore.COL_INTKEY + " DESC");
+            c.moveToFirst();
+            Integer deleteKey = c.getInt(1);
+            db.execSQL("delete from " + TimelineTables.HighScore.TABLE_NAME + " where " + TimelineTables.HighScore.COL_INTKEY + "='" + deleteKey + "'");
+        }
     }
 
     public int getLowestScore(SQLiteDatabase db){
         Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "min(" + TimelineTables.HighScore.COL_SCORE + ")" }, null, null,
                 null, null, null);
-        c.moveToFirst();
-        int lowestScore = c.getInt(0);
-        return lowestScore;
+        if(!c.moveToFirst()){
+            return 0;
+        }
+        else {
+            c.moveToFirst();
+            int lowestScore = c.getInt(0);
+            return lowestScore;
+        }
+    }
+
+    public int getHighestHighScoreKeyInTable (SQLiteDatabase db){
+        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "max(" + TimelineTables.HighScore.COL_INTKEY + ")" }, null, null,
+                null, null, null);
+        if (!c.moveToFirst()){
+            return 0;
+        }
+        else {
+            return c.getInt(0);
+        }
+    }
+
+    public int getNumberOfHighScores (SQLiteDatabase db) {
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, TimelineTables.HighScore.TABLE_NAME);
+        return numRows;
     }
 
     @Override

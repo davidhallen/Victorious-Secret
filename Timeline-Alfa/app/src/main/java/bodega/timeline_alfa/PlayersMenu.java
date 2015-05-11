@@ -57,8 +57,8 @@ public class PlayersMenu extends ActionBarActivity {
         button3 = (Button) findViewById(R.id.ThreePlayers);
         button4 = (Button) findViewById(R.id.FourPlayers);
         button5 = (Button) findViewById(R.id.FivePlayers);
-        button7 = (Button) findViewById(R.id.BackFromPlayer);
-        button8 = (Button) findViewById(R.id.ChooseCategory);
+        button7 = (Button) findViewById(R.id.PlayersBack);
+        button8 = (Button) findViewById(R.id.PlayersNext);
         /*if (lastClickedPlayerButton == null)
             lastClickedPlayerButton = button1;
         lastClickedPlayerButton.setBackground(s2);*/
@@ -127,7 +127,7 @@ public class PlayersMenu extends ActionBarActivity {
         });
         button7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(PlayersMenu.this,Setup.class));
+                startActivity(new Intent(PlayersMenu.this,MenuActivity.class));
             }
         });
         button8.setOnClickListener(new View.OnClickListener() {
