@@ -38,7 +38,7 @@
 
     </content>
 
-    <content>
+     <content>
         <category>History</category>
         <question>
             Första världskriget inleds
@@ -142,5 +142,114 @@
         </question>
         <year>1626</year>
     </content>
+
+    <content>
+        <category> Literature</category>
+        <question>
+            The british author Geoffrey Chaucer, best known for Canterbury Tales, dies
+        </question>
+        <year> 1400</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            Dostoyevsky's novel Crime and Punishment is published
+        </question>
+        <year>1866</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            Milan Kundera's novel The Unbearable Lightness of Being is published
+        </question>
+        <year>1984</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            The title of George Orwell's novel from 1949
+        </question>
+        <year>1984</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            The second volume of Cervante's Don Quijote is published
+        </question>
+        <year>1615</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            The first part of the novel which starts with the words "All happy families are alike", is published
+        </question>
+        <year>1873</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            Emile Zola writes J’accuse...! in favor for jewish officer Alfred Dreyfus
+        </question>
+        <year>1873</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            Less then Zero, the debut novel of Brett Easton Ellis is published
+        </question>
+        <year>1985</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            William Faulkner receives the nobel price in literature
+        </question>
+        <year>1949</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            Blonde, Joyce Carol Oates novel chronicling the life of Marylin Monroe is published
+        </question>
+        <year>2000</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            The expression catch-22 is coined by Joesph Heller
+        </question>
+        <year>1961</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            The novel portraying the arrest of Josef K is published
+        </question>
+        <year>1925</year>
+    </content>
+
+    <content>
+        <category>Literature</category>
+        <question>
+            Gabriel García Márquez receives the nobel price in literature
+        </question>
+        <year>1982</year>
+    </content>
+
+
+
+
+
 
 </resources>

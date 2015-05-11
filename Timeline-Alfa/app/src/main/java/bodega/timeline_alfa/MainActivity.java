@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
     private Drawable d_ragnarok;
     private Drawable d_markedRagnarok;
     private String selectedCategory;
-
+    private int numberOfQuestions;
 
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
@@ -100,6 +100,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         init();
     }
 
@@ -110,9 +111,6 @@ public class MainActivity extends ActionBarActivity {
         answerButton = (Button) findViewById(R.id.answerButton);
         yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
         yearButton ragnarok = new yearButton (2212, "Ragnarok!");
-        /*yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
-        yearlist.add(y7);*/
-
         resCards = getResources();
         d_card = resCards.getDrawable(R.drawable.card);
         d_markedCard = resCards.getDrawable(R.drawable.marked_card);
@@ -125,8 +123,14 @@ public class MainActivity extends ActionBarActivity {
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
         activePlayer = 1;
 
+        if(nrOfPlayers == 1){
+            numberOfQuestions = 5;
+        }
+        else {
+            numberOfQuestions = 3*nrOfPlayers;
+        }
 
-        selectedCategory = Category.getSelectedCategory();
+        selectedCategory = Category.getSelectedCategory().toUpperCase();
 
         listOfPlayers.add(player1);
         listOfPlayers.add(player2);
@@ -194,12 +198,11 @@ public class MainActivity extends ActionBarActivity {
         dbHelper = new TimelineDbHelper(context);
         db = dbHelper.getReadableDatabase();
 
-        cursor = dbHelper.getQuestion(db, "selectedCategory");
+        cursor = dbHelper.getQuestion(db, selectedCategory,numberOfQuestions);
 
         if (cursor.moveToFirst()){
             do {
                 String question; Integer year;
-
                 question = cursor.getString(1);
                 year = cursor.getInt(2);
                 yearButton yearB = new yearButton(year, question);
@@ -208,29 +211,14 @@ public class MainActivity extends ActionBarActivity {
             } while (cursor.moveToNext());
         }
 
-
        playedYears.clear();
        playedYears.add(bigbang); playedYears.add(ragnarok);
-       Collections.shuffle(yearlist);
+       //Collections.shuffle(yearlist);
        printButtons();
-        playedYears.clear();
-        playedYears.add(bigbang); playedYears.add(ragnarok);
-        Collections.shuffle(yearlist);
-        printButtons();
-
-        if(selectedCategory.equals("noSelectedCategory")){
-
-        }
-        else{
-
-        }
-
     }
 
 
     public void newQuestion() {
-
-
         if (!yearlist.isEmpty()) {
             currentQuestion = yearlist.get(0);
             yearlist.remove(0);
@@ -242,57 +230,49 @@ public class MainActivity extends ActionBarActivity {
             gameOver = true;
             answerButton.setEnabled(true);
 
-            //add highScore if it's a new highscore
-            if (dbHelper.getLowestScore(db) < player1.getScore()) {
-                dbHelper.deleteHighScore(db);
-                question.setText("Slut på frågor mannen, Game Over");
-                answerButton.setText("Nytt spel");
-                gameOver = true;
-                answerButton.setEnabled(true);
-
+            //only add highScore if single-player game and all categories
+            if(nrOfPlayers == 1 && selectedCategory == "NOSELECTEDCATEGORY"){
                 //add highScore if it's a new highscore
-                if (dbHelper.getLowestScore(db) < player1.getScore()) {
-                    dbHelper.deleteHighScore(db);
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setTitle("YOU'RE THE BOSS.\nNEW HIGHSCORE!!!");
-
-                    // Set up the input
-                    final EditText input = new EditText(this);
-                    // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
-                    builder.setView(input);
-
-                    // Set up the buttons
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            m_Text = input.getText().toString();
-
-                            dbHelper.addHighScore(player1.getScore(), m_Text, db);
-                        }
-                    });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-
-                    builder.show();
-
-
-                    dbHelper.addHighScore(player1.getScore(), "AAA", db);
-
-                } else {
-                    //do nothing
+                if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5) {
+                    addHighScore();
                 }
-
-
+                else if (player1.getScore() > dbHelper.getLowestScore(db)) {
+                    dbHelper.deleteHighScore(db);
+                    addHighScore();
+                }
             }
-
         }
-    };
+    }
+
+    public void addHighScore() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("YOU'RE THE BOSS.\nNEW HIGHSCORE!!!");
+        // Set up the input
+        final EditText input = new EditText(this);
+        // Specify the type of input expected
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                m_Text = input.getText().toString();
+
+                dbHelper.addHighScore(player1.getScore(), m_Text, db);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+    }
 
 
     public void newButton (View view) {
@@ -302,15 +282,14 @@ public class MainActivity extends ActionBarActivity {
             int j = Math.min(firstSelectedYear.getYear(), secondSelectedYear.getYear());
 
             if (currentQuestion.getYear() <= i && currentQuestion.getYear() >= j) {
-                printButtons();
+
 
                 //First way of setting score
 
                 listOfPlayers.get(activePlayer-1).setScore(1);
                 textViewArrayListScore.get(activePlayer-1).setTextColor(-1);
-
                 textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore())+ " p");
-
+                printButtons();
 
                 //Second way of setting score
 
@@ -382,10 +361,14 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 else if (x == playedYears.size()-1){
+
+                    year.setBackgroundResource(R.drawable.ragnarokpicture);
+
                     year.setBackground(d_ragnarok);
                     year.setText("Domedagen!");
                     year.setTextSize(17);
                     year.setBackgroundResource(R.drawable.ragnarrok);
+
                     year.setText("Ragnarok!!!");
                 }
 
