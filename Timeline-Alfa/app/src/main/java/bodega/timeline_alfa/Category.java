@@ -25,6 +25,8 @@ public class Category extends ActionBarActivity {
     private Button button6;
     private Button button7;
     private Button button8;
+    private Button button9;
+    private Button button10;
 
     private Button playButton;
     private Button backButton;
@@ -50,6 +52,8 @@ public class Category extends ActionBarActivity {
         button6 = (Button) findViewById(R.id.Category6);
         button7 = (Button) findViewById(R.id.Category7);
         button8 = (Button) findViewById(R.id.Category8);
+        button9 = (Button) findViewById(R.id.Category9);
+        button10 = (Button) findViewById(R.id.Category10);
 
         playButton = (Button) findViewById(R.id.CategoryPlay);
         backButton = (Button) findViewById(R.id.CategoryBack);
@@ -141,8 +145,31 @@ public class Category extends ActionBarActivity {
                 else
                     setSelectedCategory(buttonText);
 
+
             }
 
+        });
+        button9.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String buttonText = (String) ((Button) findViewById(R.id.Category9)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("NOSELECTEDCATEGORY");
+                }
+                else
+                    setSelectedCategory(buttonText);
+
+            }
+        });
+        button10.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String buttonText = (String) ((Button) findViewById(R.id.Category10)).getText();
+                if (getSelectedCategory().equals(buttonText)){
+                    setSelectedCategory("NOSELECTEDCATEGORY");
+                }
+                else
+                    setSelectedCategory(buttonText);
+
+            }
         });
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
