@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -18,6 +20,7 @@ public class ScoreBoard extends ActionBarActivity {
     Cursor cursor;
     private LinearLayout scoreLayout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -26,6 +29,7 @@ public class ScoreBoard extends ActionBarActivity {
         setContentView(R.layout.activity_scoreboard);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         scoreLayout = (LinearLayout) findViewById(R.id.scoreLayout);
+        scoreLayout.setOrientation(LinearLayout.VERTICAL);
         getTopScores();
 
     }
@@ -38,9 +42,14 @@ public class ScoreBoard extends ActionBarActivity {
         db = dbHelper.getReadableDatabase();
         cursor = dbHelper.getHighScore(db);
 
-        LinearLayout.LayoutParams layoutParams =
-                new LinearLayout.LayoutParams(250, LinearLayout.LayoutParams.MATCH_PARENT);
-        layoutParams.setMargins(40,0,0,0);
+       // LinearLayout.LayoutParams layoutParams =
+       //         new LinearLayout.LayoutParams(250, LinearLayout.LayoutParams.MATCH_PARENT);
+       // layoutParams.setMargins(0,0,0,0);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        params.weight = 1.0f;
+        params.gravity = Gravity.CENTER_HORIZONTAL;
+
 
         if (cursor.moveToFirst()){
             do {
@@ -50,12 +59,16 @@ public class ScoreBoard extends ActionBarActivity {
                 playerName = cursor.getString(1);
 
                 Button scoreButton = new Button(this);
-                String buttonText = Integer.toString(points) + "  poäng" + "\n" + "\n" + playerName;
+                String buttonText = Integer.toString(points) + "  points" + "\n" + "\n" + playerName;
                 scoreButton.setTextSize(15);
-                scoreButton.setBackgroundResource(R.drawable.mybutton2);
+                scoreButton.setBackgroundResource(R.drawable.scorefields);
                 scoreButton.setText(buttonText);
-                scoreButton.setLayoutParams(layoutParams);
+                //scoreButton.setLayoutParams(layoutParams);
+                scoreButton.setLayoutParams(params);
+                scoreButton.setWidth(1000);
+
                 scoreLayout.addView(scoreButton);
+
                 
             } while (cursor.moveToNext());
         }

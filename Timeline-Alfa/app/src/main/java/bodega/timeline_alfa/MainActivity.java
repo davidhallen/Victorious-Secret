@@ -1,6 +1,8 @@
 package bodega.timeline_alfa;
 
+
 import android.app.ActionBar;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +13,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -125,6 +128,11 @@ public class MainActivity extends ActionBarActivity {
         answerButton = (Button) findViewById(R.id.answerButton);
         yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
         yearButton ragnarok = new yearButton (2212, "Ragnarok!");
+
+        /*yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
+        yearlist.add(y7);*/
+
+
         resCards = getResources();
         d_card = resCards.getDrawable(R.drawable.card);
         d_markedCard = resCards.getDrawable(R.drawable.marked_card);
@@ -136,6 +144,11 @@ public class MainActivity extends ActionBarActivity {
 
         //pm = new PlayersMenu();
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
+
+
+        pm = new PlayersMenu();
+        nrOfPlayers = pm.getNrOfPlayers();
+
         activePlayer = 1;
 
         if(nrOfPlayers == 1){
@@ -298,6 +311,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void newButton (View view) {
 
         if (gameOver == false) {
@@ -311,7 +325,7 @@ public class MainActivity extends ActionBarActivity {
 
                 listOfPlayers.get(activePlayer-1).setScore(1);
                 textViewArrayListScore.get(activePlayer-1).setTextColor(-1);
-                textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore())+ " p");
+                textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
                 messageBar.setText("");
                 printButtons();
 
@@ -363,6 +377,7 @@ public class MainActivity extends ActionBarActivity {
 
         }
     }
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void printButtons(){
         answerButton.setEnabled(false);
         layout.removeAllViews();
@@ -408,6 +423,13 @@ public class MainActivity extends ActionBarActivity {
                     yearLayoutButton.setBackground(d_ragnarok);
                     year.setText("5000 a.d");
                     question.setText("Judgement Day!");
+
+                    year.setBackground(d_ragnarok);
+                    year.setText("Domedagen!");
+                    year.setTextSize(17);
+                    year.setBackgroundResource(R.drawable.ragnarrok);
+                    year.setText("Ragnarok!!!");
+
                 }
 
                 yearLayoutButton.setOnClickListener(new View.OnClickListener() {
@@ -430,6 +452,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void clickedYear (View view){
 
         yearButton tempYear = null;
