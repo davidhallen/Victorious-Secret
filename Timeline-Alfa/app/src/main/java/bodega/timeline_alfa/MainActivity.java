@@ -1,5 +1,6 @@
 package bodega.timeline_alfa;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,15 +17,19 @@ import android.text.Html;
 import android.text.InputType;
 import android.text.Spanned;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -33,11 +38,15 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static android.view.Gravity.CENTER;
+import static android.view.Gravity.CENTER_HORIZONTAL;
+
 
 public class MainActivity extends ActionBarActivity {
 
     private LinearLayout layout;
     private TextView question;
+    private TextView messageBar;
     private Button answerButton;
     private ArrayList <yearButton> yearlist = new ArrayList <yearButton> (); //for yearButtons not yet played
     private ArrayList <yearButton> playedYears = new ArrayList <yearButton> (); //for played yearButtons
@@ -54,6 +63,9 @@ public class MainActivity extends ActionBarActivity {
     private Drawable d_markedBigbang;
     private Drawable d_ragnarok;
     private Drawable d_markedRagnarok;
+    private Drawable d_wrongCard;
+    private LinearLayout firstSelectedButton;
+    private LinearLayout secondSelectedButton;
 
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
@@ -105,6 +117,7 @@ public class MainActivity extends ActionBarActivity {
         gameOver = false;
         layout = (LinearLayout) findViewById(R.id.timelineLayout);
         question = (TextView) findViewById(R.id.question);
+        messageBar = (TextView) findViewById(R.id.messageBar);
         answerButton = (Button) findViewById(R.id.answerButton);
         yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
         yearButton ragnarok = new yearButton (2212, "Ragnarok!");
@@ -118,6 +131,7 @@ public class MainActivity extends ActionBarActivity {
         d_markedBigbang = resCards.getDrawable(R.drawable.marked_bigbang);
         d_ragnarok = resCards.getDrawable(R.drawable.ragnarrok);
         d_markedRagnarok = resCards.getDrawable(R.drawable.marked_ragnarok);
+        d_wrongCard = resCards.getDrawable(R.drawable.wrong_card);
 
         //pm = new PlayersMenu();
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
@@ -212,10 +226,12 @@ public class MainActivity extends ActionBarActivity {
        playedYears.add(bigbang); playedYears.add(ragnarok);
        Collections.shuffle(yearlist);
        printButtons();
-        playedYears.clear();
+        //newQuestion();
+        /*playedYears.clear();
         playedYears.add(bigbang); playedYears.add(ragnarok);
         Collections.shuffle(yearlist);
         printButtons();
+        newQuestion();*/
 
         if(selectedCategory.equals("noSelectedCategory")){
 
@@ -309,7 +325,7 @@ public class MainActivity extends ActionBarActivity {
                 textViewArrayListScore.get(activePlayer-1).setTextColor(-1);
 
                 textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore())+ " p");
-
+                messageBar.setText("");
 
                 //Second way of setting score
 
@@ -339,10 +355,15 @@ public class MainActivity extends ActionBarActivity {
             } else {
 
                 textViewArrayListScore.get(activePlayer-1).setTextColor(-65536);
-                question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
+                //question.setText(currentQuestion.getQuestion());
+                messageBar.setText("Fel, försök igen!");
                 listOfPlayers.get(activePlayer-1).setScore(-1);
                 textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore()) + " p");
-
+                firstSelectedButton.setBackground(d_wrongCard);
+                secondSelectedButton.setBackground(d_wrongCard);
+                firstSelectedYear = null;
+                secondSelectedYear = null;
+                answerButton.setEnabled(false);
                 //nextTurn();
             }
         }
@@ -361,39 +382,56 @@ public class MainActivity extends ActionBarActivity {
         secondSelectedYear = null;
 
         LinearLayout.LayoutParams layoutParams =
-                new LinearLayout.LayoutParams(400,LinearLayout.LayoutParams.MATCH_PARENT);
-        layoutParams.setMargins(40,0,0,0);
+                new LinearLayout.LayoutParams(400,LinearLayout.LayoutParams.MATCH_PARENT, Gravity.CENTER_HORIZONTAL);
+        layoutParams.setMargins(12,0,0,0);
 
         Collections.sort(playedYears);
 
         if (!playedYears.isEmpty()) {
             for (int x = 0; x < playedYears.size(); x++) {
-                Button year = new Button(this);
+                LinearLayout yearLayoutButton = new LinearLayout(this);
+                yearLayoutButton.setOrientation(LinearLayout.VERTICAL);
+                yearLayoutButton.setClickable(true);
+                TextView year = new TextView(this);
+                TextView question = new TextView(this);
+                year.setTextSize(30);
+                question.setTextSize(13);
                 int s = playedYears.get(x).getYear();
                 String q = playedYears.get(x).getQuestion();
-                year.setText(s + "\n" + q);
-                year.setBackground(d_card);
-                year.setLayoutParams(layoutParams);
+                year.setText(String.valueOf(s));
+                question.setText(q);
+                yearLayoutButton.setBackground(d_card);
+                yearLayoutButton.setLayoutParams(layoutParams);
+                LinearLayout.LayoutParams vg1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                LinearLayout.LayoutParams vg2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+                vg1.gravity=Gravity.CENTER;
+                question.setGravity(CENTER_HORIZONTAL);
+                year.setPadding(0,20,0,0);
+                question.setPadding(0,30,0,0);
+                year.setLayoutParams(vg1);
+                question.setLayoutParams(vg2);
                 if (x == 0){
-                    year.setBackground(d_bigBang);
-                    year.setText("Big Bang!");
-                    year.setTextSize(17);
+                    yearLayoutButton.setBackground(d_bigBang);
+                    year.setText("5000 b.c");
+                    question.setText("Big Bang!");
                 }
 
                 else if (x == playedYears.size()-1){
-                    year.setBackground(d_ragnarok);
-                    year.setText("Domedagen!");
-                    year.setTextSize(17);
+                    yearLayoutButton.setBackground(d_ragnarok);
+                    year.setText("5000 a.d");
+                    question.setText("Domedagen!");
                 }
 
-                year.setOnClickListener(new View.OnClickListener() {
+                yearLayoutButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         clickedYear(view);
 
                     }
                 });
-                layout.addView(year);
-                year.setId(playedYears.get(x).hashCode());
+                yearLayoutButton.addView(year);
+                yearLayoutButton.addView(question);
+                layout.addView(yearLayoutButton);
+                yearLayoutButton.setId(playedYears.get(x).hashCode());
             }
         }
 
@@ -416,12 +454,18 @@ public class MainActivity extends ActionBarActivity {
 
         if (firstSelectedYear == null && tempYear != secondSelectedYear){
             if (secondSelectedYear==null) {
+                //if (firstSelectedButton != null)
+                //    firstSelectedButton.setBackground(d_card);
                 view.setBackground(d_markedCard);
                 firstSelectedYear = tempYear;
+                firstSelectedButton = (LinearLayout) view;
             }
             else if (isBeside(tempYear,secondSelectedYear)) {
+                //if (firstSelectedButton != null)
+                //    firstSelectedButton.setBackground(d_card);
                 view.setBackground(d_markedCard);
                 firstSelectedYear = tempYear;
+                firstSelectedButton = (LinearLayout) view;
                 answerButton.setEnabled(true);
             }
 
@@ -430,12 +474,18 @@ public class MainActivity extends ActionBarActivity {
 
         else if(secondSelectedYear == null && tempYear!= firstSelectedYear) {
             if (firstSelectedYear==null) {
+                //if (secondSelectedButton != null)
+                //    secondSelectedButton.setBackground(d_card);
                 view.setBackground(d_markedCard);
                 secondSelectedYear = tempYear;
+                secondSelectedButton = (LinearLayout) view;
             }
             else if (isBeside(tempYear,firstSelectedYear)) {
+                //if (secondSelectedButton != null)
+                 //   secondSelectedButton.setBackground(d_card);
                 view.setBackground(d_markedCard);
                 secondSelectedYear = tempYear;
+                secondSelectedButton = (LinearLayout) view;
                 answerButton.setEnabled(true);
             }
 

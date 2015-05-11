@@ -118,16 +118,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="15dp">
+        android:paddingTop="15dp"
+        >
 
         <TextView
+            android:id="@+id/messageBar"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text=""
+            android:textSize="20sp"/>
+        <TextView
             android:id="@+id/question"
-            android:layout_width="470dp"
-            android:layout_height="match_parent"
-            android:paddingLeft="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
             android:text="TEXT FIELD FOR QUESTION"
             android:textSize="24sp"
-            android:gravity="center"/>
+            android:layout_centerHorizontal="true"
+
+            android:gravity="center"
+            android:layout_below="@id/messageBar"
+
+            />
 
         <Button
             android:id="@+id/answerButton"

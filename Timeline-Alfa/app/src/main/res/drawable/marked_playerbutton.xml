@@ -6,7 +6,7 @@
         android:topRightRadius="5dip"
         android:topLeftRadius="5dip"
         />
-    <stroke android:width="5dp"
+    <stroke android:width="3dp"
         android:color="#87A96B"
         />
     <solid android:color="#666567" />
