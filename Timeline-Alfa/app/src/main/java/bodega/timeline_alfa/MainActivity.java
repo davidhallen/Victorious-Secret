@@ -74,6 +74,7 @@ public class MainActivity extends ActionBarActivity {
 
     private String selectedCategory;
     private int numberOfQuestions;
+    private boolean checkDead =true;
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
     private Player player1 = new Player(1);
@@ -88,6 +89,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView p3_score;
     private TextView p4_score;
     private TextView p5_score;
+    private TextView lives_nr;
 
     private ArrayList<TextView> textViewArrayListPlayers = new ArrayList<TextView>();
     private TextView p1_text;
@@ -95,6 +97,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView p3_text;
     private TextView p4_text;
     private TextView p5_text;
+    private TextView lives_text;
 
     private PlayersMenu pm;
     private Category cat;
@@ -129,9 +132,9 @@ public class MainActivity extends ActionBarActivity {
         yearButton bigbang = new yearButton (-5000, "Biggie Bang Bong");
         yearButton ragnarok = new yearButton (2212, "Ragnarok!");
 
+
         /*yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
         yearlist.add(y7);*/
-
 
         resCards = getResources();
         d_card = resCards.getDrawable(R.drawable.card);
@@ -146,13 +149,18 @@ public class MainActivity extends ActionBarActivity {
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
 
 
+
+        /*yearlist.add(y1); yearlist.add(y2); yearlist.add(y3); yearlist.add(y4);yearlist.add(y5);yearlist.add(y6);
+        yearlist.add(y7);*/
+
+
         pm = new PlayersMenu();
         nrOfPlayers = pm.getNrOfPlayers();
 
         activePlayer = 1;
 
         if(nrOfPlayers == 1){
-            numberOfQuestions = 5;
+            numberOfQuestions = 100;
         }
         else {
             numberOfQuestions = 3*nrOfPlayers;
@@ -160,62 +168,66 @@ public class MainActivity extends ActionBarActivity {
 
         selectedCategory = Category.getSelectedCategory().toUpperCase();
 
-        listOfPlayers.add(player1);
-        listOfPlayers.add(player2);
-        listOfPlayers.add(player3);
-        listOfPlayers.add(player4);
-        listOfPlayers.add(player5);
+            listOfPlayers.add(player1);
+            listOfPlayers.add(player2);
+            listOfPlayers.add(player3);
+            listOfPlayers.add(player4);
+            listOfPlayers.add(player5);
 
-        p1_text = (TextView) findViewById(R.id.player1_text);
-        p2_text = (TextView) findViewById(R.id.player2_text);
-        p3_text = (TextView) findViewById(R.id.player3_text);
-        p4_text = (TextView) findViewById(R.id.player4_text);
-        p5_text = (TextView) findViewById(R.id.player5_text);
+            p1_text = (TextView) findViewById(R.id.player1_text);
+            p2_text = (TextView) findViewById(R.id.player2_text);
+            p3_text = (TextView) findViewById(R.id.player3_text);
+            p4_text = (TextView) findViewById(R.id.player4_text);
+            p5_text = (TextView) findViewById(R.id.player5_text);
 
-        textViewArrayListPlayers.add(p1_text);
-        textViewArrayListPlayers.add(p2_text);
-        textViewArrayListPlayers.add(p3_text);
-        textViewArrayListPlayers.add(p4_text);
-        textViewArrayListPlayers.add(p5_text);
+            textViewArrayListPlayers.add(p1_text);
+            textViewArrayListPlayers.add(p2_text);
+            textViewArrayListPlayers.add(p3_text);
+            textViewArrayListPlayers.add(p4_text);
+            textViewArrayListPlayers.add(p5_text);
 
-        p1_score = (TextView) findViewById(R.id.player1_score);
-        p2_score = (TextView) findViewById(R.id.player2_score);
-        p3_score = (TextView) findViewById(R.id.player3_score);
-        p4_score = (TextView) findViewById(R.id.player4_score);
-        p5_score = (TextView) findViewById(R.id.player5_score);
+            p1_score = (TextView) findViewById(R.id.player1_score);
+            p2_score = (TextView) findViewById(R.id.player2_score);
+            p3_score = (TextView) findViewById(R.id.player3_score);
+            p4_score = (TextView) findViewById(R.id.player4_score);
+            p5_score = (TextView) findViewById(R.id.player5_score);
 
-        textViewArrayListScore.add(p1_score);
-        textViewArrayListScore.add(p2_score);
-        textViewArrayListScore.add(p3_score);
-        textViewArrayListScore.add(p4_score);
-        textViewArrayListScore.add(p5_score);
-
-
-        for(int i = 0; i < nrOfPlayers; i++){
-            TextView tempPlayer = textViewArrayListPlayers.get(i);
-            tempPlayer.setText("Player " + (i+1) + ":");
-        }
-
-        if(nrOfPlayers == 1){
-            p2_score.setText("");
-            p3_score.setText("");
-            p4_score.setText("");
-            p5_score.setText("");
-        }
-        if(nrOfPlayers == 2){
-            p3_score.setText("");
-            p4_score.setText("");
-            p5_score.setText("");
-        }
-        if(nrOfPlayers == 3){
-            p4_score.setText("");
-            p5_score.setText("");
-        }
-        if(nrOfPlayers == 4){
-            p5_score.setText("");
-        }
+            textViewArrayListScore.add(p1_score);
+            textViewArrayListScore.add(p2_score);
+            textViewArrayListScore.add(p3_score);
+            textViewArrayListScore.add(p4_score);
+            textViewArrayListScore.add(p5_score);
 
 
+            for (int i = 0; i < nrOfPlayers; i++) {
+                TextView tempPlayer = textViewArrayListPlayers.get(i);
+                tempPlayer.setText("Player " + (i + 1) + ":");
+            }
+
+            if (nrOfPlayers == 1) {
+                lives_nr = p2_score;
+                lives_text = p2_text;
+                lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getLives()));
+                lives_text.setText("Lives");
+                //p2_score.setText("");
+                p3_score.setText("");
+                p4_score.setText("");
+                p5_score.setText("");
+            }
+            if (nrOfPlayers == 2) {
+                p3_score.setText("");
+                p4_score.setText("");
+                p5_score.setText("");
+            }
+            if (nrOfPlayers == 3) {
+                p4_score.setText("");
+                p5_score.setText("");
+            }
+            if (nrOfPlayers == 4) {
+                p5_score.setText("");
+            }
+
+        
         textViewArrayListPlayers.get(activePlayer-1).setText("PLAYER " + activePlayer + ":");
         textViewArrayListPlayers.get(activePlayer-1).setTextColor(-16711936);
 
@@ -323,9 +335,9 @@ public class MainActivity extends ActionBarActivity {
 
                 //First way of setting score
 
-                listOfPlayers.get(activePlayer-1).setScore(1);
-                textViewArrayListScore.get(activePlayer-1).setTextColor(-1);
-                textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
+                listOfPlayers.get(activePlayer - 1).setScore(1);
+                textViewArrayListScore.get(activePlayer - 1).setTextColor(-1);
+                textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
                 messageBar.setText("");
                 printButtons();
 
@@ -355,21 +367,100 @@ public class MainActivity extends ActionBarActivity {
                 nextTurn();
 
             } else {
+                if (nrOfPlayers == 1) {
+                    listOfPlayers.get(activePlayer - 1).looseALife();
+                    if ((listOfPlayers.get(activePlayer-1).getLives()) == 0) {
 
-                textViewArrayListScore.get(activePlayer-1).setTextColor(-65536);
-                //question.setText(currentQuestion.getQuestion());
-                messageBar.setText("Fel, försök igen!");
-                listOfPlayers.get(activePlayer-1).setScore(-1);
-                textViewArrayListScore.get(activePlayer-1).setText(String.valueOf(listOfPlayers.get(activePlayer-1).getScore()) + " p");
-                firstSelectedButton.setBackground(d_wrongCard);
-                secondSelectedButton.setBackground(d_wrongCard);
-                firstSelectedYear = null;
-                secondSelectedYear = null;
-                answerButton.setEnabled(false);
+                        //messageBar.setText("You are here, good");
+                        question.setText("Game Over. You got "+listOfPlayers.get(activePlayer-1).getScore()+" points" );
+                        answerButton.setText("Nytt spel");
+                        gameOver = true;
+                        answerButton.setEnabled(true);
+
+                        //only add highScore if single-player game and all categories
+                        if (nrOfPlayers == 1 && selectedCategory == "NOSELECTEDCATEGORY") {
+                            //add highScore if it's a new highscore
+                            if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5) {
+                                addHighScore();
+                            } else if (player1.getScore() > dbHelper.getLowestScore(db)) {
+                                dbHelper.deleteHighScore(db);
+                                addHighScore();
+                            }
+
+                        }
+                        listOfPlayers.get(activePlayer-1).setScore(0);
+                        listOfPlayers.get(activePlayer-1).setNewLives();
+                        lives_nr.setText("X_X");
+                        p1_score.setText("0");
+
+
+
+                        /*messageBar.setText("Loose a life" + listOfPlayers.get(activePlayer).getLives());
+                        lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getLives()));
+                        textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
+                        firstSelectedButton.setBackground(d_wrongCard);
+                        secondSelectedButton.setBackground(d_wrongCard);
+                        firstSelectedYear = null;
+                        secondSelectedYear = null;
+                        answerButton.setEnabled(false);
+                        //messageBar.setText("");
+                        //printButtons();
+                    */
+                    } else{
+                        messageBar.setText("Loose a life");
+                        lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getLives()));
+                        textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
+                        firstSelectedButton.setBackground(d_wrongCard);
+                        secondSelectedButton.setBackground(d_wrongCard);
+                        firstSelectedYear = null;
+                        secondSelectedYear = null;
+                        answerButton.setEnabled(false);
+                        messageBar.setText("");
+                        printButtons();
+                    }
+
+                }
+                 else {
+                    textViewArrayListScore.get(activePlayer - 1).setTextColor(-65536);
+                    //question.setText(currentQuestion.getQuestion());
+                    messageBar.setText("Fel, försök igen!");
+                    listOfPlayers.get(activePlayer - 1).setScore(-1);
+                    textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
+                    firstSelectedButton.setBackground(d_wrongCard);
+                    secondSelectedButton.setBackground(d_wrongCard);
+                    firstSelectedYear = null;
+                    secondSelectedYear = null;
+                    answerButton.setEnabled(false);
+                }
+/*
+                if(nrOfPlayers==1) {
+                    listOfPlayers.get(activePlayer-1).looseALife();
+                    question.setText("Wrong! Try Again, you have  " +listOfPlayers.get(activePlayer-1).getLives()+" lives left.  " + currentQuestion.getQuestion());
+                    if(listOfPlayers.get(activePlayer-1).getLives()==0){
+                        question.setText("Du förlorade!");
+                        listOfPlayers.get(activePlayer-1).setScore(0);
+                        gameOver = true;
+                    }
+                }
+                else {
+                    textViewArrayListScore.get(activePlayer - 1).setTextColor(-65536);
+                    question.setText("Fel, försök igen!  " + currentQuestion.getQuestion());
+                    listOfPlayers.get(activePlayer - 1).setScore(-1);
+                    textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
+
+
+                }
+
+                }
+
+    */
                 //nextTurn();
-            }
-        }
+                //listOfPlayers.get(activePlayer-1).setScore(-1);
 
+
+            }
+
+        }
         else {
             answerButton.setText("Placera årtal");
 
@@ -420,14 +511,21 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 else if (x == playedYears.size()-1){
+
                     yearLayoutButton.setBackground(d_ragnarok);
                     year.setText("5000 a.d");
                     question.setText("Judgement Day!");
+
+
+
+                    year.setBackgroundResource(R.drawable.ragnarokpicture);
+
 
                     year.setBackground(d_ragnarok);
                     year.setText("Domedagen!");
                     year.setTextSize(17);
                     year.setBackgroundResource(R.drawable.ragnarrok);
+
                     year.setText("Ragnarok!!!");
 
                 }
@@ -551,12 +649,12 @@ public class MainActivity extends ActionBarActivity {
         textViewArrayListPlayers.get(activePlayer-1).setTextColor(-1);
 
 
-        if (activePlayer < nrOfPlayers) {
-            activePlayer++;
-        }
-        else {
-            activePlayer = 1;
-        }
+                if (activePlayer < nrOfPlayers) {
+                    activePlayer++;
+                } else {
+                    activePlayer = 1;
+                }
+
         //aPtV.setText(String.valueOf(activePlayer));
         textViewArrayListPlayers.get(activePlayer-1).setText("PLAYER " + (activePlayer) + ":");
         textViewArrayListPlayers.get(activePlayer-1).setTextColor(-16711936);
