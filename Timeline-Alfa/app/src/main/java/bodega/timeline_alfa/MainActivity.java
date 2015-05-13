@@ -130,6 +130,7 @@ public class MainActivity extends ActionBarActivity {
             numberOfQuestions = 3*nrOfPlayers;
         }
 
+
         selectedCategory = Category.getSelectedCategory().toUpperCase();
 
         listOfPlayers.add(player1);

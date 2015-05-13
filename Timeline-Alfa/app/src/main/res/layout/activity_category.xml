@@ -36,7 +36,7 @@
             android:id="@+id/Category3"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/arkitektur"
+            android:background="@drawable/arkitektur_clicked"
 
             android:text="Arkitektur"
             android:textSize="@dimen/abc_text_size_button_material"
@@ -112,7 +112,7 @@
             android:id="@+id/Category9"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/upplysninsgstiden"
+            android:background="@drawable/upplysningen"
 
 
             android:text="Upplysningen"

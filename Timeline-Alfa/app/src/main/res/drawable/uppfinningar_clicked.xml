@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:drawable="@drawable/uppfinningar"
+        />
+    <item>
+        <shape
+            android:shape="rectangle">
+            <corners android:bottomRightRadius="23dip"
+                android:bottomLeftRadius="23dip"
+                android:topRightRadius="23dip"
+                android:topLeftRadius="23dip"
+                />
+            <stroke android:width="5dp"
+                android:color="#87A96B"
+                />
+        </shape>
+    </item>
+
+</layer-list>
