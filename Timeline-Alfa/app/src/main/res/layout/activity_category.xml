@@ -112,7 +112,7 @@
             android:id="@+id/Category9"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/upplysninsgstiden"
+            android:background="@drawable/upplysningen"
 
 
             android:text="Upplysningen"
