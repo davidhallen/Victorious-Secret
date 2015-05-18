@@ -70,7 +70,7 @@ public class Category extends ActionBarActivity {
         setContentView(R.layout.activity_category);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-
+        res = getResources();
 
         button1 = (Button) findViewById(R.id.Category1);
         button2 = (Button) findViewById(R.id.Category2);
@@ -98,7 +98,7 @@ public class Category extends ActionBarActivity {
         playButton = (Button) findViewById(R.id.CategoryPlay);
         backButton = (Button) findViewById(R.id.CategoryBack);
 
-        res = getResources();
+
 
 
         /*drawable1Clicked = res. getDrawable(R.drawable.geopolitik_clicked);
@@ -136,6 +136,7 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button1;
                     button1.setBackground(drawable1Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
 
 
@@ -164,6 +165,7 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button2;
                     button2.setBackground(drawable2Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
 
 
@@ -192,6 +194,7 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button3;
                     button3.setBackground(drawable3Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
 
 
@@ -200,10 +203,10 @@ public class Category extends ActionBarActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String buttonText = (String) ((Button) findViewById(R.id.Category4)).getText();
-                Drawable drawable4Clicked = res. getDrawable(R.drawable.uppfinningar_clicked);
+                Drawable drawable4Clicked = res. getDrawable(R.drawable.krig_clicked);
                 if (getSelectedCategory().equals(buttonText)){
                     setSelectedCategory("NOSELECTEDCATEGORY");
-                    Drawable temp = res. getDrawable(R.drawable.uppfinningar);
+                    Drawable temp = res. getDrawable(R.drawable.krig);
                     button4.setBackground(temp);
 
                 }
@@ -220,6 +223,7 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button4;
                     button4.setBackground(drawable4Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
 
 
@@ -232,7 +236,8 @@ public class Category extends ActionBarActivity {
                 if (getSelectedCategory().equals(buttonText)){
                     setSelectedCategory("NOSELECTEDCATEGORY");
                     Drawable temp = res. getDrawable(R.drawable.uppfinningar);
-                    button1.setBackground(temp);
+                    button5.setBackground(temp);
+
                 }
                 else if (lastClickedCategoryButton==null){
                     setSelectedCategory(buttonText);
@@ -247,7 +252,9 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button5;
                     button5.setBackground(drawable5Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
+
 
             }
         });
@@ -258,7 +265,8 @@ public class Category extends ActionBarActivity {
                 if (getSelectedCategory().equals(buttonText)){
                     setSelectedCategory("NOSELECTEDCATEGORY");
                     Drawable temp = res. getDrawable(R.drawable.kungar);
-                    button1.setBackground(temp);
+                    button6.setBackground(temp);
+
                 }
                 else if (lastClickedCategoryButton==null){
                     setSelectedCategory(buttonText);
@@ -273,6 +281,7 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button6;
                     button6.setBackground(drawable6Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
 
 
@@ -285,7 +294,8 @@ public class Category extends ActionBarActivity {
                 if (getSelectedCategory().equals(buttonText)){
                     setSelectedCategory("NOSELECTEDCATEGORY");
                     Drawable temp = res. getDrawable(R.drawable.musik);
-                    button1.setBackground(temp);
+                    button7.setBackground(temp);
+
                 }
                 else if (lastClickedCategoryButton==null){
                     setSelectedCategory(buttonText);
@@ -300,7 +310,9 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button7;
                     button7.setBackground(drawable7Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
+
 
             }
         });
@@ -311,7 +323,7 @@ public class Category extends ActionBarActivity {
                 if (getSelectedCategory().equals(buttonText)){
                     setSelectedCategory("NOSELECTEDCATEGORY");
                     Drawable temp = res. getDrawable(R.drawable.antiken);
-                    button1.setBackground(temp);
+                    button8.setBackground(temp);
                 }
                 else if (lastClickedCategoryButton==null){
                     setSelectedCategory(buttonText);
@@ -326,6 +338,7 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button8;
                     button8.setBackground(drawable8Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
 
             }
@@ -338,12 +351,12 @@ public class Category extends ActionBarActivity {
                 if (getSelectedCategory().equals(buttonText)){
                     setSelectedCategory("NOSELECTEDCATEGORY");
                     Drawable temp = res. getDrawable(R.drawable.upplysningen);
-                    button1.setBackground(temp);
+                    button9.setBackground(temp);
                 }
                 else if (lastClickedCategoryButton==null){
                     setSelectedCategory(buttonText);
                     lastClickedCategoryButton = button9;
-                    lastClickedNormalBackground = findViewById(R.id.Category1).getBackground();
+                    lastClickedNormalBackground = findViewById(R.id.Category9).getBackground();
                     button9.setBackground(drawable9Clicked);
 
                 }
@@ -353,6 +366,7 @@ public class Category extends ActionBarActivity {
                     lastClickedCategoryButton = button9;
                     button9.setBackground(drawable9Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
 
             }
@@ -364,7 +378,8 @@ public class Category extends ActionBarActivity {
                 if (getSelectedCategory().equals(buttonText)){
                     setSelectedCategory("NOSELECTEDCATEGORY");
                     Drawable temp = res. getDrawable(R.drawable.industriella_revolutionen);
-                    button1.setBackground(temp);
+                    button10.setBackground(temp);
+
                 }
                 else if (lastClickedCategoryButton==null){
                     setSelectedCategory(buttonText);
@@ -377,8 +392,9 @@ public class Category extends ActionBarActivity {
                     Drawable tempBackground = (Drawable) findViewById(R.id.Category10).getBackground();
                     lastClickedCategoryButton.setBackground(lastClickedNormalBackground);
                     lastClickedCategoryButton = button10;
-                    button1.setBackground(drawable10Clicked);
+                    button10.setBackground(drawable10Clicked);
                     lastClickedNormalBackground = tempBackground;
+                    setSelectedCategory(buttonText);
                 }
 
 
@@ -406,5 +422,14 @@ public class Category extends ActionBarActivity {
     public static String getSelectedCategory() {
         return selectedCategory;
     }
+
+    public int hashCode(){
+        return super.hashCode();
+    }
+    public boolean equals(Object obj){
+
+    return true;
+    }
+
 
 }
