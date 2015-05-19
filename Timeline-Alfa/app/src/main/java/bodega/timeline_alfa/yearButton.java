@@ -6,10 +6,17 @@ package bodega.timeline_alfa;
 public class yearButton implements Comparable <yearButton> {
     int year;
     String question;
+    String wikiLink;
 
-    public yearButton(int year, String question ){
+    public yearButton(int year, String question){
         this.year= year;
         this.question = question;
+    }
+
+    public yearButton(int year, String question, String wikiLink ){
+        this.year= year;
+        this.question = question;
+        this.wikiLink = wikiLink;
     }
 
 
@@ -19,6 +26,11 @@ public class yearButton implements Comparable <yearButton> {
     }
     public String getQuestion() {
         return question;
+
+    }
+
+    public String getWikiLink() {
+        return wikiLink;
 
     }
 

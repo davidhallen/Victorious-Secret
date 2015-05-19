@@ -36,30 +36,6 @@ public class Category extends ActionBarActivity {
 
     private Resources res;
 
-    /*private Drawable drawable1Start;
-    private Drawable drawable2Start;
-    private Drawable drawable3Start;
-    private Drawable drawable4Start;
-    private Drawable drawable5Start;
-    private Drawable drawable6Start;
-    private Drawable drawable7Start;
-    private Drawable drawable8Start;
-    private Drawable drawable9Start;
-    private Drawable drawable10Start;*/
-
-    /*private Drawable drawable1Clicked;
-    private Drawable drawable2Clicked;
-    private Drawable drawable3Clicked;
-    private Drawable drawable4Clicked;
-    private Drawable drawable5Clicked;
-    private Drawable drawable6Clicked;
-    private Drawable drawable7Clicked;
-    private Drawable drawable8Clicked;
-    private Drawable drawable9Clicked;
-    private Drawable drawable10Clicked;*/
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,34 +59,10 @@ public class Category extends ActionBarActivity {
         button9 = (Button) findViewById(R.id.Category9);
         button10 = (Button) findViewById(R.id.Category10);
 
-        /*drawable1Start =  res. getDrawable(R.drawable.geopolitik);
-        drawable2Start = res. getDrawable(R.drawable.litteratur);
-        drawable3Start = res. getDrawable(R.drawable.arkitektur);
-        drawable4Start = res. getDrawable(R.drawable.krig);
-        drawable5Start = res. getDrawable(R.drawable.uppfinningar);
-        drawable6Start = res. getDrawable(R.drawable.kungar);
-        drawable7Start = res. getDrawable(R.drawable.musik);
-        drawable8Start = res. getDrawable(R.drawable.antiken);
-        drawable9Start = res. getDrawable(R.drawable.upplysningen);
-        drawable10Start = res. getDrawable(R.drawable.industriella_revolutionen);*/
-
 
         playButton = (Button) findViewById(R.id.CategoryPlay);
         backButton = (Button) findViewById(R.id.CategoryBack);
 
-
-
-
-        /*drawable1Clicked = res. getDrawable(R.drawable.geopolitik_clicked);
-        drawable2Clicked = res. getDrawable(R.drawable.litteratur_clicked);
-        drawable3Clicked = res. getDrawable(R.drawable.arkitektur_clicked);
-        drawable4Clicked = res. getDrawable(R.drawable.krig_clicked);
-        drawable5Clicked = res. getDrawable(R.drawable.uppfinningar_clicked);
-        drawable6Clicked = res. getDrawable(R.drawable.kungar_clicked);
-        drawable7Clicked = res. getDrawable(R.drawable.musik_clicked);
-        drawable8Clicked = res. getDrawable(R.drawable.antiken_clicked);
-        drawable9Clicked = res. getDrawable(R.drawable.upplysningen_clicked);
-        drawable10Clicked = res. getDrawable(R.drawable.industriella_revolutionen_clicked);*/
 
 
         button1.setOnClickListener(new View.OnClickListener() {

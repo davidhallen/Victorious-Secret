@@ -21,7 +21,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String CREATE_QUERY = "CREATE TABLE " + TimelineTables.Questions.TABLE_NAME+" ("+
              TimelineTables.Questions.COL_CATEGORY+" TEXT,"+ TimelineTables.Questions.COL_QUESTION+" TEXT,"+
-             TimelineTables.Questions.COL_YEAR+" INTEGER);";
+             TimelineTables.Questions.COL_YEAR+" INTEGER,"+ TimelineTables.Questions.COL_WIKI+" TEXT);";
     private static final String CREATE_QUERY2 = "CREATE TABLE " + TimelineTables.HighScore.TABLE_NAME+" ("+
              TimelineTables.HighScore.COL_INTKEY+" INTEGER,"+ TimelineTables.HighScore.COL_SCORE +" INTEGER,"
              + TimelineTables.HighScore.COL_NAME+" TEXT);";
@@ -50,6 +50,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         Integer newYear = -1;
         String newCategory = "";
         int eventType = -1;
+        String newWiki = "";
         String currentLevel = "";
         try {
             while (eventType != XmlResourceParser.END_DOCUMENT){
@@ -65,11 +66,14 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
                     else if(parser.getName().equalsIgnoreCase("year")){
                         currentLevel = "year";
                     }
+                    else if(parser.getName().equalsIgnoreCase("wiki")){
+                        currentLevel = "wiki";
+                    }
                 }
 
                 else if (eventType == XmlResourceParser.END_TAG){
                     if(parser.getName().equalsIgnoreCase("content")) {
-                        addQuestion(newCategory, newQuestion, newYear, db);
+                        addQuestion(newCategory, newQuestion, newYear, newWiki, db);
                     }
                 }
 
@@ -83,6 +87,9 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
                     if (currentLevel.equalsIgnoreCase("year")){
                         String interYear = parser.getText().trim();
                         newYear = Integer.parseInt(interYear);
+                    }
+                    if (currentLevel.equalsIgnoreCase("wiki")){
+                        newWiki = parser.getText();
                     }
                 }
                 eventType = parser.next();
@@ -98,11 +105,12 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void addQuestion (String category, String question, Integer year, SQLiteDatabase db){
+    public void addQuestion (String category, String question, Integer year, String wiki, SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
         contentValues.put(TimelineTables.Questions.COL_CATEGORY, category);
         contentValues.put(TimelineTables.Questions.COL_QUESTION, question);
         contentValues.put(TimelineTables.Questions.COL_YEAR, year);
+        contentValues.put(TimelineTables.Questions.COL_WIKI, wiki);
         db.insert(TimelineTables.Questions.TABLE_NAME, null, contentValues);
             Log.e("DATABASE OPERATIONS", "One question row inserted");
     }
@@ -121,7 +129,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         String numQuest = Integer.toString(numberOfQuestions);
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
-                TimelineTables.Questions.COL_YEAR};
+                TimelineTables.Questions.COL_YEAR, TimelineTables.Questions.COL_WIKI};
 
         if (category == "NOSELECTEDCATEGORY") {
             cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, null, null, null,null, "RANDOM()", numQuest);

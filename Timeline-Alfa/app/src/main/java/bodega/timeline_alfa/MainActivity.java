@@ -242,10 +242,13 @@ public class MainActivity extends ActionBarActivity {
 
         if (cursor.moveToFirst()){
             do {
-                String question; Integer year;
+                String question; Integer year; String wikiLink;
                 question = cursor.getString(1);
                 year = cursor.getInt(2);
-                yearButton yearB = new yearButton(year, question);
+               // wikiLink = cursor.getString(3);
+                wikiLink = "hejhej";
+                yearButton yearB = new yearButton(year, question, wikiLink);
+
                 yearlist.add(yearB);
 
             } while (cursor.moveToNext());
@@ -488,22 +491,30 @@ public class MainActivity extends ActionBarActivity {
                 yearLayoutButton.setClickable(true);
                 TextView year = new TextView(this);
                 TextView question = new TextView(this);
+                TextView wikiLink = new TextView(this);
                 year.setTextSize(30);
                 question.setTextSize(13);
+                wikiLink.setTextSize(13);
                 int s = playedYears.get(x).getYear();
                 String q = playedYears.get(x).getQuestion();
+                String w = playedYears.get(x).getWikiLink();
                 year.setText(String.valueOf(s));
                 question.setText(q);
+                wikiLink.setText(w);
                 yearLayoutButton.setBackground(d_card);
                 yearLayoutButton.setLayoutParams(layoutParams);
                 LinearLayout.LayoutParams vg1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 LinearLayout.LayoutParams vg2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+                LinearLayout.LayoutParams vg3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
                 vg1.gravity=Gravity.CENTER;
                 question.setGravity(CENTER_HORIZONTAL);
+                wikiLink.setGravity(CENTER_HORIZONTAL);
                 year.setPadding(0,20,0,0);
                 question.setPadding(0,30,0,0);
+                wikiLink.setPadding(0,100,0,0);
                 year.setLayoutParams(vg1);
                 question.setLayoutParams(vg2);
+                wikiLink.setLayoutParams(vg3);
                 if (x == 0){
                     yearLayoutButton.setBackground(d_bigBang);
                     year.setText("5000 b.c");
@@ -537,7 +548,8 @@ public class MainActivity extends ActionBarActivity {
                     }
                 });
                 yearLayoutButton.addView(year);
-                yearLayoutButton.addView(question);
+               // yearLayoutButton.addView(question);
+                yearLayoutButton.addView(wikiLink);
                 layout.addView(yearLayoutButton);
                 yearLayoutButton.setId(playedYears.get(x).hashCode());
             }
