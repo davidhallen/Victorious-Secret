@@ -53,6 +53,10 @@
             android:name=".QuestionAdder"
             android:label="@string/title_activity_question_adder" >
         </activity>
+        <activity
+            android:name=".ExtrasActivity"
+            android:label="@string/title_activity_extras" >
+        </activity>
     </application>
 
 </manifest>

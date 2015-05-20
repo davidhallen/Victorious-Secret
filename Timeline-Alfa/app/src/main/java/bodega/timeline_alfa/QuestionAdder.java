@@ -3,6 +3,7 @@ package bodega.timeline_alfa;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 
 public class QuestionAdder extends ActionBarActivity {
@@ -35,6 +38,7 @@ public class QuestionAdder extends ActionBarActivity {
         chosenCategory = (TextView)findViewById(R.id.categoryChoice);
         question = (TextView)findViewById(R.id.question);
         year = (TextView)findViewById(R.id.year);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
 
@@ -59,6 +63,10 @@ public class QuestionAdder extends ActionBarActivity {
                 categories.add(category);
             } while (cursor.moveToNext());
         }
+
+        Set<String> s = new LinkedHashSet<String>(categories);
+        categories.clear();
+        categories.addAll(s);
 
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item,categories);
