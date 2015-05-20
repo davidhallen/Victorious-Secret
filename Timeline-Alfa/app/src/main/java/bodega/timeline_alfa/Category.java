@@ -29,6 +29,7 @@ public class Category extends ActionBarActivity {
 
     private Button playButton;
     private Button backButton;
+    private Button addQuestionButton;
 
     private Button lastClickedCategoryButton;
     private Drawable lastClickedNormalBackground = null;
@@ -97,6 +98,7 @@ public class Category extends ActionBarActivity {
 
         playButton = (Button) findViewById(R.id.CategoryPlay);
         backButton = (Button) findViewById(R.id.CategoryBack);
+        addQuestionButton = (Button) findViewById (R.id.addQuestion);
 
 
 
@@ -408,6 +410,13 @@ public class Category extends ActionBarActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(Category.this,PlayersMenu.class));
+
+            }
+        });
+
+        addQuestionButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Category.this,QuestionAdder.class));
 
             }
         });

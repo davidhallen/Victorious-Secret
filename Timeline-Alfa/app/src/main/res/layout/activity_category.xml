@@ -143,8 +143,8 @@
 
         <Button
             android:id="@+id/CategoryBack"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
             android:background="@drawable/mybutton2"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
@@ -156,13 +156,26 @@
 
         <Button
             android:id="@+id/CategoryPlay"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@drawable/mybutton2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+
+            android:text="Play!"
+            android:textAllCaps="false"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/addQuestion"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
             android:background="@drawable/mybutton2"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="20dp"
-            android:text="Play!"
+            android:text="Add Questions"
             android:textAllCaps="false"
             android:textSize="@dimen/abc_text_size_display_1_material"
             android:gravity="center"/>

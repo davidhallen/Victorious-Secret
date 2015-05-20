@@ -37,7 +37,7 @@ public class MenuActivity extends ActionBarActivity {
             public void onClick(View v) {
 
               
-                startActivity(new Intent(MenuActivity.this,QuestionAdder.class));
+                startActivity(new Intent(MenuActivity.this,ScoreBoard.class));
 
             }
         });
