@@ -11,6 +11,7 @@ public class TimelineTables {
         public static final String COL_CATEGORY = "category";
         public static final String COL_QUESTION = "question";
         public static final String COL_YEAR = "year";
+        public static final String COL_BOOLEAN = "boolean";
 
 
     }

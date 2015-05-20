@@ -54,7 +54,7 @@ public class QuestionAdder extends ActionBarActivity {
         dbHelper = new TimelineDbHelper(context);
         db = dbHelper.getReadableDatabase();
 
-        cursor = dbHelper.getCategories(db);
+        cursor = dbHelper.getAllCategories(db);
 
         if (cursor.moveToFirst()){
             do {
@@ -101,7 +101,7 @@ public class QuestionAdder extends ActionBarActivity {
 
         if (!c.equals("")  && !q.equals("") && 2112>=y && y >= -5000){
             db = dbHelper.getWritableDatabase();
-            dbHelper.addQuestion(c,q,y,db);
+            dbHelper.addQuestion(c,q,y,0,db);
             question.setText(null);
             year.setText(null);
             message = "Question added!";
