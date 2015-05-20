@@ -49,6 +49,10 @@
             android:name=".TimeSpan"
             android:label="@string/title_activity_time_span" >
         </activity>
+        <activity
+            android:name=".QuestionAdder"
+            android:label="@string/title_activity_question_adder" >
+        </activity>
     </application>
 
 </manifest>

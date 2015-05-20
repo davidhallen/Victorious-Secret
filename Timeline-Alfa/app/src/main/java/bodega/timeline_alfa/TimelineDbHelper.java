@@ -134,6 +134,13 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor getCategories (SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {TimelineTables.Questions.COL_CATEGORY};
+        cursor = db.query(true,TimelineTables.Questions.TABLE_NAME, projections, null,null, null,null ,null,null);
+        return cursor;
+    }
+
     public Cursor getHighScore (SQLiteDatabase db){
         Cursor cursor;
         String[] projections = {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_NAME};
