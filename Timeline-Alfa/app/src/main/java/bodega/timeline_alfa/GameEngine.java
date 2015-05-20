@@ -56,7 +56,7 @@ public class GameEngine extends ActionBarActivity {
     public GameEngine(GameView gv, final Context context) {
         this.gv = gv;
         this.context = context;
-        GameActivity ga = (GameActivity) context;
+        ga = (GameActivity) context;
         gameOver = false;
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
 
