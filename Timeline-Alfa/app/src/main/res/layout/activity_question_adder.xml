@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="bodega.timeline_alfa.QuestionAdder">
+
+    <TextView android:text="Add your own questions!" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/question"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/year"
+        android:layout_alignEnd="@+id/year"
+        android:hint="Question"
+        android:maxLength="30"
+        />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/categoryChoice"
+        android:layout_below="@+id/question"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/question"
+        android:layout_alignEnd="@+id/question"
+        android:hint="New Category"
+        android:maxLength="15"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/year"
+        android:layout_below="@+id/question"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp"
+        android:hint="Year"/>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Predefined category"
+        android:id="@+id/button"
+        android:onClick="chooseCategory"
+        android:layout_below="@+id/question"
+        android:layout_toRightOf="@+id/question"
+        android:layout_toEndOf="@+id/question" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add question"
+        android:id="@+id/addQuestion"
+        android:layout_below="@+id/year"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/year"
+        android:layout_alignEnd="@+id/year"
+        android:onClick="addNewQuestion"
+        />
+
+
+</RelativeLayout>

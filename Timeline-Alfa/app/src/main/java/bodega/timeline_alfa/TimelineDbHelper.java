@@ -181,6 +181,13 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         return numRows;
     }
 
+    public Cursor getCategories (SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {TimelineTables.Questions.COL_CATEGORY};
+        cursor = db.query(true,TimelineTables.Questions.TABLE_NAME, projections, null,null, null,null ,null,null);
+        return cursor;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
