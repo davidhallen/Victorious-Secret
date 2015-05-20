@@ -2,8 +2,12 @@
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:drawable="@drawable/industriella_revolutionen"
+        android:drawable="@drawable/ancient_history"
+        android:top="10dp" android:bottom="10dp"
+        android:right="10dp" android:left="10dp"
         />
+        />
+
     <item>
         <shape
             android:shape="rectangle">

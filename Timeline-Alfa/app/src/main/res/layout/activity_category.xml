@@ -6,6 +6,19 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECT YOUR PREFERRED CATEGORY"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:paddingTop="20dp">
+
     <LinearLayout
         android:id="@+id/CategoryLayout1"
         android:layout_width="wrap_content"
@@ -17,8 +30,8 @@
             android:id="@+id/Category1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/geopolitik"
-            android:text="Geopolitik"
+            android:background="@drawable/geopolitics"
+            android:text="Geopolitics"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
 
@@ -26,9 +39,9 @@
             android:id="@+id/Category2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/litteratur"
+            android:background="@drawable/literature"
 
-            android:text="Litteratur"
+            android:text="Literature"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
 
@@ -36,9 +49,9 @@
             android:id="@+id/Category3"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/arkitektur"
+            android:background="@drawable/architecture"
 
-            android:text="Arkitektur"
+            android:text="Architecture"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
 
@@ -47,9 +60,9 @@
             android:id="@+id/Category4"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/krig"
+            android:background="@drawable/wars"
 
-            android:text="Krig"
+            android:text="Wars"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
 
@@ -57,40 +70,29 @@
             android:id="@+id/Category5"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/uppfinningar"
+            android:background="@drawable/inventions"
 
-            android:text="Uppfinningar"
+            android:text="Inventions"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/CategoryLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
 
         <Button
             android:id="@+id/Category6"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/kungar"
+            android:background="@drawable/kings"
 
-            android:text="Kungar"
+            android:text="Kings"
             android:textSize="@dimen/abc_text_size_button_material"/>
 
         <Button
             android:id="@+id/Category7"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/musik"
+            android:background="@drawable/music"
 
 
-            android:text="Musik"
+            android:text="Music"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
 
@@ -99,9 +101,9 @@
             android:id="@+id/Category8"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/antiken"
+            android:background="@drawable/ancient_history"
 
-            android:text="Antiken"
+            android:text="Ancient History"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
 
@@ -112,10 +114,10 @@
             android:id="@+id/Category9"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/upplysningen"
+            android:background="@drawable/enlightenment"
 
 
-            android:text="Upplysningen"
+            android:text="The Enlightenment"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
 
@@ -123,18 +125,20 @@
             android:id="@+id/Category10"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/industriella_revolutionen"
+            android:background="@drawable/the_industrial_revolution"
 
 
-            android:text="Industriella revolutionen"
+            android:text="The Industrial Revolution"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"/>
 
-
-
     </LinearLayout>
 
-    <LinearLayout
+
+    </HorizontalScrollView>
+
+
+<LinearLayout
         android:id="@+id/CategoryLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
