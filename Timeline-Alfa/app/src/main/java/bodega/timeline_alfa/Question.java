@@ -3,11 +3,11 @@ package bodega.timeline_alfa;
 /**
  * Created by victornyden on 15-04-24.
  */
-public class yearButton implements Comparable <yearButton> {
+public class Question implements Comparable <Question> {
     int year;
     String question;
 
-    public yearButton(int year, String question ){
+    public Question(int year, String question ){
         this.year= year;
         this.question = question;
     }
@@ -25,7 +25,7 @@ public class yearButton implements Comparable <yearButton> {
    /*
    Simple compareTo, will have to handle equal years later on
     */
-    @Override public int compareTo (yearButton y){
+    @Override public int compareTo (Question y){
         if (year > y.getYear()){
             return 1;
         }

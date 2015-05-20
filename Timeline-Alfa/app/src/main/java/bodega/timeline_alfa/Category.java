@@ -386,7 +386,7 @@ public class Category extends ActionBarActivity {
         });
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Category.this,MainActivity.class));
+                startActivity(new Intent(Category.this,GameActivity.class));
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {

@@ -136,19 +136,6 @@ public class PlayersMenu extends ActionBarActivity {
             }
         });}
 
-        /*
-        public void reprintMenuButtons(View pressedButton) {
-            for(Button b: menuButtons) {
-                Resources res = getResources();
-                Drawable shape = res. getDrawable(R.drawable.playerbutton);
-                b.setBackground(shape);
-            }
-            Resources res = getResources();
-            Drawable shape = res. getDrawable(R.drawable.marked_playerbutton);
-            pressedButton.setBackground(shape);
-        }*/
-
-
 
     public void setNrOfPlayers(int number) {
         nrOfPlayers = number;
