@@ -16,15 +16,15 @@ public class GameActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        newGame();
 
-        //while (true) {
+    }
+
+    public void newGame() {
         GameView gameView = new GameView(this);
         GameEngine gameEngine = new GameEngine(gameView, this);
         gameView.setEngine(gameEngine);
         gameEngine.startGame();
-
-       // }
-        //init();
     }
 
 }
