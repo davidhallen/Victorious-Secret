@@ -31,6 +31,7 @@ public class MenuActivity extends ActionBarActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(MenuActivity.this,GameActivity.class));
+                PlayersMenu.setNrOfPlayers(1);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {

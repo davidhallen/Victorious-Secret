@@ -48,8 +48,8 @@
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:textAllCaps="false"
-                android:text="Play"
-                android:textSize="@dimen/abc_text_size_display_2_material"
+                android:text="Quickplay"
+                android:textSize="@dimen/abc_text_size_display_1_material"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 />
@@ -60,7 +60,7 @@
                 android:layout_height="100dp"
                 android:textAllCaps="false"
                 android:textSize="25dp"
-                android:text="Setup"
+                android:text="Custom Play"
 
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="20dp"

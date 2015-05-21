@@ -137,7 +137,7 @@ public class PlayersMenu extends ActionBarActivity {
         });}
 
 
-    public void setNrOfPlayers(int number) {
+    public static void setNrOfPlayers(int number) {
         nrOfPlayers = number;
 
     }

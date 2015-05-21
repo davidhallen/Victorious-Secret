@@ -1,52 +1,75 @@
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="bodega.timeline_alfa.ExtrasActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:hint="Extras menu"
+            android:textSize="24dp"/>
+    </LinearLayout>
 
 
-    <Button
-        android:id="@+id/extrasBack"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/mybutton2"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id ="@+id/timelineLayout"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        android:textAllCaps="false"
-        android:text="Back"
-        android:textSize="@dimen/abc_text_size_display_1_material"
         android:gravity="center"
-        android:onClick="backToMenu"/>
+        >
+
+        <Button
+            android:id="@+id/SetUp"
+            android:background="@drawable/mybutton2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:text="Add questions"
+            android:onClick="addQuestion"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <Button
+            android:id="@+id/extrasScore"
+            android:background="@drawable/mybutton2"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:textAllCaps="false"
+            android:text="High Score"
+            android:textSize="@dimen/abc_text_size_display_2_material"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:onClick="showScoreBoard"
+            />
 
 
-    <Button
-    android:id="@+id/extrasScore"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:background="@drawable/mybutton2"
-    android:layout_marginTop="30dp"
-    android:layout_marginBottom="20dp"
-    android:layout_marginRight="20dp"
-    android:text="High Score"
-    android:textAllCaps="false"
-    android:textSize="@dimen/abc_text_size_display_1_material"
-    android:gravity="center"
-    android:onClick="showScoreBoard"/>
+        <Button
+            android:id="@+id/extrasBack"
+            android:background="@drawable/mybutton2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:text="Back"
+            android:onClick="backToMenu"
 
-    <Button
-        android:id="@+id/extrasAddQuestion"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/mybutton2"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Add Question"
-        android:textAllCaps="false"
-        android:textSize="@dimen/abc_text_size_display_1_material"
-        android:gravity="center"
-        android:onClick="addQuestion"/>
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="15dp"
+            />
+
+    </LinearLayout>
+
 
 </LinearLayout>

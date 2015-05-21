@@ -3,6 +3,7 @@ package bodega.timeline_alfa;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -33,6 +36,8 @@ public class QuestionAdder extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_adder);
         chosenCategory = (TextView)findViewById(R.id.categoryChoice);
@@ -75,6 +80,7 @@ public class QuestionAdder extends ActionBarActivity {
 
         new AlertDialog.Builder(this)
                 .setTitle("Choose Category")
+
                 .setAdapter(adapter, new DialogInterface.OnClickListener() {
 
                     @Override
@@ -135,6 +141,10 @@ public class QuestionAdder extends ActionBarActivity {
             }
         });
         builder.show();
+    }
+
+    public void backToExtras (View view) {
+        startActivity(new Intent(QuestionAdder.this,ExtrasActivity.class));
     }
 
     @Override
