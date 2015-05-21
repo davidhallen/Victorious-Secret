@@ -1,5 +1,7 @@
 package bodega.timeline_alfa;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
@@ -22,14 +24,31 @@ public class GameActivity extends ActionBarActivity {
     }
 
     public void newGame() {
-        GameView gameView = new GameView(this, this);
+        GameView gameView = new GameView(this);
         GameEngine gameEngine = new GameEngine(gameView, this);
         gameView.setEngine(gameEngine);
         gameEngine.startGame();
     }
 
     public void backToMenu() {
-        startActivity(new Intent(GameActivity.this,MenuActivity.class));
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sure you want to exit game session?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(GameActivity.this, MenuActivity.class));
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+
     }
 
 }

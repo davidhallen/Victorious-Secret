@@ -77,10 +77,10 @@ public class GameCard extends LinearLayout {
 
     // Not yet necessary
 
-    /*public int getYear() {
+    public int getYear() {
         return year;
     }
-
+    /*
     public void setQuestion(String q) {
         question = q;
     }

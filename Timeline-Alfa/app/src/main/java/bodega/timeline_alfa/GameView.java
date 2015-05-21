@@ -3,6 +3,7 @@ package bodega.timeline_alfa;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
@@ -43,7 +44,7 @@ public class GameView extends ActionBarActivity {
     Activity c;
     Context context;
 
-    GameView(final GameActivity c, final Context context) {
+    GameView(final GameActivity c) {
         this.c =  c;
         this.context = context;
         layout = (LinearLayout) c.findViewById(R.id.timelineLayout);
@@ -125,6 +126,6 @@ public class GameView extends ActionBarActivity {
         }
 
         textViewArrayListPlayers.get(ge.getActivePlayer()-1).setText("PLAYER " + ge.getActivePlayer() + ":");
-        textViewArrayListPlayers.get(ge.getActivePlayer()-1).setTextColor(-16711936);
+        textViewArrayListPlayers.get(ge.getActivePlayer()-1).setTextColor(Color.parseColor("#699446"));
     }
 }

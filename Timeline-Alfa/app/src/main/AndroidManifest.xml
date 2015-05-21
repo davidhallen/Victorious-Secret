@@ -57,6 +57,10 @@
             android:name=".ExtrasActivity"
             android:label="@string/title_activity_extras" >
         </activity>
+        <activity
+            android:name=".GameView"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

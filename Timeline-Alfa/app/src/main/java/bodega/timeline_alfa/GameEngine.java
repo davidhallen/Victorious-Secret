@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
@@ -99,9 +100,6 @@ public class GameEngine extends ActionBarActivity {
 
         playedYears.clear();
         playedYears.add(bigbang); playedYears.add(ragnarok);
-        //Collections.shuffle(yearlist);
-
-        //printButtons(); //starts game!
 
         if(selectedCategory.equals("noSelectedCategory")){
 
@@ -149,6 +147,7 @@ public class GameEngine extends ActionBarActivity {
 
                 gv.layout.addView(gameCard);
                 gameCard.setId(playedYears.get(x).hashCode());
+
             }
         }
 
@@ -308,7 +307,7 @@ public class GameEngine extends ActionBarActivity {
 
         //aPtV.setText(String.valueOf(activePlayer));
         gv.textViewArrayListPlayers.get(activePlayer-1).setText("PLAYER " + (activePlayer) + ":");
-        gv.textViewArrayListPlayers.get(activePlayer-1).setTextColor(-16711936);
+        gv.textViewArrayListPlayers.get(activePlayer-1).setTextColor(Color.parseColor("#699446"));
 
     }
 
@@ -361,12 +360,12 @@ public class GameEngine extends ActionBarActivity {
                         gv.messageBar.setText("Loose a life");
                         gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getLives()));
                         gv.textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
-                        firstSelectedButton.setState("WRONG");
-                        secondSelectedButton.setState("WRONG");
+                        //firstSelectedButton.setState("WRONG");
+                        //secondSelectedButton.setState("WRONG");
                         firstSelectedYear = null;
                         secondSelectedYear = null;
                         gv.answerButton.setEnabled(false);
-                        gv.messageBar.setText("");
+                        gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + ".");
                         printButtons();
                     }
 

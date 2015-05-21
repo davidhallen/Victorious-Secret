@@ -129,7 +129,8 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text=""
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="#cf481e"/>
         <Button
             android:id="@+id/backToMenuFromGame"
             android:layout_width="100dp"
