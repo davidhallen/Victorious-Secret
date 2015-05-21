@@ -130,6 +130,15 @@
             android:gravity="center"
             android:text=""
             android:textSize="20sp"/>
+        <Button
+            android:id="@+id/backToMenuFromGame"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/mybutton2"
+            android:text="Back to       menu"/>
+
         <TextView
             android:id="@+id/question"
             android:layout_width="350dp"
@@ -147,7 +156,7 @@
             android:id="@+id/answerButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/placecard_button"
             

@@ -1,5 +1,6 @@
 package bodega.timeline_alfa;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -21,10 +22,14 @@ public class GameActivity extends ActionBarActivity {
     }
 
     public void newGame() {
-        GameView gameView = new GameView(this);
+        GameView gameView = new GameView(this, this);
         GameEngine gameEngine = new GameEngine(gameView, this);
         gameView.setEngine(gameEngine);
         gameEngine.startGame();
+    }
+
+    public void backToMenu() {
+        startActivity(new Intent(GameActivity.this,MenuActivity.class));
     }
 
 }

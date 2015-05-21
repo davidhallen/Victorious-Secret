@@ -2,6 +2,7 @@ package bodega.timeline_alfa;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class GameView extends ActionBarActivity {
     public TextView question;
     public TextView messageBar;
     public Button answerButton;
+    public Button backToMenu;
 
     public ArrayList<TextView> textViewArrayListScore = new ArrayList<TextView>();
     public TextView p1_score;
@@ -38,10 +40,12 @@ public class GameView extends ActionBarActivity {
 
 
     private GameEngine ge;
-    Context c;
+    Activity c;
+    Context context;
 
-    GameView(Activity c) {
-        this.c = c;
+    GameView(final GameActivity c, final Context context) {
+        this.c =  c;
+        this.context = context;
         layout = (LinearLayout) c.findViewById(R.id.timelineLayout);
         question = (TextView) c.findViewById(R.id.question);
         messageBar = (TextView) c.findViewById(R.id.messageBar);
@@ -50,6 +54,13 @@ public class GameView extends ActionBarActivity {
             public void onClick(View view) {
                 ge.newCard();
 
+            }
+        });
+
+        backToMenu = (Button) c.findViewById(R.id.backToMenuFromGame);
+        backToMenu.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                c.backToMenu();
             }
         });
 

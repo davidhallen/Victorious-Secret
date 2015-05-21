@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -53,7 +54,7 @@ public class GameEngine extends ActionBarActivity {
     GameView gv;
     GameActivity ga;
 
-    public GameEngine(GameView gv, final Context context) {
+    public GameEngine(GameView gv, Context context) {
         this.gv = gv;
         this.context = context;
         ga = (GameActivity) context;
@@ -249,10 +250,10 @@ public class GameEngine extends ActionBarActivity {
 
     public void addHighScore() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ga);
         builder.setTitle("YOU'RE THE BOSS.\nNEW HIGHSCORE!!!");
         // Set up the input
-        final EditText input = new EditText(this);
+        final EditText input = new EditText(ga);
         // Specify the type of input expected
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
         builder.setView(input);
@@ -274,6 +275,9 @@ public class GameEngine extends ActionBarActivity {
         });
 
         builder.show();
+
+        // Go to ScoreBoard activity
+        //startActivity(new Intent(this,ScoreBoard.class));
 
     }
 
