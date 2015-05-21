@@ -81,13 +81,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+       >
 
 
         <Button
             android:id="@+id/PlayersBack"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/mybutton2"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
@@ -99,8 +99,8 @@
 
         <Button
             android:id="@+id/PlayersNext"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/mybutton2"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"

@@ -15,16 +15,16 @@
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
-        android:paddingTop="20dp">
+        >
 
     <LinearLayout
         android:id="@+id/CategoryLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:gravity="center">
         <Button
             android:id="@+id/Category1"
@@ -147,31 +147,24 @@
 
         <Button
             android:id="@+id/CategoryBack"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/mybutton2"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
             android:textAllCaps="false"
             android:text="Back"
             android:textSize="@dimen/abc_text_size_display_1_material"
-            android:gravity="center"/>
-
+            android:gravity="center"
+            android:layout_marginRight="15dp"/>
 
         <Button
             android:id="@+id/CategoryPlay"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/mybutton2"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
             android:text="Play!"
             android:textAllCaps="false"
             android:textSize="@dimen/abc_text_size_display_1_material"
             android:gravity="center"/>
-
-
 
     </LinearLayout>
 

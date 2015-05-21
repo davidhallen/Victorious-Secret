@@ -14,7 +14,7 @@ xmlns:android="http://schemas.android.com/apk/res/android" >
                 android:topRightRadius="23dip"
                 android:topLeftRadius="23dip"
                 />
-            <stroke android:width="5dp"
+            <stroke android:width="3dp"
                 android:color="#87A96B"
                 />
         </shape>
