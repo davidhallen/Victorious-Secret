@@ -103,7 +103,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         contentValues.put(TimelineTables.Questions.COL_CATEGORY, category);
         contentValues.put(TimelineTables.Questions.COL_QUESTION, question);
         contentValues.put(TimelineTables.Questions.COL_YEAR, year);
-        contentValues.put(TimelineTables.Questions.COL_BOOLEAN, 1);
+        contentValues.put(TimelineTables.Questions.COL_BOOLEAN, bool);
         db.insert(TimelineTables.Questions.TABLE_NAME, null, contentValues);
             Log.e("DATABASE OPERATIONS", "One question row inserted");
     }

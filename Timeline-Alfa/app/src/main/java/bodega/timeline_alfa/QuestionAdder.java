@@ -3,6 +3,7 @@ package bodega.timeline_alfa;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -75,6 +76,7 @@ public class QuestionAdder extends ActionBarActivity {
 
         new AlertDialog.Builder(this)
                 .setTitle("Choose Category")
+
                 .setAdapter(adapter, new DialogInterface.OnClickListener() {
 
                     @Override
@@ -135,6 +137,10 @@ public class QuestionAdder extends ActionBarActivity {
             }
         });
         builder.show();
+    }
+
+    public void backToExtras (View view) {
+        startActivity(new Intent(QuestionAdder.this,ExtrasActivity.class));
     }
 
     @Override
