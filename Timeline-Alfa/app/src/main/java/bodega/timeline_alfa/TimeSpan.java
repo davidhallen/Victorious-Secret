@@ -39,7 +39,11 @@ public class TimeSpan extends ActionBarActivity {
 
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+<<<<<<< HEAD
                 startActivity(new Intent(TimeSpan.this, GameActivity.class));
+=======
+                startActivity(new Intent(TimeSpan.this,GameActivity.class));
+>>>>>>> origin/Beta_Refactored
             }
         });
         backToSetUpButton.setOnClickListener(new View.OnClickListener() {

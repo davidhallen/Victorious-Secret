@@ -35,7 +35,7 @@
                 android:layout_height="100dp"
                 android:textAllCaps="false"
                 android:textSize="25dp"
-                android:text="Score"
+                android:text="Extras"
 
 
                 android:layout_marginRight="20dp"

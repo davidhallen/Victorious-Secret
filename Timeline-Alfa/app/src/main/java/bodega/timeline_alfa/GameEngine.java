@@ -51,10 +51,12 @@ public class GameEngine extends ActionBarActivity {
     Cursor cursor;
 
     GameView gv;
+    GameActivity ga;
 
     public GameEngine(GameView gv, final Context context) {
         this.gv = gv;
         this.context = context;
+        GameActivity ga = (GameActivity) context;
         gameOver = false;
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
 
@@ -382,8 +384,7 @@ public class GameEngine extends ActionBarActivity {
         }
         else {
             gv.answerButton.setText("Placera årtal");
-
-            //gv.init();
+            ga.newGame();
 
         }
     }

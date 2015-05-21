@@ -19,6 +19,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_time_span">TimeSpan</string>
+    <string name="title_activity_question_adder">QuestionAdder</string>
+    <string name="title_activity_extras">ExtrasActivity</string>
 
 
 
