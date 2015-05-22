@@ -2,6 +2,7 @@ package bodega.timeline_alfa;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -29,15 +30,19 @@ public class GameCard extends LinearLayout {
     Context mContext;
 
     private TextView yearView;
+    private TextView yearLabelView;
     private TextView questionView;
+    private LinearLayout yearLayout;
 
     private String question;
+    private String yearLabel;
     private int year;
 
     LinearLayout.LayoutParams layoutParams =
             new LinearLayout.LayoutParams(400,LinearLayout.LayoutParams.MATCH_PARENT, Gravity.CENTER_HORIZONTAL);
     LinearLayout.LayoutParams vg1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
     LinearLayout.LayoutParams vg2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+    LinearLayout.LayoutParams vg3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
 
@@ -49,6 +54,14 @@ public class GameCard extends LinearLayout {
         state = "NORMAL";
         question = q.getQuestion();
         year = q.getYear();
+        yearLabel = q.getYearLabel();
+        setGravity(CENTER_HORIZONTAL);
+
+        yearLayout = new LinearLayout(mContext);
+        yearLayout.setOrientation(HORIZONTAL);
+        yearLayout.setLayoutParams(vg3);
+        vg3.setMargins(0,0,0,0);
+        yearLayout.setPadding(0,0,0,0);
 
         layoutParams.setMargins(12,0,0,0);
         setOrientation(LinearLayout.VERTICAL);
@@ -60,8 +73,17 @@ public class GameCard extends LinearLayout {
         yearView.setPadding(0,20,0,0);
         yearView.setTextSize(30);
         vg1.gravity=Gravity.CENTER;
+        vg1.setMargins(0,0,5,0);
         yearView.setLayoutParams(vg1);
-        yearView.setText(String.valueOf(year));
+        yearView.setText(String.valueOf(Math.abs(year)));
+
+        yearLabelView = new TextView(mContext);
+        yearLabelView.setTextSize(15);
+        yearLabelView.setLayoutParams(vg1);
+        yearLabelView.setPadding(0,57,0,0);
+        yearLabelView.setText(yearLabel);
+        yearLabelView.setTextColor(Color.parseColor("#FF696769"));
+        yearLabelView.setLayoutParams(vg1);
 
         questionView = new TextView(mContext);
         questionView.setPadding(0,30,0,0);
@@ -70,7 +92,9 @@ public class GameCard extends LinearLayout {
         questionView.setLayoutParams(vg2);
         questionView.setText(question);
 
-        addView(yearView);
+        yearLayout.addView(yearView);
+        yearLayout.addView(yearLabelView);
+        addView(yearLayout);
         addView(questionView);
 
     }

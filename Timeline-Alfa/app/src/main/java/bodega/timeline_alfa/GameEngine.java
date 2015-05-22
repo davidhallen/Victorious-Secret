@@ -365,7 +365,7 @@ public class GameEngine extends ActionBarActivity {
                         firstSelectedYear = null;
                         secondSelectedYear = null;
                         gv.answerButton.setEnabled(false);
-                        gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + ".");
+                        gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
                         printButtons();
                     }
 

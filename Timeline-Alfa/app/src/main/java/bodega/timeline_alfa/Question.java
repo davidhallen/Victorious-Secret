@@ -6,6 +6,7 @@ package bodega.timeline_alfa;
 public class Question implements Comparable <Question> {
     int year;
     String question;
+    String label;
 
     public Question(int year, String question ){
         this.year= year;
@@ -20,6 +21,16 @@ public class Question implements Comparable <Question> {
     public String getQuestion() {
         return question;
 
+    }
+
+    public String getYearLabel() {
+        if (year > 0)
+            label = "A.D";
+        else if (year < 0)
+            label = "B.C";
+        else
+            label ="";
+        return label;
     }
 
    /*
