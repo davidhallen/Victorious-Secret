@@ -1,15 +1,31 @@
 package bodega.timeline_alfa;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 
 public class Category extends ActionBarActivity {
@@ -26,14 +42,17 @@ public class Category extends ActionBarActivity {
     private Button button8;
     private Button button9;
     private Button button10;
+    private Button button11;
+
 
     private Button playButton;
     private Button backButton;
-    private Button addQuestionButton;
 
     private Button lastClickedCategoryButton;
     private Drawable lastClickedNormalBackground = null;
 
+    Context context = this;
+    ArrayList<String> categories = new ArrayList <> ();
 
     private Resources res;
 
@@ -59,15 +78,10 @@ public class Category extends ActionBarActivity {
         button8 = (Button) findViewById(R.id.Category8);
         button9 = (Button) findViewById(R.id.Category9);
         button10 = (Button) findViewById(R.id.Category10);
-
-
+        button11 = (Button) findViewById(R.id.Category11);
 
         playButton = (Button) findViewById(R.id.CategoryPlay);
         backButton = (Button) findViewById(R.id.CategoryBack);
-        //addQuestionButton = (Button) findViewById (R.id.addQuestion);
-
-
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -356,6 +370,7 @@ public class Category extends ActionBarActivity {
 
             }
         });
+
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(Category.this,GameActivity.class));
@@ -367,17 +382,60 @@ public class Category extends ActionBarActivity {
 
             }
         });
-/*
-        addQuestionButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(Category.this,QuestionAdder.class));
-
-            }
-        });
-*/
-
 
     }
+
+
+    public void getCustomCategories(View view){
+
+        TimelineDbHelper dbHelper = new TimelineDbHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor;
+        cursor = dbHelper.getAllCategories(db);
+
+
+        if (cursor.moveToFirst()){
+            do {
+                String category;
+                category = cursor.getString(0);
+                categories.add(category);
+            } while (cursor.moveToNext());
+        }
+
+        Set<String> s = new LinkedHashSet<String>(categories);
+        categories.clear();
+        categories.addAll(s);
+        s.clear();
+
+        String [] normalCategories = {"KINGS", "LITERATURE", "MUSIC","OPUS","HISTORY"};
+        Collections.addAll(s, normalCategories);
+        categories.removeAll(s);
+
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item,categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+
+        new AlertDialog.Builder(this)
+                .setTitle("Choose Category")
+
+                .setAdapter(adapter, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String category = categories.get(which);
+                        button11.setText(category);
+                        dialog.dismiss();
+                        setSelectedCategory(category);
+
+                    }
+                }).create().show();
+    }
+
+
+
     public void setSelectedCategory(String category) {
         selectedCategory = category;
     }

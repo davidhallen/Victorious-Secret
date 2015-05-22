@@ -141,6 +141,17 @@
             android:gravity="center"
             android:layout_marginRight="5dp"/>
 
+        <Button
+            android:id="@+id/Category11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/the_industrial_revolution"
+            android:text="Custom Categories"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:onClick="getCustomCategories"/>
+
     </LinearLayout>
 
 
