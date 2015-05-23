@@ -7,11 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class ScoreBoard extends ActionBarActivity {
@@ -57,7 +59,7 @@ public class ScoreBoard extends ActionBarActivity {
 
                 points = cursor.getInt(0);
                 playerName = cursor.getString(1);
-
+                Log.v("LOL",playerName);
                 Button scoreButton = new Button(this);
                 String buttonText = Integer.toString(points) + "  points" + "\n" + "\n" + playerName;
                 scoreButton.setTextSize(15);
@@ -72,8 +74,11 @@ public class ScoreBoard extends ActionBarActivity {
                 
             } while (cursor.moveToNext());
         }
+        else{
 
-
+            TextView title = (TextView) findViewById(R.id.Title);
+            title.setHint("No High Scores" + "\n" + "Play more!");
+        }
     }
 
 

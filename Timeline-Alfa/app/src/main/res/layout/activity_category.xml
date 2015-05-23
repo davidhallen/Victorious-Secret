@@ -33,7 +33,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/geopolitics"
-            android:text="Geopolitics"
+            android:text="All Categories"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"
             android:layout_marginRight="5dp"/>
@@ -44,7 +44,7 @@
             android:layout_height="100dp"
             android:background="@drawable/literature"
 
-            android:text="Litteratur"
+            android:text="Literature"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"
             android:layout_marginRight="5dp"/>

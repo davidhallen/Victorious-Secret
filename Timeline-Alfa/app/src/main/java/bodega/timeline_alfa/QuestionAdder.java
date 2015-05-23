@@ -26,7 +26,8 @@ public class QuestionAdder extends ActionBarActivity {
 
     Context context = this;
     TimelineDbHelper dbHelper;
-    SQLiteDatabase db;
+    SQLiteDatabase dbRead;
+    SQLiteDatabase dbWrite;
     Cursor cursor;
     ArrayAdapter<String> adapter;
     ArrayList<String> categories = new ArrayList <> ();
@@ -44,6 +45,7 @@ public class QuestionAdder extends ActionBarActivity {
         question = (TextView)findViewById(R.id.question);
         year = (TextView)findViewById(R.id.year);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        dbHelper = new TimelineDbHelper(context);
     }
 
 
@@ -56,10 +58,10 @@ public class QuestionAdder extends ActionBarActivity {
 
     public void chooseCategory (View view){
 
-        dbHelper = new TimelineDbHelper(context);
-        db = dbHelper.getReadableDatabase();
 
-        cursor = dbHelper.getAllCategories(db);
+        dbRead = dbHelper.getReadableDatabase();
+
+        cursor = dbHelper.getAllCategories(dbRead);
 
         if (cursor.moveToFirst()){
             do {
@@ -98,6 +100,8 @@ public class QuestionAdder extends ActionBarActivity {
         String q = question.getText().toString().trim().toUpperCase();
         String checkEmpty = year.getText().toString().trim();
         Integer y;
+        dbWrite = dbHelper.getWritableDatabase();
+
         if(checkEmpty.equals("")){
             y = -5001;
         }
@@ -106,8 +110,8 @@ public class QuestionAdder extends ActionBarActivity {
         }
 
         if (!c.equals("")  && !q.equals("") && 2112>=y && y >= -5000){
-            db = dbHelper.getWritableDatabase();
-            dbHelper.addQuestion(c,q,y,0,db);
+
+            dbHelper.addQuestion(c,q,y,0,dbWrite);
             question.setText(null);
             year.setText(null);
             message = "Question added!";

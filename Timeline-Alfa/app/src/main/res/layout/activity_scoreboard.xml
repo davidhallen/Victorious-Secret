@@ -8,12 +8,16 @@
     android:layout_gravity="center"
     android:gravity="center">
 
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        >
+        android:layout_marginTop="30dp"
+        android:hint="High Score"
+        android:textSize="24dp"
+        android:layout_gravity="top"
+        android:id="@+id/Title"/>
+
 
         <LinearLayout
 
@@ -25,50 +29,8 @@
             android:id="@+id/scoreLayout"
             >
 
-        <!--    <Button
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/mybutton2"
-                android:textSize="@dimen/abc_text_size_button_material"
-                android:gravity="center"
-                android:id="@+id/button1"/>
-            <Button
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/mybutton2"
-                android:id="@+id/button2"
-                android:textSize="@dimen/abc_text_size_button_material"
-                android:gravity="center"/>
-            <Button
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/mybutton2"
-                android:id="@+id/button3"
-                android:textSize="@dimen/abc_text_size_button_material"
-                android:gravity="center"/>
-            <Button
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/mybutton2"
-                android:id="@+id/button4"
-                android:textSize="@dimen/abc_text_size_button_material"
-                android:gravity="center"/>
-            <Button
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/mybutton2"
-                android:id="@+id/button5"
-                android:textSize="@dimen/abc_text_size_button_material"
-                android:gravity="center"/>
--->
-
         </LinearLayout>
-    </HorizontalScrollView>
+
 
 
 </LinearLayout>

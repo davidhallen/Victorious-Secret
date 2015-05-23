@@ -124,7 +124,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
                 TimelineTables.Questions.COL_YEAR, TimelineTables.Questions.COL_BOOLEAN};
 
-        if (category == "NOSELECTEDCATEGORY") {
+        if (category.equals("ALL CATEGORIES")) {
             cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_BOOLEAN + "=?", new String [] {"1"}, null,null, "RANDOM()", numQuest);
             return cursor;
         }
