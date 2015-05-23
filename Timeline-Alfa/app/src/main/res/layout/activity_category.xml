@@ -44,7 +44,7 @@
             android:layout_height="100dp"
             android:background="@drawable/literature"
 
-            android:text="Literature"
+            android:text="Litteratur"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"
             android:layout_marginRight="5dp"/>

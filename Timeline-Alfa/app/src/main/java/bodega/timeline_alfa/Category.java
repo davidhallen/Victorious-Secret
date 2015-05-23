@@ -53,6 +53,8 @@ public class Category extends ActionBarActivity {
 
     Context context = this;
     ArrayList<String> categories = new ArrayList <> ();
+    LinearLayout linLay;
+
 
     private Resources res;
 
@@ -82,6 +84,8 @@ public class Category extends ActionBarActivity {
 
         playButton = (Button) findViewById(R.id.CategoryPlay);
         backButton = (Button) findViewById(R.id.CategoryBack);
+        linLay = (LinearLayout) findViewById(R.id.CategoryLayout1);
+
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -332,6 +336,11 @@ public class Category extends ActionBarActivity {
                 }
                 else{
                     Drawable tempBackground = (Drawable) findViewById(R.id.Category9).getBackground();
+
+                    if (lastClickedCategoryButton == button11) {
+                        button11.setText("Custom Categories");
+                    }
+
                     lastClickedCategoryButton.setBackground(lastClickedNormalBackground);
                     lastClickedCategoryButton = button9;
                     button9.setBackground(drawable9Clicked);
@@ -407,8 +416,11 @@ public class Category extends ActionBarActivity {
         categories.addAll(s);
         s.clear();
 
-        String [] normalCategories = {"KINGS", "LITERATURE", "MUSIC","OPUS","HISTORY"};
-        Collections.addAll(s, normalCategories);
+        for(int i=0; i< linLay.getChildCount(); ++i) {
+            Button nextChild = (Button)linLay.getChildAt(i);
+            s.add(nextChild.getText().toString().toUpperCase());
+        }
+
         categories.removeAll(s);
 
         ArrayAdapter<String> adapter;
@@ -429,6 +441,24 @@ public class Category extends ActionBarActivity {
                         button11.setText(category);
                         dialog.dismiss();
                         setSelectedCategory(category);
+                        Drawable drawable11Clicked = res. getDrawable(R.drawable.the_industrial_revolution_clicked);
+
+                        if (lastClickedCategoryButton==null){
+                            lastClickedCategoryButton = button11;
+                            lastClickedNormalBackground = findViewById(R.id.Category11).getBackground();
+                            button11.setBackground(drawable11Clicked);
+
+                        }
+                        else{
+                            Drawable tempBackground = (Drawable) findViewById(R.id.Category11).getBackground();
+                            lastClickedCategoryButton.setBackground(lastClickedNormalBackground);
+                            lastClickedCategoryButton = button11;
+                            button11.setBackground(drawable11Clicked);
+                            lastClickedNormalBackground = tempBackground;
+
+                        }
+
+
 
                     }
                 }).create().show();
