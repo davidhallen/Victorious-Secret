@@ -151,6 +151,11 @@ public class QuestionAdder extends ActionBarActivity {
         startActivity(new Intent(QuestionAdder.this,ExtrasActivity.class));
     }
 
+    public void removeAddedQuestions(View view){
+
+        startActivity(new Intent(QuestionAdder.this,removeQuestionsActivity.class));
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

@@ -21,7 +21,11 @@
     <string name="title_activity_time_span">TimeSpan</string>
     <string name="title_activity_question_adder">QuestionAdder</string>
     <string name="title_activity_extras">ExtrasActivity</string>
+    <string name="title_activity_remove_questions">removeQuestionsActivity</string>
 
 
+    <item name="buttonId1" type="id"/>
+
+    <item name="buttonId2" type="id"/>
 
 </resources>

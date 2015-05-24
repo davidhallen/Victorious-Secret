@@ -153,6 +153,14 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void deleteQuestion (String category, String question, Integer year, SQLiteDatabase db){
+
+        String y = Integer.toString(year);
+        db.execSQL("delete from " + TimelineTables.Questions.TABLE_NAME + " where " + TimelineTables.Questions.COL_CATEGORY + "='" + category + "'" + " AND " +
+        TimelineTables.Questions.COL_QUESTION + "='" + question + "'" + " AND " + TimelineTables.Questions.COL_YEAR + "='" + year + "'" );
+
+    }
+
     public int getLowestScore(SQLiteDatabase db){
         Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "min(" + TimelineTables.HighScore.COL_SCORE + ")" }, null, null,
                 null, null, null);
@@ -193,6 +201,17 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_BOOLEAN};
         cursor = db.query(true,TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_BOOLEAN + "=?", new String [] {"0"},null, null,null ,null,null);
+        return cursor;
+    }
+
+    public Cursor getAddedQuestions (String category, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION, TimelineTables.Questions.COL_YEAR, TimelineTables.Questions.COL_BOOLEAN};
+        String selection = TimelineTables.Questions.COL_BOOLEAN + " = '0'"
+                +" AND " + TimelineTables.Questions.COL_CATEGORY + " = '"+category+"'";
+
+
+        cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, selection,null, null,null,null);
         return cursor;
     }
 
