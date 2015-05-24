@@ -251,7 +251,7 @@ public class Category extends ActionBarActivity {
                         button11.setText(category);
                         dialog.dismiss();
                         setSelectedCategory(category);
-                        Drawable drawable11Clicked = res. getDrawable(R.drawable.the_industrial_revolution_clicked);
+                        Drawable drawable11Clicked = res. getDrawable(R.drawable.custom_clicked);
                         updateButtons(button11, drawable11Clicked);
                     }
                 }).create().show();
