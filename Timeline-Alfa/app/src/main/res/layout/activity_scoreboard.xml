@@ -8,15 +8,27 @@
     android:layout_gravity="center"
     android:gravity="center">
 
-    <TextView
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:orientation="horizontal"
+        android:id ="@+id/timelineLayout"
         android:layout_marginTop="30dp"
-        android:hint="High Score"
-        android:textSize="24dp"
-        android:layout_gravity="top"
-        android:id="@+id/Title"/>
+        android:gravity="center"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:hint="High Score"
+            android:textSize="24dp"
+            android:layout_gravity="top"
+            android:id="@+id/Title"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"/>
 
 
         <LinearLayout
@@ -30,6 +42,22 @@
             >
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/BackFromHighScore"
+            android:background="@drawable/mybutton2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textAllCaps="false"
+            android:textSize="25dp"
+            android:text="Back"
+
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+
 
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bodega.timeline_alfa" >
+    package="bodega.timeline_alfa">
 
     <application
         android:allowBackup="true"
@@ -57,10 +57,7 @@
             android:name=".ExtrasActivity"
             android:label="@string/title_activity_extras" >
         </activity>
-        <activity
-            android:name=".GameView"
-            android:label="@string/app_name" >
-        </activity>
+
         <activity
             android:name=".removeQuestionsActivity"
             android:label="@string/title_activity_remove_questions" >

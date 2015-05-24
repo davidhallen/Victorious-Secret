@@ -1,6 +1,7 @@
 package bodega.timeline_alfa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,6 +10,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -21,6 +23,7 @@ public class ScoreBoard extends ActionBarActivity {
     Context context = this;
     Cursor cursor;
     private LinearLayout scoreLayout;
+    private Button buttonBack;
 
 
     @Override
@@ -33,6 +36,14 @@ public class ScoreBoard extends ActionBarActivity {
         scoreLayout = (LinearLayout) findViewById(R.id.scoreLayout);
         scoreLayout.setOrientation(LinearLayout.VERTICAL);
         getTopScores();
+
+        buttonBack = (Button) findViewById(R.id.BackFromHighScore);
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(ScoreBoard.this,ExtrasActivity.class));
+            }
+        });
 
     }
 
@@ -77,6 +88,7 @@ public class ScoreBoard extends ActionBarActivity {
         else{
 
             TextView title = (TextView) findViewById(R.id.Title);
+
             title.setHint("No High Scores" + "\n" + "Play more!");
         }
     }

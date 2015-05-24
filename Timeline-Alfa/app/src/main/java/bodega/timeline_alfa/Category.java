@@ -1,5 +1,6 @@
 package bodega.timeline_alfa;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -59,6 +61,7 @@ public class Category extends ActionBarActivity {
     private Resources res;
 
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -177,6 +180,7 @@ public class Category extends ActionBarActivity {
 
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void updateButtons(Button but, Drawable clicked){
         Drawable tempBackground = (Drawable) but.getBackground();
 
@@ -255,7 +259,7 @@ public class Category extends ActionBarActivity {
 
 
 
-    public void setSelectedCategory(String category) {
+    public static void setSelectedCategory(String category) {
         selectedCategory = category;
     }
 
