@@ -178,16 +178,24 @@ public class Category extends ActionBarActivity {
     }
 
     private void updateButtons(Button but, Drawable clicked){
-        if (lastClickedCategoryButton == button11) {
+        Drawable tempBackground = (Drawable) but.getBackground();
+
+        if (lastClickedCategoryButton == button11 && but != button11) {
             button11.setText("Custom Categories");
         }
-        Drawable tempBackground = (Drawable) but.getBackground();
-        lastClickedCategoryButton.setBackground(lastClickedNormalBackground);
-        lastClickedCategoryButton.setClickable(true);
-        but.setClickable(false);
+
+        if (lastClickedCategoryButton != button11 || but != button11) {
+            lastClickedCategoryButton.setBackground(lastClickedNormalBackground);
+            lastClickedCategoryButton.setClickable(true);
+            lastClickedNormalBackground = tempBackground;
+        }
+
+        if (but != button11){
+            but.setClickable(false);
+        }
+
         lastClickedCategoryButton = but;
         but.setBackground(clicked);
-        lastClickedNormalBackground = tempBackground;
         setSelectedCategory(but.getText().toString().toUpperCase());
 
     }

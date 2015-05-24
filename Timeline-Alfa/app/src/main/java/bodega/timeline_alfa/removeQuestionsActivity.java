@@ -138,7 +138,7 @@ public class removeQuestionsActivity extends ActionBarActivity {
         else {
             title.setHint("Remove Added Questions");
             catButton.setText("Choose Category");
-            
+
         }
 
     }
