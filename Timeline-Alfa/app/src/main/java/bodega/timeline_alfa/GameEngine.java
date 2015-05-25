@@ -228,13 +228,33 @@ public class GameEngine extends ActionBarActivity {
             playedYears.add(currentQuestion);
             gv.question.setText(currentQuestion.getQuestion());
         } else {
-            gv.question.setText("Slut på frågor mannen, Game Over");
-            gv.answerButton.setText("Nytt spel");
+            int highestScore = 0;
+            Player winner = null;
+            for (int i=0; i < nrOfPlayers; i++) {
+                Player p = listOfPlayers.get(i);
+                if (p.getScore() >= highestScore)
+                    highestScore = p.getScore();
+                    winner = p;
+            }
+            String gameWinners = "";
+            int nrOfWinners = 0;
+            for (int x=0; x < nrOfPlayers; x++) {
+                if (winner.getScore() == listOfPlayers.get(x).getScore()) {
+                    gameWinners = gameWinners + listOfPlayers.get(x).getName() + " ";
+                    nrOfWinners++;
+                }
+            }
+            if (nrOfWinners == 1)
+                gv.question.setText("Congratulations! " + gameWinners + " is the winner!");
+            else
+                gv.question.setText("Congratulations! " + gameWinners + " are the winners!");
+            gv.question.setTextColor(Color.parseColor("#699446"));
+            gv.answerButton.setText("New Game");
             gameOver = true;
             gv.answerButton.setEnabled(true);
 
             //only add highScore if single-player game and all categories
-            if(nrOfPlayers == 1 && selectedCategory == "NOSELECTEDCATEGORY"){
+            if(nrOfPlayers == 1 && selectedCategory == "ALL CATEGORIES"){
                 //add highScore if it's a new highscore
                 if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5) {
                     addHighScore();
@@ -341,7 +361,7 @@ public class GameEngine extends ActionBarActivity {
                         gv.answerButton.setEnabled(true);
 
                         //only add highScore if single-player game and all categories
-                        if (nrOfPlayers == 1 && selectedCategory == "NOSELECTEDCATEGORY") {
+                        if (nrOfPlayers == 1 && selectedCategory == "ALL CATEGORIES") {
                             //add highScore if it's a new highscore
                             if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5) {
                                 addHighScore();

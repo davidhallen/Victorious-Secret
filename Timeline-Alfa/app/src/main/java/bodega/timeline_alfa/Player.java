@@ -20,6 +20,8 @@ public class Player {
 
     public void setScore(int points) {
         score = score + points;
+        if (score < 0)
+            score = 0;
     }
 
     public int getScore() {
