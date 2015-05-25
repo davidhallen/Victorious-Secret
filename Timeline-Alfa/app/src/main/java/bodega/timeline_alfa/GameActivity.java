@@ -25,7 +25,6 @@ public class GameActivity extends ActionBarActivity {
             newGame();
         } else{
             //Fix onPause() and onResume()
-            //oldGame();
             newGame();
         }
     }
@@ -56,7 +55,6 @@ public class GameActivity extends ActionBarActivity {
                 dialog.cancel();
             }
         });
-
         builder.show();
     }
     @Override
