@@ -25,10 +25,12 @@ public class GameActivity extends ActionBarActivity {
             newGame();
         } else{
             //Fix onPause() and onResume()
-            //oldGame();
             newGame();
         }
     }
+
+
+
 
     public void newGame() {
         GameView gameView = new GameView(this);
@@ -36,14 +38,6 @@ public class GameActivity extends ActionBarActivity {
         gameView.setEngine(gameEngine);
         gameEngine.startGame();
     }
-
-    //public void oldGame() {
-      //  GameView gameView = new GameView(this);
-      //  GameEngine gameEngine = new GameEngine(gameView, this);
-      //  gameView.setEngine(gameEngine);
-      //  gameEngine.startGame();
-    //}
-
 
 
     public void backToMenu() {
@@ -61,17 +55,30 @@ public class GameActivity extends ActionBarActivity {
                 dialog.cancel();
             }
         });
-
         builder.show();
     }
     @Override
     public void onPause() {
         super.onPause();
+        //Some code so that the game can resume after locked screen
+
+
     }
     @Override
     public void onResume() {
         super.onResume();
+
+
     }
+
+
+    public void resumeGame(){
+
+
+
+    }
+
+
 }
 
 

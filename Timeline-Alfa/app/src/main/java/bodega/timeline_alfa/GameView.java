@@ -2,9 +2,22 @@ package bodega.timeline_alfa;
 
 import android.app.Activity;
 import android.content.Context;
+
 import android.content.Intent;
 import android.graphics.Color;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+
 import android.support.v7.app.ActionBarActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -107,7 +120,8 @@ public class GameView extends ActionBarActivity {
             lives_text = p2_text;
             lives_nr.setText(String.valueOf(ge.getPlayer(0).getLives()));
             lives_text.setText("Lives");
-            //p2_score.setText("");
+
+
             p3_score.setText("");
             p4_score.setText("");
             p5_score.setText("");

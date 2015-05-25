@@ -40,7 +40,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:text="0 p"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+           />
         <TextView
             android:id="@+id/player3_text"
             android:layout_toRightOf="@id/player2_score"
