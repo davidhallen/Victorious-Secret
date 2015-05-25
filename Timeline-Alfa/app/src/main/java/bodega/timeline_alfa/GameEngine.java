@@ -113,9 +113,7 @@ public class GameEngine extends ActionBarActivity {
         gv.loadPlayerViews();
         printButtons();
     }
-    //public void resumeGame() {
-      //  printButtons();
-    //}
+  
 
     public int getNrOfPlayers() {
         return nrOfPlayers;
@@ -144,19 +142,15 @@ public class GameEngine extends ActionBarActivity {
                 gameCard.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         clickedYear(view);
-
                     }
                 });
-
                 gv.layout.addView(gameCard);
                 gameCard.setId(playedYears.get(x).hashCode());
-
             }
         }
-
         newQuestion();
-
     }
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void clickedYear (View view){
@@ -238,6 +232,7 @@ public class GameEngine extends ActionBarActivity {
                 if (p.getScore() >= highestScore)
                     highestScore = p.getScore();
                     winner = p;
+
             }
             String gameWinners = "";
             int nrOfWinners = 0;
@@ -264,7 +259,7 @@ public class GameEngine extends ActionBarActivity {
             //only add highScore if single-player game and all categories
             if(nrOfPlayers == 1 && selectedCategory == "ALL CATEGORIES"){
                 //add highScore if it's a new highscore
-                if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5) {
+                if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 4) {
                     addHighScore();
                 }
                 else if (player1.getScore() > dbHelper.getLowestScore(db)) {

@@ -1,9 +1,11 @@
 package bodega.timeline_alfa;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.LinearLayout;
@@ -46,6 +48,7 @@ public class GameCard extends LinearLayout {
 
 
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public GameCard(Context context, Question q) {
         super(context);
         mContext = context;
@@ -113,6 +116,7 @@ public class GameCard extends LinearLayout {
         year = y;
     }*/
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void setState(String s) {
 
         if (s == "NORMAL")
