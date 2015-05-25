@@ -106,13 +106,14 @@
             android:layout_marginRight="5dp"/>
 
 
+
+
         <Button
             android:id="@+id/Category8"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/ancient_history"
-
-            android:text="Ancient History"
+            android:background="@drawable/religion"
+            android:text="Religion"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"
             android:layout_marginRight="5dp"/>
@@ -121,23 +122,18 @@
             android:id="@+id/Category9"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/enlightenment"
-
-
-            android:text="The Enlightenment"
+            android:background="@drawable/politics"
+            android:text="Politics"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"
             android:layout_marginRight="5dp"/>
 
         <Button
             android:id="@+id/Category10"
-            
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/the_industrial_revolution"
-
-
-            android:text="The Industrial Revolution"
+            android:background="@drawable/sports"
+            android:text="Sports"
             android:textSize="@dimen/abc_text_size_button_material"
             android:gravity="center"
             android:layout_marginRight="5dp"/>
@@ -152,6 +148,8 @@
             android:gravity="center"
             android:layout_marginRight="5dp"
             android:onClick="getCustomCategories"/>
+
+
 
     </LinearLayout>
 
