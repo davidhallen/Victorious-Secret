@@ -388,7 +388,7 @@ public class GameEngine extends ActionBarActivity {
                 }
                 else {
                     gv.textViewArrayListScore.get(activePlayer - 1).setTextColor(-65536);
-                    gv.messageBar.setText("Fel, försök igen!");
+                    gv.messageBar.setText("Wrong, try again!");
                     listOfPlayers.get(activePlayer - 1).setScore(-1);
                     gv.textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
                     firstSelectedButton.setState("WRONG");
@@ -402,7 +402,7 @@ public class GameEngine extends ActionBarActivity {
 
         }
         else {
-            gv.answerButton.setText("Placera årtal");
+            gv.answerButton.setText("Place Card");
             ga.newGame();
 
         }
