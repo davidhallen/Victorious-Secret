@@ -39,7 +39,7 @@
     </content>
 
      <content>
-        <category>Krig</category>
+        <category>Wars</category>
         <question>
             Första världskriget inleds
         </question>
@@ -48,7 +48,7 @@
     </content>
 
     <content>
-        <category>Krig</category>
+        <category>Wars</category>
         <question>
             Slaget vid Narva utkämpas
         </question>
@@ -57,7 +57,7 @@
     </content>
 
     <content>
-        <category>Krig</category>
+        <category>Wars</category>
         <question>
             Villhelm Erövraren leder sina trupper till vinst i slaget vid Hastings
         </question>
@@ -66,7 +66,7 @@
     </content>
 
     <content>
-        <category>Krig</category>
+        <category>Wars</category>
         <question>
             Den serie engelska inbördeskrig som går under namnet Rosornas krig inleds
         </question>
@@ -247,7 +247,37 @@
         <year>1982</year>
     </content>
 
+    <content>
+        <category>Kings</category>
+        <question>
+            Carl XVI Gustaf was born.
+        </question>
+        <year>1946</year>
+    </content>
 
+    <content>
+        <category>Kings</category>
+        <question>
+            Gustav Vasa was born.
+        </question>
+        <year>1496</year>
+    </content>
+
+    <content>
+        <category>Architecture</category>
+        <question>
+            Sidney Opera House was opened.
+        </question>
+        <year>1973</year>
+    </content>
+
+    <content>
+        <category>Architecture</category>
+        <question>
+            Globen in Stockholm was opened.
+        </question>
+        <year>1989</year>
+    </content>
 
 
 
