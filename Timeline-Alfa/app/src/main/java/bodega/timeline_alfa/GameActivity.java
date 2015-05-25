@@ -21,8 +21,13 @@ public class GameActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        newGame();
-
+        if(savedInstanceState == null){
+            newGame();
+        } else{
+            //Fix onPause() and onResume()
+            //oldGame();
+            newGame();
+        }
     }
 
     public void newGame() {
@@ -31,6 +36,15 @@ public class GameActivity extends ActionBarActivity {
         gameView.setEngine(gameEngine);
         gameEngine.startGame();
     }
+
+    //public void oldGame() {
+      //  GameView gameView = new GameView(this);
+      //  GameEngine gameEngine = new GameEngine(gameView, this);
+      //  gameView.setEngine(gameEngine);
+      //  gameEngine.startGame();
+    //}
+
+
 
     public void backToMenu() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -53,12 +67,10 @@ public class GameActivity extends ActionBarActivity {
     @Override
     public void onPause() {
         super.onPause();
-        //Some code so that the game can resume after locked screen
     }
     @Override
     public void onResume() {
         super.onResume();
-
     }
 }
 
