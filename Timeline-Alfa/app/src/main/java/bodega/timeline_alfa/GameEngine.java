@@ -113,6 +113,9 @@ public class GameEngine extends ActionBarActivity {
         gv.loadPlayerViews();
         printButtons();
     }
+    //public void resumeGame() {
+      //  printButtons();
+    //}
 
     public int getNrOfPlayers() {
         return nrOfPlayers;

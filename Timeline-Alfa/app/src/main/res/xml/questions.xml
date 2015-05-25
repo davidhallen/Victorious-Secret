@@ -93,6 +93,23 @@
     </content>
 
     <content>
+        <category>Sports</category>
+        <question>
+            Javier Sotomayor sets a new world record in high jump by jumping 2,45 meters.
+        </question>
+        <year>1993</year>
+    </content>
+
+    <content>
+        <category>Sports</category>
+        <question>
+            Mike Powell sets a new world record in long jump by jumping 8,95 meters.
+        </question>
+        <year>1991</year>
+
+    </content>
+
+    <content>
         <category>Politics</category>
         <question>
             Swedish prime minister Olof Palme is shot
@@ -414,6 +431,23 @@
         </question>
         <year>1994</year>
     </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            Jackson 5 releases a hit single called ABC.
+        </question>
+        <year>1970</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            Tupac Shakur dies.
+        </question>
+        <year>1996</year>
+    </content>
+
 
 
 </resources>
