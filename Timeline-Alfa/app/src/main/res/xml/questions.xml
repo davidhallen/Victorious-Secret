@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <content>
-    <category>History</category>
+    <category>Politics</category>
     <question>
-        Kubakrisen äger rum
+        The Cuban Missile Crises takes place
     </question>
     <year>1962</year>
 
@@ -11,132 +11,125 @@
 
     <content>
 
-        <category>History</category>
+        <category>Politics</category>
 
     <question>
-        Stalin dör
+        Joseph Stalin dies at his Kuntsevo residence close to Moscow
     </question>
     <year>1953</year>
 
 </content>
 
     <content>
-        <category>History</category>
+        <category>Politics</category>
         <question>
-            Amerikanska revolutionen inleds
+            The American revolution begins
         </question>
         <year>1775</year>
 
     </content>
 
     <content>
-        <category>History</category>
+        <category>Religion</category>
         <question>
-            Luther spikar upp sina teser på kyrkdörren i Wittenberg
+            Martin Luther nails his ninety-five theses to the Wittenberg church door
         </question>
         <year>1517</year>
 
     </content>
 
      <content>
-        <category>Krig</category>
+        <category>Wars</category>
         <question>
-            Första världskriget inleds
+            The first world war starts
         </question>
         <year>1914</year>
 
     </content>
 
     <content>
-        <category>Krig</category>
+        <category>Wars</category>
         <question>
-            Slaget vid Narva utkämpas
+            The battle of Narva, between Russia and Sweden, is fought
         </question>
         <year>1700</year>
 
     </content>
 
     <content>
-        <category>Krig</category>
+        <category>Wars</category>
         <question>
-            Villhelm Erövraren leder sina trupper till vinst i slaget vid Hastings
+           William to Conqueror leads his troops to victory at the battle of Hastings
         </question>
         <year>1066</year>
 
     </content>
 
     <content>
-        <category>Krig</category>
+        <category>Wars</category>
         <question>
-            Den serie engelska inbördeskrig som går under namnet Rosornas krig inleds
+            The series of british dynastic wars, refered to as the War of the Roses, are initialized
         </question>
         <year>1455</year>
 
     </content>
 
     <content>
-        <category>History</category>
+        <category>Sports</category>
         <question>
-            OS i Stockholm
+            The olympic games are being held in Stockholm
         </question>
         <year>1912</year>
 
     </content>
 
     <content>
-        <category>History</category>
+        <category>Politics</category>
         <question>
-            Palme går på bio
+            Swedish prime minister Olof Palme is shot
         </question>
         <year>1986</year>
 
     </content>
 
     <content>
-        <category>Geopolitik</category>
+        <category>Politics</category>
         <question>
-            Columbus upptäcker Amerika
+            Colombus discovers America
         </question>
         <year>1492</year>
 
     </content>
 
     <content>
-        <category>History</category>
+        <category>Religion</category>
         <question>
-            Jesus kristus föds
+            According to biblical tradition Jesus Christ is born
         </question>
         <year>0</year>
 
     </content>
 
     <content>
-        <category>History</category>
+        <category>Inventions</category>
         <question>
-            Whisky börjar tillverkas i Sverige
+            Old Bushmills Distillery receives the worlds first permit to distill whiskey
         </question>
         <year>1955</year>
 
     </content>
-    <content>
-        <category>Uppfinningar</category>
-        <question>
-            Leonardo da Vinci misslyckas med ett flygmaskinstest
-        </question>
-        <year>1496</year>
 
-    </content>
 
     <content>
-        <category>History</category>
+        <category>Inventions</category>
         <question>
-            Varumärket Frisbee godkänns
+             Frisbee becomes a registered trademark
         </question>
         <year>1959</year>
     </content>
 
     <content>
-        <category>Geopolitik</category>
+        <category>Politics</category>
         <question>
             Dutch colonist Peter Minuit buys Manhattan Island from local Indians
         </question>
@@ -144,7 +137,7 @@
     </content>
 
     <content>
-        <category> Litteratur</category>
+        <category>Literature</category>
         <question>
             The british author Geoffrey Chaucer, best known for Canterbury Tales, dies
         </question>
@@ -152,7 +145,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             Dostoyevsky's novel Crime and Punishment is published
         </question>
@@ -160,7 +153,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             Milan Kundera's novel The Unbearable Lightness of Being is published
         </question>
@@ -168,7 +161,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             The title of George Orwell's novel from 1949
         </question>
@@ -176,7 +169,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             The second volume of Cervante's Don Quijote is published
         </question>
@@ -184,7 +177,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             The first part of the novel which starts with the words "All happy families are alike", is published
         </question>
@@ -192,7 +185,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             Emile Zola writes J’accuse...! in favor for jewish officer Alfred Dreyfus
         </question>
@@ -200,15 +193,15 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
-            Less then Zero, the debut novel of Brett Easton Ellis is published
+            James Joyce's Ulysses chronicles a day in the life of Leopold Bloom during this year
         </question>
-        <year>1985</year>
+        <year>1904</year>
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             William Faulkner receives the nobel price in literature
         </question>
@@ -216,7 +209,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             Blonde, Joyce Carol Oates novel chronicling the life of Marylin Monroe is published
         </question>
@@ -224,7 +217,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             The expression catch-22 is coined by Joesph Heller
         </question>
@@ -232,7 +225,7 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             The novel portraying the arrest of Josef K is published
         </question>
@@ -240,14 +233,44 @@
     </content>
 
     <content>
-        <category>Litteratur</category>
+        <category>Literature</category>
         <question>
             Gabriel García Márquez receives the nobel price in literature
         </question>
         <year>1982</year>
     </content>
 
+    <content>
+        <category>Kings</category>
+        <question>
+            Carl XVI Gustaf was born.
+        </question>
+        <year>1946</year>
+    </content>
 
+    <content>
+        <category>Kings</category>
+        <question>
+            Gustav Vasa was born.
+        </question>
+        <year>1496</year>
+    </content>
+
+    <content>
+        <category>Architecture</category>
+        <question>
+            Sidney Opera House was opened.
+        </question>
+        <year>1973</year>
+    </content>
+
+    <content>
+        <category>Architecture</category>
+        <question>
+            Globen in Stockholm was opened.
+        </question>
+        <year>1989</year>
+    </content>
 
 
 

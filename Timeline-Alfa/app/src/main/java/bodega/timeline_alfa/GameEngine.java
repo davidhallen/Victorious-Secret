@@ -228,6 +228,7 @@ public class GameEngine extends ActionBarActivity {
             playedYears.add(currentQuestion);
             gv.question.setText(currentQuestion.getQuestion());
         } else {
+<<<<<<< HEAD
             int highestScore = 0;
             Player winner = null;
             for (int i=0; i < nrOfPlayers; i++) {
@@ -249,9 +250,15 @@ public class GameEngine extends ActionBarActivity {
             else
                 gv.question.setText("Congratulations! " + gameWinners + " are the winners!");
             gv.question.setTextColor(Color.parseColor("#699446"));
+=======
+            gv.question.setText("No more questions, Game Over");
+>>>>>>> origin/Beta_Refactored
             gv.answerButton.setText("New Game");
             gameOver = true;
             gv.answerButton.setEnabled(true);
+
+
+
 
             //only add highScore if single-player game and all categories
             if(nrOfPlayers == 1 && selectedCategory == "ALL CATEGORIES"){
@@ -356,9 +363,22 @@ public class GameEngine extends ActionBarActivity {
 
                         //messageBar.setText("You are here, good");
                         gv.question.setText("Game Over. You got "+listOfPlayers.get(activePlayer-1).getScore()+" points" );
-                        gv.answerButton.setText("Nytt spel");
+                        gv.answerButton.setText("New Game");
                         gameOver = true;
                         gv.answerButton.setEnabled(true);
+                        gv.layout.removeAllViews();
+
+                        if (!playedYears.isEmpty()) {
+                            for (int x = 0; x < playedYears.size(); x++) {
+                                GameCard gameCard = new GameCard(context, playedYears.get(x));
+
+                                gv.layout.addView(gameCard);
+                                gameCard.setClickable(false);
+                                gameCard.setId(playedYears.get(x).hashCode());
+
+                            }
+                        }
+
 
                         //only add highScore if single-player game and all categories
                         if (nrOfPlayers == 1 && selectedCategory == "ALL CATEGORIES") {
@@ -374,7 +394,7 @@ public class GameEngine extends ActionBarActivity {
                         listOfPlayers.get(activePlayer-1).setScore(0);
                         listOfPlayers.get(activePlayer-1).setNewLives();
                         gv.lives_nr.setText("X_X");
-                        gv.p1_score.setText("0");
+                        //gv.p1_score.setText("0");
 
                     } else{
                         gv.messageBar.setText("Loose a life");
@@ -392,7 +412,7 @@ public class GameEngine extends ActionBarActivity {
                 }
                 else {
                     gv.textViewArrayListScore.get(activePlayer - 1).setTextColor(-65536);
-                    gv.messageBar.setText("Fel, försök igen!");
+                    gv.messageBar.setText("Wrong, try again!");
                     listOfPlayers.get(activePlayer - 1).setScore(-1);
                     gv.textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
                     firstSelectedButton.setState("WRONG");
@@ -406,7 +426,7 @@ public class GameEngine extends ActionBarActivity {
 
         }
         else {
-            gv.answerButton.setText("Placera årtal");
+            gv.answerButton.setText("Place Card");
             ga.newGame();
 
         }

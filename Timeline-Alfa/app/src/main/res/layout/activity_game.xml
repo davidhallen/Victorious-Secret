@@ -161,6 +161,6 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/placecard_button"
             
-            android:text="Placera årtal" />
+            android:text="Place Card" />
     </RelativeLayout>
 </LinearLayout>
