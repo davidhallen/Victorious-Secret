@@ -232,11 +232,8 @@ public class GameEngine extends ActionBarActivity {
                 if (p.getScore() >= highestScore) {
                     highestScore = p.getScore();
                     winner = p;
-<<<<<<< HEAD
-                }
-=======
 
->>>>>>> origin/Beta_Refactored
+                }
             }
             String gameWinners = "";
             int nrOfWinners = 0;
