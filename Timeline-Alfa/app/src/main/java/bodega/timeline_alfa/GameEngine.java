@@ -235,9 +235,10 @@ public class GameEngine extends ActionBarActivity {
             Player winner = null;
             for (int i=0; i < nrOfPlayers; i++) {
                 Player p = listOfPlayers.get(i);
-                if (p.getScore() >= highestScore)
+                if (p.getScore() >= highestScore) {
                     highestScore = p.getScore();
                     winner = p;
+                }
             }
             String gameWinners = "";
             int nrOfWinners = 0;
@@ -248,12 +249,10 @@ public class GameEngine extends ActionBarActivity {
                 }
             }
             if (nrOfWinners == 1)
-                gv.question.setText("Congratulations! " + gameWinners + " is the winner!");
+                gv.question.setText("Congratulations! " + gameWinners + "is the winner!");
             else
                 gv.question.setText("Congratulations! " + gameWinners + " are the winners!");
             gv.question.setTextColor(Color.parseColor("#699446"));
-            gv.question.setText("No more questions, Game Over");
-
             gv.answerButton.setText("New Game");
             gameOver = true;
             gv.answerButton.setEnabled(true);
