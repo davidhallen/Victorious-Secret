@@ -77,9 +77,18 @@
     <content>
         <category>Sports</category>
         <question>
-            The olympic games are being held in Stockholm
+            The olympic games are being held in Stockholm.
         </question>
         <year>1912</year>
+
+    </content>
+
+    <content>
+        <category>Sports</category>
+        <question>
+            Fifa World Cup is being held in Sweden.
+        </question>
+        <year>1958</year>
 
     </content>
 
@@ -109,6 +118,16 @@
         <year>0</year>
 
     </content>
+
+    <content>
+        <category>Religion</category>
+        <question>
+            The book of Mormon is published.
+        </question>
+        <year>1830</year>
+
+    </content>
+
 
     <content>
         <category>Inventions</category>
@@ -189,7 +208,7 @@
         <question>
             Emile Zola writes J’accuse...! in favor for jewish officer Alfred Dreyfus
         </question>
-        <year>1873</year>
+        <year>1898</year>
     </content>
 
     <content>
@@ -272,7 +291,129 @@
         <year>1989</year>
     </content>
 
+    <content>
+        <category>Architecture</category>
+        <question>
+            Empire State Building is completed.
+        </question>
+        <year>1931</year>
+    </content>
 
+    <content>
+        <category>Architecture</category>
+        <question>
+            The Crystal Palace in Hyde Park is destroyed.
+        </question>
+        <year>1936</year>
+    </content>
+
+    <content>
+        <category>Architecture</category>
+        <question>
+            St. Peters church is consecrated.
+        </question>
+        <year>1626</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+           The four seasons are composed by Vivaldi.
+        </question>
+        <year>1720</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            Piano Sonata No. 14 or "Moonlight Sonata" is completed.
+        </question>
+        <year>1802</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+           The Entertainer by Scott Joplin is published.
+        </question>
+        <year>1902</year>
+
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            In the Mood by Glenn Miller tops the US charts for 13 straight weeks.
+        </question>
+        <year>1940</year>
+
+    </content>
+
+
+
+    <content>
+        <category>Music</category>
+        <question>
+        The premiere of The Nutcraker is shown at Mariinsky Theatre in St. Petersburg.
+        </question>
+        <year>1892</year>
+     </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+           The Beatles is formed in Liverpool.
+        </question>
+        <year>1960</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            The Rolling Stones is formed.
+        </question>
+        <year>1962</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            Jefferson Airplane performs at Woodstock Festival.
+        </question>
+        <year>1969</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            Led Zeppelin releases Stairway to Heaven.
+        </question>
+        <year>1971</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            Tonny Iommi invites Bill, Geezer and Ozzy to play in his band.
+        </question>
+        <year>1968</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+            Abba wins Eurovision Song Contest with Waterloo.
+        </question>
+        <year>1974</year>
+    </content>
+
+    <content>
+        <category>Music</category>
+        <question>
+        Kurt Cobain dies.
+        </question>
+        <year>1994</year>
+    </content>
 
 
 </resources>

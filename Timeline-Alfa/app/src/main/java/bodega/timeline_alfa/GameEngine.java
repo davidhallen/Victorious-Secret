@@ -418,14 +418,26 @@ public class GameEngine extends ActionBarActivity {
                     firstSelectedYear = null;
                     secondSelectedYear = null;
                     gv.answerButton.setEnabled(false);
+
                 }
 
             }
 
         }
         else {
+
             gv.answerButton.setText("Place Card");
+
+
+
+
             ga.newGame();
+
+           // GameActivity a =(GameActivity) context;
+           // a.newGame();
+
+            //gv.init();
+
 
         }
     }
