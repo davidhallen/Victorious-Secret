@@ -47,6 +47,7 @@ public class Category extends ActionBarActivity {
     private Button button11;
 
 
+
     private Button playButton;
     private Button backButton;
 
@@ -85,6 +86,7 @@ public class Category extends ActionBarActivity {
         button10 = (Button) findViewById(R.id.Category10);
         button11 = (Button) findViewById(R.id.Category11);
 
+
         playButton = (Button) findViewById(R.id.CategoryPlay);
         backButton = (Button) findViewById(R.id.CategoryBack);
         linLay = (LinearLayout) findViewById(R.id.CategoryLayout1);
@@ -93,7 +95,6 @@ public class Category extends ActionBarActivity {
         lastClickedCategoryButton = button1;
         lastClickedNormalBackground = button1.getBackground();
         button1.setBackground(drawable1Clicked);
-        button1.setClickable(false);
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -147,24 +148,25 @@ public class Category extends ActionBarActivity {
 
         button8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable8Clicked = res. getDrawable(R.drawable.ancient_history_clicked);
+                Drawable drawable8Clicked = res. getDrawable(R.drawable.religion_clicked);
                 updateButtons(button8,drawable8Clicked);
             }
         });
 
         button9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable9Clicked = res. getDrawable(R.drawable.enlightenment_clicked);
+                Drawable drawable9Clicked = res. getDrawable(R.drawable.politics_clicked);
                 updateButtons(button9,drawable9Clicked);
             }
         });
 
         button10.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable10Clicked = res.getDrawable(R.drawable.the_industrial_revolution_clicked);
+                Drawable drawable10Clicked = res.getDrawable(R.drawable.sports_clicked);
                 updateButtons(button10,drawable10Clicked);
             }
         });
+
 
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -177,6 +179,7 @@ public class Category extends ActionBarActivity {
 
             }
         });
+        button1.setClickable(false);
 
     }
 

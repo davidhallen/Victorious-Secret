@@ -2,11 +2,11 @@
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:drawable="@drawable/the_industrial_revolution"
+        android:drawable="@drawable/politics"
         android:top="10dp" android:bottom="10dp"
         android:right="10dp" android:left="10dp"
         />
-        />
+    />
     <item>
         <shape
             android:shape="rectangle">
@@ -15,7 +15,7 @@
                 android:topRightRadius="23dip"
                 android:topLeftRadius="23dip"
                 />
-            <stroke android:width="3dp"
+            <stroke android:width="5dp"
                 android:color="#87A96B"
                 />
         </shape>
