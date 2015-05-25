@@ -53,7 +53,7 @@ public class GameActivity extends ActionBarActivity {
     @Override
     public void onPause() {
         super.onPause();
-        onResume();
+        //Some code so that the game can resume after locked screen
     }
     @Override
     public void onResume() {

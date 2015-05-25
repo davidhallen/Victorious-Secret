@@ -1,5 +1,6 @@
 package bodega.timeline_alfa;
 
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
@@ -7,6 +8,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -111,7 +113,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     public void addHighScore (Integer highScore, String player, SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
         int intK = getHighestHighScoreKeyInTable(db);
-        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intK +1);
+        contentValues.put(TimelineTables.HighScore.COL_INTKEY, intK + 1);
         contentValues.put(TimelineTables.HighScore.COL_SCORE, highScore);
         contentValues.put(TimelineTables.HighScore.COL_NAME, player);
         db.insert(TimelineTables.HighScore.TABLE_NAME, null, contentValues);
@@ -162,7 +164,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     }
 
     public int getLowestScore(SQLiteDatabase db){
-        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "min(" + TimelineTables.HighScore.COL_SCORE + ")" }, null, null,
+        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{"min(" + TimelineTables.HighScore.COL_SCORE + ")"}, null, null,
                 null, null, null);
         if(!c.moveToFirst()){
             return 0;
@@ -197,6 +199,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public Cursor getCustomCategories (SQLiteDatabase db){
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_BOOLEAN};

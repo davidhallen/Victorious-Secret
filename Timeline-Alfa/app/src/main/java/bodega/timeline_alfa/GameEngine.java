@@ -228,10 +228,13 @@ public class GameEngine extends ActionBarActivity {
             playedYears.add(currentQuestion);
             gv.question.setText(currentQuestion.getQuestion());
         } else {
-            gv.question.setText("Slut på frågor mannen, Game Over");
-            gv.answerButton.setText("Nytt spel");
+            gv.question.setText("No more questions, Game Over");
+            gv.answerButton.setText("New Game");
             gameOver = true;
             gv.answerButton.setEnabled(true);
+
+
+
 
             //only add highScore if single-player game and all categories
             if(nrOfPlayers == 1 && selectedCategory == "NOSELECTEDCATEGORY"){
@@ -336,9 +339,22 @@ public class GameEngine extends ActionBarActivity {
 
                         //messageBar.setText("You are here, good");
                         gv.question.setText("Game Over. You got "+listOfPlayers.get(activePlayer-1).getScore()+" points" );
-                        gv.answerButton.setText("Nytt spel");
+                        gv.answerButton.setText("New Game");
                         gameOver = true;
                         gv.answerButton.setEnabled(true);
+                        gv.layout.removeAllViews();
+
+                        if (!playedYears.isEmpty()) {
+                            for (int x = 0; x < playedYears.size(); x++) {
+                                GameCard gameCard = new GameCard(context, playedYears.get(x));
+
+                                gv.layout.addView(gameCard);
+                                gameCard.setClickable(false);
+                                gameCard.setId(playedYears.get(x).hashCode());
+
+                            }
+                        }
+
 
                         //only add highScore if single-player game and all categories
                         if (nrOfPlayers == 1 && selectedCategory == "NOSELECTEDCATEGORY") {
@@ -354,7 +370,7 @@ public class GameEngine extends ActionBarActivity {
                         listOfPlayers.get(activePlayer-1).setScore(0);
                         listOfPlayers.get(activePlayer-1).setNewLives();
                         gv.lives_nr.setText("X_X");
-                        gv.p1_score.setText("0");
+                        //gv.p1_score.setText("0");
 
                     } else{
                         gv.messageBar.setText("Loose a life");
