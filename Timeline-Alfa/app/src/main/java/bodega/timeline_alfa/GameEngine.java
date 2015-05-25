@@ -228,7 +228,6 @@ public class GameEngine extends ActionBarActivity {
             playedYears.add(currentQuestion);
             gv.question.setText(currentQuestion.getQuestion());
         } else {
-<<<<<<< HEAD
             int highestScore = 0;
             Player winner = null;
             for (int i=0; i < nrOfPlayers; i++) {
@@ -250,9 +249,8 @@ public class GameEngine extends ActionBarActivity {
             else
                 gv.question.setText("Congratulations! " + gameWinners + " are the winners!");
             gv.question.setTextColor(Color.parseColor("#699446"));
-=======
             gv.question.setText("No more questions, Game Over");
->>>>>>> origin/Beta_Refactored
+
             gv.answerButton.setText("New Game");
             gameOver = true;
             gv.answerButton.setEnabled(true);
