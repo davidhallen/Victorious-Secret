@@ -52,7 +52,7 @@ public class GameView extends ActionBarActivity {
         answerButton = (Button) c.findViewById(R.id.answerButton);
         answerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                ge.newCard();
+                ge.checkIfCorrect();
 
             }
         });
