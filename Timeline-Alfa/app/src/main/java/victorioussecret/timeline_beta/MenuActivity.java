@@ -1,4 +1,4 @@
-package victorioussecret.timeline_alfa;
+package victorioussecret.timeline_beta;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,42 +9,49 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 
-public class ExtrasActivity extends ActionBarActivity {
+public class MenuActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_extras);
+        setContentView(R.layout.activity_menu);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        Button button1= (Button) findViewById(R.id.QuickPlay);
+        Button button2= (Button) findViewById(R.id.Extras);
+        Button button3= (Button) findViewById(R.id.CustomPlay);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MenuActivity.this,GameActivity.class));
+                PlayersMenuActivity.setNrOfPlayers(1);
+                CategoryActivity.setSelectedCategory("ALL CATEGORIES");
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               startActivity(new Intent(MenuActivity.this,ExtrasActivity.class));
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MenuActivity.this,PlayersMenuActivity.class));
+            }
+        });
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_extras, menu);
+        getMenuInflater().inflate(R.menu.menu_menu, menu);
         return true;
     }
-
-
-    public void addQuestion (View view){
-        startActivity(new Intent(ExtrasActivity.this,QuestionAdderActivity.class));
-    }
-
-    public void showScoreBoard (View view){
-        startActivity(new Intent(ExtrasActivity.this,ScoreBoard.class));
-    }
-
-    public void backToMenu (View view){
-        startActivity(new Intent(ExtrasActivity.this, MenuActivity.class));
-    }
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

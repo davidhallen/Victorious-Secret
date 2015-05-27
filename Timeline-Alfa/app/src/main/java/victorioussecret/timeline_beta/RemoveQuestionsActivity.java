@@ -1,4 +1,4 @@
-package victorioussecret.timeline_alfa;
+package victorioussecret.timeline_beta;
 
 import android.app.AlertDialog;
 import android.content.Context;

@@ -1,8 +1,8 @@
-package victorioussecret.timeline_alfa.testing;
+package victorioussecret.timeline_beta.testing;
 
 import android.test.ActivityUnitTestCase;
 
-import victorioussecret.timeline_alfa.ExtrasActivity;
+import victorioussecret.timeline_beta.ExtrasActivity;
 
 /**
  * Created by theYellowBird on 2015-05-27.

@@ -1,4 +1,4 @@
-package victorioussecret.timeline_alfa;
+package victorioussecret.timeline_beta;
 
 /**
  * Created by theYellowBird and victornyden on 2015-05-01.
