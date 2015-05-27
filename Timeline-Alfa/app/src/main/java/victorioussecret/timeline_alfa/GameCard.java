@@ -1,4 +1,4 @@
-package bodega.timeline_alfa;
+package victorioussecret.timeline_alfa;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;

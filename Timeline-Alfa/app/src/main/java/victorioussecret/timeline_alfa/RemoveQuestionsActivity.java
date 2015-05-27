@@ -1,4 +1,4 @@
-package bodega.timeline_alfa;
+package victorioussecret.timeline_alfa;
 
 import android.app.AlertDialog;
 import android.content.Context;

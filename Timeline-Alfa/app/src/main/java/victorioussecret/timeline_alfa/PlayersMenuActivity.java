@@ -1,4 +1,4 @@
-package bodega.timeline_alfa;
+package victorioussecret.timeline_alfa;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -14,7 +14,7 @@ import android.widget.Button;
 /**
  * Created by ludvigsylven on 15-05-01.
  */
-public class PlayersMenu extends ActionBarActivity {
+public class PlayersMenuActivity extends ActionBarActivity {
 
     private static int nrOfPlayers = 1;
     private Button button1;
@@ -111,12 +111,12 @@ public class PlayersMenu extends ActionBarActivity {
         });
         button7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(PlayersMenu.this,MenuActivity.class));
+                startActivity(new Intent(PlayersMenuActivity.this,MenuActivity.class));
             }
         });
         button8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(PlayersMenu.this,CategoryActivity.class));
+                startActivity(new Intent(PlayersMenuActivity.this,CategoryActivity.class));
             }
         });
     }

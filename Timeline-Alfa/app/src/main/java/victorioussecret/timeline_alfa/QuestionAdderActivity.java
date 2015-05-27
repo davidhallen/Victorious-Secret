@@ -1,4 +1,4 @@
-package bodega.timeline_alfa;
+package victorioussecret.timeline_alfa;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,8 +18,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 
 public class QuestionAdderActivity extends ActionBarActivity {

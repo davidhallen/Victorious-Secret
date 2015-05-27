@@ -1,4 +1,4 @@
-package bodega.timeline_alfa;
+package victorioussecret.timeline_alfa;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -169,7 +169,7 @@ public class CategoryActivity extends ActionBarActivity {
         });
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(CategoryActivity.this,PlayersMenu.class));
+                startActivity(new Intent(CategoryActivity.this,PlayersMenuActivity.class));
 
             }
         });

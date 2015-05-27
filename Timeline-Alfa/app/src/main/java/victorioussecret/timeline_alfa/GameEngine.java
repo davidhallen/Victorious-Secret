@@ -1,4 +1,4 @@
-package bodega.timeline_alfa;
+package victorioussecret.timeline_alfa;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -62,7 +62,7 @@ public class GameEngine extends ActionBarActivity {
         this.context = context;
         ga = (GameActivity) context;
         gameOver = false;
-        nrOfPlayers = PlayersMenu.getNrOfPlayers();
+        nrOfPlayers = PlayersMenuActivity.getNrOfPlayers();
 
         activePlayerNr = 1;
 

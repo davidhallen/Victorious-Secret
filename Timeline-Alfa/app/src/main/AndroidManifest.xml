@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bodega.timeline_alfa">
+    package="victorioussecret.timeline_alfa">
 
     <application
         android:allowBackup="true"
@@ -8,22 +8,22 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".GameActivity"
+            android:name="victorioussecret.timeline_alfa.GameActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".ScoreBoard"
+            android:name="victorioussecret.timeline_alfa.ScoreBoard"
             android:label="@string/app_name2"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".PlayersMenu"
+            android:name=".PlayersMenuActivity"
             android:label="@string/app_name4"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name="victorioussecret.timeline_alfa.MenuActivity"
             android:label="@string/title_activity_menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,20 +32,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CategoryActivity"
+            android:name="victorioussecret.timeline_alfa.CategoryActivity"
             android:label="@string/title_activity_category" >
         </activity>
         <activity
-            android:name=".QuestionAdderActivity"
+            android:name="victorioussecret.timeline_alfa.QuestionAdderActivity"
             android:label="@string/title_activity_question_adder" >
         </activity>
         <activity
-            android:name=".ExtrasActivity"
+            android:name="victorioussecret.timeline_alfa.ExtrasActivity"
             android:label="@string/title_activity_extras" >
         </activity>
 
         <activity
-            android:name=".RemoveQuestionsActivity"
+            android:name="victorioussecret.timeline_alfa.RemoveQuestionsActivity"
             android:label="@string/title_activity_remove_questions" >
         </activity>
     </application>

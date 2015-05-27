@@ -1,10 +1,7 @@
-package bodega.timeline_alfa;
+package victorioussecret.timeline_alfa;
 
 import android.content.Intent;
-import android.test.ActivityInstrumentationTestCase2;
-import android.test.ActivityTestCase;
 import android.test.ActivityUnitTestCase;
-import android.widget.TextView;
 
 /**
  * Created by theYellowBird on 2015-05-27.

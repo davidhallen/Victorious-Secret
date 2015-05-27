@@ -1,10 +1,8 @@
-package bodega.timeline_alfa.testing;
+package victorioussecret.timeline_alfa.testing;
 
-import android.test.ActivityInstrumentationTestCase2;
 import android.test.ActivityUnitTestCase;
-import android.test.InstrumentationTestCase;
 
-import bodega.timeline_alfa.ExtrasActivity;
+import victorioussecret.timeline_alfa.ExtrasActivity;
 
 /**
  * Created by theYellowBird on 2015-05-27.
