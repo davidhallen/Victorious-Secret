@@ -38,10 +38,10 @@ public class PlayersMenu extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_players);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        loadsViews();
+        loadView();
     }
 
-    private void loadsViews() {
+    private void loadView() {
         res = getResources();
         s1 = res. getDrawable(R.drawable.playerbutton);
         s2 = res. getDrawable(R.drawable.marked_playerbutton);

@@ -35,7 +35,7 @@ public class ScoreBoard extends ActionBarActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         scoreLayout = (LinearLayout) findViewById(R.id.scoreLayout);
         scoreLayout.setOrientation(LinearLayout.VERTICAL);
-        getTopScores();
+        showHighScores();
 
         buttonBack = (Button) findViewById(R.id.BackFromHighScore);
 
@@ -47,7 +47,7 @@ public class ScoreBoard extends ActionBarActivity {
 
     }
 
-    public void getTopScores(){
+    private void showHighScores(){
 
         TimelineDbHelper dbHelper;
         SQLiteDatabase db;
@@ -55,14 +55,9 @@ public class ScoreBoard extends ActionBarActivity {
         db = dbHelper.getReadableDatabase();
         cursor = dbHelper.getHighScore(db);
 
-       // LinearLayout.LayoutParams layoutParams =
-       //         new LinearLayout.LayoutParams(250, LinearLayout.LayoutParams.MATCH_PARENT);
-       // layoutParams.setMargins(0,0,0,0);
-
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
         params.weight = 1.0f;
         params.gravity = Gravity.CENTER_HORIZONTAL;
-
 
         if (cursor.moveToFirst()){
             do {
@@ -70,19 +65,15 @@ public class ScoreBoard extends ActionBarActivity {
 
                 points = cursor.getInt(0);
                 playerName = cursor.getString(1);
-                Log.v("LOL",playerName);
                 Button scoreButton = new Button(this);
                 String buttonText = Integer.toString(points) + "  points" + "\n" + "\n" + playerName;
                 scoreButton.setTextSize(15);
                 scoreButton.setBackgroundResource(R.drawable.scorefields);
                 scoreButton.setText(buttonText);
-                //scoreButton.setLayoutParams(layoutParams);
                 scoreButton.setLayoutParams(params);
                 scoreButton.setWidth(1000);
-
                 scoreLayout.addView(scoreButton);
 
-                
             } while (cursor.moveToNext());
         }
         else{
