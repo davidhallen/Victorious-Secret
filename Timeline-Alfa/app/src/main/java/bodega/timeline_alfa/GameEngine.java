@@ -260,7 +260,7 @@ public class GameEngine extends ActionBarActivity {
     }
 
     private void showSinglePlayerResult(){
-        gv.question.setText("Game Over. You got "+listOfPlayers.get(activePlayerNr -1).getScore()+" points" );
+        gv.question.setText("Game Over. You got " + listOfPlayers.get(activePlayerNr - 1).getScore() + " points");
         gv.lives_nr.setText("X_X");
     }
 
@@ -377,10 +377,10 @@ public class GameEngine extends ActionBarActivity {
             } else {
                 if (nrOfPlayers == 1) {
                     listOfPlayers.get(activePlayerNr - 1).looseALife();
-                    if ((listOfPlayers.get(activePlayerNr -1).getLives()) == 0) {
+                    if ((listOfPlayers.get(activePlayerNr - 1).getLives()) == 0) {
 
                         //messageBar.setText("You are here, good");
-                        gv.question.setText("Game Over. You got "+listOfPlayers.get(activePlayerNr -1).getScore()+" points" );
+                        gv.question.setText("Game Over. You got " + listOfPlayers.get(activePlayerNr - 1).getScore() + " points");
                         gv.answerButton.setText("New Game");
                         gameOver = true;
                         gv.answerButton.setEnabled(true);
@@ -409,8 +409,8 @@ public class GameEngine extends ActionBarActivity {
                             }
 
                         }
-                        listOfPlayers.get(activePlayerNr -1).setScore(0);
-                        listOfPlayers.get(activePlayerNr -1).setLives(3);
+                        listOfPlayers.get(activePlayerNr - 1).setScore(0);
+                        listOfPlayers.get(activePlayerNr - 1).setLives(3);
                         gv.lives_nr.setText("X_X");
 
                     } else {
@@ -423,43 +423,45 @@ public class GameEngine extends ActionBarActivity {
                         gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
                         printButtons();
 
-                            listOfPlayers.get(activePlayerNr - 1).looseALife();
-                            if ((listOfPlayers.get(activePlayerNr -1).getLives()) == 0) {
-                                gameOver();
+                        listOfPlayers.get(activePlayerNr - 1).looseALife();
+                        if ((listOfPlayers.get(activePlayerNr - 1).getLives()) == 0) {
+                            gameOver();
 
-                            } else {
-                                gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getLives()));
-                                gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
-                                firstSelectedYear = null;
-                                secondSelectedYear = null;
-                                gv.answerButton.setEnabled(false);
-                                gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
-                                printButtons();
+                        } else {
+                            gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getLives()));
+                            gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
+                            firstSelectedYear = null;
+                            secondSelectedYear = null;
+                            gv.answerButton.setEnabled(false);
+                            gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
+                            printButtons();
                         }
 
+                    }
                 }
-                else {
-                    gv.textViewArrayListScore.get(activePlayerNr - 1).setTextColor(-65536);
-                    gv.messageBar.setText("Wrong, try again!");
-                    listOfPlayers.get(activePlayerNr - 1).setScore(-1);
-                    gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
+                    else {
+                        gv.textViewArrayListScore.get(activePlayerNr - 1).setTextColor(-65536);
+                        gv.messageBar.setText("Wrong, try again!");
+                        listOfPlayers.get(activePlayerNr - 1).setScore(-1);
+                        gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
 
 
-                    //unmark all cards
-                    for(int k=0; k< gv.layout.getChildCount(); ++k) {
-                        GameCard gameCard = (GameCard) gv.layout.getChildAt(k);
-                        gameCard.setState("NORMAL");
+                        //unmark all cards
+                        for (int k = 0; k < gv.layout.getChildCount(); ++k) {
+                            GameCard gameCard = (GameCard) gv.layout.getChildAt(k);
+                            gameCard.setState("NORMAL");
+                        }
+
+                        //mark the two wrong cards
+                        firstSelectedButton.setState("WRONG");
+                        secondSelectedButton.setState("WRONG");
+
+                        firstSelectedYear = null;
+                        secondSelectedYear = null;
+                        gv.answerButton.setEnabled(false);
+
                     }
 
-                    //mark the two wrong cards
-                    firstSelectedButton.setState("WRONG");
-                    secondSelectedButton.setState("WRONG");
-
-                    firstSelectedYear = null;
-                    secondSelectedYear = null;
-                    gv.answerButton.setEnabled(false);
-
-                    }
             }
         }
         else {
