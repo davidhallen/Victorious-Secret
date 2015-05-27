@@ -22,7 +22,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 
-public class QuestionAdder extends ActionBarActivity {
+public class QuestionAdderActivity extends ActionBarActivity {
 
     Context context = this;
     TimelineDbHelper dbHelper;
@@ -148,12 +148,12 @@ public class QuestionAdder extends ActionBarActivity {
     }
 
     public void backToExtras (View view) {
-        startActivity(new Intent(QuestionAdder.this,ExtrasActivity.class));
+        startActivity(new Intent(QuestionAdderActivity.this,ExtrasActivity.class));
     }
 
     public void removeAddedQuestions(View view){
 
-        startActivity(new Intent(QuestionAdder.this,RemoveQuestionsActivity.class));
+        startActivity(new Intent(QuestionAdderActivity.this,RemoveQuestionsActivity.class));
     }
 
     @Override

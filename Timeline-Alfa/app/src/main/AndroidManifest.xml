@@ -36,7 +36,7 @@
             android:label="@string/title_activity_category" >
         </activity>
         <activity
-            android:name=".QuestionAdder"
+            android:name=".QuestionAdderActivity"
             android:label="@string/title_activity_question_adder" >
         </activity>
         <activity

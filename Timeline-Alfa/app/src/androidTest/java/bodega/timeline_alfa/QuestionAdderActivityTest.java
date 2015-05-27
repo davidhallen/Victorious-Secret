@@ -9,12 +9,12 @@ import android.widget.TextView;
 /**
  * Created by theYellowBird on 2015-05-27.
  */
-public class QuestionAdderTest extends ActivityUnitTestCase<GameEngine> {
+public class QuestionAdderActivityTest extends ActivityUnitTestCase<GameEngine> {
 
     GameEngine ge;
 
 
-    public QuestionAdderTest() {
+    public QuestionAdderActivityTest() {
         super(GameEngine.class);
     }
 

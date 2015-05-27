@@ -6,10 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,8 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 
 public class RemoveQuestionsActivity extends ActionBarActivity {
@@ -173,7 +169,7 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
 
     public void back (View v) {
 
-        startActivity(new Intent(RemoveQuestionsActivity.this,QuestionAdder.class));
+        startActivity(new Intent(RemoveQuestionsActivity.this,QuestionAdderActivity.class));
 
     }
 

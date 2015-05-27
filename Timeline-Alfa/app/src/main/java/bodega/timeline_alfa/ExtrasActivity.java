@@ -32,7 +32,7 @@ public class ExtrasActivity extends ActionBarActivity {
 
 
     public void addQuestion (View view){
-        startActivity(new Intent(ExtrasActivity.this,QuestionAdder.class));
+        startActivity(new Intent(ExtrasActivity.this,QuestionAdderActivity.class));
     }
 
     public void showScoreBoard (View view){

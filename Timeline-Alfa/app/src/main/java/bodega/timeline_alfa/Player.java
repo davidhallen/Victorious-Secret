@@ -42,8 +42,8 @@ public class Player {
 
     }
 
-    public void setNewLives(){
-        this.lives = 3;
+    public void setLives(int lives){
+        this.lives = lives;
     }
 }
 

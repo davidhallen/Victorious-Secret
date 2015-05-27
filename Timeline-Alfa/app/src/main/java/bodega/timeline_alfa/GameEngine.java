@@ -380,7 +380,7 @@ public class GameEngine extends ActionBarActivity {
 
                         }
                         listOfPlayers.get(activePlayerNr -1).setScore(0);
-                        listOfPlayers.get(activePlayerNr -1).setNewLives();
+                        listOfPlayers.get(activePlayerNr -1).setLives(3);
                         gv.lives_nr.setText("X_X");
 
                     } else {
