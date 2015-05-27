@@ -4,9 +4,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_gravity="center"
-    android:gravity="center">
+    android:gravity="center_horizontal">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High Scores"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -15,21 +28,8 @@
         android:id ="@+id/timelineLayout"
         android:layout_marginTop="30dp"
         android:gravity="center"
+        android:layout_marginLeft="130dp"
         >
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="30dp"
-            android:hint="High Score"
-            android:textSize="24dp"
-            android:layout_gravity="top"
-            android:id="@+id/Title"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"/>
-
 
         <LinearLayout
 
@@ -57,7 +57,7 @@
             />
 
     </LinearLayout>
-
+    </LinearLayout>
 
 
 

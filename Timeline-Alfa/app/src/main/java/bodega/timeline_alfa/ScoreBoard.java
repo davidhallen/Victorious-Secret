@@ -87,7 +87,7 @@ public class ScoreBoard extends ActionBarActivity {
         }
         else{
 
-            TextView title = (TextView) findViewById(R.id.Title);
+            TextView title = (TextView) findViewById(R.id.title);
 
             title.setHint("No High Scores" + "\n" + "Play more!");
         }

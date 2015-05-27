@@ -24,6 +24,8 @@ public class GameCard extends LinearLayout {
     private Drawable d_card;
     private Drawable d_markedCard;
     private Drawable d_wrongCard;
+
+    //Drawables defined for use of specific shapes for Bing Bang & Ragnarok cards
     private Drawable d_bigBang;
     private Drawable d_markedBigbang;
     private Drawable d_ragnarok;
@@ -45,7 +47,6 @@ public class GameCard extends LinearLayout {
     LinearLayout.LayoutParams vg1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
     LinearLayout.LayoutParams vg2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
     LinearLayout.LayoutParams vg3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
 
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -102,19 +103,6 @@ public class GameCard extends LinearLayout {
 
     }
 
-    // Not yet necessary
-
-    public int getYear() {
-        return year;
-    }
-    /*
-    public void setQuestion(String q) {
-        question = q;
-    }
-
-    public void setYear(int y) {
-        year = y;
-    }*/
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void setState(String s) {

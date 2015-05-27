@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class PlayersMenu extends ActionBarActivity {
 
     private static int nrOfPlayers = 1;
-    //private ArrayList<Button> menuButtons;
     private Button button1;
     private Button button2;
     private Button button3;
@@ -59,9 +58,7 @@ public class PlayersMenu extends ActionBarActivity {
         button5 = (Button) findViewById(R.id.FivePlayers);
         button7 = (Button) findViewById(R.id.PlayersBack);
         button8 = (Button) findViewById(R.id.PlayersNext);
-        /*if (lastClickedPlayerButton == null)
-            lastClickedPlayerButton = button1;
-        lastClickedPlayerButton.setBackground(s2);*/
+
 
         switch (nrOfPlayers) {
             case 1: lastClickedPlayerButton = button1;
@@ -77,16 +74,10 @@ public class PlayersMenu extends ActionBarActivity {
         }
         lastClickedPlayerButton.setBackground(s2);
 
-        //menuButtons.add(button1);
-        //menuButtons.add(button2);
-        //menuButtons.add(button3);
-        //menuButtons.add(button4);
-        //menuButtons.add(button5);
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                /*Intent intent = new Intent(GetExtras
-                Intent.putextra*/
+
                 setNrOfPlayers(1);
                 lastClickedPlayerButton.setBackground(s1);
                 v.setBackground(s2);

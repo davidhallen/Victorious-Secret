@@ -28,6 +28,9 @@ import java.util.ArrayList;
 /**
  * Created by Piotri on 2015-05-16.
  */
+
+//This class handles all the views displayed in-game
+
 public class GameView extends ActionBarActivity {
     public LinearLayout layout;
     public TextView question;
@@ -36,7 +39,7 @@ public class GameView extends ActionBarActivity {
     public Button backToMenu;
 
     public ArrayList<TextView> textViewArrayListScore = new ArrayList<TextView>();
-    public TextView p1_score;
+    private TextView p1_score;
     private TextView p2_score;
     private TextView p3_score;
     private TextView p4_score;
@@ -51,15 +54,11 @@ public class GameView extends ActionBarActivity {
     private TextView p5_text;
     public TextView lives_text;
 
-
-
     private GameEngine ge;
     Activity c;
-    Context context;
 
     GameView(final GameActivity c) {
         this.c =  c;
-        this.context = context;
         layout = (LinearLayout) c.findViewById(R.id.timelineLayout);
         question = (TextView) c.findViewById(R.id.question);
         messageBar = (TextView) c.findViewById(R.id.messageBar);
@@ -101,10 +100,10 @@ public class GameView extends ActionBarActivity {
         textViewArrayListScore.add(p3_score);
         textViewArrayListScore.add(p4_score);
         textViewArrayListScore.add(p5_score);
-
-
     }
 
+
+    //Load access to in-game engine
     public void setEngine(GameEngine gameEngine) {
         ge = gameEngine;
     }

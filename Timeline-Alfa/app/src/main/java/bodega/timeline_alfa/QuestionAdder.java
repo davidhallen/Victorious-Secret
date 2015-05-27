@@ -153,7 +153,7 @@ public class QuestionAdder extends ActionBarActivity {
 
     public void removeAddedQuestions(View view){
 
-        startActivity(new Intent(QuestionAdder.this,removeQuestionsActivity.class));
+        startActivity(new Intent(QuestionAdder.this,RemoveQuestionsActivity.class));
     }
 
     @Override

@@ -24,7 +24,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 
-public class removeQuestionsActivity extends ActionBarActivity {
+public class RemoveQuestionsActivity extends ActionBarActivity {
 
     Context context = this;
     TimelineDbHelper dbHelper;
@@ -173,7 +173,7 @@ public class removeQuestionsActivity extends ActionBarActivity {
 
     public void back (View v) {
 
-        startActivity(new Intent(removeQuestionsActivity.this,QuestionAdder.class));
+        startActivity(new Intent(RemoveQuestionsActivity.this,QuestionAdder.class));
 
     }
 
@@ -183,9 +183,6 @@ public class removeQuestionsActivity extends ActionBarActivity {
         showAddedQuestions();
 
     }
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

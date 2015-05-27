@@ -21,6 +21,9 @@ import java.util.Collections;
 /**
  * Created by Piotri on 2015-05-16.
  */
+
+
+//This class handles all in-game logic and events
 public class GameEngine extends ActionBarActivity {
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
@@ -79,7 +82,7 @@ public class GameEngine extends ActionBarActivity {
         listOfPlayers.add(player4);
         listOfPlayers.add(player5);
 
-        Question bigbang = new Question (-5000, "Biggie Bang Bong");
+        Question bigbang = new Question (-5000, "Big Bang!");
         Question ragnarok = new Question (2212, "Ragnarok!");
 
         dbHelper = new TimelineDbHelper(context);
@@ -211,11 +214,6 @@ public class GameEngine extends ActionBarActivity {
 
         }
 
-        else {
-
-            //do nothing
-        }
-
     }
 
     public void newQuestion() {
@@ -224,6 +222,7 @@ public class GameEngine extends ActionBarActivity {
             yearlist.remove(0);
             playedYears.add(currentQuestion);
             gv.question.setText(currentQuestion.getQuestion());
+            gv.question.setTextColor(Color.parseColor("#FFFFFF"));
         } else {
             int highestScore = 0;
             Player winner = null;
@@ -297,9 +296,6 @@ public class GameEngine extends ActionBarActivity {
 
         builder.show();
 
-        // Go to ScoreBoard activity
-        //startActivity(new Intent(this,ScoreBoard.class));
-
     }
 
     public boolean isBeside(Question year1, Question year2){
@@ -327,7 +323,6 @@ public class GameEngine extends ActionBarActivity {
             activePlayer = 1;
         }
 
-        //aPtV.setText(String.valueOf(activePlayer));
         gv.textViewArrayListPlayers.get(activePlayer-1).setText("PLAYER " + (activePlayer) + ":");
         gv.textViewArrayListPlayers.get(activePlayer-1).setTextColor(Color.parseColor("#699446"));
 
@@ -389,20 +384,17 @@ public class GameEngine extends ActionBarActivity {
                         listOfPlayers.get(activePlayer-1).setScore(0);
                         listOfPlayers.get(activePlayer-1).setNewLives();
                         gv.lives_nr.setText("X_X");
-                        //gv.p1_score.setText("0");
 
-                    } else{
+                    } else {
                         gv.messageBar.setText("Loose a life");
                         gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getLives()));
                         gv.textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
-                        //firstSelectedButton.setState("WRONG");
-                        //secondSelectedButton.setState("WRONG");
                         firstSelectedYear = null;
                         secondSelectedYear = null;
                         gv.answerButton.setEnabled(false);
                         gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
                         printButtons();
-                    }
+                        }
 
                 }
                 else {
@@ -416,26 +408,14 @@ public class GameEngine extends ActionBarActivity {
                     secondSelectedYear = null;
                     gv.answerButton.setEnabled(false);
 
-                }
+                    }
 
             }
 
         }
         else {
-
             gv.answerButton.setText("Place Card");
-
-
-
-
             ga.newGame();
-
-           // GameActivity a =(GameActivity) context;
-           // a.newGame();
-
-            //gv.init();
-
-
         }
     }
 }
