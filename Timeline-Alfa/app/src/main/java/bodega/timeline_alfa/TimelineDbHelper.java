@@ -16,9 +16,9 @@ import org.xmlpull.v1.XmlPullParserException;
 /**
  * Created by theYellowBird and victornyden on 2015-05-01.
  */
+
 public class TimelineDbHelper extends SQLiteOpenHelper {
 
-    private Integer intKey = 0;
     private static final String DATABASE_NAME = "QUESTIONS.DB";
     private static final int DATABASE_VERSION = 1;
     private static final String CREATE_QUERY = "CREATE TABLE " + TimelineTables.Questions.TABLE_NAME+" ("+
@@ -36,15 +36,17 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
+    /*
+    Creates Question and HighScore tables. Parses questions from xml file named questions
+    in res/xml folder and adds these to Questions table.
+    */
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
     db.execSQL(CREATE_QUERY);
-        Log.e("DATABASE OPERATIONS", "Question table created...");
 
     db.execSQL(CREATE_QUERY2);
-        Log.e("DATABASE OPERATIONS", "HighScore table created...");
 
         XmlResourceParser parser = context.getResources().getXml(R.xml.questions);
 
@@ -100,6 +102,12 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    /*
+    The variable bool is used to decide whether the question should be used during quick-play and
+    custom games with all categories selected. bool is set to one for questions parsed from the questions
+    xml (these are used in the above mentioned occasions) and is set to zero for user added questions.
+    */
+
     public void addQuestion (String category, String question, Integer year, Integer bool, SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
         contentValues.put(TimelineTables.Questions.COL_CATEGORY, category);
@@ -107,8 +115,12 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         contentValues.put(TimelineTables.Questions.COL_YEAR, year);
         contentValues.put(TimelineTables.Questions.COL_BOOLEAN, bool);
         db.insert(TimelineTables.Questions.TABLE_NAME, null, contentValues);
-            Log.e("DATABASE OPERATIONS", "One question row inserted");
     }
+
+    /*
+    The newest entry in the high score table has always the highest intKey value of the included
+    rows.
+     */
 
     public void addHighScore (Integer highScore, String player, SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
@@ -117,8 +129,13 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         contentValues.put(TimelineTables.HighScore.COL_SCORE, highScore);
         contentValues.put(TimelineTables.HighScore.COL_NAME, player);
         db.insert(TimelineTables.HighScore.TABLE_NAME, null, contentValues);
-            Log.e("DATABASE OPERATIONS", "One high score row inserted");
     }
+
+    /*
+    If all categories are chosen no user added questions are fetched. This is controlled through
+    the BOOLEAN column. Rows with the value 1 in this column are original questions and rows with
+    the value 0 are user added questions.
+     */
 
     public Cursor getQuestion (SQLiteDatabase db, String category, int numberOfQuestions) {
         String numQuest = Integer.toString(numberOfQuestions);
@@ -144,6 +161,11 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    /*
+    If more than one row share the lowest score in the table, the row among them with the highest value in the
+    INTKEY column is deleted. This is the row most recently added.
+    */
+
     public void deleteHighScore (SQLiteDatabase db){
         Integer minScore = getLowestScore(db);
         if (minScore != 0) {
@@ -156,12 +178,13 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     }
 
     public void deleteQuestion (String category, String question, Integer year, SQLiteDatabase db){
-
-        String y = Integer.toString(year);
         db.execSQL("delete from " + TimelineTables.Questions.TABLE_NAME + " where " + TimelineTables.Questions.COL_CATEGORY + "='" + category + "'" + " AND " +
         TimelineTables.Questions.COL_QUESTION + "='" + question + "'" + " AND " + TimelineTables.Questions.COL_YEAR + "='" + year + "'" );
-
     }
+
+    /*
+    Returns zero if table is empty
+     */
 
     public int getLowestScore(SQLiteDatabase db){
         Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{"min(" + TimelineTables.HighScore.COL_SCORE + ")"}, null, null,
@@ -192,12 +215,19 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         return numRows;
     }
 
+    /*
+    Returns a cursor with the name of all categories in the question table
+     */
     public Cursor getAllCategories (SQLiteDatabase db){
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY};
         cursor = db.query(true,TimelineTables.Questions.TABLE_NAME, projections, null,null, null,null ,null,null);
         return cursor;
     }
+
+    /*
+    Returns a cursor with all categories to which user questions has been added
+     */
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public Cursor getCustomCategories (SQLiteDatabase db){
@@ -206,6 +236,9 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         cursor = db.query(true,TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_BOOLEAN + "=?", new String [] {"0"},null, null,null ,null,null);
         return cursor;
     }
+    /*
+    Returns a cursor with all user added questions in a specified category
+     */
 
     public Cursor getAddedQuestions (String category, SQLiteDatabase db){
         Cursor cursor;
@@ -220,5 +253,6 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // no updates for the moment
     }
 }
