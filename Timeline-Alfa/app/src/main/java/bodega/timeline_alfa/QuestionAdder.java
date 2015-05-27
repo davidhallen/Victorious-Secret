@@ -56,8 +56,12 @@ public class QuestionAdder extends ActionBarActivity {
         return true;
     }
 
+    /*
+    Fetches all categories from the database and presents them in a pop up window.
+     */
     public void chooseCategory (View view){
 
+        categories.clear();
 
         dbRead = dbHelper.getReadableDatabase();
 
@@ -70,10 +74,6 @@ public class QuestionAdder extends ActionBarActivity {
                 categories.add(category);
             } while (cursor.moveToNext());
         }
-
-        Set<String> s = new LinkedHashSet<String>(categories);
-        categories.clear();
-        categories.addAll(s);
 
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item,categories);
@@ -93,6 +93,11 @@ public class QuestionAdder extends ActionBarActivity {
                     }
                 }).create().show();
     }
+
+    /*
+    Adds a question to the database. Checks so that the question and category textViews are not empty
+    and that the chosen year lies between -5000 <= X <= 2212.
+     */
 
     public void addNewQuestion (View view){
         String message;
@@ -134,7 +139,7 @@ public class QuestionAdder extends ActionBarActivity {
         }
     }
 
-    public void popUpMessage (String mes){
+    private void popUpMessage (String mes){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(mes);
 

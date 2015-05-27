@@ -51,7 +51,6 @@
             android:textAllCaps="false"
             android:textSize="25dp"
             android:text="Back"
-
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
             />

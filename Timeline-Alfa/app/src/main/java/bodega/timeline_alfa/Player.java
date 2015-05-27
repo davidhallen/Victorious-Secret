@@ -20,8 +20,6 @@ public class Player {
 
     public void setScore(int points) {
         score = score + points;
-        if (score < 0)
-            score = 0;
     }
 
     public int getScore() {
@@ -34,12 +32,10 @@ public class Player {
 
     public void looseALife(){
         this.lives = lives - 1;
-
     }
 
     public int getLives(){
         return lives;
-
     }
 
     public void setNewLives(){

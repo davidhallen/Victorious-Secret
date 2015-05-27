@@ -48,7 +48,6 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
         catButton = (Button)findViewById(R.id.button);
         questions = (LinearLayout)findViewById(R.id.questionList);
         title = (TextView)findViewById(R.id.removeTitle);
-
     }
 
 
@@ -60,7 +59,7 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
     }
 
 
-    public void getCategories(View view){
+    public void showCategories(View view){
 
         categories.clear();
 
@@ -75,8 +74,6 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
                 categories.add(category);
             } while (cursor.moveToNext());
         }
-
-
 
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item,categories);
@@ -138,9 +135,7 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
         else {
             title.setHint("Remove Added Questions");
             catButton.setText("Choose Category");
-
         }
-
     }
 
     private void removeQuestion (Object q, Object y){
@@ -148,10 +143,8 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
             question = (String) q;
             year = (Integer)y;
 
-
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Remove this question?" + "\n" + question + ":" + year );
-
 
             builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
@@ -164,24 +157,22 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    removeQuestion();
+                    removeSelectedQuestion();
                     dialog.cancel();
                 }
             });
             builder.show();
     }
 
-    public void back (View v) {
+    public void backToQuestionAdder (View v) {
 
         startActivity(new Intent(RemoveQuestionsActivity.this,QuestionAdder.class));
 
     }
 
-    private void removeQuestion(){
-
+    private void removeSelectedQuestion(){
         dbHelper.deleteQuestion(selectedCategory,question,year,db);
         showAddedQuestions();
-
     }
 
     @Override

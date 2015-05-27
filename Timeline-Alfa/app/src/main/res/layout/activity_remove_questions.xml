@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Choose Category"
         android:id="@+id/button"
-        android:onClick="getCategories"
+        android:onClick="showCategories"
         android:background="@color/green"
         android:layout_marginTop="20dp"/>
 
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:onClick="back"
+        android:onClick="backToQuestionAdder"
         android:background="@color/green"
         android:layout_marginTop="20dp"/>
 
