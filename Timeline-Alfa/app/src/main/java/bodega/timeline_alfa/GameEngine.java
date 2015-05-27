@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -12,7 +11,6 @@ import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class GameEngine extends ActionBarActivity {
     private Player player5 = new Player(5);
 
     private int nrOfPlayers;
-    private int activePlayer;
+    private int activePlayerNr;
 
     private String selectedCategory;
     private int numberOfQuestions;
@@ -65,7 +63,7 @@ public class GameEngine extends ActionBarActivity {
         gameOver = false;
         nrOfPlayers = PlayersMenu.getNrOfPlayers();
 
-        activePlayer = 1;
+        activePlayerNr = 1;
 
         if(nrOfPlayers == 1){
             numberOfQuestions = 100;
@@ -74,7 +72,7 @@ public class GameEngine extends ActionBarActivity {
             numberOfQuestions = 3*nrOfPlayers;
         }
 
-        selectedCategory = Category.getSelectedCategory().toUpperCase();
+        selectedCategory = CategoryActivity.getSelectedCategory().toUpperCase();
 
         listOfPlayers.add(player1);
         listOfPlayers.add(player2);
@@ -126,8 +124,8 @@ public class GameEngine extends ActionBarActivity {
         return listOfPlayers.get(nr);
     }
 
-    public int getActivePlayer() {
-        return activePlayer;
+    public int getActivePlayerNr() {
+        return activePlayerNr;
     }
 
     public void printButtons(){
@@ -313,18 +311,18 @@ public class GameEngine extends ActionBarActivity {
 
     private void nextTurn() {
 
-        gv.textViewArrayListPlayers.get(activePlayer-1).setText("Player " + (activePlayer) + ":");
-        gv.textViewArrayListPlayers.get(activePlayer-1).setTextColor(-1);
+        gv.textViewArrayListPlayers.get(activePlayerNr -1).setText("Player " + (activePlayerNr) + ":");
+        gv.textViewArrayListPlayers.get(activePlayerNr -1).setTextColor(-1);
 
 
-        if (activePlayer < nrOfPlayers) {
-            activePlayer++;
+        if (activePlayerNr < nrOfPlayers) {
+            activePlayerNr++;
         } else {
-            activePlayer = 1;
+            activePlayerNr = 1;
         }
 
-        gv.textViewArrayListPlayers.get(activePlayer-1).setText("PLAYER " + (activePlayer) + ":");
-        gv.textViewArrayListPlayers.get(activePlayer-1).setTextColor(Color.parseColor("#699446"));
+        gv.textViewArrayListPlayers.get(activePlayerNr -1).setText("PLAYER " + (activePlayerNr) + ":");
+        gv.textViewArrayListPlayers.get(activePlayerNr -1).setTextColor(Color.parseColor("#699446"));
 
     }
 
@@ -338,9 +336,9 @@ public class GameEngine extends ActionBarActivity {
 
 
                 //Set score
-                listOfPlayers.get(activePlayer - 1).setScore(1);
-                gv.textViewArrayListScore.get(activePlayer - 1).setTextColor(-1);
-                gv.textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
+                listOfPlayers.get(activePlayerNr - 1).setScore(1);
+                gv.textViewArrayListScore.get(activePlayerNr - 1).setTextColor(-1);
+                gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
                 gv.messageBar.setText("");
 
                 printButtons();
@@ -348,11 +346,11 @@ public class GameEngine extends ActionBarActivity {
 
             } else {
                 if (nrOfPlayers == 1) {
-                    listOfPlayers.get(activePlayer - 1).looseALife();
-                    if ((listOfPlayers.get(activePlayer-1).getLives()) == 0) {
+                    listOfPlayers.get(activePlayerNr - 1).looseALife();
+                    if ((listOfPlayers.get(activePlayerNr -1).getLives()) == 0) {
 
                         //messageBar.setText("You are here, good");
-                        gv.question.setText("Game Over. You got "+listOfPlayers.get(activePlayer-1).getScore()+" points" );
+                        gv.question.setText("Game Over. You got "+listOfPlayers.get(activePlayerNr -1).getScore()+" points" );
                         gv.answerButton.setText("New Game");
                         gameOver = true;
                         gv.answerButton.setEnabled(true);
@@ -381,14 +379,14 @@ public class GameEngine extends ActionBarActivity {
                             }
 
                         }
-                        listOfPlayers.get(activePlayer-1).setScore(0);
-                        listOfPlayers.get(activePlayer-1).setNewLives();
+                        listOfPlayers.get(activePlayerNr -1).setScore(0);
+                        listOfPlayers.get(activePlayerNr -1).setNewLives();
                         gv.lives_nr.setText("X_X");
 
                     } else {
                         gv.messageBar.setText("Loose a life");
-                        gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getLives()));
-                        gv.textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
+                        gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getLives()));
+                        gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
                         firstSelectedYear = null;
                         secondSelectedYear = null;
                         gv.answerButton.setEnabled(false);
@@ -398,10 +396,10 @@ public class GameEngine extends ActionBarActivity {
 
                 }
                 else {
-                    gv.textViewArrayListScore.get(activePlayer - 1).setTextColor(-65536);
+                    gv.textViewArrayListScore.get(activePlayerNr - 1).setTextColor(-65536);
                     gv.messageBar.setText("Wrong, try again!");
-                    listOfPlayers.get(activePlayer - 1).setScore(-1);
-                    gv.textViewArrayListScore.get(activePlayer - 1).setText(String.valueOf(listOfPlayers.get(activePlayer - 1).getScore()) + " p");
+                    listOfPlayers.get(activePlayerNr - 1).setScore(-1);
+                    gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
                     firstSelectedButton.setState("WRONG");
                     secondSelectedButton.setState("WRONG");
                     firstSelectedYear = null;

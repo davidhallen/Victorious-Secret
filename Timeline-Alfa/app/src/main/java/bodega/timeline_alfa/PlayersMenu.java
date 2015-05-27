@@ -1,24 +1,15 @@
 package bodega.timeline_alfa;
 
-import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.app.Activity;
-
-import java.util.ArrayList;
 
 /**
  * Created by ludvigsylven on 15-05-01.
@@ -45,9 +36,12 @@ public class PlayersMenu extends ActionBarActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_players);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        loadsViews();
+    }
+
+    private void loadsViews() {
         res = getResources();
         s1 = res. getDrawable(R.drawable.playerbutton);
         s2 = res. getDrawable(R.drawable.marked_playerbutton);
@@ -59,18 +53,17 @@ public class PlayersMenu extends ActionBarActivity {
         button7 = (Button) findViewById(R.id.PlayersBack);
         button8 = (Button) findViewById(R.id.PlayersNext);
 
-
         switch (nrOfPlayers) {
             case 1: lastClickedPlayerButton = button1;
-                    break;
+                break;
             case 2: lastClickedPlayerButton = button2;
-                    break;
+                break;
             case 3: lastClickedPlayerButton = button3;
-                    break;
+                break;
             case 4: lastClickedPlayerButton = button4;
-                    break;
+                break;
             case 5: lastClickedPlayerButton = button5;
-                    break;
+                break;
         }
         lastClickedPlayerButton.setBackground(s2);
 
@@ -123,13 +116,13 @@ public class PlayersMenu extends ActionBarActivity {
         });
         button8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(PlayersMenu.this,Category.class));
+                startActivity(new Intent(PlayersMenu.this,CategoryActivity.class));
             }
-        });}
+        });
+    }
 
-
-    public static void setNrOfPlayers(int number) {
-        nrOfPlayers = number;
+    public static void setNrOfPlayers(int nr) {
+        nrOfPlayers = nr;
 
     }
 

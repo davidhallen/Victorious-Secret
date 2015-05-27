@@ -9,14 +9,11 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -24,13 +21,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 
-public class Category extends ActionBarActivity {
+public class CategoryActivity extends ActionBarActivity {
 
     private static String selectedCategory = "ALL CATEGORIES";
 
@@ -68,10 +63,13 @@ public class Category extends ActionBarActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_category);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        loadViews();
+    }
 
+
+    private void loadViews() {
         res = getResources();
 
         button1 = (Button) findViewById(R.id.Category1);
@@ -170,12 +168,12 @@ public class Category extends ActionBarActivity {
 
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Category.this,GameActivity.class));
+                startActivity(new Intent(CategoryActivity.this,GameActivity.class));
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Category.this,PlayersMenu.class));
+                startActivity(new Intent(CategoryActivity.this,PlayersMenu.class));
 
             }
         });
@@ -183,27 +181,28 @@ public class Category extends ActionBarActivity {
 
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void updateButtons(Button but, Drawable clicked){
-        Drawable tempBackground = (Drawable) but.getBackground();
 
-        if (lastClickedCategoryButton == button11 && but != button11) {
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void updateButtons(Button button, Drawable clicked){
+        Drawable tempBackground = (Drawable) button.getBackground();
+
+        if (lastClickedCategoryButton == button11 && button != button11) {
             button11.setText("Custom Categories");
         }
 
-        if (lastClickedCategoryButton != button11 || but != button11) {
+        if (lastClickedCategoryButton != button11 || button != button11) {
             lastClickedCategoryButton.setBackground(lastClickedNormalBackground);
             lastClickedCategoryButton.setClickable(true);
             lastClickedNormalBackground = tempBackground;
         }
 
-        if (but != button11){
-            but.setClickable(false);
+        if (button != button11){
+            button.setClickable(false);
         }
 
-        lastClickedCategoryButton = but;
-        but.setBackground(clicked);
-        setSelectedCategory(but.getText().toString().toUpperCase());
+        lastClickedCategoryButton = button;
+        button.setBackground(clicked);
+        setSelectedCategory(button.getText().toString().toUpperCase());
 
     }
 

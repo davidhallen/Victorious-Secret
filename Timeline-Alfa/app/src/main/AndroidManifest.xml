@@ -18,18 +18,8 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".Setup"
-            android:label="@string/app_name3"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
             android:name=".PlayersMenu"
             android:label="@string/app_name4"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
-            android:name=".ShowTest"
-            android:label="@string/app_name5"
             android:screenOrientation="landscape" >
         </activity>
         <activity
@@ -42,12 +32,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Category"
+            android:name=".CategoryActivity"
             android:label="@string/title_activity_category" >
-        </activity>
-        <activity
-            android:name=".TimeSpan"
-            android:label="@string/title_activity_time_span" >
         </activity>
         <activity
             android:name=".QuestionAdder"

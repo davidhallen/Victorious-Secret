@@ -1,23 +1,10 @@
 package bodega.timeline_alfa;
 
 import android.app.Activity;
-import android.content.Context;
 
-import android.content.Intent;
 import android.graphics.Color;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-
 import android.support.v7.app.ActionBarActivity;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.style.ImageSpan;
-import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -138,7 +125,7 @@ public class GameView extends ActionBarActivity {
             p5_score.setText("");
         }
 
-        textViewArrayListPlayers.get(ge.getActivePlayer()-1).setText("PLAYER " + ge.getActivePlayer() + ":");
-        textViewArrayListPlayers.get(ge.getActivePlayer()-1).setTextColor(Color.parseColor("#699446"));
+        textViewArrayListPlayers.get(ge.getActivePlayerNr()-1).setText("PLAYER " + ge.getActivePlayerNr() + ":");
+        textViewArrayListPlayers.get(ge.getActivePlayerNr()-1).setTextColor(Color.parseColor("#699446"));
     }
 }

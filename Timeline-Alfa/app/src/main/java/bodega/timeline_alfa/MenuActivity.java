@@ -32,7 +32,7 @@ public class MenuActivity extends ActionBarActivity {
             public void onClick(View v) {
                 startActivity(new Intent(MenuActivity.this,GameActivity.class));
                 PlayersMenu.setNrOfPlayers(1);
-                Category.setSelectedCategory("ALL CATEGORIES");
+                CategoryActivity.setSelectedCategory("ALL CATEGORIES");
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
