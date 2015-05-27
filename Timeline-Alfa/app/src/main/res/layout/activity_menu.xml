@@ -29,7 +29,7 @@
             android:gravity="center"
             >
             <Button
-                android:id="@+id/Test"
+                android:id="@+id/Extras"
                 android:background="@drawable/mybutton2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -54,7 +54,7 @@
                 android:layout_marginLeft="15dp"
                 />
             <Button
-                android:id="@+id/SetUp"
+                android:id="@+id/CustomPlay"
                 android:background="@drawable/mybutton2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
