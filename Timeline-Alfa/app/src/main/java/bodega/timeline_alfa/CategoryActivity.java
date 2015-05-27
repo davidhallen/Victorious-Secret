@@ -41,8 +41,6 @@ public class CategoryActivity extends ActionBarActivity {
     private Button button10;
     private Button button11;
 
-
-
     private Button playButton;
     private Button backButton;
 
@@ -53,9 +51,7 @@ public class CategoryActivity extends ActionBarActivity {
     ArrayList<String> categories = new ArrayList <> ();
     LinearLayout linLay;
 
-
     private Resources res;
-
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -206,8 +202,11 @@ public class CategoryActivity extends ActionBarActivity {
 
     }
 
+    /*
+    Fetches user made categories from database and presents them in a pop-up window
+     */
 
-    public void getCustomCategories(View view){
+    public void showCustomCategories(View view){
 
         TimelineDbHelper dbHelper = new TimelineDbHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -269,11 +268,14 @@ public class CategoryActivity extends ActionBarActivity {
         return selectedCategory;
     }
 
+
+    /*
+    Varför detta???
+     */
     public int hashCode(){
         return super.hashCode();
     }
     public boolean equals(Object obj){
-
         return true;
     }
 

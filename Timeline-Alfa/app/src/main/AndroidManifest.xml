@@ -45,7 +45,7 @@
         </activity>
 
         <activity
-            android:name=".removeQuestionsActivity"
+            android:name=".RemoveQuestionsActivity"
             android:label="@string/title_activity_remove_questions" >
         </activity>
     </application>
