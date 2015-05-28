@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class ScoreBoard extends ActionBarActivity {
+public class ScoreBoardActivity extends ActionBarActivity {
 
     Context context = this;
     Cursor cursor;
@@ -39,7 +39,7 @@ public class ScoreBoard extends ActionBarActivity {
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(ScoreBoard.this,ExtrasActivity.class));
+                startActivity(new Intent(ScoreBoardActivity.this,ExtrasActivity.class));
             }
         });
 

@@ -36,7 +36,7 @@ public class ExtrasActivity extends ActionBarActivity {
     }
 
     public void showScoreBoard (View view){
-        startActivity(new Intent(ExtrasActivity.this,ScoreBoard.class));
+        startActivity(new Intent(ExtrasActivity.this,ScoreBoardActivity.class));
     }
 
     public void backToMenu (View view){

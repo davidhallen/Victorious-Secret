@@ -42,6 +42,7 @@ public class GameEngine extends ActionBarActivity {
 
     private String selectedCategory;
     private int numberOfQuestions;
+    private int nrOfQuestionsPerPlayer = 2;
     private String m_Text="";
 
     private GameCard firstSelectedButton;
@@ -70,7 +71,7 @@ public class GameEngine extends ActionBarActivity {
             numberOfQuestions = 10;
         }
         else {
-            numberOfQuestions = 2*nrOfPlayers;
+            numberOfQuestions = nrOfQuestionsPerPlayer*nrOfPlayers;
         }
 
         selectedCategory = CategoryActivity.getSelectedCategory().toUpperCase();
