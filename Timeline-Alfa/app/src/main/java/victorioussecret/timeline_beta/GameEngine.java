@@ -105,7 +105,7 @@ public class GameEngine extends ActionBarActivity {
 
     public void startGame() {
         gv.loadPlayerViews();
-        printButtons();
+        printCards();
     }
   
 
@@ -121,7 +121,7 @@ public class GameEngine extends ActionBarActivity {
         return activePlayerNr;
     }
 
-    private void printButtons(){
+    private void printCards(){
         gv.answerButton.setEnabled(false);
         gv.layout.removeAllViews();
         firstSelectedYear = null;
@@ -372,8 +372,9 @@ public class GameEngine extends ActionBarActivity {
                 gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
                 gv.messageBar.setText("");
 
-                printButtons();
                 nextTurn();
+                printCards();
+
 
             } else {
                 if (nrOfPlayers == 1) {
@@ -422,7 +423,7 @@ public class GameEngine extends ActionBarActivity {
                         secondSelectedYear = null;
                         gv.answerButton.setEnabled(false);
                         gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
-                        printButtons();
+                        printCards();
 
                         listOfPlayers.get(activePlayerNr - 1).looseALife();
                         if ((listOfPlayers.get(activePlayerNr - 1).getLives()) == 0) {
@@ -435,7 +436,8 @@ public class GameEngine extends ActionBarActivity {
                             secondSelectedYear = null;
                             gv.answerButton.setEnabled(false);
                             gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
-                            printButtons();
+                            nextTurn();
+                            printCards();
                         }
 
                     }
