@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:id="@+id/player_score_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/player1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/player1_score"
+            android:layout_toRightOf="@id/player1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="0 p"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/player2_text"
+            android:layout_toRightOf="@id/player1_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/player2_score"
+            android:layout_toRightOf="@id/player2_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="0 p"
+            android:textSize="18sp"
+           />
+        <TextView
+            android:id="@+id/player3_text"
+            android:layout_toRightOf="@id/player2_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/player3_score"
+            android:layout_toRightOf="@id/player3_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="0 p"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/player4_text"
+            android:layout_toRightOf="@id/player3_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/player4_score"
+            android:layout_toRightOf="@id/player4_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="0 p"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/player5_text"
+            android:layout_toRightOf="@id/player4_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/player5_score"
+            android:layout_toRightOf="@id/player5_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="0 p"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/ActivePlayer"
+            android:layout_toRightOf="@id/player5_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:paddingTop="20dp">
+
+        <LinearLayout
+            android:id="@+id/timelineLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        >
+
+        <TextView
+            android:id="@+id/messageBar"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="#cf481e"/>
+        <Button
+            android:id="@+id/backToMenuFromGame"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/mybutton2"
+            android:text="Back to       menu"/>
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="TEXT FIELD FOR QUESTION"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+
+            android:gravity="center"
+            android:layout_below="@id/messageBar"
+
+            />
+
+        <Button
+            android:id="@+id/answerButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/placecard_button"
+            
+            android:text="Place Card" />
+    </RelativeLayout>
+</LinearLayout>

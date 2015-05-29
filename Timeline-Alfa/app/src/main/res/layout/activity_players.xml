@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECT NUMBER OF PLAYERS"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"/>
+    <LinearLayout
+        android:id="@+id/playerLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/OnePlayer"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/playerbutton"
+
+
+            android:text="1"
+            android:textSize="30sp"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/TwoPlayers"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/playerbutton"
+
+            android:text="2"
+            android:textSize="30sp"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/ThreePlayers"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/playerbutton"
+
+            android:text="3"
+            android:textSize="30sp"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/FourPlayers"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/playerbutton"
+
+            android:text="4"
+            android:textSize="30sp"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/FivePlayers"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/playerbutton"
+
+            android:text="5"
+            android:textSize="30sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/playerLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       >
+
+
+        <Button
+            android:id="@+id/PlayersBack"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/mybutton2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textAllCaps="false"
+            android:text="Back"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:id="@+id/PlayersNext"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/mybutton2"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textAllCaps="false"
+            android:text="Next"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

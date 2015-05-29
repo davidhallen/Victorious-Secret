@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECT YOUR PREFERRED CATEGORY"
+        android:textSize="24sp"
+        android:layout_marginTop="15dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        >
+
+    <LinearLayout
+        android:id="@+id/CategoryLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/Category1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/geopolitics"
+            android:text="All Categories"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/Category2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/literature"
+
+            android:text="Literature"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+            <Button
+            android:id="@+id/Category3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/architecture"
+
+            android:text="Architecture"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+
+        <Button
+            android:id="@+id/Category4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/wars"
+
+            android:text="Wars"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/Category5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/inventions"
+
+            android:text="Inventions"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/Category6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/kings"
+
+            android:text="Kings"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/Category7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/music"
+
+
+            android:text="Music"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+
+
+
+        <Button
+            android:id="@+id/Category8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/religion"
+            android:text="Religion"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/Category9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/politics"
+            android:text="Politics"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/Category10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/sports"
+            android:text="Sports"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/Category11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/custom"
+            android:text="Custom Categories"
+            android:textSize="@dimen/abc_text_size_button_material"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:onClick="showCustomCategories"/>
+
+
+
+    </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+
+<LinearLayout
+        android:id="@+id/CategoryLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/CategoryBack"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/mybutton2"
+            android:textAllCaps="false"
+            android:text="Back"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:id="@+id/CategoryPlay"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/mybutton2"
+            android:text="Play!"
+            android:textAllCaps="false"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

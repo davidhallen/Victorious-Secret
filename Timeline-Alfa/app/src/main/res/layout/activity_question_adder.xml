@@ -1,0 +1,126 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:hint="Add Your Own Questions"
+            android:textSize="24dp"/>
+    </LinearLayout>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:hint="Question"
+        android:maxLength="45"
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/categoryChoice"
+        android:layout_below="@+id/question"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/question"
+        android:layout_alignEnd="@+id/question"
+        android:hint="New Category"
+        android:maxLength="15"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Predefined category"
+        android:id="@+id/button"
+        android:onClick="chooseCategory"
+        android:layout_below="@+id/question"
+        android:layout_toRightOf="@+id/question"
+        android:layout_toEndOf="@+id/question"
+        android:background="@color/green"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/year"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/question"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:hint="Year"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+       <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Back"
+            android:id="@+id/addQuestionBack"
+            android:onClick="backToExtras"
+           android:background="@color/green"
+           android:layout_marginRight="7dp"
+
+            />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add question"
+        android:layout_weight="1"
+        android:id="@+id/addQuestion"
+
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:onClick="addNewQuestion"
+        android:background="@color/green"
+        />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remove Questions"
+            android:layout_weight="1"
+            android:id="@+id/removeAddedQuestions"
+
+
+            android:layout_marginLeft="7dp"
+            android:onClick="removeAddedQuestions"
+            android:background="@color/green"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
