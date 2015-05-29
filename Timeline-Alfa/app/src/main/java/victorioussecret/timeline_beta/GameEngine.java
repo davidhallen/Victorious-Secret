@@ -335,6 +335,7 @@ public class GameEngine extends ActionBarActivity {
 
     }
 
+    //changes  player in multi-player games
     private void nextTurn() {
 
         gv.textViewArrayListPlayers.get(activePlayerNr -1).setText("Player " + (activePlayerNr) + ":");
@@ -371,77 +372,33 @@ public class GameEngine extends ActionBarActivity {
                 gv.textViewArrayListScore.get(activePlayerNr - 1).setTextColor(-1);
                 gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
                 gv.messageBar.setText("");
-
-                nextTurn();
                 printCards();
+            }
 
-
-            } else {
+            //answer is wrong
+            else {
+                //single-player
                 if (nrOfPlayers == 1) {
                     listOfPlayers.get(activePlayerNr - 1).looseALife();
+
                     if ((listOfPlayers.get(activePlayerNr - 1).getLives()) == 0) {
+                        gameOver();
+                    }
 
-                        //messageBar.setText("You are here, good");
-                        gv.question.setText("Game Over. You got " + listOfPlayers.get(activePlayerNr - 1).getScore() + " points");
-                        gv.answerButton.setText("New Game");
-                        gameOver = true;
-                        gv.answerButton.setEnabled(true);
-                        gv.layout.removeAllViews();
-
-                        if (!playedYears.isEmpty()) {
-                            for (int x = 0; x < playedYears.size(); x++) {
-                                GameCard gameCard = new GameCard(context, playedYears.get(x));
-
-                                gv.layout.addView(gameCard);
-                                gameCard.setClickable(false);
-                                gameCard.setId(playedYears.get(x).hashCode());
-
-                            }
-                        }
-
-
-                        //only add highScore if single-player game and all categories
-                        if (nrOfPlayers == 1 && selectedCategory == "ALL CATEGORIES") {
-                            //add highScore if it's a new highscore
-                            if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 5) {
-                                addHighScore();
-                            } else if (player1.getScore() > dbHelper.getLowestScore(db)) {
-                                dbHelper.deleteHighScore(db);
-                                addHighScore();
-                            }
-
-                        }
-
-                        gv.lives_nr.setText("X_X");
-
-                    } else {
-                        gv.messageBar.setText("Loose a life");
+                    else {
                         gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getLives()));
                         gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
                         firstSelectedYear = null;
                         secondSelectedYear = null;
                         gv.answerButton.setEnabled(false);
                         gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
-                        
-
-
-                        if ((listOfPlayers.get(activePlayerNr - 1).getLives()) == 0) {
-                            gameOver();
-
-                        } else {
-                            gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getLives()));
-                            gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
-                            firstSelectedYear = null;
-                            secondSelectedYear = null;
-                            gv.answerButton.setEnabled(false);
-                            gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
-                            nextTurn();
-                            printCards();
-                        }
-
+                        nextTurn();
+                        printCards();
                     }
+
                 }
-                    else {
+                //multiplayer
+                else {
                         gv.textViewArrayListScore.get(activePlayerNr - 1).setTextColor(-65536);
                         gv.messageBar.setText("Wrong, try again!");
                         listOfPlayers.get(activePlayerNr - 1).setScore(-1);
@@ -461,11 +418,11 @@ public class GameEngine extends ActionBarActivity {
                         firstSelectedYear = null;
                         secondSelectedYear = null;
                         gv.answerButton.setEnabled(false);
-
                     }
 
             }
         }
+
         else {
             Intent i = new Intent (context, GameActivity.class);
             context.startActivity(i);
