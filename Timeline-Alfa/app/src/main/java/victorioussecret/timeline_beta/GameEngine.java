@@ -373,6 +373,7 @@ public class GameEngine extends ActionBarActivity {
                 gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
                 gv.messageBar.setText("");
                 printCards();
+                nextTurn();
             }
 
             //answer is wrong
@@ -393,7 +394,7 @@ public class GameEngine extends ActionBarActivity {
                         gv.answerButton.setEnabled(false);
                         gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
 
-                        nextTurn();
+
                         printCards();
 
 
