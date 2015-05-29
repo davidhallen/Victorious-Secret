@@ -10,7 +10,7 @@ The documentation available can be found in the docs directory and includes the 
 - Product_Description.pdf
 
 ## Buildning & Installation
-Please see the 'Developer_manual.pdf' that can be found in the docs directory.
+Please see the `Developer_manual.pdf` that can be found in the docs directory.
 
 ## Creators
 - Piotri Neto
