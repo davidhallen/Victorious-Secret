@@ -1,5 +1,5 @@
 # Timeline for Android
-A historical event game for learning and challenging your friends. The game is developed by students at Chalmers University of Technology in the course Software Engineering Project (DAT255).
+A historical event game for learning and challenging your friends. The game is developed by students from the program Industrial Engineering and Management at Chalmers University of Technology in the course Software Engineering Project (DAT255).
 
 ## Documentation
 The documentation available can be found in the `docs` directory and includes the following:
