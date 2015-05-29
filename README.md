@@ -17,5 +17,5 @@ Please follow the guide in `Developer_manual.pdf` that can be found in the `docs
 - Ludvig Sylvén
 - Karl Lennartssom
 - David Hallén
-- Viktor Nydén
+- Victor Nydén
 
