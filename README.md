@@ -4,13 +4,13 @@ A historical event game for learning and challenging your friends. The game is d
 ## Documentation
 The documentation available can be found in the `docs` directory and includes the following:
 
-- Architecture_specs.pdf	
-- Developer_manual.pdf		
-- Game_Quickstart_Guide.pdf
-- Product_Description.pdf
+- `Architecture_specs.pdf`	
+- `Developer_manual.pdf`		
+- `Game_Quickstart_Guide.pdf`
+- `Product_Description.pdf`
 
 ## Buildning & Installation
-Please see the `Developer_manual.pdf` that can be found in the docs directory.
+Please follow the guide in `Developer_manual.pdf` that can be found in the `docs` directory.
 
 ## Creators
 - Piotri Neto
