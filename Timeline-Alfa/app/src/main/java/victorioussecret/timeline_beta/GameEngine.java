@@ -26,8 +26,8 @@ import java.util.Collections;
 public class GameEngine extends ActionBarActivity {
 
     private ArrayList<Player> listOfPlayers = new ArrayList<Player>();
-    private ArrayList <Question> yearlist = new ArrayList <Question> (); //for questions not yet played
-    private ArrayList <Question> playedYears = new ArrayList <Question> (); //for played questions
+    private ArrayList<Question> yearlist = new ArrayList<Question>(); //for questions not yet played
+    private ArrayList<Question> playedYears = new ArrayList<Question>(); //for played questions
     private Question currentQuestion;
     private Question firstSelectedYear;
     private Question secondSelectedYear;
@@ -43,7 +43,7 @@ public class GameEngine extends ActionBarActivity {
     private String selectedCategory;
     private int numberOfQuestions;
     private int nrOfQuestionsPerPlayer = 2;
-    private String m_Text="";
+    private String m_Text = "";
 
     private GameCard firstSelectedButton;
     private GameCard secondSelectedButton;
@@ -67,11 +67,10 @@ public class GameEngine extends ActionBarActivity {
 
         activePlayerNr = 1;
 
-        if(nrOfPlayers == 1){
+        if (nrOfPlayers == 1) {
             numberOfQuestions = 10;
-        }
-        else {
-            numberOfQuestions = nrOfQuestionsPerPlayer*nrOfPlayers;
+        } else {
+            numberOfQuestions = nrOfQuestionsPerPlayer * nrOfPlayers;
         }
 
         selectedCategory = CategoryActivity.getSelectedCategory().toUpperCase();
@@ -82,17 +81,18 @@ public class GameEngine extends ActionBarActivity {
         listOfPlayers.add(player4);
         listOfPlayers.add(player5);
 
-        Question bigbang = new Question (-5000, "Big Bang!");
-        Question ragnarok = new Question (2212, "Ragnarok!");
+        Question bigbang = new Question(-5000, "Big Bang!");
+        Question ragnarok = new Question(2212, "Ragnarok!");
 
         dbHelper = new TimelineDbHelper(context);
         db = dbHelper.getWritableDatabase();
 
-        cursor = dbHelper.getQuestion(db, selectedCategory,numberOfQuestions);
+        cursor = dbHelper.getQuestion(db, selectedCategory, numberOfQuestions);
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
-                String question; Integer year;
+                String question;
+                Integer year;
                 question = cursor.getString(1);
                 year = cursor.getInt(2);
                 Question yearB = new Question(year, question);
@@ -100,14 +100,15 @@ public class GameEngine extends ActionBarActivity {
 
             } while (cursor.moveToNext());
         }
-        playedYears.add(bigbang); playedYears.add(ragnarok);
+        playedYears.add(bigbang);
+        playedYears.add(ragnarok);
     }
 
     public void startGame() {
         gv.loadPlayerViews();
         printCards();
     }
-  
+
 
     public int getNrOfPlayers() {
         return nrOfPlayers;
@@ -121,7 +122,7 @@ public class GameEngine extends ActionBarActivity {
         return activePlayerNr;
     }
 
-    private void printCards(){
+    private void printCards() {
         gv.answerButton.setEnabled(false);
         gv.layout.removeAllViews();
         firstSelectedYear = null;
@@ -152,7 +153,7 @@ public class GameEngine extends ActionBarActivity {
      */
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public void clickedYear (View view){
+    public void clickedYear(View view) {
 
         GameCard gc = (GameCard) view;
 
@@ -164,41 +165,33 @@ public class GameEngine extends ActionBarActivity {
             }
         }
 
-        if (firstSelectedYear == null && tempYear != secondSelectedYear){
-            if (secondSelectedYear==null) {
+        if (firstSelectedYear == null && tempYear != secondSelectedYear) {
+            if (secondSelectedYear == null) {
                 gc.setState("MARKED");
                 firstSelectedYear = tempYear;
                 firstSelectedButton = gc;
-            }
-            else if (isBeside(tempYear,secondSelectedYear)) {
+            } else if (isBeside(tempYear, secondSelectedYear)) {
                 gc.setState("MARKED");
                 firstSelectedYear = tempYear;
                 firstSelectedButton = gc;
                 gv.answerButton.setEnabled(true);
             }
-        }
-
-        else if(secondSelectedYear == null && tempYear!= firstSelectedYear) {
-            if (firstSelectedYear==null) {
+        } else if (secondSelectedYear == null && tempYear != firstSelectedYear) {
+            if (firstSelectedYear == null) {
                 gc.setState("MARKED");
                 secondSelectedYear = tempYear;
                 secondSelectedButton = gc;
-            }
-            else if (isBeside(tempYear, firstSelectedYear)) {
+            } else if (isBeside(tempYear, firstSelectedYear)) {
                 gc.setState("MARKED");
                 secondSelectedYear = tempYear;
                 secondSelectedButton = gc;
                 gv.answerButton.setEnabled(true);
             }
-        }
-
-        else if (tempYear == firstSelectedYear){
+        } else if (tempYear == firstSelectedYear) {
             gc.setState("NORMAL");
             firstSelectedYear = null;
             gv.answerButton.setEnabled(false);
-        }
-
-        else if (tempYear == secondSelectedYear){
+        } else if (tempYear == secondSelectedYear) {
             gc.setState("NORMAL");
             secondSelectedYear = null;
             gv.answerButton.setEnabled(false);
@@ -208,15 +201,14 @@ public class GameEngine extends ActionBarActivity {
     /*
     Method checks if two selected cards are adjacent in the timeline
      */
-    private boolean isBeside(Question year1, Question year2){
+    private boolean isBeside(Question year1, Question year2) {
 
         int i = playedYears.indexOf(year1);
         int j = playedYears.indexOf(year2);
 
-        if (Math.abs(i-j) > 1){
+        if (Math.abs(i - j) > 1) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
 
 
@@ -239,7 +231,7 @@ public class GameEngine extends ActionBarActivity {
         gv.answerButton.setEnabled(true);
 
         //Make the timeline buttons unclickable and unmark them
-        for(int i=0; i< gv.layout.getChildCount(); ++i) {
+        for (int i = 0; i < gv.layout.getChildCount(); ++i) {
             GameCard gameCard = (GameCard) gv.layout.getChildAt(i);
             gameCard.setState("NORMAL");
             gameCard.setClickable(false);
@@ -247,29 +239,27 @@ public class GameEngine extends ActionBarActivity {
 
         if (nrOfPlayers != 1) {
             showWinner();
-        }
-
-        else {
+        } else {
 
             showSinglePlayerResult();
         }
 
-         if (nrOfPlayers == 1 && selectedCategory.equals("ALL CATEGORIES")) {
+        if (nrOfPlayers == 1 && selectedCategory.equals("ALL CATEGORIES")) {
             checkIfHighScore();
             //only adds highScore if single-player game and all categories are selected
         }
     }
 
-    private void showSinglePlayerResult(){
+    private void showSinglePlayerResult() {
         gv.question.setText("Game Over. You got " + listOfPlayers.get(activePlayerNr - 1).getScore() + " points");
         gv.lives_nr.setText("X_X");
     }
 
-    private void showWinner () {
+    private void showWinner() {
 
         int highestScore = listOfPlayers.get(1).getScore();
         Player winner = null;
-        for (int i=0; i < nrOfPlayers; i++) {
+        for (int i = 0; i < nrOfPlayers; i++) {
             Player p = listOfPlayers.get(i);
             if (p.getScore() >= highestScore) {
                 highestScore = p.getScore();
@@ -279,7 +269,7 @@ public class GameEngine extends ActionBarActivity {
 
         String gameWinners = "";
         int nrOfWinners = 0;
-        for (int x=0; x < nrOfPlayers; x++) {
+        for (int x = 0; x < nrOfPlayers; x++) {
             if (winner.getScore() == listOfPlayers.get(x).getScore()) {
                 gameWinners = gameWinners + listOfPlayers.get(x).getName() + " ";
                 nrOfWinners++;
@@ -298,8 +288,7 @@ public class GameEngine extends ActionBarActivity {
         //only the top 4 scores are saved in the database
         if (player1.getScore() > 0 && dbHelper.getNumberOfHighScores(db) < 4) {
             addHighScore();
-        }
-        else if (player1.getScore() > dbHelper.getLowestScore(db)) {
+        } else if (player1.getScore() > dbHelper.getLowestScore(db)) {
             dbHelper.deleteHighScore(db);
             addHighScore();
         }
@@ -338,8 +327,8 @@ public class GameEngine extends ActionBarActivity {
     //changes  player in multi-player games
     private void nextTurn() {
 
-        gv.textViewArrayListPlayers.get(activePlayerNr -1).setText("Player " + (activePlayerNr) + ":");
-        gv.textViewArrayListPlayers.get(activePlayerNr -1).setTextColor(-1);
+        gv.textViewArrayListPlayers.get(activePlayerNr - 1).setText("Player " + (activePlayerNr) + ":");
+        gv.textViewArrayListPlayers.get(activePlayerNr - 1).setTextColor(-1);
 
 
         if (activePlayerNr < nrOfPlayers) {
@@ -348,8 +337,8 @@ public class GameEngine extends ActionBarActivity {
             activePlayerNr = 1;
         }
 
-        gv.textViewArrayListPlayers.get(activePlayerNr -1).setText("PLAYER " + (activePlayerNr) + ":");
-        gv.textViewArrayListPlayers.get(activePlayerNr -1).setTextColor(Color.parseColor("#699446"));
+        gv.textViewArrayListPlayers.get(activePlayerNr - 1).setText("PLAYER " + (activePlayerNr) + ":");
+        gv.textViewArrayListPlayers.get(activePlayerNr - 1).setTextColor(Color.parseColor("#699446"));
 
     }
 
@@ -358,7 +347,7 @@ public class GameEngine extends ActionBarActivity {
     accordingly
      */
 
-    public void checkIfCorrect () {
+    public void checkIfCorrect() {
 
         if (gameOver == false) {
             int i = Math.max(firstSelectedYear.getYear(), secondSelectedYear.getYear());
@@ -383,10 +372,10 @@ public class GameEngine extends ActionBarActivity {
                     listOfPlayers.get(activePlayerNr - 1).looseALife();
 
                     if ((listOfPlayers.get(activePlayerNr - 1).getLives()) == 0) {
+                        gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
+                        printCards();
                         gameOver();
-                    }
-
-                    else {
+                    } else {
                         gv.lives_nr.setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getLives()));
                         gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
                         firstSelectedYear = null;
@@ -398,38 +387,35 @@ public class GameEngine extends ActionBarActivity {
                         printCards();
 
 
-
                     }
 
                 }
                 //multiplayer
                 else {
-                        gv.textViewArrayListScore.get(activePlayerNr - 1).setTextColor(-65536);
-                        gv.messageBar.setText("Wrong, try again!");
-                        listOfPlayers.get(activePlayerNr - 1).setScore(-1);
-                        gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
+                    gv.textViewArrayListScore.get(activePlayerNr - 1).setTextColor(-65536);
+                    gv.messageBar.setText("Wrong, try again!");
+                    listOfPlayers.get(activePlayerNr - 1).setScore(-1);
+                    gv.textViewArrayListScore.get(activePlayerNr - 1).setText(String.valueOf(listOfPlayers.get(activePlayerNr - 1).getScore()) + " p");
 
 
-                        //unmark all cards
-                        for (int k = 0; k < gv.layout.getChildCount(); ++k) {
-                            GameCard gameCard = (GameCard) gv.layout.getChildAt(k);
-                            gameCard.setState("NORMAL");
-                        }
-
-                        //mark the two wrong cards
-                        firstSelectedButton.setState("WRONG");
-                        secondSelectedButton.setState("WRONG");
-
-                        firstSelectedYear = null;
-                        secondSelectedYear = null;
-                        gv.answerButton.setEnabled(false);
+                    //unmark all cards
+                    for (int k = 0; k < gv.layout.getChildCount(); ++k) {
+                        GameCard gameCard = (GameCard) gv.layout.getChildAt(k);
+                        gameCard.setState("NORMAL");
                     }
 
-            }
-        }
+                    //mark the two wrong cards
+                    firstSelectedButton.setState("WRONG");
+                    secondSelectedButton.setState("WRONG");
 
-        else {
-            Intent i = new Intent (context, GameActivity.class);
+                    firstSelectedYear = null;
+                    secondSelectedYear = null;
+                    gv.answerButton.setEnabled(false);
+                }
+
+            }
+        } else {
+            Intent i = new Intent(context, GameActivity.class);
             context.startActivity(i);
         }
     }

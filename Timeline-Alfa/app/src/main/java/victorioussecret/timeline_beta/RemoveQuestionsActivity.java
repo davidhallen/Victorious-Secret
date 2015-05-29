@@ -27,7 +27,7 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
     SQLiteDatabase db;
     Cursor cursor;
     ArrayAdapter<String> adapter;
-    ArrayList<String> categories = new ArrayList <> ();
+    ArrayList<String> categories = new ArrayList<>();
     Button catButton;
     String selectedCategory;
     LinearLayout questions;
@@ -41,9 +41,9 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_questions);
         dbHelper = new TimelineDbHelper(context);
-        catButton = (Button)findViewById(R.id.button);
-        questions = (LinearLayout)findViewById(R.id.questionList);
-        title = (TextView)findViewById(R.id.removeTitle);
+        catButton = (Button) findViewById(R.id.button);
+        questions = (LinearLayout) findViewById(R.id.questionList);
+        title = (TextView) findViewById(R.id.removeTitle);
     }
 
 
@@ -55,7 +55,7 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
     }
 
 
-    public void showCategories(View view){
+    public void showCategories(View view) {
 
         categories.clear();
 
@@ -63,7 +63,7 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
 
         cursor = dbHelper.getCustomCategories(db);
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 String category;
                 category = cursor.getString(0);
@@ -72,7 +72,7 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
         }
 
         adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,categories);
+                android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
@@ -92,7 +92,7 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
                 }).create().show();
     }
 
-    private void showAddedQuestions (){
+    private void showAddedQuestions() {
 
         questions.removeAllViews();
         db = dbHelper.getWritableDatabase();
@@ -103,71 +103,70 @@ public class RemoveQuestionsActivity extends ActionBarActivity {
         params.gravity = Gravity.CENTER_HORIZONTAL;
         params.topMargin = 20;
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 title.setHint("Click on a question to remove it");
                 String question;
                 Integer year;
                 question = cursor.getString(1);
                 year = cursor.getInt(2);
-                Button but = new Button (this);
+                Button but = new Button(this);
                 but.setText(question + "\n Year: " + year);
                 but.setBackgroundResource(R.drawable.scorefields);
                 but.setLayoutParams(params);
                 but.setWidth(500);
                 but.setTextSize(15);
-                but.setTag(R.id.buttonId1,question);
-                but.setTag(R.id.buttonId2,year);
+                but.setTag(R.id.buttonId1, question);
+                but.setTag(R.id.buttonId2, year);
                 questions.addView(but);
                 but.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
 
                         removeQuestion(v.getTag(R.id.buttonId1), v.getTag(R.id.buttonId2));
                     }
-                } );
-                }
-                while (cursor.moveToNext());
-        }
-        else {
+                });
+            }
+            while (cursor.moveToNext());
+        } else {
             title.setHint("Remove Added Questions");
             catButton.setText("Choose Category");
         }
     }
 
-    private void removeQuestion (Object q, Object y){
+    private void removeQuestion(Object q, Object y) {
 
-            question = (String) q;
-            year = (Integer)y;
+        question = (String) q;
+        year = (Integer) y;
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Remove this question?" + "\n" + question + ":" + year );
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Remove this question?" + "\n" + question + ":" + year);
 
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
 
-            });
+        });
 
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    removeSelectedQuestion();
-                    dialog.cancel();
-                }
-            });
-            builder.show();
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                removeSelectedQuestion();
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 
-    public void backToQuestionAdder (View v) {
+    public void backToQuestionAdder(View v) {
 
-        startActivity(new Intent(RemoveQuestionsActivity.this,QuestionAdderActivity.class));
+        startActivity(new Intent(RemoveQuestionsActivity.this, QuestionAdderActivity.class));
 
     }
 
-    private void removeSelectedQuestion(){
-        dbHelper.deleteQuestion(selectedCategory,question,year,db);
+    private void removeSelectedQuestion() {
+        dbHelper.deleteQuestion(selectedCategory, question, year, db);
         showAddedQuestions();
     }
 

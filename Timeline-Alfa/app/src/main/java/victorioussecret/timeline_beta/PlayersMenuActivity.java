@@ -43,8 +43,8 @@ public class PlayersMenuActivity extends ActionBarActivity {
 
     private void loadView() {
         res = getResources();
-        s1 = res. getDrawable(R.drawable.playerbutton);
-        s2 = res. getDrawable(R.drawable.marked_playerbutton);
+        s1 = res.getDrawable(R.drawable.playerbutton);
+        s2 = res.getDrawable(R.drawable.marked_playerbutton);
         button1 = (Button) findViewById(R.id.OnePlayer);
         button2 = (Button) findViewById(R.id.TwoPlayers);
         button3 = (Button) findViewById(R.id.ThreePlayers);
@@ -54,15 +54,20 @@ public class PlayersMenuActivity extends ActionBarActivity {
         button8 = (Button) findViewById(R.id.PlayersNext);
 
         switch (nrOfPlayers) {
-            case 1: lastClickedPlayerButton = button1;
+            case 1:
+                lastClickedPlayerButton = button1;
                 break;
-            case 2: lastClickedPlayerButton = button2;
+            case 2:
+                lastClickedPlayerButton = button2;
                 break;
-            case 3: lastClickedPlayerButton = button3;
+            case 3:
+                lastClickedPlayerButton = button3;
                 break;
-            case 4: lastClickedPlayerButton = button4;
+            case 4:
+                lastClickedPlayerButton = button4;
                 break;
-            case 5: lastClickedPlayerButton = button5;
+            case 5:
+                lastClickedPlayerButton = button5;
                 break;
         }
         lastClickedPlayerButton.setBackground(s2);
@@ -111,12 +116,12 @@ public class PlayersMenuActivity extends ActionBarActivity {
         });
         button7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(PlayersMenuActivity.this,MenuActivity.class));
+                startActivity(new Intent(PlayersMenuActivity.this, MenuActivity.class));
             }
         });
         button8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(PlayersMenuActivity.this,CategoryActivity.class));
+                startActivity(new Intent(PlayersMenuActivity.this, CategoryActivity.class));
             }
         });
     }

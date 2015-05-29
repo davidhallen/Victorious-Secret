@@ -48,7 +48,7 @@ public class CategoryActivity extends ActionBarActivity {
     private Drawable lastClickedNormalBackground = null;
 
     Context context = this;
-    ArrayList<String> categories = new ArrayList <> ();
+    ArrayList<String> categories = new ArrayList<>();
     LinearLayout linLay;
 
     private Resources res;
@@ -85,91 +85,91 @@ public class CategoryActivity extends ActionBarActivity {
         backButton = (Button) findViewById(R.id.CategoryBack);
         linLay = (LinearLayout) findViewById(R.id.CategoryLayout1);
 
-        Drawable drawable1Clicked = res. getDrawable(R.drawable.geopolitics_clicked);
+        Drawable drawable1Clicked = res.getDrawable(R.drawable.geopolitics_clicked);
         lastClickedCategoryButton = button1;
         lastClickedNormalBackground = button1.getBackground();
         button1.setBackground(drawable1Clicked);
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable1Clicked = res. getDrawable(R.drawable.geopolitics_clicked);
-                updateButtons(button1,drawable1Clicked);
+                Drawable drawable1Clicked = res.getDrawable(R.drawable.geopolitics_clicked);
+                updateButtons(button1, drawable1Clicked);
 
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable2Clicked = res. getDrawable(R.drawable.literature_clicked);
-                updateButtons(button2,drawable2Clicked);
+                Drawable drawable2Clicked = res.getDrawable(R.drawable.literature_clicked);
+                updateButtons(button2, drawable2Clicked);
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable3Clicked = res. getDrawable(R.drawable.architecture_clicked);
-                updateButtons(button3,drawable3Clicked);
+                Drawable drawable3Clicked = res.getDrawable(R.drawable.architecture_clicked);
+                updateButtons(button3, drawable3Clicked);
             }
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable4Clicked = res. getDrawable(R.drawable.wars_clicked);
-                updateButtons(button4,drawable4Clicked);
+                Drawable drawable4Clicked = res.getDrawable(R.drawable.wars_clicked);
+                updateButtons(button4, drawable4Clicked);
             }
         });
 
         button5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable5Clicked = res. getDrawable(R.drawable.inventions_clicked);
-                updateButtons(button5,drawable5Clicked);
+                Drawable drawable5Clicked = res.getDrawable(R.drawable.inventions_clicked);
+                updateButtons(button5, drawable5Clicked);
             }
         });
 
         button6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable6Clicked = res. getDrawable(R.drawable.kings_clicked);
-                updateButtons(button6,drawable6Clicked);
+                Drawable drawable6Clicked = res.getDrawable(R.drawable.kings_clicked);
+                updateButtons(button6, drawable6Clicked);
             }
         });
 
         button7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable7Clicked = res. getDrawable(R.drawable.music_clicked);
-                updateButtons(button7,drawable7Clicked);
+                Drawable drawable7Clicked = res.getDrawable(R.drawable.music_clicked);
+                updateButtons(button7, drawable7Clicked);
             }
         });
 
         button8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable8Clicked = res. getDrawable(R.drawable.religion_clicked);
-                updateButtons(button8,drawable8Clicked);
+                Drawable drawable8Clicked = res.getDrawable(R.drawable.religion_clicked);
+                updateButtons(button8, drawable8Clicked);
             }
         });
 
         button9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Drawable drawable9Clicked = res. getDrawable(R.drawable.politics_clicked);
-                updateButtons(button9,drawable9Clicked);
+                Drawable drawable9Clicked = res.getDrawable(R.drawable.politics_clicked);
+                updateButtons(button9, drawable9Clicked);
             }
         });
 
         button10.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Drawable drawable10Clicked = res.getDrawable(R.drawable.sports_clicked);
-                updateButtons(button10,drawable10Clicked);
+                updateButtons(button10, drawable10Clicked);
             }
         });
 
 
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(CategoryActivity.this,GameActivity.class));
+                startActivity(new Intent(CategoryActivity.this, GameActivity.class));
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(CategoryActivity.this,PlayersMenuActivity.class));
+                startActivity(new Intent(CategoryActivity.this, PlayersMenuActivity.class));
 
             }
         });
@@ -179,7 +179,7 @@ public class CategoryActivity extends ActionBarActivity {
 
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void updateButtons(Button button, Drawable clicked){
+    private void updateButtons(Button button, Drawable clicked) {
         Drawable tempBackground = (Drawable) button.getBackground();
 
         if (lastClickedCategoryButton == button11 && button != button11) {
@@ -192,7 +192,7 @@ public class CategoryActivity extends ActionBarActivity {
             lastClickedNormalBackground = tempBackground;
         }
 
-        if (button != button11){
+        if (button != button11) {
             button.setClickable(false);
         }
 
@@ -206,7 +206,7 @@ public class CategoryActivity extends ActionBarActivity {
     Fetches user made categories from database and presents them in a pop-up window
      */
 
-    public void showCustomCategories(View view){
+    public void showCustomCategories(View view) {
 
         TimelineDbHelper dbHelper = new TimelineDbHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -214,7 +214,7 @@ public class CategoryActivity extends ActionBarActivity {
         cursor = dbHelper.getAllCategories(db);
 
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 String category;
                 category = cursor.getString(0);
@@ -227,8 +227,8 @@ public class CategoryActivity extends ActionBarActivity {
         categories.addAll(s);
         s.clear();
 
-        for(int i=0; i< linLay.getChildCount(); ++i) {
-            Button nextChild = (Button)linLay.getChildAt(i);
+        for (int i = 0; i < linLay.getChildCount(); ++i) {
+            Button nextChild = (Button) linLay.getChildAt(i);
             s.add(nextChild.getText().toString().toUpperCase());
         }
 
@@ -236,9 +236,8 @@ public class CategoryActivity extends ActionBarActivity {
 
         ArrayAdapter<String> adapter;
         adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,categories);
+                android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
 
 
         new AlertDialog.Builder(this)
@@ -252,12 +251,11 @@ public class CategoryActivity extends ActionBarActivity {
                         button11.setText(category);
                         dialog.dismiss();
                         setSelectedCategory(category);
-                        Drawable drawable11Clicked = res. getDrawable(R.drawable.custom_clicked);
+                        Drawable drawable11Clicked = res.getDrawable(R.drawable.custom_clicked);
                         updateButtons(button11, drawable11Clicked);
                     }
                 }).create().show();
     }
-
 
 
     public static void setSelectedCategory(String category) {
@@ -267,17 +265,5 @@ public class CategoryActivity extends ActionBarActivity {
     public static String getSelectedCategory() {
         return selectedCategory;
     }
-
-
-    /*
-    Varför detta???
-     */
-    public int hashCode(){
-        return super.hashCode();
-    }
-    public boolean equals(Object obj){
-        return true;
-    }
-
 
 }

@@ -20,15 +20,8 @@ public class GameActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        if(savedInstanceState == null){
-            newGame();
-        } else{
-            //Fix onPause() and onResume()
-            newGame();
-        }
+        newGame();
     }
-
-
 
 
     public void newGame() {
@@ -56,28 +49,6 @@ public class GameActivity extends ActionBarActivity {
         });
         builder.show();
     }
-    @Override
-    public void onPause() {
-        super.onPause();
-        //Some code so that the game can resume after locked screen
-
-
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-
-
-    }
-
-
-    public void resumeGame(){
-
-
-
-    }
-
-
 }
 
 

@@ -11,7 +11,7 @@ public class Player {
     private int score;
     private int lives;
 
-    public Player (int playerId) {
+    public Player(int playerId) {
         this.playerId = playerId;
         name = "Player";
         score = 0;
@@ -30,15 +30,15 @@ public class Player {
         return name + " " + playerId;
     }
 
-    public void looseALife(){
+    public void looseALife() {
         this.lives = lives - 1;
     }
 
-    public int getLives(){
+    public int getLives() {
         return lives;
     }
 
-    public void setLives(int lives){
+    public void setLives(int lives) {
         this.lives = lives;
     }
 }

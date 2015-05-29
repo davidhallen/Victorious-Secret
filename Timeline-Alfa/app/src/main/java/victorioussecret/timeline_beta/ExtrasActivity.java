@@ -31,19 +31,17 @@ public class ExtrasActivity extends ActionBarActivity {
     }
 
 
-    public void addQuestion (View view){
-        startActivity(new Intent(ExtrasActivity.this,QuestionAdderActivity.class));
+    public void addQuestion(View view) {
+        startActivity(new Intent(ExtrasActivity.this, QuestionAdderActivity.class));
     }
 
-    public void showScoreBoard (View view){
-        startActivity(new Intent(ExtrasActivity.this,ScoreBoardActivity.class));
+    public void showScoreBoard(View view) {
+        startActivity(new Intent(ExtrasActivity.this, ScoreBoardActivity.class));
     }
 
-    public void backToMenu (View view){
+    public void backToMenu(View view) {
         startActivity(new Intent(ExtrasActivity.this, MenuActivity.class));
     }
-
-
 
 
     @Override

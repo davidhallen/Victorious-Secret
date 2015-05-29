@@ -22,25 +22,25 @@ public class MenuActivity extends ActionBarActivity {
         setContentView(R.layout.activity_menu);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        Button button1= (Button) findViewById(R.id.QuickPlay);
-        Button button2= (Button) findViewById(R.id.Extras);
-        Button button3= (Button) findViewById(R.id.CustomPlay);
+        Button button1 = (Button) findViewById(R.id.QuickPlay);
+        Button button2 = (Button) findViewById(R.id.Extras);
+        Button button3 = (Button) findViewById(R.id.CustomPlay);
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this,GameActivity.class));
+                startActivity(new Intent(MenuActivity.this, GameActivity.class));
                 PlayersMenuActivity.setNrOfPlayers(1);
                 CategoryActivity.setSelectedCategory("ALL CATEGORIES");
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               startActivity(new Intent(MenuActivity.this,ExtrasActivity.class));
+                startActivity(new Intent(MenuActivity.this, ExtrasActivity.class));
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this,PlayersMenuActivity.class));
+                startActivity(new Intent(MenuActivity.this, PlayersMenuActivity.class));
             }
         });
     }

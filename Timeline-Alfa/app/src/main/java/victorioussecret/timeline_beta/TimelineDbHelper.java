@@ -21,17 +21,17 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "QUESTIONS.DB";
     private static final int DATABASE_VERSION = 1;
-    private static final String CREATE_QUERY = "CREATE TABLE " + TimelineTables.Questions.TABLE_NAME+" ("+
-             TimelineTables.Questions.COL_CATEGORY+" TEXT,"+ TimelineTables.Questions.COL_QUESTION+" TEXT,"+
-             TimelineTables.Questions.COL_YEAR+" INTEGER,"+ TimelineTables.Questions.COL_BOOLEAN+" INTEGER);";
-    private static final String CREATE_QUERY2 = "CREATE TABLE " + TimelineTables.HighScore.TABLE_NAME+" ("+
-             TimelineTables.HighScore.COL_INTKEY+" INTEGER,"+ TimelineTables.HighScore.COL_SCORE +" INTEGER,"
-             + TimelineTables.HighScore.COL_NAME+" TEXT);";
+    private static final String CREATE_QUERY = "CREATE TABLE " + TimelineTables.Questions.TABLE_NAME + " (" +
+            TimelineTables.Questions.COL_CATEGORY + " TEXT," + TimelineTables.Questions.COL_QUESTION + " TEXT," +
+            TimelineTables.Questions.COL_YEAR + " INTEGER," + TimelineTables.Questions.COL_BOOLEAN + " INTEGER);";
+    private static final String CREATE_QUERY2 = "CREATE TABLE " + TimelineTables.HighScore.TABLE_NAME + " (" +
+            TimelineTables.HighScore.COL_INTKEY + " INTEGER," + TimelineTables.HighScore.COL_SCORE + " INTEGER,"
+            + TimelineTables.HighScore.COL_NAME + " TEXT);";
     Context context;
 
 
-    public TimelineDbHelper (Context context){
-        super (context,DATABASE_NAME, null, DATABASE_VERSION);
+    public TimelineDbHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Log.e("DATABASE OPERATIONS", "DATABASE CREATED / OPENED");
         this.context = context;
     }
@@ -44,9 +44,9 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-    db.execSQL(CREATE_QUERY);
+        db.execSQL(CREATE_QUERY);
 
-    db.execSQL(CREATE_QUERY2);
+        db.execSQL(CREATE_QUERY2);
 
         XmlResourceParser parser = context.getResources().getXml(R.xml.questions);
 
@@ -56,35 +56,29 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         int eventType = -1;
         String currentLevel = "";
         try {
-            while (eventType != XmlResourceParser.END_DOCUMENT){
+            while (eventType != XmlResourceParser.END_DOCUMENT) {
 
-                if (eventType == XmlResourceParser.START_TAG){
+                if (eventType == XmlResourceParser.START_TAG) {
 
-                    if(parser.getName().equalsIgnoreCase("category")){
+                    if (parser.getName().equalsIgnoreCase("category")) {
                         currentLevel = "category";
-                    }
-                    else if(parser.getName().equalsIgnoreCase("question")){
+                    } else if (parser.getName().equalsIgnoreCase("question")) {
                         currentLevel = "question";
-                    }
-                    else if(parser.getName().equalsIgnoreCase("year")){
+                    } else if (parser.getName().equalsIgnoreCase("year")) {
                         currentLevel = "year";
                     }
-                }
-
-                else if (eventType == XmlResourceParser.END_TAG){
-                    if(parser.getName().equalsIgnoreCase("content")) {
+                } else if (eventType == XmlResourceParser.END_TAG) {
+                    if (parser.getName().equalsIgnoreCase("content")) {
                         addQuestion(newCategory, newQuestion, newYear, 1, db);
                     }
-                }
-
-                else if (eventType == XmlResourceParser.TEXT){
-                    if (currentLevel.equalsIgnoreCase("category")){
+                } else if (eventType == XmlResourceParser.TEXT) {
+                    if (currentLevel.equalsIgnoreCase("category")) {
                         newCategory = parser.getText().toUpperCase().trim();
                     }
-                    if (currentLevel.equalsIgnoreCase("question")){
+                    if (currentLevel.equalsIgnoreCase("question")) {
                         newQuestion = parser.getText();
                     }
-                    if (currentLevel.equalsIgnoreCase("year")){
+                    if (currentLevel.equalsIgnoreCase("year")) {
                         String interYear = parser.getText().trim();
                         newYear = Integer.parseInt(interYear);
                     }
@@ -94,11 +88,10 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
 
         } catch (XmlPullParserException e) {
             Log.w("Error", "XMLpullError");
-             e.printStackTrace();
-        }
-        catch (java.io.IOException e){
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
             Log.w("Error", "IOExp");
-              e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -108,7 +101,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     xml (these are used in the above mentioned occasions) and is set to zero for user added questions.
     */
 
-    public void addQuestion (String category, String question, Integer year, Integer bool, SQLiteDatabase db){
+    public void addQuestion(String category, String question, Integer year, Integer bool, SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TimelineTables.Questions.COL_CATEGORY, category);
         contentValues.put(TimelineTables.Questions.COL_QUESTION, question);
@@ -122,7 +115,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     rows.
      */
 
-    public void addHighScore (Integer highScore, String player, SQLiteDatabase db){
+    public void addHighScore(Integer highScore, String player, SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
         int intK = getHighestHighScoreKeyInTable(db);
         contentValues.put(TimelineTables.HighScore.COL_INTKEY, intK + 1);
@@ -137,27 +130,26 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     the value 0 are user added questions.
      */
 
-    public Cursor getQuestion (SQLiteDatabase db, String category, int numberOfQuestions) {
+    public Cursor getQuestion(SQLiteDatabase db, String category, int numberOfQuestions) {
         String numQuest = Integer.toString(numberOfQuestions);
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION,
                 TimelineTables.Questions.COL_YEAR, TimelineTables.Questions.COL_BOOLEAN};
 
         if (category.equals("ALL CATEGORIES")) {
-            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_BOOLEAN + "=?", new String [] {"1"}, null,null, "RANDOM()", numQuest);
+            cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_BOOLEAN + "=?", new String[]{"1"}, null, null, "RANDOM()", numQuest);
             return cursor;
-        }
-        else{
+        } else {
             cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_CATEGORY + "=?",
-                    new String [] {category},null, null, "RANDOM()", numQuest);
+                    new String[]{category}, null, null, "RANDOM()", numQuest);
             return cursor;
         }
     }
 
-    public Cursor getHighScore (SQLiteDatabase db){
+    public Cursor getHighScore(SQLiteDatabase db) {
         Cursor cursor;
         String[] projections = {TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_NAME};
-        cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, TimelineTables.HighScore.COL_SCORE +" DESC");
+        cursor = db.query(TimelineTables.HighScore.TABLE_NAME, projections, null, null, null, null, TimelineTables.HighScore.COL_SCORE + " DESC");
         return cursor;
     }
 
@@ -166,7 +158,7 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     INTKEY column is deleted. This is the row most recently added.
     */
 
-    public void deleteHighScore (SQLiteDatabase db){
+    public void deleteHighScore(SQLiteDatabase db) {
         Integer minScore = getLowestScore(db);
         if (minScore != 0) {
             Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{TimelineTables.HighScore.COL_SCORE, TimelineTables.HighScore.COL_INTKEY},
@@ -177,40 +169,38 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void deleteQuestion (String category, String question, Integer year, SQLiteDatabase db){
+    public void deleteQuestion(String category, String question, Integer year, SQLiteDatabase db) {
         db.execSQL("delete from " + TimelineTables.Questions.TABLE_NAME + " where " + TimelineTables.Questions.COL_CATEGORY + "='" + category + "'" + " AND " +
-        TimelineTables.Questions.COL_QUESTION + "='" + question + "'" + " AND " + TimelineTables.Questions.COL_YEAR + "='" + year + "'" );
+                TimelineTables.Questions.COL_QUESTION + "='" + question + "'" + " AND " + TimelineTables.Questions.COL_YEAR + "='" + year + "'");
     }
 
     /*
     Returns zero if table is empty
      */
 
-    public int getLowestScore(SQLiteDatabase db){
+    public int getLowestScore(SQLiteDatabase db) {
         Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{"min(" + TimelineTables.HighScore.COL_SCORE + ")"}, null, null,
                 null, null, null);
-        if(!c.moveToFirst()){
+        if (!c.moveToFirst()) {
             return 0;
-        }
-        else {
+        } else {
             c.moveToFirst();
             int lowestScore = c.getInt(0);
             return lowestScore;
         }
     }
 
-    public int getHighestHighScoreKeyInTable (SQLiteDatabase db){
-        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[] { "max(" + TimelineTables.HighScore.COL_INTKEY + ")" }, null, null,
+    public int getHighestHighScoreKeyInTable(SQLiteDatabase db) {
+        Cursor c = db.query(TimelineTables.HighScore.TABLE_NAME, new String[]{"max(" + TimelineTables.HighScore.COL_INTKEY + ")"}, null, null,
                 null, null, null);
-        if (!c.moveToFirst()){
+        if (!c.moveToFirst()) {
             return 0;
-        }
-        else {
+        } else {
             return c.getInt(0);
         }
     }
 
-    public int getNumberOfHighScores (SQLiteDatabase db) {
+    public int getNumberOfHighScores(SQLiteDatabase db) {
         int numRows = (int) DatabaseUtils.queryNumEntries(db, TimelineTables.HighScore.TABLE_NAME);
         return numRows;
     }
@@ -218,10 +208,10 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
     /*
     Returns a cursor with the name of all categories in the question table
      */
-    public Cursor getAllCategories (SQLiteDatabase db){
+    public Cursor getAllCategories(SQLiteDatabase db) {
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY};
-        cursor = db.query(true,TimelineTables.Questions.TABLE_NAME, projections, null,null, null,null ,null,null);
+        cursor = db.query(true, TimelineTables.Questions.TABLE_NAME, projections, null, null, null, null, null, null);
         return cursor;
     }
 
@@ -230,24 +220,24 @@ public class TimelineDbHelper extends SQLiteOpenHelper {
      */
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public Cursor getCustomCategories (SQLiteDatabase db){
+    public Cursor getCustomCategories(SQLiteDatabase db) {
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_BOOLEAN};
-        cursor = db.query(true,TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_BOOLEAN + "=?", new String [] {"0"},null, null,null ,null,null);
+        cursor = db.query(true, TimelineTables.Questions.TABLE_NAME, projections, TimelineTables.Questions.COL_BOOLEAN + "=?", new String[]{"0"}, null, null, null, null, null);
         return cursor;
     }
     /*
     Returns a cursor with all user added questions in a specified category
      */
 
-    public Cursor getAddedQuestions (String category, SQLiteDatabase db){
+    public Cursor getAddedQuestions(String category, SQLiteDatabase db) {
         Cursor cursor;
         String[] projections = {TimelineTables.Questions.COL_CATEGORY, TimelineTables.Questions.COL_QUESTION, TimelineTables.Questions.COL_YEAR, TimelineTables.Questions.COL_BOOLEAN};
         String selection = TimelineTables.Questions.COL_BOOLEAN + " = '0'"
-                +" AND " + TimelineTables.Questions.COL_CATEGORY + " = '"+category+"'";
+                + " AND " + TimelineTables.Questions.COL_CATEGORY + " = '" + category + "'";
 
 
-        cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, selection,null, null,null,null);
+        cursor = db.query(TimelineTables.Questions.TABLE_NAME, projections, selection, null, null, null, null);
         return cursor;
     }
 

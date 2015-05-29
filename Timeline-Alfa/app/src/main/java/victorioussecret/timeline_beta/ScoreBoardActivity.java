@@ -39,13 +39,13 @@ public class ScoreBoardActivity extends ActionBarActivity {
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(ScoreBoardActivity.this,ExtrasActivity.class));
+                startActivity(new Intent(ScoreBoardActivity.this, ExtrasActivity.class));
             }
         });
 
     }
 
-    private void showHighScores(){
+    private void showHighScores() {
 
         TimelineDbHelper dbHelper;
         SQLiteDatabase db;
@@ -57,9 +57,10 @@ public class ScoreBoardActivity extends ActionBarActivity {
         params.weight = 1.0f;
         params.gravity = Gravity.CENTER_HORIZONTAL;
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
-                Integer points; String playerName;
+                Integer points;
+                String playerName;
 
                 points = cursor.getInt(0);
                 playerName = cursor.getString(1);
@@ -73,16 +74,13 @@ public class ScoreBoardActivity extends ActionBarActivity {
                 scoreLayout.addView(scoreButton);
 
             } while (cursor.moveToNext());
-        }
-        else{
+        } else {
 
             TextView title = (TextView) findViewById(R.id.title);
 
             title.setHint("No High Scores" + "\n" + "Play more!");
         }
     }
-
-
 
 
 }

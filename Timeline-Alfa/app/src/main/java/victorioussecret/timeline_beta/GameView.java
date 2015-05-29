@@ -45,7 +45,7 @@ public class GameView extends ActionBarActivity {
     Activity c;
 
     GameView(final GameActivity c) {
-        this.c =  c;
+        this.c = c;
         layout = (LinearLayout) c.findViewById(R.id.timelineLayout);
         question = (TextView) c.findViewById(R.id.question);
         messageBar = (TextView) c.findViewById(R.id.messageBar);
@@ -58,7 +58,7 @@ public class GameView extends ActionBarActivity {
         });
 
         backToMenu = (Button) c.findViewById(R.id.backToMenuFromGame);
-        backToMenu.setOnClickListener(new View.OnClickListener(){
+        backToMenu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 c.backToMenu();
             }
@@ -125,7 +125,7 @@ public class GameView extends ActionBarActivity {
             p5_score.setText("");
         }
 
-        textViewArrayListPlayers.get(ge.getActivePlayerNr()-1).setText("PLAYER " + ge.getActivePlayerNr() + ":");
-        textViewArrayListPlayers.get(ge.getActivePlayerNr()-1).setTextColor(Color.parseColor("#699446"));
+        textViewArrayListPlayers.get(ge.getActivePlayerNr() - 1).setText("PLAYER " + ge.getActivePlayerNr() + ":");
+        textViewArrayListPlayers.get(ge.getActivePlayerNr() - 1).setTextColor(Color.parseColor("#699446"));
     }
 }

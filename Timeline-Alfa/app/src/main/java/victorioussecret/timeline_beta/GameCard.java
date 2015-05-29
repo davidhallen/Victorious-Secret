@@ -42,7 +42,7 @@ public class GameCard extends LinearLayout {
     private int year;
 
     LinearLayout.LayoutParams layoutParams =
-            new LinearLayout.LayoutParams(400,LinearLayout.LayoutParams.MATCH_PARENT, Gravity.CENTER_HORIZONTAL);
+            new LinearLayout.LayoutParams(400, LinearLayout.LayoutParams.MATCH_PARENT, Gravity.CENTER_HORIZONTAL);
     LinearLayout.LayoutParams vg1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
     LinearLayout.LayoutParams vg2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
     LinearLayout.LayoutParams vg3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -63,33 +63,33 @@ public class GameCard extends LinearLayout {
         yearLayout = new LinearLayout(mContext);
         yearLayout.setOrientation(HORIZONTAL);
         yearLayout.setLayoutParams(vg3);
-        vg3.setMargins(0,0,0,0);
-        yearLayout.setPadding(0,0,0,0);
+        vg3.setMargins(0, 0, 0, 0);
+        yearLayout.setPadding(0, 0, 0, 0);
 
-        layoutParams.setMargins(12,0,0,0);
+        layoutParams.setMargins(12, 0, 0, 0);
         setOrientation(LinearLayout.VERTICAL);
         setClickable(true);
         setBackground(d_card);
         setLayoutParams(layoutParams);
 
         yearView = new TextView(mContext);
-        yearView.setPadding(0,20,0,0);
+        yearView.setPadding(0, 20, 0, 0);
         yearView.setTextSize(30);
-        vg1.gravity=Gravity.CENTER;
-        vg1.setMargins(0,0,5,0);
+        vg1.gravity = Gravity.CENTER;
+        vg1.setMargins(0, 0, 5, 0);
         yearView.setLayoutParams(vg1);
         yearView.setText(String.valueOf(Math.abs(year)));
 
         yearLabelView = new TextView(mContext);
         yearLabelView.setTextSize(15);
         yearLabelView.setLayoutParams(vg1);
-        yearLabelView.setPadding(0,57,0,0);
+        yearLabelView.setPadding(0, 57, 0, 0);
         yearLabelView.setText(yearLabel);
         yearLabelView.setTextColor(Color.parseColor("#FF696769"));
         yearLabelView.setLayoutParams(vg1);
 
         questionView = new TextView(mContext);
-        questionView.setPadding(0,30,0,0);
+        questionView.setPadding(0, 30, 0, 0);
         questionView.setTextSize(13);
         questionView.setGravity(CENTER_HORIZONTAL);
         questionView.setLayoutParams(vg2);
