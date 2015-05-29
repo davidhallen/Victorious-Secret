@@ -67,7 +67,7 @@ public class GameEngine extends ActionBarActivity {
         activePlayerNr = 1;
 
         if(nrOfPlayers == 1){
-            numberOfQuestions = 10;
+            numberOfQuestions = 100;
         }
         else {
             numberOfQuestions = 2*nrOfPlayers;
@@ -409,8 +409,8 @@ public class GameEngine extends ActionBarActivity {
                             }
 
                         }
-                        listOfPlayers.get(activePlayerNr - 1).setScore(0);
-                        listOfPlayers.get(activePlayerNr - 1).setLives(3);
+                        //listOfPlayers.get(activePlayerNr - 1).setScore(0);
+                        //listOfPlayers.get(activePlayerNr - 1).setLives(3);
                         gv.lives_nr.setText("X_X");
 
                     } else {
@@ -421,9 +421,9 @@ public class GameEngine extends ActionBarActivity {
                         secondSelectedYear = null;
                         gv.answerButton.setEnabled(false);
                         gv.messageBar.setText("Wrong, it occured in " + currentQuestion.getYear() + " " + currentQuestion.getYearLabel() + ".");
-                        printButtons();
+                        //printButtons();
 
-                        listOfPlayers.get(activePlayerNr - 1).looseALife();
+                        //listOfPlayers.get(activePlayerNr - 1).looseALife();
                         if ((listOfPlayers.get(activePlayerNr - 1).getLives()) == 0) {
                             gameOver();
 
