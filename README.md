@@ -1,4 +1,4 @@
-# Timeline for Android
+﻿# Timeline for Android
 An android game for learning and challenging your friends in historical events. The game is developed by students from Industrial Engineering and Management at Chalmers University of Technology in the course Software Engineering Project (DAT255).
 
 ## Documentation
@@ -18,7 +18,7 @@ Please follow the guide in `Developer_manual.pdf` that can be found in the `docs
 ## Creators
 - Piotri Neto
 - Ludvig Sylvén
-- Karl Lennartssom
+- Karl Lennartsson
 - David Hallén
 - Victor Nydén
 
