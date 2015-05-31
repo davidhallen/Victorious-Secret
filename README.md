@@ -18,7 +18,7 @@ Please follow the guide in `Developer_manual.pdf` that can be found in the `docs
 ## Creators
 - Piotri Neto
 - Ludvig Sylvén
-- Karl Lennartssom
+- Karl Lennartsson
 - David Hallén
 - Victor Nydén
 
